@@ -1,0 +1,2 @@
+include ':app', ':library', ':materialcalendar'
+rootProject.name='My Application'

@@ -1,0 +1,73 @@
+<resources>
+    <string name="app_name">Xzit</string>
+    <string name="signin">SIGN IN</string>
+    <string name="signinsmall">Sign in</string>
+
+    <string name="emailaddress"> Email Address</string>
+    <string name="password">Password</string>
+
+    <!-- Login screen -->
+    <string name="newtoxzit">New to Xzit?</string>
+    <string name="signup">Sign up</string>
+    <string name="orloginusingsocialmedia">Or Login using social media</string>
+
+    <!-- forgot password -->
+    <string name="forgotpassword">Forgot Password</string>
+    <string name="submit">Submit</string>
+
+    <!-- sign up -->
+    <string name="email">Email</string>
+    <string name="next">Next</string>
+    <string name="passwordconfirmation">Password Confirmation</string>
+    <string name="businessname">Business name</string>
+
+    <!-- edit profile -->
+    <string name="modifyprofile">Modify Profile</string>
+    <string name="name">Yash Patel</string>
+    <string name="phone">Phone</string>
+    <string name="dob">DOB</string>
+    <string name="male">Male</string>
+    <string name="india">India</string>
+    <string name="save">Save</string>
+    <string name="categories">Categories</string>
+    <string name="motreal">Motreal</string>
+    <string name="today">Today</string>
+    <string name="hotspot">HotSpot</string>
+    <string name="changepassword">Change Password</string>
+    <string name="newpassword">New Confirm Password</string>
+    <string name="confirmpassword">Confirm Password</string>
+    <string name="confirmemail">Confirm Email</string>
+    <string name="newemail">New Email</string>
+
+    <!-- Search -->
+    <string name="friends">Friends</string>
+    <string name="search">Search...</string>
+    <string name="suggestions">Suggestions</string>
+    <string name="profile">Profile</string>
+    <string name="EDITPROFILE">EDIT PROFILE</string>
+    <string name="mypreference">My Preference</string>
+    <string name="music">MUSIC</string>
+    <string name="venue">Venue</string>
+    <string name="createvent">Create Event</string>
+    <string name="eventname">Event name</string>
+    <string name="payments">Payments</string>
+    <string name="lookatthat">Look at that...</string>
+    <string name="detail">We don\'t have your phone number  \n add it for a better experience</string>
+    <string name="country">Country</string>
+    <string name="phone_Recommended">Phone(Recommended)</string>
+    <string name="detail_">By clicking I agree, you agree that you have had an  opportunity to review and are consenting without reservation to the following terms and conditions.</string>
+    <string name="NameOnCard">Name On Card</string>
+    <string name="CardNumber">Card Number</string>
+    <string name="ExpirationDate">Expiration Date</string>
+    <string name="cvv">Cvv</string>
+    <string name="SavePaymentMethod">Save Payment Method</string>
+    <string name="awesome">Awesome</string>
+    <string name="awesomedetails">you are now officially a member Your nightlife will never be the same</string>
+    <string name="discover">Discover</string>
+    <string name="Ialreadyknowtheapp">I already know the app</string>
+    <string name="TermsandConditions">Terms and Conditions</string>
+    <string name="faq">FAQ</string>
+    <string name="venuepreference">Venue Preference</string>
+
+
+</resources>

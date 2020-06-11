@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.editprofile.EditProfileActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5"
+                android:background="@color/colorAccent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessLeaf" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgbackscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:background="@drawable/icn_back"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imgadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_add"
+            android:padding="8dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtModifyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgbackscreen"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="@string/payments"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtModifyProfile"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/white"
+            app:cardCornerRadius="5dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+
+                        android:layout_height="wrap_content">
+
+
+
+
+                        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/cardviewnameofcard"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@android:color/white"
+                            card_view:cardCornerRadius="5dp">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:gravity="start"
+                                android:hint="@string/NameOnCard"
+                                android:imeOptions="actionNext"
+                                android:inputType="text"
+                                android:padding="10dp"
+                                android:textAlignment="textStart"
+                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/cardviewNewEmail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@android:color/white"
+                            card_view:cardCornerRadius="5dp">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:gravity="start"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:padding="10dp"
+                                android:hint="@string/NameOnCard"
+                                android:textAlignment="textStart"
+                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                            android:id="@+id/cardviewNewPassword"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cardviewNewEmail"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@android:color/white"
+                            card_view:cardCornerRadius="5dp">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:gravity="start"
+                                android:hint="@string/CardNumber"
+                                android:imeOptions="actionNext"
+                                android:inputType="number"
+                                android:padding="10dp"
+                                android:textAlignment="textStart"
+                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
+                        </androidx.cardview.widget.CardView>
+
+                        <LinearLayout
+                            android:id="@+id/llview"
+                            android:layout_width="match_parent"
+                            android:orientation="horizontal"
+                            android:weightSum="10"
+                            android:layout_margin="5dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_below="@+id/cardviewNewPassword"
+                            android:layout_height="wrap_content">
+                        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="8"
+                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center_vertical"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:background="@android:color/white"
+                            card_view:cardCornerRadius="5dp">
+
+                            <EditText
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:background="@android:color/transparent"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:gravity="start"
+                                android:hint="@string/ExpirationDate"
+                                android:imeOptions="actionDone"
+                                android:inputType="text"
+                                android:padding="10dp"
+                                android:textAlignment="textStart"
+                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
+                        </androidx.cardview.widget.CardView>
+                            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginStart="5dp"
+                                android:layout_marginEnd="20dp"
+                                android:layout_marginTop="10dp"
+                                android:layout_weight="2"
+                                android:layout_marginBottom="15dp"
+                                android:background="@android:color/white"
+                                card_view:cardCornerRadius="5dp"
+                                android:layout_marginLeft="5dp"
+                                android:layout_marginRight="20dp">
+
+                                <EditText
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:fontFamily="@font/quicksand_regular"
+                                    android:gravity="start"
+                                    android:maxLength="3"
+                                    android:hint="@string/cvv"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="number"
+                                    android:padding="10dp"
+                                    android:textAlignment="textStart"
+                                    tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
+                            </androidx.cardview.widget.CardView>
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/btnSave"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/llview"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginTop="20dp"
+                            android:layout_marginEnd="20dp"
+                            android:layout_marginBottom="15dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="@string/SavePaymentMethod"
+                            android:textAlignment="center"
+                            android:textColor="@color/drackgrey"
+                            android:textSize="20sp"
+                            tools:ignore="UnusedAttribute"
+                            android:gravity="center_horizontal" />
+
+                    </RelativeLayout>
+                </ScrollView>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>

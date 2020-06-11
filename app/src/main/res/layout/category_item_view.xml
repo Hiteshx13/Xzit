@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_marginEnd="10dp"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="10dp">
+    <RelativeLayout
+        android:id="@+id/rlCatgory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/img_category"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:src="@android:color/white"
+        app:civ_border_color="@color/colorAccent"
+        app:civ_border_width="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+    <ImageView
+        android:id="@+id/imgAdd"
+        android:visibility="visible"
+        android:layout_width="60dp"
+        android:src="@drawable/logo"
+        android:layout_centerHorizontal="true"
+        android:layout_centerInParent="true"
+        android:layout_height="60dp"/>
+    </RelativeLayout>
+<TextView
+    android:layout_below="@+id/rlCatgory"
+    android:layout_marginStart="5dp"
+    android:textSize="15sp"
+    android:fontFamily="@font/quicksand_regular"
+    android:layout_width="wrap_content"
+    android:text="Restaurant"
+    android:layout_height="wrap_content"
+    tools:ignore="RtlCompat,UnusedAttribute" />
+
+
+</RelativeLayout>

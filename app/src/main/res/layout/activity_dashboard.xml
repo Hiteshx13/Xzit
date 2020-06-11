@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.editprofile.EditProfileActivity">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="5"
+                android:background="@color/colorAccent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessLeaf" />
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlAddStory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:orientation="vertical">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/demo"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="3dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imgAdd"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/ic_add" />
+
+        </RelativeLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rrMystory"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_toEndOf="@+id/rlAddStory"
+            android:layout_toRightOf="@+id/rlAddStory" />
+
+        <TextView
+            android:id="@+id/txtCategory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/rrMystory"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="@string/categories"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rrCategories"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/txtCategory"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp" />
+
+        <ScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_above="@+id/rllcamear"
+            android:layout_below="@+id/rrCategories"
+            android:fillViewport="true"
+            android:layout_height="match_parent">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="15dp"
+
+                app:cardCornerRadius="5dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="15dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginLeft="15dp"
+                    android:layout_marginRight="5dp">
+
+                    <TextView
+                        android:id="@+id/txtTitle"
+                        android:textColor="@color/textcolor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="@string/motreal"
+                        android:textSize="20sp"
+                        tools:ignore="UnusedAttribute" />
+
+                    <ImageView
+                        android:id="@+id/imgcalenadar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTitle"
+                        android:layout_marginTop="10dp"
+                        android:src="@drawable/calendar"
+                        tools:ignore="ContentDescription" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/txtTitle"
+                        android:layout_marginStart="5dp"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toEndOf="@+id/imgcalenadar"
+                        android:layout_toRightOf="@+id/imgcalenadar"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="@string/today"
+                        android:textColor="@color/lightgrey"
+                        android:textSize="20sp"
+                        tools:ignore="UnusedAttribute" />
+
+                    <View
+                        android:id="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_below="@+id/imgcalenadar"
+                        android:layout_marginTop="8dp"
+                        android:background="@color/colorAccent" />
+                    <com.sandrlab.widgets.MetalRecyclerViewPager
+                        android:id="@+id/viewPager"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:layout_below="@+id/view"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:itemMargin="32dp"/>
+                    <TextView
+                        android:id="@+id/txtHospot"
+                        android:layout_width="wrap_content"
+                        android:layout_below="@+id/viewPager"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="@string/hotspot"
+                        android:layout_marginStart="20dp"
+                        android:textColor="@color/textcolor"
+                        android:textSize="20sp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        tools:ignore="UnusedAttribute" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rrHotSport"
+                        android:layout_below="@+id/txtHospot"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_marginTop="13dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp" />
+                </RelativeLayout>
+
+            </androidx.cardview.widget.CardView>
+
+
+
+        </RelativeLayout>
+        </ScrollView>
+
+
+        <RelativeLayout
+            android:id="@+id/rllcamear"
+            android:background="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
+
+            <ImageView
+                android:id="@+id/imghome"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/home"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/imgmiscellaneous"
+                android:layout_width="30dp"
+                android:layout_toRightOf="@+id/imghome"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/miscellaneous"
+                android:layout_toEndOf="@+id/imghome"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/imgChat"
+                android:layout_width="30dp"
+                android:layout_alignParentEnd="true"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/chat"
+                android:layout_alignParentRight="true"
+                tools:ignore="ContentDescription" />
+            <ImageView
+                android:id="@+id/imgplan"
+                android:layout_width="30dp"
+                android:layout_toLeftOf="@+id/imgChat"
+                android:layout_height="30dp"
+                android:layout_margin="20dp"
+                android:src="@drawable/plane"
+                android:layout_toStartOf="@+id/imgChat"
+                tools:ignore="ContentDescription" />
+           <!-- //https://github.com/sandrfx/MetalRecyclerPagerView-->
+        </RelativeLayout>
+<ImageView
+
+    android:layout_width="50dp"
+    android:layout_height="50dp"
+    android:layout_centerHorizontal="true"
+    android:background="@drawable/roundimageview"
+    android:layout_above="@+id/rllcamear"
+    android:layout_marginBottom="-30dp"
+   />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/img_camera"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_above="@+id/rllcamear"
+            android:layout_marginBottom="-30dp"
+            android:src="@drawable/photography"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="3dp"
+            android:layout_centerHorizontal="true"
+            />
+
+    </RelativeLayout>
+</layout>

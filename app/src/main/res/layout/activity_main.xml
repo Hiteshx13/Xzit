@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+   <Button
+       android:id="@+id/btnSplash"
+       android:layout_width="match_parent"
+       android:text="splash screen"
+       android:textColor="@android:color/white"
+       android:background="@drawable/backgoundround"
+       android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnawesome"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:text="Awesome"
+        android:textColor="@android:color/white"
+        android:background="@drawable/backgoundround"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btntermandconditions"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:text="Terms and conditions"
+        android:textColor="@android:color/white"
+        android:background="@drawable/backgoundround"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnaddpayment"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:text="Add Payment"
+        android:textColor="@android:color/white"
+        android:background="@drawable/backgoundround"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btncountryphone"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:text="Country phone"
+        android:textColor="@android:color/white"
+        android:background="@drawable/backgoundround"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnfaq"
+        android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
+        android:text="FAQ"
+        android:textColor="@android:color/white"
+        android:background="@drawable/backgoundround"
+        android:layout_height="wrap_content"/>
+ <Button
+     android:id="@+id/btnvenuepreference"
+     android:layout_width="match_parent"
+     android:layout_marginTop="10dp"
+     android:text="Venue Preference"
+     android:textColor="@android:color/white"
+     android:background="@drawable/backgoundround"
+     android:layout_height="wrap_content"/>
+
+</LinearLayout>
+</layout>

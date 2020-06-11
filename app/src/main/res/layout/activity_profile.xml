@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".activity.editprofile.EditProfileActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5"
+                android:background="@color/colorAccent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:ignore="UselessLeaf" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgbackscreen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:padding="5dp"
+            android:background="@drawable/icn_back"
+            tools:ignore="ContentDescription" />
+
+        <ImageView
+            android:id="@+id/imgadd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@drawable/ic_settings"
+            android:padding="8dp"
+            tools:ignore="ContentDescription" />
+
+        <TextView
+            android:id="@+id/txtModifyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/imgbackscreen"
+            android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="@string/profile"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtModifyProfile"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginBottom="15dp"
+            android:background="@android:color/white"
+            app:cardCornerRadius="5dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/rLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/profile_image"
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="20dp"
+                        android:src="@drawable/demo"
+                        app:civ_border_color="@color/colorAccent"
+                        app:civ_border_width="3dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toEndOf="@+id/profile_image"
+                        android:layout_toRightOf="@+id/profile_image"
+                        android:fontFamily="@font/quicksand_bold"
+                        android:text="Yesh Patel"
+                        android:textSize="20sp"
+                        tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/rlFriendevent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rLayout"
+                    android:layout_marginTop="20dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtFriend"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="15.4m"
+                            android:textSize="18sp"
+                            tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/quicksand_regular"
+                            android:text="Friends"
+                            android:textSize="20sp"
+                            tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+
+                        android:orientation="vertical">
+
+                        <TextView
+
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="406"
+                            android:textSize="18sp"
+                            tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="10dp"
+                            android:fontFamily="@font/quicksand_regular"
+                            android:text="Events"
+                            android:textSize="20sp"
+                            tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:padding="10dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                           android:layout_centerInParent="true"
+                            android:padding="8dp"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/roundedittext"
+                            android:text="@string/EDITPROFILE" />
+                    </RelativeLayout>
+
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtmyprefernece"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rlFriendevent"
+                    android:layout_centerInParent="true"
+                    android:layout_marginTop="20dp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="@string/mypreference"
+                    android:textColor="@color/colorAccent"
+                    android:textSize="20sp"
+                    tools:ignore="UnusedAttribute" />
+
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/txtmyprefernece"
+                    android:layout_marginTop="20dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:id="@+id/txtmusic"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="@string/music"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rrmusic"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtmusic"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/txtvenue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/rrmusic"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:text="@string/venue"
+                            android:textColor="@android:color/black"
+                            android:textSize="20sp"
+                            tools:ignore="UnusedAttribute" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rrvenue"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/txtvenue"
+                            android:layout_marginStart="20dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginEnd="10dp"
+                            android:layout_marginRight="10dp" />
+                    </RelativeLayout>
+
+                </ScrollView>
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+</layout>
