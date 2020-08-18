@@ -3,11 +3,10 @@
 
     <gradient
         android:angle="180"
-
         android:startColor="@color/colorAccent"
         android:endColor="@color/colorAccent"
         android:type="linear" />
 
     <corners
-        android:radius="5dp"/>
+        android:radius="@dimen/_5sdp"/>
 </shape>

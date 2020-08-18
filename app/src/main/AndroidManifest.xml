@@ -3,72 +3,146 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.xzit.app">
 
+    <uses-permission android:name="android.permission.INTERNET" />
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@drawable/logo"
         android:label="@string/app_name"
-        android:roundIcon="@mipmap/ic_launcher_round"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:usesCleartextTraffic="true"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".activity.venuepreference.VenuePreferenceActivity"
+        <activity android:name=".activity.GenderBirthdateActivity" />
+        <activity
+            android:name=".activity.PreferenceMusicActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.faq.FAQActivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.termsandconditions.TermandConditionsActivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.awesome.AweSomeActivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.addpayment.AddPaymentctivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.payment.PaymentActivity"
+
+        <activity
+            android:name=".activity.SignUpNextActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.createevent.CreatEventActivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.countryphonenumber.CountryPhoneNumberActivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity
-            android:name=".activity.profile.ProfileActivity"
+            android:name=".activity.SelectSignUpActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.searchfirend.SearchFirendActivity"
+            android:name=".activity.PreferenceFoodActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.changeemail.ChangeEmailActivity"
+            android:name=".activity.PreferenceVenueActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.changepassword.ChangePasswordActivity"
+            android:name=".activity.FAQActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.dashboard.DashboardActivity"
+            android:name=".activity.TermandConditionsActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.editprofile.EditProfileActivity"
+            android:name=".activity.AweSomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.signup.SignUpActivity"
+            android:name=".activity.AddPaymentctivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.PaymentActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.CreatEventActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.AddFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.ChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.CountryPhoneNumberActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <!--        <activity-->
+        <!--            android:name=".activity.profile.ProfileActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/AppThemeNoTitle" />-->
+        <!--        <activity-->
+        <!--            android:name=".activity.searchfirend.SearchFirendActivity"-->
+        <!--            android:screenOrientation="portrait"-->
+        <!--            android:theme="@style/AppThemeNoTitle" />-->
+        <activity
+            android:name=".activity.ChangeEmailActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.ChangePasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.DashboardActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.EditProfileActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.SignUpActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.forgotpassword.ForgotPasswordActivity"
+            android:name=".activity.ForgotPasswordActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle">
+
+        </activity>
+        <activity
+            android:name=".activity.SignInActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.login.LoginActivity"
+            android:name=".activity.WelcomeActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.welcomescreen.WelcomeActivity"
-            android:theme="@style/AppThemeNoTitle" />
-        <activity android:name=".activity.spashscreen.SplashScreen"
-            />
         <activity
-            android:name=".MainActivity"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".activity.SplashScreen"
+            android:theme="@style/AppThemeNoTitle">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".activity.SelectLoginActivity"
+            android:theme="@style/AppThemeNoTitle">
+
+        </activity>
+
+        <activity
+            android:name="com.xzit.app.activity.SettingsActivity"
+            android:theme="@style/AppThemeNoTitle">
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
+
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
+        </activity>
+
+        <service android:name=".fcm.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>

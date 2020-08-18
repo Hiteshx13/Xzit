@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "30336046146",
+    "firebase_url": "https://xzit-280308.firebaseio.com",
+    "project_id": "xzit-280308",
+    "storage_bucket": "xzit-280308.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:30336046146:android:c8e5bb0214af586ae449db",
+        "android_client_info": {
+          "package_name": "com.xzit.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "30336046146-11akvcehnhjgl7fhtun68ffbqck4mbsn.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.xzit.app",
+            "certificate_hash": "60aa905bdde8ecf5c4108b3ca9823117334186f8"
+          }
+        },
+        {
+          "client_id": "30336046146-0ck2j798j9u0d3p14iva50dkodfgkkv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBYuNI0dkHNSSnFJ4tHw8j2U0Wg9sxN1KU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "30336046146-0ck2j798j9u0d3p14iva50dkodfgkkv7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

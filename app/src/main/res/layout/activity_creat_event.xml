@@ -5,7 +5,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activity.editprofile.EditProfileActivity">
+        tools:context=".activity.EditProfileActivity">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -139,7 +139,7 @@
                         app:eventsEnabled="true" />
 
                     <Button
-                        android:id="@+id/btnSave"
+                        android:id="@+id/btnNext"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/calendarView"

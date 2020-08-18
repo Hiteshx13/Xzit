@@ -15,8 +15,55 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+
+    <style  name="StyleCardView" parent="Theme.AppCompat.Light.NoActionBar"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto">
+        <item name="cardElevation">@dimen/_5sdp</item>
+        <item name="cornerRadius">@dimen/_5sdp</item>
+    </style>
+    <style name="StyleEditText" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="paddingStart">@dimen/_15sdp</item>
+        <item name="android:paddingStart">@dimen/_15sdp</item>
+        <item name="android:paddingEnd">@dimen/_15sdp</item>
+        <item name="android:paddingRight">@dimen/_15sdp</item>
+        <item name="android:paddingLeft">@dimen/_15sdp</item>
+        <item name="android:paddingTop">@dimen/_12sdp</item>
+        <item name="android:paddingBottom">@dimen/_12sdp</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
+        <item name="android:textSize">@dimen/_14ssp</item>
+        <item name="android:textColorHint">@color/colorGrayTextHint</item>
+        <item name="android:textColor">@color/colorBlack</item>
+        <item name="cardElevation">@dimen/_5sdp</item>
+        <item name="cornerRadius">@dimen/_5sdp</item>
+
+    </style>
+
+    <style name="StyleButton" parent="Theme.AppCompat.Light.NoActionBar">
+
+        <item name="android:paddingTop">@dimen/_10sdp</item>
+        <item name="android:paddingBottom">@dimen/_10sdp</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
+    </style>
+
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="ThemeSwitch" parent="Theme.AppCompat.Light">
+        <!-- colorPrimary is used for the default action bar background -->
+        <item name="colorPrimary">@color/colorYellow</item>
+
+        <!-- colorPrimaryDark is used for the status bar -->
+        <item name="colorPrimaryDark">@color/colorYellow</item>
+
+        <!-- colorAccent is used as the default value for colorControlActivated,
+             which is used to tint widgets -->
+        <item name="colorAccent">@color/colorWhite</item>
+
+        <!-- You can also set colorControlNormal, colorControlActivated
+             colorControlHighlight, and colorSwitchThumbNormal. -->
+
     </style>
 </resources>

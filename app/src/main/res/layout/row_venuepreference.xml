@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlRoot"
+    android:layout_width="match_parent"
+    android:layout_marginBottom="@dimen/_12sdp"
+    android:paddingEnd="@dimen/_5sdp"
+    android:paddingStart="@dimen/_5sdp"
+    android:layout_height="@dimen/_104sdp">
+
+    <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/venue"
+        android:scaleType="fitXY"
+        android:layout_margin="@dimen/_3sdp"
+        app:siShape="@drawable/shape_preference"
+        />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivOverlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/bg_squre_overlay"
+        android:visibility="gone"
+        android:scaleType="fitXY"
+        android:layout_margin="@dimen/_3sdp"
+        tools:visibility="visible"/>
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivOverlayBorder"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/yellow_border"
+        android:visibility="gone"
+        tools:visibility="visible" />
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:fontFamily="@font/quicksand_bold"
+        android:text="@string/restaurants"
+        android:gravity="center"
+        android:layout_marginStart="@dimen/_7sdp"
+        android:layout_marginEnd="@dimen/_7sdp"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_17ssp" />
+</RelativeLayout>
