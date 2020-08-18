@@ -25,11 +25,8 @@
             android:id="@+id/imgbackscreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
+            android:padding="@dimen/_15sdp"
             android:src="@drawable/icn_back"
-            android:padding="@dimen/_10sdp"
             tools:ignore="ContentDescription" />
 
 
@@ -44,7 +41,7 @@
             android:fontFamily="@font/quicksand_regular"
             android:text="@string/add_friends"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_18ssp"
             tools:ignore="UnusedAttribute" />
 
         <androidx.cardview.widget.CardView
@@ -71,6 +68,8 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"
                         android:orientation="vertical">
 
                         <RelativeLayout
@@ -90,7 +89,6 @@
                                 android:drawableStart="@drawable/ic_search_small"
                                 android:drawableLeft="@drawable/ic_search_small"
                                 android:drawablePadding="@dimen/_10sdp"
-
                                 android:hint="@string/search.."
                                 android:paddingStart="@dimen/_10sdp"
                                 android:paddingLeft="@dimen/_20sdp"
@@ -118,7 +116,7 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/add_filled" />
 
-                                <com.pkmmte.view.CircularImageView
+                                <com.github.siyamed.shapeimageview.CircularImageView
                                     android:layout_width="@dimen/_40sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/app_icon" />
@@ -213,7 +211,7 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/add_filled" />
 
-                                <com.pkmmte.view.CircularImageView
+                                <com.github.siyamed.shapeimageview.CircularImageView
                                     android:layout_width="@dimen/_40sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/app_icon" />
@@ -269,7 +267,7 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/add_filled" />
 
-                                <com.pkmmte.view.CircularImageView
+                                <com.github.siyamed.shapeimageview.CircularImageView
                                     android:layout_width="@dimen/_40sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/app_icon" />
@@ -325,7 +323,7 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/add_filled" />
 
-                                <com.pkmmte.view.CircularImageView
+                                <com.github.siyamed.shapeimageview.CircularImageView
                                     android:layout_width="@dimen/_40sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/app_icon" />
@@ -381,7 +379,7 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/add_filled" />
 
-                                <com.pkmmte.view.CircularImageView
+                                <com.github.siyamed.shapeimageview.CircularImageView
                                     android:layout_width="@dimen/_40sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/app_icon" />
@@ -437,7 +435,279 @@
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/add_filled" />
 
-                                <com.pkmmte.view.CircularImageView
+                                <com.github.siyamed.shapeimageview.CircularImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/app_icon" />
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/quicksand_regular"
+                                        android:text="@string/add_guest"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="20sp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout> <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp">
+
+                            <RelativeLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/add_filled" />
+
+                                <com.github.siyamed.shapeimageview.CircularImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/app_icon" />
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/quicksand_regular"
+                                        android:text="@string/add_guest"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="20sp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout> <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp">
+
+                            <RelativeLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/add_filled" />
+
+                                <com.github.siyamed.shapeimageview.CircularImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/app_icon" />
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/quicksand_regular"
+                                        android:text="@string/add_guest"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="20sp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout> <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp">
+
+                            <RelativeLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/add_filled" />
+
+                                <com.github.siyamed.shapeimageview.CircularImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/app_icon" />
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/quicksand_regular"
+                                        android:text="@string/add_guest"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="20sp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout> <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp">
+
+                            <RelativeLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/add_filled" />
+
+                                <com.github.siyamed.shapeimageview.CircularImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/app_icon" />
+                            </RelativeLayout>
+
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:gravity="center_vertical"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginStart="@dimen/_10sdp"
+                                        android:layout_marginLeft="@dimen/_10sdp"
+                                        android:layout_weight="1"
+                                        android:fontFamily="@font/quicksand_regular"
+                                        android:text="@string/add_guest"
+                                        android:textColor="@color/colorBlack"
+                                        android:textSize="20sp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="@dimen/_10sdp"
+                            android:paddingTop="@dimen/_10sdp"
+                            android:paddingEnd="@dimen/_10sdp">
+
+                            <RelativeLayout
+                                android:layout_width="@dimen/_35sdp"
+                                android:layout_height="@dimen/_35sdp">
+
+                                <androidx.appcompat.widget.AppCompatImageView
+                                    android:layout_width="@dimen/_40sdp"
+                                    android:layout_height="@dimen/_40sdp"
+                                    android:src="@drawable/add_filled" />
+
+                                <com.github.siyamed.shapeimageview.CircularImageView
                                     android:layout_width="@dimen/_40sdp"
                                     android:layout_height="@dimen/_40sdp"
                                     android:src="@drawable/app_icon" />
@@ -476,17 +746,14 @@
                         </LinearLayout>
 
                         <Button
+                            style="@style/StyleButtonYellow"
                             android:id="@+id/btnNext"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="15dp"
                             android:background="@drawable/backgoundround"
-                            android:fontFamily="@font/quicksand_regular"
-                            android:text="@string/next"
+                           android:text="@string/next"
                             android:textAllCaps="false"
+                            android:layout_marginTop="@dimen/_16ssp"
                             android:textColor="@android:color/white"
                             android:textSize="@dimen/_14ssp"
                             tools:targetApi="jelly_bean" />

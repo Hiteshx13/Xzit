@@ -85,11 +85,11 @@
                     android:layout_marginStart="@dimen/_15sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/backgoundround"
-                    android:fontFamily="@font/quicksand_regular"
+                    android:fontFamily="@font/quicksand_medium"
                     android:text="@string/next"
                     android:textAllCaps="false"
                     android:textColor="@android:color/white"
-                    android:textSize="@dimen/_12sdp" />
+                    android:textSize="@dimen/_14sdp" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

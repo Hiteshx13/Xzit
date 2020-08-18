@@ -6,20 +6,18 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.xzit.app.R;
-import com.xzit.app.databinding.ActivityAddPaymentctivityBinding;
+import com.xzit.app.databinding.ActivityTermandConditionsBinding;
 
-public class AddPaymentctivity extends AppCompatActivity {
+public class PrivacyPolicyActivity extends AppCompatActivity {
 
-    private ActivityAddPaymentctivityBinding binding;
+    private ActivityTermandConditionsBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
-        binding = DataBindingUtil.setContentView(this, R.layout.activity_add_paymentctivity);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_privacy_policy);
 
         binding.imgbackscreen.setOnClickListener(view -> finish());
-        binding.btnAdd.setOnClickListener(view -> finish());
+        binding.btnOk.setOnClickListener(view -> finish());
     }
 }

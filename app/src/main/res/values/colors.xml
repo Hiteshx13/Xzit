@@ -5,14 +5,15 @@
     <color name="colorPrimaryDark">#eab000</color>
     <color name="colorAccent">#eab000</color>
     <color name="colorYellow">#eab000</color>
+    <color name="colorYellowLight">#33EAB000</color>
     <color name="colorAccentlight">#0AEAB000</color>
     <color name="textcolor">#333333</color>
     <color name="lightgrey">#3E878787</color>
     <color name="bgChatSend">#FFE596</color>
     <color name="lightgreyText">#2C2C2C</color>
     <color name="lightWhite">#80FFFFFF</color>
-    <color name="colorLightBlack">#90000000</color>
-    <color name="colorBlackStrip">#70000000</color>
+    <color name="colorLightBlack">#373737</color>
+    <color name="colorBlackStrip">#D1D1D1</color>
     <color name="colorBlack">#000000</color>
     <color name="drackgrey">#808080</color>
     <color name="colorWhite">#FFFFFF</color>

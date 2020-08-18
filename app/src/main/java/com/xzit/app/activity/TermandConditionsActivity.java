@@ -18,5 +18,6 @@ public class TermandConditionsActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_termand_conditions);
 
         binding.imgbackscreen.setOnClickListener(view -> finish());
+        binding.btnOk.setOnClickListener(view -> finish());
     }
 }

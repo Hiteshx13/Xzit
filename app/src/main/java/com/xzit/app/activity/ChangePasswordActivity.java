@@ -1,6 +1,5 @@
 package com.xzit.app.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -12,28 +11,23 @@ import com.xzit.app.databinding.ActivityChangePasswordBinding;
 
 public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
-
-    private ActivityChangePasswordBinding activityChangePasswordBinding;
+    private ActivityChangePasswordBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         initialization();
-
         listener();
-
-
     }
 
     private void initialization() {
-        activityChangePasswordBinding = DataBindingUtil.setContentView(this, R.layout.activity_change_password);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_change_password);
     }
 
     private void listener() {
-
-        activityChangePasswordBinding.imgbackscreen.setOnClickListener(this);
-        activityChangePasswordBinding.btnSave.setOnClickListener(this);
+        binding.imgbackscreen.setOnClickListener(this);
+        binding.btnSave.setOnClickListener(this);
     }
 
     @Override
@@ -44,8 +38,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
                 finish();
                 break;
             case R.id.btnSave:
-                Intent intent = new Intent(this, ChangePasswordActivity.class);
-                startActivity(intent);
+                finish();
                 break;
         }
     }

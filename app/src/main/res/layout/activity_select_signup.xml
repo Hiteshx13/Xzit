@@ -54,7 +54,7 @@
 
                 <Button
                     android:id="@+id/btnMerchant"
-                    style="@style/StyleButton"
+                    style="@style/StyleButtonYellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_29sdp"
@@ -68,7 +68,7 @@
 
                 <Button
                     android:id="@+id/btnUser"
-                    style="@style/StyleButton"
+                    style="@style/StyleButtonYellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/_29sdp"

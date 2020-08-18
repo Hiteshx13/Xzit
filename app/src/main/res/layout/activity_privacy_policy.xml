@@ -34,7 +34,7 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:fontFamily="@font/quicksand_regular"
-                android:text="@string/faq"
+                android:text="@string/privacy_policy"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_18ssp"
                 tools:ignore="UnusedAttribute" />
@@ -61,7 +61,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/quicksand_bold"
-                        android:text="@string/faq"
+                        android:text="@string/privacy_policy"
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_15ssp" />
 
@@ -77,58 +77,13 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_24sdp"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="@string/what_is_venu"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_15ssp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
                         android:fontFamily="@font/quicksand_regular"
-                        android:text="@string/venue_ans"
+                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."
                         android:textColor="@color/colorBlack"
                         android:textSize="@dimen/_15ssp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_24sdp"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="How Can I changed my
-preferences?"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_15ssp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/quicksand_regular"
-                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially "
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_15ssp" />
-  <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_24sdp"
-                        android:fontFamily="@font/quicksand_bold"
-                        android:text="How do I search for a
-specific venue?"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_15ssp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
-                        android:fontFamily="@font/quicksand_regular"
-                        android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially "
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_15ssp" />
-
 
                     <Button
                         android:id="@+id/btnOk"

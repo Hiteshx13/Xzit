@@ -59,7 +59,7 @@
 
                     <Button
                         android:id="@+id/btnFacebook"
-                        style="@style/StyleButton"
+                        style="@style/StyleButtonYellow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_20sdp"
@@ -73,7 +73,7 @@
 
                     <Button
                         android:id="@+id/btnSignUpWithEmail"
-                        style="@style/StyleButton"
+                        style="@style/StyleButtonYellow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_30sdp"

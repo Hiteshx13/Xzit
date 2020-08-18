@@ -44,6 +44,14 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
+            android:name=".activity.PrivacyPolicyActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.PaymentMethodsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+        <activity
             android:name=".activity.AweSomeActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />

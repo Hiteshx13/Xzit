@@ -30,27 +30,10 @@
             android:id="@+id/imgbackscreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:padding="5dp"
-            android:background="@drawable/icn_back"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/icn_back"
             tools:ignore="ContentDescription" />
 
-        <ImageView
-            android:id="@+id/imgadd"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginRight="10dp"
-            android:background="@drawable/ic_add"
-            android:padding="8dp"
-            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/txtModifyProfile"
@@ -61,9 +44,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"
             android:fontFamily="@font/quicksand_regular"
-            android:text="@string/payments"
+            android:text="@string/add_payment_method"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_18ssp"
             tools:ignore="UnusedAttribute" />
 
         <androidx.cardview.widget.CardView
@@ -71,13 +54,12 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/txtModifyProfile"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
             android:background="@android:color/white"
-            app:cardCornerRadius="5dp">
-
+            app:cardCornerRadius="@dimen/_24sdp"
+            app:cardElevation="0dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -87,36 +69,150 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <RelativeLayout
+                    <LinearLayout
                         android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
 
-                        android:layout_height="wrap_content">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="@dimen/_20sdp"
+                                android:orientation="horizontal">
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/drawable_yellow__light"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/quicksand_bold"
+                                        android:gravity="center_horizontal"
+                                        android:text="@string/card"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorYellow"
+                                        android:textSize="@dimen/_10ssp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                    <androidx.appcompat.widget.AppCompatImageView
+                                        android:layout_width="@dimen/_8ssp"
+                                        android:layout_height="@dimen/_8sdp"
+                                        android:layout_marginStart="@dimen/_9sdp"
+                                        android:layout_marginLeft="@dimen/_9sdp"
+                                        android:src="@drawable/accept_yellow" />
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="@dimen/_15sdp"
+                                    android:layout_marginEnd="@dimen/_15sdp"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/drawable_yellow_border"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/quicksand_bold"
+                                        android:gravity="center_horizontal"
+                                        android:text="@string/net_banking"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorYellow"
+                                        android:textSize="@dimen/_10ssp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:background="@drawable/drawable_yellow_border"
+                                    android:gravity="center"
+                                    android:orientation="horizontal"
+                                    android:paddingTop="@dimen/_10sdp"
+                                    android:paddingBottom="@dimen/_10sdp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:fontFamily="@font/quicksand_bold"
+                                        android:gravity="center_horizontal"
+                                        android:text="@string/upi"
+                                        android:textAlignment="center"
+                                        android:textColor="@color/colorYellow"
+                                        android:textSize="@dimen/_10ssp"
+                                        tools:ignore="UnusedAttribute" />
+
+                                </LinearLayout>
 
 
+                            </LinearLayout>
+                        </LinearLayout>
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_15sdp"
+                            android:layout_marginLeft="@dimen/_15sdp"
+                            android:layout_marginTop="@dimen/_23sdp"
+                            android:layout_marginEnd="@dimen/_15sdp"
+                            android:layout_marginRight="@dimen/_15sdp"
+                            android:drawableStart="@drawable/drawable_yellow_dot"
+                            android:drawableLeft="@drawable/drawable_yellow_dot"
+                            android:drawablePadding="@dimen/_5sdp"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center_horizontal"
+                            android:text="@string/enter_your_credit_debit_card_details"
+                            android:textAlignment="center"
+                            android:textColor="@color/drackgrey"
+                            android:textSize="@dimen/_10ssp"
+                            tools:ignore="UnusedAttribute" />
 
                         <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                             android:id="@+id/cardviewnameofcard"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginStart="@dimen/_23sdp"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_23sdp"
+                            android:layout_marginRight="@dimen/_23sdp"
                             android:background="@android:color/white"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="@dimen/_5sdp"
+                            card_view:cardElevation="@dimen/_5sdp">
 
                             <EditText
+                                style="@style/StyleEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
-                                android:fontFamily="@font/quicksand_regular"
                                 android:gravity="start"
-                                android:hint="@string/NameOnCard"
+                                android:hint="@string/card_holder_name"
                                 android:imeOptions="actionNext"
                                 android:inputType="text"
-                                android:padding="10dp"
                                 android:textAlignment="textStart"
                                 tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -127,141 +223,136 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="15dp"
+                            android:layout_marginStart="@dimen/_23sdp"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_23sdp"
+                            android:layout_marginRight="@dimen/_23sdp"
                             android:background="@android:color/white"
-                            card_view:cardCornerRadius="5dp">
+                            card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
+                                style="@style/StyleEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
-                                android:fontFamily="@font/quicksand_regular"
-                                android:gravity="start"
-                                android:imeOptions="actionNext"
-                                android:inputType="number"
-                                android:padding="10dp"
-                                android:hint="@string/NameOnCard"
-                                android:textAlignment="textStart"
-                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
-
-                        </androidx.cardview.widget.CardView>
-
-                        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                            android:id="@+id/cardviewNewPassword"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/cardviewNewEmail"
-                            android:layout_gravity="center"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="15dp"
-                            android:background="@android:color/white"
-                            card_view:cardCornerRadius="5dp">
-
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@android:color/transparent"
-                                android:fontFamily="@font/quicksand_regular"
                                 android:gravity="start"
                                 android:hint="@string/CardNumber"
                                 android:imeOptions="actionNext"
                                 android:inputType="number"
-                                android:padding="10dp"
                                 android:textAlignment="textStart"
                                 tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
                         </androidx.cardview.widget.CardView>
+
 
                         <LinearLayout
                             android:id="@+id/llview"
                             android:layout_width="match_parent"
-                            android:orientation="horizontal"
-                            android:weightSum="10"
-                            android:layout_margin="5dp"
-                            android:layout_marginTop="10dp"
-                            android:layout_below="@+id/cardviewNewPassword"
-                            android:layout_height="wrap_content">
-                        <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="8"
-                            android:layout_marginTop="10dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="15dp"
-                            android:background="@android:color/white"
-                            card_view:cardCornerRadius="5dp">
+                            android:layout_marginStart="@dimen/_3sdp"
+                            android:layout_marginLeft="@dimen/_3sdp"
+                            android:layout_marginEnd="@dimen/_3sdp"
+                            android:layout_marginRight="@dimen/_3sdp"
+                            android:orientation="horizontal">
 
-                            <EditText
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:background="@android:color/transparent"
-                                android:fontFamily="@font/quicksand_regular"
-                                android:gravity="start"
-                                android:hint="@string/ExpirationDate"
-                                android:imeOptions="actionDone"
-                                android:inputType="text"
-                                android:padding="10dp"
-                                android:textAlignment="textStart"
-                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
-
-                        </androidx.cardview.widget.CardView>
                             <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-
-                                android:layout_width="wrap_content"
+                                android:layout_width="0dp"
                                 android:layout_height="wrap_content"
-                                android:layout_gravity="center"
-                                android:layout_marginStart="5dp"
-                                android:layout_marginEnd="20dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_weight="2"
-                                android:layout_marginBottom="15dp"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="@dimen/_20sdp"
+                                android:layout_weight="1"
                                 android:background="@android:color/white"
                                 card_view:cardCornerRadius="5dp"
-                                android:layout_marginLeft="5dp"
-                                android:layout_marginRight="20dp">
+                                card_view:cardElevation="@dimen/_5sdp">
 
                                 <EditText
+                                    style="@style/StyleEditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@android:color/transparent"
-                                    android:fontFamily="@font/quicksand_regular"
                                     android:gravity="start"
-                                    android:maxLength="3"
+                                    android:hint="Expiry Date"
+                                    android:imeOptions="actionDone"
+                                    android:inputType="text"
+                                    android:textAlignment="textStart" />
+
+                            </androidx.cardview.widget.CardView>
+
+                            <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_vertical"
+                                android:layout_margin="@dimen/_20sdp"
+                                android:layout_weight="1"
+                                android:background="@android:color/white"
+                                card_view:cardCornerRadius="5dp"
+                                card_view:cardElevation="@dimen/_5sdp">
+
+                                <EditText
+                                    style="@style/StyleEditText"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:gravity="start"
                                     android:hint="@string/cvv"
                                     android:imeOptions="actionDone"
                                     android:inputType="number"
-                                    android:padding="10dp"
+                                    android:maxLength="3"
                                     android:textAlignment="textStart"
                                     tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
                             </androidx.cardview.widget.CardView>
                         </LinearLayout>
 
-                        <TextView
-                            android:id="@+id/btnSave"
+                        <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_below="@+id/llview"
-                            android:layout_marginStart="20dp"
-                            android:layout_marginTop="20dp"
-                            android:layout_marginEnd="20dp"
-                            android:layout_marginBottom="15dp"
-                            android:fontFamily="@font/quicksand_bold"
-                            android:text="@string/SavePaymentMethod"
-                            android:textAlignment="center"
-                            android:textColor="@color/drackgrey"
-                            android:textSize="20sp"
-                            tools:ignore="UnusedAttribute"
-                            android:gravity="center_horizontal" />
+                            android:layout_marginStart="@dimen/_23sdp"
+                            android:layout_marginLeft="@dimen/_23sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_23sdp"
+                            android:layout_marginRight="@dimen/_23sdp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
 
-                    </RelativeLayout>
+                            <TextView
+
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginEnd="@dimen/_15sdp"
+                                android:layout_marginRight="@dimen/_15sdp"
+                                android:fontFamily="@font/quicksand_bold"
+                                android:gravity="center_horizontal"
+                                android:text="@string/save_card_data_for_future_payments"
+                                android:textAlignment="center"
+                                android:textColor="@color/drackgrey"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="UnusedAttribute" />
+
+                            <androidx.appcompat.widget.SwitchCompat
+                                style="@style/ThemeSwitch"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content" />
+                        </LinearLayout>
+
+                        <Button
+                            android:id="@+id/btnAdd"
+                            style="@style/StyleButtonYellow"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_20sdp"
+                            android:layout_marginTop="@dimen/_23sdp"
+                            android:layout_marginEnd="@dimen/_20sdp"
+                            android:background="@drawable/backgoundround"
+                            android:text="@string/add"
+                            android:textAllCaps="false"
+                            android:textColor="@android:color/white"
+                            android:textSize="@dimen/_12ssp"
+                            tools:targetApi="jelly_bean" />
+
+                    </LinearLayout>
                 </ScrollView>
             </RelativeLayout>
 

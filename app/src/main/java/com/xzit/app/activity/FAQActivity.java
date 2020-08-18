@@ -18,5 +18,6 @@ public class FAQActivity extends AppCompatActivity {
         setContentView(R.layout.activity_faq);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_faq);
         binding.imgbackscreen.setOnClickListener(view -> finish());
+        binding.btnOk.setOnClickListener(view -> finish());
     }
 }

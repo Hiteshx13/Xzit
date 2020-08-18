@@ -3,75 +3,72 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:context=".activity.EditProfileActivity">
+        android:layout_height="wrap_content">
 
-        <LinearLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            android:weightSum="10">
+            android:layout_height="wrap_content"
+            tools:context=".activity.EditProfileActivity">
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="3.5"
+                android:layout_height="@dimen/_180sdp"
                 android:background="@color/colorAccent" />
-        </LinearLayout>
-
-        <ImageView
-            android:id="@+id/imgbackscreen"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/icn_back"
-            android:padding="5dp"
-            tools:ignore="ContentDescription" />
 
 
-        <TextView
-            android:id="@+id/txtModifyProfile"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/imgbackscreen"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/quicksand_regular"
-            android:text="@string/settings"
-            android:textColor="@android:color/white"
-            android:textSize="20sp"
-            tools:ignore="UnusedAttribute" />
-
-        <androidx.cardview.widget.CardView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_below="@+id/txtModifyProfile"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
-            android:background="@android:color/white"
-            app:cardCornerRadius="5dp">
+            <ImageView
+                android:id="@+id/imgbackscreen"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/icn_back"
+                android:padding="5dp"
+                tools:ignore="ContentDescription" />
 
 
-            <RelativeLayout
+            <TextView
+                android:id="@+id/txtModifyProfile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/imgbackscreen"
+                android:layout_marginStart="20dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/quicksand_regular"
+                android:text="@string/payment_methods"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/_18ssp"
+                tools:ignore="UnusedAttribute" />
+
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent"
+                android:layout_below="@+id/txtModifyProfile"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:background="@android:color/white"
+                app:cardCornerRadius="@dimen/_24sdp"
+                app:cardElevation="0dp">
 
-                <ScrollView
+
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:orientation="vertical"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_20sdp"
+                        android:paddingRight="@dimen/_20sdp">
 
                         <LinearLayout
                             android:id="@+id/llSettings"
@@ -79,7 +76,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center_vertical"
                             android:orientation="horizontal"
-                            android:paddingTop="@dimen/_10sdp">
+                            android:paddingTop="@dimen/_20sdp">
 
                             <androidx.appcompat.widget.AppCompatImageView
                                 android:layout_width="@dimen/_40sdp"
@@ -112,8 +109,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -124,7 +119,7 @@
                                     android:layout_height="@dimen/_1sdp"
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -168,8 +163,7 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
+
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -181,7 +175,7 @@
 
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -225,8 +219,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -238,7 +230,7 @@
 
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -282,8 +274,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -295,7 +285,7 @@
 
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -339,8 +329,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -352,7 +340,7 @@
 
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -396,8 +384,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -409,7 +395,7 @@
 
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -453,8 +439,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -465,7 +449,7 @@
                                     android:layout_height="@dimen/_1sdp"
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
-                                    android:background="@color/colorBlackStrip"/>
+                                    android:background="@color/colorBlackStrip" />
                             </LinearLayout>
 
                         </LinearLayout>
@@ -509,8 +493,6 @@
                                     <androidx.appcompat.widget.AppCompatImageView
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp"
                                         android:rotation="180"
                                         android:src="@drawable/icn_back"
                                         app:tint="@color/colorLightBlack" />
@@ -559,22 +541,19 @@
                                         android:layout_weight="1"
                                         android:fontFamily="@font/quicksand_regular"
                                         android:text="@string/notification"
-                                        android:textColor="@color/colorBlackStrip"
+                                        android:textColor="@color/colorLightBlack"
                                         android:textSize="@dimen/_15ssp"
                                         tools:ignore="UnusedAttribute" />
 
                                     <androidx.appcompat.widget.SwitchCompat
                                         style="@style/ThemeSwitch"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp" />
+                                        android:layout_height="wrap_content" />
                                 </LinearLayout>
 
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_1sdp"
-
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
                                     android:background="@color/colorBlackStrip" />
@@ -614,22 +593,19 @@
                                         android:layout_weight="1"
                                         android:fontFamily="@font/quicksand_regular"
                                         android:text="@string/localization"
-                                        android:textColor="@color/colorBlackStrip"
+                                        android:textColor="@color/colorLightBlack"
                                         android:textSize="@dimen/_15ssp"
                                         tools:ignore="UnusedAttribute" />
 
                                     <androidx.appcompat.widget.SwitchCompat
                                         style="@style/ThemeSwitch"
                                         android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_marginEnd="@dimen/_20sdp"
-                                        android:layout_marginRight="@dimen/_20sdp" />
+                                        android:layout_height="wrap_content" />
                                 </LinearLayout>
 
                                 <View
                                     android:layout_width="match_parent"
                                     android:layout_height="@dimen/_1sdp"
-
                                     android:layout_marginEnd="@dimen/_20sdp"
                                     android:layout_marginRight="@dimen/_20sdp"
                                     android:background="@color/colorBlackStrip" />
@@ -639,10 +615,10 @@
                         </LinearLayout>
 
                     </LinearLayout>
-                </ScrollView>
-            </RelativeLayout>
+                </RelativeLayout>
 
-        </androidx.cardview.widget.CardView>
+            </androidx.cardview.widget.CardView>
 
-    </RelativeLayout>
+        </RelativeLayout>
+    </ScrollView>
 </layout>

@@ -35,6 +35,7 @@
                 android:layout_margin="20dp"
                 android:fontFamily="@font/quicksand_bold"
                 android:text="@string/signup"
+                android:textAllCaps="true"
                 android:textColor="@android:color/white"
                 android:textSize="20sp"
                 tools:ignore="UnusedAttribute" />
@@ -59,70 +60,39 @@
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:fontFamily="@font/quicksand_regular"
                 android:text="@string/app_name"
-                android:textSize="25sp"
+                android:textColor="@color/colorGrayTextDark"
+                android:textSize="@dimen/_25ssp"
                 tools:ignore="UnusedAttribute" />
 
-            <RelativeLayout
-                android:id="@+id/rlAdd"
-                android:layout_width="@dimen/_58sdp"
-                android:layout_height="@dimen/_58sdp"
-                android:layout_below="@id/txtTitle"
+            <ImageView
+                android:id="@+id/imgAdd"
+                android:layout_width="@dimen/_57sdp"
+                android:layout_height="@dimen/_57sdp"
+                android:layout_below="@+id/txtTitle"
                 android:layout_centerHorizontal="true"
-                android:layout_marginEnd="10dp"
-                android:layout_marginRight="10dp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:id="@+id/rlCatgory"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/img_category"
-                        android:layout_width="@dimen/_58sdp"
-                        android:layout_height="@dimen/_58sdp"
-                        android:src="@android:color/white"
-                        app:civ_border_color="@color/colorAccent"
-                        app:civ_border_width="3dp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <ImageView
-                        android:id="@+id/imgAdd"
-                        android:layout_width="@dimen/_58sdp"
-                        android:layout_height="@dimen/_58sdp"
-                        android:layout_centerInParent="true"
-                        android:layout_centerHorizontal="true"
-                        android:src="@drawable/ic_add"
-                        android:tint="@color/colorYellow"
-                        android:visibility="visible" />
-                </RelativeLayout>
-
-            </RelativeLayout>
+                android:src="@drawable/icn_add_pic"
+                android:tint="@color/colorYellow"
+                android:visibility="visible" />
 
             <RelativeLayout
                 android:id="@+id/layoutBottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/rlAdd"
+                android:layout_below="@id/imgAdd"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="@dimen/_30sdp">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingStart="@dimen/_30sdp"
-                    android:paddingLeft="@dimen/_30sdp"
-                    android:paddingEnd="@dimen/_30sdp"
-                    android:paddingRight="@dimen/_30sdp">
+                    android:layout_height="wrap_content">
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvUserName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginBottom="10dp"
+                        android:layout_marginStart="@dimen/_27sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardCornerRadius="@dimen/_5sdp"
                         app:cardElevation="@dimen/_5sdp">
@@ -132,7 +102,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/user_name"
                             android:imeOptions="actionNext"
@@ -148,7 +117,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvUserName"
                         android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_18sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
                         card_view:cardCornerRadius="5dp">
@@ -158,12 +129,10 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/title"
                             android:imeOptions="actionNext"
                             android:inputType="text"
-
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -175,16 +144,18 @@
                         android:layout_height="@dimen/_100sdp"
                         android:layout_below="@+id/cvTitle"
                         android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_18sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
                         card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/description"
                             android:imeOptions="actionNext"
@@ -201,7 +172,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvDesc"
                         android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
                         card_view:cardCornerRadius="5dp">
@@ -211,7 +184,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/select_a_category"
                             android:imeOptions="actionDone"
@@ -227,7 +199,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvSelectCategory"
                         android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
                         card_view:cardCornerRadius="5dp">
@@ -237,7 +211,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/telephone"
                             android:imeOptions="actionDone"
@@ -253,7 +226,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvTelephone"
                         android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
                         card_view:cardCornerRadius="5dp">
@@ -263,7 +238,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/website"
                             android:imeOptions="actionDone"
@@ -279,7 +253,9 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvWebsite"
                         android:layout_gravity="center"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
                         card_view:cardCornerRadius="5dp">
@@ -289,7 +265,6 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/business_hours"
                             android:imeOptions="actionDone"
@@ -301,19 +276,18 @@
 
                     <Button
                         android:id="@+id/btnSignUp"
+                        style="@style/StyleButtonYellow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cvBusinessHours"
+                        android:layout_marginStart="@dimen/_27sdp"
                         android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_27sdp"
                         android:layout_marginBottom="@dimen/_15sdp"
                         android:background="@drawable/backgoundround"
-                        android:fontFamily="@font/quicksand_regular"
-                        android:paddingTop="@dimen/_10sdp"
-                        android:paddingBottom="@dimen/_10sdp"
                         android:text="@string/signup"
                         android:textAllCaps="false"
                         android:textColor="@android:color/white"
-                        android:textSize="20sp"
                         tools:ignore="UnusedAttribute" />
 
                     <RelativeLayout
