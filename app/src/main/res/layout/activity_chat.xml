@@ -6,6 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/colorWhite"
         tools:context=".activity.EditProfileActivity">
 
         <LinearLayout
@@ -30,9 +31,6 @@
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_20sdp"
             android:padding="@dimen/_10sdp"
             android:src="@drawable/icn_back" />
 
@@ -85,7 +83,7 @@
                         android:id="@+id/tvLastSeen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/poppins_regular"
                         android:text="Last seen at 10:22 AM"
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/_10ssp"
@@ -95,7 +93,7 @@
                         android:id="@+id/tvUserName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:fontFamily="@font/quicksand_medium"
+                        android:fontFamily="@font/poppins_bold"
                         android:text="Nicholas Dunn "
                         android:textColor="@color/colorWhite"
                         android:textSize="@dimen/_16ssp"
@@ -137,16 +135,21 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_toStartOf="@+id/tvTime"
                             android:layout_toLeftOf="@+id/tvTime"
                             android:background="@android:color/white"
                             app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_10sdp">
+                            app:cardElevation="@dimen/_5sdp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/lightgrey"
+                                android:background="@color/colorChatReceiver"
                                 android:paddingStart="@dimen/_14sdp"
                                 android:paddingLeft="@dimen/_14sdp"
                                 android:paddingTop="@dimen/_5sdp"
@@ -175,6 +178,10 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:text="09:38"
                             android:textSize="@dimen/_10ssp"
                             app:fontFamily="@font/quicksand_regular" />
@@ -191,12 +198,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_toStartOf="@+id/tvTime1"
                             android:layout_toLeftOf="@+id/tvTime1"
                             android:background="@android:color/white"
                             app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_10sdp">
+                            app:cardElevation="@dimen/_5sdp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -230,6 +240,10 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:text="09:38"
                             android:textSize="@dimen/_10ssp"
                             app:fontFamily="@font/quicksand_regular" />
@@ -247,16 +261,20 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_toStartOf="@+id/tvTime3"
                             android:layout_toLeftOf="@+id/tvTime3"
                             android:background="@android:color/white"
                             app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_10sdp">
+                            app:cardElevation="@dimen/_5sdp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:background="@color/lightgrey"
+                                android:background="@color/colorChatReceiver"
                                 android:paddingStart="@dimen/_14sdp"
                                 android:paddingLeft="@dimen/_14sdp"
                                 android:paddingTop="@dimen/_5sdp"
@@ -285,6 +303,10 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:text="09:38"
                             android:textSize="@dimen/_10ssp"
                             app:fontFamily="@font/quicksand_regular" />
@@ -301,12 +323,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_toStartOf="@+id/tvTime4"
                             android:layout_toLeftOf="@+id/tvTime4"
                             android:background="@android:color/white"
                             app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_10sdp">
+                            app:cardElevation="@dimen/_5sdp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -340,6 +365,10 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:text="09:38"
                             android:textSize="@dimen/_10ssp"
                             app:fontFamily="@font/quicksand_regular" />
@@ -356,12 +385,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
                             android:layout_toStartOf="@+id/tvTime5"
                             android:layout_toLeftOf="@+id/tvTime5"
                             android:background="@android:color/white"
                             app:cardCornerRadius="@dimen/_4sdp"
-                            app:cardElevation="@dimen/_10sdp">
+                            app:cardElevation="@dimen/_5sdp">
 
                             <LinearLayout
                                 android:layout_width="wrap_content"
@@ -395,15 +427,19 @@
                             android:layout_alignParentEnd="true"
                             android:layout_alignParentRight="true"
                             android:layout_centerVertical="true"
+                            android:layout_marginStart="@dimen/_8sdp"
+                            android:layout_marginLeft="@dimen/_8sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
                             android:text="09:38"
                             android:textSize="@dimen/_10ssp"
                             app:fontFamily="@font/quicksand_regular" />
 
                     </RelativeLayout>
-
                 </LinearLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
+
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvEdit"
@@ -411,50 +447,94 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
             android:background="@android:color/white"
             app:cardCornerRadius="0dp"
             app:cardElevation="@dimen/_10sdp">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/ivProfile"
-                android:layout_marginStart="@dimen/_20sdp"
-                android:layout_marginEnd="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:background="@drawable/drawable_gray_chat"
-                android:orientation="vertical">
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingTop="@dimen/_20sdp"
+                android:paddingBottom="@dimen/_20sdp">
 
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_35sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_toStartOf="@+id/ivFilter"
-                    android:layout_toLeftOf="@+id/ivFilter"
-                    android:background="@color/colorTransparent"
-                    android:drawablePadding="@dimen/_10sdp"
-                    android:hint="Type something"
-                    android:paddingStart="@dimen/_10sdp"
-                    android:paddingLeft="@dimen/_20sdp"
-                    android:paddingEnd="@dimen/_10sdp"
-                    android:paddingRight="@dimen/_10sdp"
-                    android:textSize="@dimen/_12ssp" />
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20sdp"
+                    android:layout_marginLeft="@dimen/_20sdp"
+                    android:layout_weight="1"
+                    android:background="@drawable/drawable_gray_chat"
+                    android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/ivFilter"
-                    android:layout_width="@dimen/_27sdp"
-                    android:layout_height="@dimen/_27sdp"
-                    android:layout_alignParentEnd="true"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:layout_marginEnd="@dimen/_5sdp"
-                    android:layout_marginRight="@dimen/_5sdp"
-                    android:background="@drawable/drawable_white_rounded"
-                    android:padding="@dimen/_8sdp"
-                    android:src="@drawable/ic_filter" />
-            </RelativeLayout>
+                    <androidx.appcompat.widget.AppCompatEditText
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/cvSend"
+                        android:layout_toLeftOf="@+id/cvSend"
+                        android:background="@color/colorTransparent"
+                        android:drawablePadding="@dimen/_10sdp"
+                        android:hint="Type something"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingLeft="@dimen/_20sdp"
+                        android:paddingEnd="@dimen/_10sdp"
+                        android:paddingRight="@dimen/_10sdp"
+                        android:textSize="@dimen/_12ssp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/cvSend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentRight="true"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
+                        android:background="@android:color/white"
+                        app:cardCornerRadius="@dimen/_20sdp"
+                        app:cardElevation="0dp">
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:id="@+id/ivFilter"
+                            android:layout_width="@dimen/_27sdp"
+                            android:layout_height="@dimen/_27sdp"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:background="@drawable/drawable_yellow"
+                            android:padding="@dimen/_6sdp"
+                            android:src="@drawable/ic_navigation"
+                            app:tint="@color/colorWhite" />
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+                <androidx.cardview.widget.CardView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginLeft="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_14sdp"
+                    android:layout_marginRight="@dimen/_14sdp"
+                    android:background="@android:color/white"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="0dp">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_27sdp"
+                        android:layout_height="@dimen/_27sdp"
+                        android:background="@color/colorGrayChat"
+                        android:padding="@dimen/_6sdp"
+                        android:src="@drawable/ic_link"
+                        app:tint="@color/colorBlack" />
+                </androidx.cardview.widget.CardView>
+
+            </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </layout>

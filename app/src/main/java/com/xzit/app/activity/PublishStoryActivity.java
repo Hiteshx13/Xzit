@@ -8,13 +8,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.xzit.app.R;
-import com.xzit.app.activity.ChangePasswordActivity;
-import com.xzit.app.databinding.ActivityEditProfileBinding;
+import com.xzit.app.databinding.ActivityPublishStoryBinding;
 
-public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
+public class PublishStoryActivity extends AppCompatActivity implements View.OnClickListener {
 
 
-    private ActivityEditProfileBinding activityEditProfileBinding;
+    private ActivityPublishStoryBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,31 +22,33 @@ public class EditProfileActivity extends AppCompatActivity implements View.OnCli
         initialization();
 
         listener();
-
-
     }
 
     private void initialization() {
-        activityEditProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_publish_story);
     }
 
     private void listener() {
 
-        activityEditProfileBinding.imgbackscreen.setOnClickListener(this);
-        activityEditProfileBinding.tvResetPassword.setOnClickListener(this);
+        binding.ivBack.setOnClickListener(this);
+        binding.ivAddText.setOnClickListener(this);
+        binding.ivPencil.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
 
-            case R.id.imgbackscreen:
+            case R.id.ivBack:
                 finish();
                 break;
-            case R.id.tvResetPassword:
+            case R.id.ivCamera:
 
                 Intent intent = new Intent(this, ResetPasswordActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.ivGallery:
+
                 break;
         }
     }

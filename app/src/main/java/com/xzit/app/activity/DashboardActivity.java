@@ -1,5 +1,6 @@
 package com.xzit.app.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -99,6 +100,7 @@ public class DashboardActivity extends AppCompatActivity implements View.OnClick
                 setSelection(view);
                 break;
             case R.id.cvCamera:
+                startActivity(new Intent(this,AddStoryActivity.class));
                 break;
         }
     }

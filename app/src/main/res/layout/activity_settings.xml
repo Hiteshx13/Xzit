@@ -17,18 +17,26 @@
                 android:layout_height="@dimen/_180sdp"
                 android:background="@color/colorAccent" />
 
-
             <ImageView
                 android:id="@+id/imgbackscreen"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/icn_back"
-                android:padding="5dp"
+                android:padding="@dimen/_15sdp"
+                android:src="@drawable/icn_back"
                 tools:ignore="ContentDescription" />
 
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivLogout"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_margin="@dimen/_15sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+
+                android:src="@drawable/ic_logout" />
 
             <TextView
                 android:id="@+id/txtModifyProfile"
@@ -39,7 +47,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="10dp"
                 android:fontFamily="@font/quicksand_regular"
-                android:text="@string/payment_methods"
+                android:text="@string/settings"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/_18ssp"
                 tools:ignore="UnusedAttribute" />
@@ -611,14 +619,10 @@
                                     android:background="@color/colorBlackStrip" />
 
                             </LinearLayout>
-
                         </LinearLayout>
-
                     </LinearLayout>
                 </RelativeLayout>
-
             </androidx.cardview.widget.CardView>
-
         </RelativeLayout>
     </ScrollView>
 </layout>

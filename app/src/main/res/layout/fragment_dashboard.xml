@@ -13,7 +13,6 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-
             tools:context=".activity.EditProfileActivity">
 
             <RelativeLayout
@@ -79,6 +78,7 @@
                     <androidx.appcompat.widget.AppCompatEditText
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_35sdp"
+                        android:layout_centerVertical="true"
                         android:layout_marginStart="@dimen/_20sdp"
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
@@ -94,6 +94,7 @@
                         android:paddingStart="@dimen/_10sdp"
                         android:paddingLeft="@dimen/_20sdp"
                         android:paddingEnd="@dimen/_10sdp"
+
                         android:paddingRight="@dimen/_10sdp"
                         android:textSize="@dimen/_12ssp" />
 
@@ -103,10 +104,11 @@
                         android:layout_height="@dimen/_35sdp"
                         android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
-                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_centerVertical="true"
+                        android:layout_marginEnd="@dimen/_9sdp"
                         android:layout_marginRight="@dimen/_5sdp"
                         android:background="@drawable/drawable_white_rounded"
-                        android:padding="@dimen/_8sdp"
+                        android:padding="@dimen/_9sdp"
                         android:src="@drawable/ic_filter" />
                 </RelativeLayout>
             </RelativeLayout>
@@ -143,7 +145,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_below="@+id/cvVenue"
-                    android:background="@color/colorWhite"
+                    android:background="@color/colorBg"
                     android:orientation="vertical">
 
                     <com.sandrlab.widgets.MetalRecyclerViewPager
@@ -162,7 +164,7 @@
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:fontFamily="@font/quicksand_bold"
                         android:text="@string/restaurants"
-                        android:textColor="@color/textcolor"
+                        android:textColor="@color/textColor"
                         android:textSize="@dimen/_15ssp"
                         tools:ignore="UnusedAttribute" />
 
@@ -182,9 +184,8 @@
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:fontFamily="@font/quicksand_bold"
                         android:text="@string/most_viewed"
-                        android:textColor="@color/textcolor"
-                        android:textSize="@dimen/_15ssp"
-                        tools:ignore="UnusedAttribute" />
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_15ssp" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/rvMostViewed"
@@ -198,13 +199,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginLeft="@dimen/_5sdp"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginEnd="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_20sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
                     android:layout_marginBottom="@dimen/_minus10sdp"
-                    app:cardCornerRadius="5dp"
+                    app:cardCornerRadius="@dimen/_11sdp"
                     app:cardElevation="0dp">
 
                     <TextView
@@ -217,7 +218,7 @@
                         android:layout_marginBottom="@dimen/_5sdp"
                         android:fontFamily="@font/quicksand_bold"
                         android:text="@string/venues"
-                        android:textColor="@color/textcolor"
+                        android:textColor="@color/textColor"
                         android:textSize="@dimen/_15ssp"
                         tools:ignore="UnusedAttribute" />
                 </androidx.cardview.widget.CardView>

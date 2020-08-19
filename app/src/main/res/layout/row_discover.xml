@@ -138,7 +138,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <androidx.appcompat.widget.AppCompatImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
                     android:scaleType="fitXY"
@@ -158,16 +158,13 @@
             <androidx.appcompat.widget.AppCompatTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/tvName"
                 android:layout_marginStart="@dimen/_15sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginTop="@dimen/_4sdp"
                 android:layout_marginEnd="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_toEndOf="@+id/ivProfile"
-                android:layout_toRightOf="@+id/ivProfile"
-                android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when "
+             android:text="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when "
                 android:textColor="@color/colorBlack"
                 android:textSize="@dimen/_8ssp"
                 app:fontFamily="@font/quicksand_regular" />

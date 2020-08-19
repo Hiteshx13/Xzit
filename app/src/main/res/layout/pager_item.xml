@@ -3,49 +3,73 @@
     android:id="@+id/root_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-
+    android:layout_marginStart="@dimen/_7sdp"
+    android:layout_marginEnd="@dimen/_7sdp"
     android:orientation="vertical">
 
 
     <RelativeLayout
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/_280sdp"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/backgoundleft">
 
-        <ImageView
+        <RelativeLayout
+            android:id="@+id/layoutTop"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_marginStart="5dp"
-            android:layout_marginEnd="5dp"
-            android:scaleType="fitXY"
-            android:src="@drawable/dashboardimage" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imgbackscreen"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_130sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/kizomba" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_130sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/bg_rectangle_overlay" />
+        </RelativeLayout>
 
         <TextView
             android:id="@+id/txtTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="10dp"
-            android:fontFamily="@font/quicksand_regular"
-            android:text="LA VOUTE"
-            android:textColor="@android:color/white"
-            android:textSize="15sp" />
+            android:layout_marginStart="@dimen/_20ssp"
+            android:layout_marginLeft="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:fontFamily="@font/quicksand_bold"
+            android:text="Bordelle"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_16ssp" />
 
         <TextView
-            android:id="@+id/txtSubTitle"
+            android:id="@+id/tvAddress"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtTitle"
-            android:layout_marginStart="10dp"
-            android:layout_marginLeft="10dp"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:layout_marginLeft="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_5sdp"
             android:fontFamily="@font/quicksand_regular"
-            android:text="SATURDAY"
-            android:textColor="@android:color/white"
-            android:textSize="25sp" />
+            android:text="Nightclub Bar, Terrace"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_12ssp" />
 
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tvAddress"
+            android:layout_marginStart="@dimen/_20ssp"
+            android:layout_marginLeft="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_20ssp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="403 Ontario St E. Montreal Quebec H2L 1NS"
+            android:textColor="@color/colorWhite"
+            android:textSize="@dimen/_10ssp" />
     </RelativeLayout>
-
-
 </FrameLayout>

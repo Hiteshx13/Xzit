@@ -30,10 +30,8 @@
             android:id="@+id/imgbackscreen"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/icn_back"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/icn_back"
             tools:ignore="ContentDescription" />
 
         <TextView
@@ -41,14 +39,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/imgbackscreen"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
             android:fontFamily="@font/quicksand_regular"
             android:text="@string/edit_profile"
-            android:textAllCaps="true"
             android:textColor="@android:color/white"
-            android:textSize="20sp"
+            android:textSize="@dimen/_18ssp"
             tools:ignore="UnusedAttribute" />
 
         <androidx.cardview.widget.CardView
@@ -56,12 +52,13 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/txtModifyProfile"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            app:cardElevation="0dp"
             android:layout_marginBottom="15dp"
             android:background="@android:color/white"
-            app:cardCornerRadius="5dp">
+            app:cardCornerRadius="@dimen/_18sdp">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -86,18 +83,42 @@
                             android:layout_height="@dimen/_60sdp"
                             android:src="@drawable/demo"
                             app:civ_border_color="@color/colorAccent"
-                            app:civ_border_width="3dp"
+                            app:civ_border_width="@dimen/_3sdp"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/ic_photo_camera"
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_15sdp"
+                            android:layout_height="@dimen/_15sdp"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_15sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            app:cardCornerRadius="@dimen/_18sdp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="@+id/profile_image"
-                            tools:ignore="ContentDescription" />
+                            app:layout_constraintEnd_toEndOf="@+id/profile_image">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@color/colorYellow"
+                                android:gravity="center"
+                                android:orientation="vertical">
+
+                                <ImageView
+                                    android:layout_width="@dimen/_10sdp"
+                                    android:layout_height="@dimen/_10sdp"
+                                    android:src="@drawable/ic_photo_camera"
+                                    android:tint="@color/colorWhite"
+                                    app:layout_constraintBottom_toBottomOf="parent"
+                                    app:layout_constraintEnd_toEndOf="@+id/profile_image"
+                                    tools:ignore="ContentDescription" />
+                            </LinearLayout>
+
+                        </androidx.cardview.widget.CardView>
+
 
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -108,6 +129,7 @@
                         android:layout_marginTop="20dp"
                         android:fontFamily="@font/quicksand_bold"
                         android:text="@string/name"
+                        android:textColor="@color/textColor"
                         android:textSize="20sp"
                         tools:ignore="UnusedAttribute" />
 
@@ -115,35 +137,32 @@
                         android:id="@+id/tvResetPassword"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginTop="@dimen/_11sdp"
                         android:background="@drawable/bg_border_yellow"
                         android:padding="5dp"
                         android:text="@string/reset_password"
-                        android:textAllCaps="true"
-                        android:textSize="@dimen/_5ssp" />
-
+                        android:textColor="@color/textColor"
+                        android:textSize="@dimen/_7ssp" />
 
                     <androidx.cardview.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                         android:id="@+id/cardviewFirstName"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
                         android:background="@android:color/white"
                         card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_bold"
                             android:gravity="start"
                             android:imeOptions="actionNext"
                             android:inputType="text"
-                            android:padding="@dimen/_10sdp"
                             android:text="Yash"
                             android:textAlignment="textStart"
                             android:textSize="@dimen/_12ssp"
@@ -156,22 +175,21 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
                         android:background="@android:color/white"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_bold"
                             android:gravity="start"
                             android:hint="@string/emailaddress"
                             android:imeOptions="actionNext"
                             android:inputType="text"
-                            android:padding="@dimen/_10sdp"
                             android:text="Patel"
                             android:textAlignment="textStart"
                             android:textSize="@dimen/_12ssp"
@@ -185,22 +203,21 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cardviewLastname"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
                         android:background="@android:color/white"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/phone"
                             android:imeOptions="actionNext"
                             android:inputType="number"
-                            android:padding="@dimen/_10sdp"
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -212,22 +229,21 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/cardviewPhone"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
                         android:background="@android:color/white"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/dob"
                             android:imeOptions="actionNext"
                             android:inputType="text"
-                            android:padding="@dimen/_10sdp"
                             android:textAlignment="textStart"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
@@ -238,24 +254,22 @@
                         android:id="@+id/cardviewGender"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardviewDOB"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
                         android:background="@android:color/white"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/male"
                             android:imeOptions="actionNext"
                             android:inputType="text"
-                            android:padding="@dimen/_10sdp"
                             android:textAlignment="textStart"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
@@ -266,24 +280,22 @@
                         android:id="@+id/cardviewcountry"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardviewGender"
                         android:layout_gravity="center"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_13sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
                         android:background="@android:color/white"
-                        card_view:cardCornerRadius="5dp">
+                        card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
-                            android:fontFamily="@font/quicksand_regular"
                             android:gravity="start"
                             android:hint="@string/india"
                             android:imeOptions="actionNext"
                             android:inputType="text"
-                            android:padding="@dimen/_10sdp"
                             android:textAlignment="textStart"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
@@ -292,20 +304,16 @@
 
                     <Button
                         android:id="@+id/btnSave"
+                        style="@style/StyleButtonYellow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/cardviewcountry"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginTop="20dp"
-                        android:layout_marginEnd="20dp"
-                        android:layout_marginBottom="15dp"
+                        android:layout_marginStart="@dimen/_24sdp"
+                        android:layout_marginTop="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_24sdp"
+                        android:layout_marginBottom="@dimen/_12sdp"
                         android:background="@drawable/backgoundround"
-                        android:fontFamily="@font/quicksand_bold"
                         android:text="@string/save"
-                        android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp"
-                        tools:ignore="UnusedAttribute" />
+                        android:textAllCaps="false" />
 
                 </LinearLayout>
             </ScrollView>

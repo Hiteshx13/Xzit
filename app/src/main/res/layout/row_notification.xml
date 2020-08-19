@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/_5sdp"
+    android:paddingTop="@dimen/_5sdp"
+    android:paddingBottom="@dimen/_5sdp"
+    android:paddingEnd="@dimen/_5sdp">
+
+    <RelativeLayout
+        android:layout_width="@dimen/_35sdp"
+        android:layout_height="@dimen/_35sdp">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/add_filled" />
+
+        <com.github.siyamed.shapeimageview.CircularImageView
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:src="@drawable/app_icon" />
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+          >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="@dimen/_minus10sdp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="@dimen/_14ssp"
+                        android:layout_height="@dimen/_14ssp"
+                        android:src="@drawable/ic_clock"
+                        android:tint="@color/colorYellow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:fontFamily="@font/quicksand_regular"
+                        android:text="2 Hours Ago"
+                        android:textColor="@color/colorYellow"
+                        android:textSize="@dimen/_8sdp" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:fontFamily="@font/quicksand_bold"
+                    android:text="Cannabies"
+                    android:textColor="@color/colorBlackNotification"
+                    android:textSize="@dimen/_9ssp"
+                    tools:ignore="UnusedAttribute" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_50sdp"
+                    android:layout_marginRight="@dimen/_50sdp"
+                    android:fontFamily="@font/quicksand_medium"
+                    android:maxLines="1"
+                    android:text="We have an Exciting Offers for you near to yo..."
+                    android:textColor="@color/colorBlackNotification"
+                    android:textSize="@dimen/_8ssp"
+                    tools:ignore="UnusedAttribute" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

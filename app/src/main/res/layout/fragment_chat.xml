@@ -6,6 +6,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/colorWhite"
         tools:context=".activity.editprofile.EditProfileActivity">
 
         <LinearLayout
@@ -22,29 +23,54 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
+                android:layout_weight="6.5"
                 tools:ignore="UselessLeaf" />
         </LinearLayout>
+
+        <!--        <androidx.cardview.widget.CardView-->
+        <!--          -->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:layout_gravity="center"-->
+        <!--            android:layout_marginStart="@dimen/_10sdp"-->
+        <!--            android:layout_marginLeft="@dimen/_10sdp"-->
+        <!--            android:layout_marginTop="@dimen/_15sdp"-->
+        <!--            android:layout_marginEnd="@dimen/_10sdp"-->
+        <!--            android:layout_marginRight="@dimen/_10sdp"-->
+        <!--            android:background="@android:color/white"-->
+        <!--            app:cardCornerRadius="@dimen/_19sdp">-->
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/icn_back"
+            tools:ignore="ContentDescription" />
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cvSearch"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/ivBack"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginEnd="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="15dp"
             android:background="@android:color/white"
-            app:cardCornerRadius="@dimen/_20sdp">
+            android:labelFor="@+id/cvSearch"
+            android:paddingBottom="@dimen/_minus20sdp"
+            app:cardCornerRadius="@dimen/_25sdp"
+            app:cardElevation="0dp">
 
             <EditText
                 android:id="@+id/etfriend"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_border_yellow"
+                android:background="@color/colorTransparent"
                 android:drawableStart="@drawable/ic_search_small"
                 android:drawableLeft="@drawable/ic_search_small"
                 android:drawablePadding="@dimen/_10sdp"
@@ -67,13 +93,16 @@
             android:layout_height="match_parent"
             android:layout_below="@+id/cvSearch"
             android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="10dp"
-            android:layout_marginBottom="15dp"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
             android:background="@android:color/white"
             android:labelFor="@+id/cvSearch"
-            app:cardCornerRadius="@dimen/_20sdp">
+            android:paddingBottom="@dimen/_minus20sdp"
+            app:cardCornerRadius="@dimen/_14sdp"
+            app:cardElevation="0dp">
 
 
             <RelativeLayout

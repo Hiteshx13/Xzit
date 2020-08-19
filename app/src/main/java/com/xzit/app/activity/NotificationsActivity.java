@@ -11,12 +11,13 @@ import com.xzit.app.databinding.ActivityNotificationsBinding;
 public class NotificationsActivity extends AppCompatActivity {
 
     private ActivityNotificationsBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_notifications);
 
-//        binding.llChangePass.setOnClickListener(view -> startActivity(new Intent(this, ChangePasswordActivity.class)));
+        binding.imgbackscreen.setOnClickListener(view -> finish());
 //        binding.llTnc.setOnClickListener(view -> startActivity(new Intent(this, TermandConditionsActivity.class)));
 //        binding.btnawesome.setOnClickListener(view -> startActivity(new Intent(this, AweSomeActivity.class)));
 //        binding.btncountryphone.setOnClickListener(view -> startActivity(new Intent(this, CountryPhoneNumberActivity.class)));
