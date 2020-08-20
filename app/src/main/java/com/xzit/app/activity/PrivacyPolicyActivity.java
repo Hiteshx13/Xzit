@@ -6,11 +6,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.xzit.app.R;
+import com.xzit.app.databinding.ActivityPrivacyPolicyBinding;
 import com.xzit.app.databinding.ActivityTermandConditionsBinding;
 
 public class PrivacyPolicyActivity extends AppCompatActivity {
 
-    private ActivityTermandConditionsBinding binding;
+    private ActivityPrivacyPolicyBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

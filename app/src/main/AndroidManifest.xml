@@ -111,6 +111,10 @@
             android:name=".activity.PublishStoryActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
+        <activity
+            android:name=".activity.NotificationsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
 
         <activity
             android:name=".activity.SignInActivity"

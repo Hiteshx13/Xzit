@@ -145,6 +145,7 @@
     <string name="add_location">Add Location</string>
     <string name="write_caption">Write Caption</string>
     <string name="accept">Accept</string>
+    <string name="mon">Mon</string>
 
 
 </resources>

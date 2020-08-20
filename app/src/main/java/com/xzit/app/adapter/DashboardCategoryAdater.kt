@@ -13,7 +13,7 @@ class DashboardCategoryAdater(var context: Context, private val values: List<Str
                                     viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(
                 context)
-        val v = inflater.inflate(R.layout.category_item_view, parent, false)
+        val v = inflater.inflate(R.layout.row_category, parent, false)
         return ViewHolder(v)
     }
 

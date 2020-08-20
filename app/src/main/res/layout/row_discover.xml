@@ -32,7 +32,6 @@
                     android:id="@+id/ivProfile"
                     android:layout_width="@dimen/_20sdp"
                     android:layout_height="@dimen/_20sdp"
-
                     android:layout_centerVertical="true"
                     android:scaleType="fitXY"
                     android:src="@drawable/music" />
@@ -141,7 +140,6 @@
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:layout_width="@dimen/_10sdp"
                     android:layout_height="@dimen/_10sdp"
-                    android:scaleType="fitXY"
                     android:src="@drawable/music" />
 
                 <androidx.appcompat.widget.AppCompatTextView

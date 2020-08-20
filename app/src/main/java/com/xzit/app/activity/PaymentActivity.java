@@ -17,8 +17,12 @@ public class PaymentActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this, R.layout.activity_payment);
-        binding.cvAddNewPayment.setOnClickListener(view ->{
+        binding.cvAddNewPayment.setOnClickListener(view -> {
             startActivity(new Intent(this, AddPaymentctivity.class));
+        });
+
+        binding.ivBack.setOnClickListener(view -> {
+            finish();
         });
     }
 }

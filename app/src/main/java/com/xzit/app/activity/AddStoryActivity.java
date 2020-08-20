@@ -50,7 +50,8 @@ public class AddStoryActivity extends AppCompatActivity implements View.OnClickL
                 startActivity(intent);
                 break;
             case R.id.ivGallery:
-
+                Intent intentGallery = new Intent(this, PublishStoryActivity.class);
+                startActivity(intentGallery);
                 break;
         }
     }

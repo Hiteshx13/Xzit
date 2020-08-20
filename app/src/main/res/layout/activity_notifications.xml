@@ -69,9 +69,7 @@
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:paddingStart="@dimen/_10sdp"
-                        android:paddingEnd="@dimen/_10sdp">
+                        android:orientation="vertical">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
@@ -116,6 +114,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/_5sdp" />
+
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -147,6 +146,7 @@
                                 android:textSize="@dimen/_8ssp" />
 
                         </LinearLayout>
+
                         <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
@@ -157,27 +157,39 @@
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp" />  <include
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp" />  <include
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp" />  <include
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp" />  <include
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp" />  <include
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_5sdp" />  <include
+                            android:layout_marginTop="@dimen/_5sdp" />
+
+                        <include
                             layout="@layout/row_notification"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -213,7 +225,10 @@
                             style="@style/StyleButtonYellow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_16ssp"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginBottom="@dimen/_15sdp"
                             android:background="@drawable/backgoundround"
                             android:text="@string/next"
                             android:textAllCaps="false"

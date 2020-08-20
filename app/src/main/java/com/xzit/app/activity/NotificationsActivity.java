@@ -18,6 +18,7 @@ public class NotificationsActivity extends AppCompatActivity {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_notifications);
 
         binding.imgbackscreen.setOnClickListener(view -> finish());
+        binding.btnNext.setOnClickListener(view -> finish());
 //        binding.llTnc.setOnClickListener(view -> startActivity(new Intent(this, TermandConditionsActivity.class)));
 //        binding.btnawesome.setOnClickListener(view -> startActivity(new Intent(this, AweSomeActivity.class)));
 //        binding.btncountryphone.setOnClickListener(view -> startActivity(new Intent(this, CountryPhoneNumberActivity.class)));

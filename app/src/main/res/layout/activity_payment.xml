@@ -15,14 +15,11 @@
 
 
         <ImageView
-            android:id="@+id/imgbackscreen"
+            android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/icn_back"
-            android:padding="5dp"
+            android:src="@drawable/icn_back"
+            android:padding="@dimen/_15sdp"
             tools:ignore="ContentDescription" />
 
 
@@ -30,7 +27,7 @@
             android:id="@+id/txtModifyProfile"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/imgbackscreen"
+            android:layout_below="@+id/ivBack"
             android:layout_marginStart="20dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="10dp"

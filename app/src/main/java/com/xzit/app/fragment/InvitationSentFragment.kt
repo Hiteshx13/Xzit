@@ -16,7 +16,7 @@ import com.xzit.app.adapter.InvitationAdater
 import com.xzit.app.adapter.ProfileAdapter
 import com.xzit.app.databinding.FragmentInvitationBinding
 
-class InvitationFragment : BaseFragment(), View.OnClickListener {
+class InvitationSentFragment : BaseFragment(), View.OnClickListener {
 
     var binding: FragmentInvitationBinding? = null
     private var mAdapter: ProfileAdapter? = null
@@ -25,8 +25,8 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
     var listDummy = ArrayList<String>()
 
     companion object {
-        fun newInstance(): InvitationFragment {
-            return InvitationFragment()
+        fun newInstance(): InvitationSentFragment {
+            return InvitationSentFragment()
         }
     }
 

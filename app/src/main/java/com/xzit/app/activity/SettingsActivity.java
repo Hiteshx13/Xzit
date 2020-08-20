@@ -22,6 +22,8 @@ public class SettingsActivity extends AppCompatActivity {
         binding.llTnc.setOnClickListener(view -> startActivity(new Intent(this, TermandConditionsActivity.class)));
         binding.llPrivacy.setOnClickListener(view -> startActivity(new Intent(this, PrivacyPolicyActivity.class)));
         binding.llPayment.setOnClickListener(view -> startActivity(new Intent(this, PaymentActivity.class)));
+        binding.llFaq.setOnClickListener(view -> startActivity(new Intent(this, FAQActivity.class)));
+        binding.llNotification.setOnClickListener(view -> startActivity(new Intent(this, NotificationsActivity.class)));
         binding.imgbackscreen.setOnClickListener(view -> finish());
 //        binding.btnawesome.setOnClickListener(view -> startActivity(new Intent(this, AweSomeActivity.class)));
 //        binding.btncountryphone.setOnClickListener(view -> startActivity(new Intent(this, CountryPhoneNumberActivity.class)));

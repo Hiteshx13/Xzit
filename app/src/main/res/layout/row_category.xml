@@ -2,35 +2,34 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="@dimen/_43sdp"
     android:layout_height="wrap_content"
-    android:layout_marginEnd="10dp"
-    android:layout_marginRight="10dp"
+    android:layout_marginStart="@dimen/_5sdp"
+    android:layout_marginLeft="@dimen/_5sdp"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/rlCatgory"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_category"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
+            android:layout_width="@dimen/_43sdp"
+            android:layout_height="@dimen/_43sdp"
+            android:layout_centerHorizontal="true"
             android:src="@android:color/white"
-            app:civ_border_color="@color/colorAccent"
-            app:civ_border_width="3dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:civ_border_color="@color/colorWhite"
+            app:civ_border_width="3dp" />
 
         <ImageView
             android:id="@+id/imgAdd"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
+            android:layout_width="@dimen/_35sdp"
+            android:layout_height="@dimen/_35sdp"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
-            android:src="@drawable/logo"
+            android:src="@drawable/icn_cat_three"
             android:visibility="visible" />
     </RelativeLayout>
 
@@ -38,10 +37,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/rlCatgory"
-        android:layout_marginStart="5dp"
         android:fontFamily="@font/quicksand_regular"
-        android:text="Restaurant"
-        android:textSize="15sp"
+        android:gravity="center"
+        android:maxLines="2"
+        android:text="Restaurant jack"
+        android:textColor="@color/colorBlackLight"
+        android:textSize="@dimen/_8ssp"
         tools:ignore="RtlCompat,UnusedAttribute" />
 
 

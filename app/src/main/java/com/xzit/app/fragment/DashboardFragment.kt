@@ -14,7 +14,7 @@ import com.xzit.app.activity.DashboardActivity
 import com.xzit.app.activity.FullMetalAdapter
 import com.xzit.app.adapter.DashboardCategoryAdater
 import com.xzit.app.adapter.DashboardRestaurentAdapter
-import com.xzit.app.adapter.MyAdapterHotspot
+import com.xzit.app.adapter.RestaurentAdapter
 import com.xzit.app.databinding.FragmentDashboardBinding
 import java.util.*
 
@@ -43,27 +43,36 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
             listDummy.add("Test$i")
         }
         binding?.ivProfile?.setOnClickListener(this)
-        setRestaurents()
+
+        setCategory()
         setVenue()
         setRestaurentData()
+        setMostViewed()
     }
 
 
-    private fun setRestaurents() {
-        binding!!.rvRestaurents.setHasFixedSize(true)
-        binding!!.rvRestaurents.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.HORIZONTAL, false)
+    private fun setCategory() {
+        binding!!.rvCategory.setHasFixedSize(true)
+        binding!!.rvCategory.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         categoryAdapter = DashboardCategoryAdater(mContext, listDummy)
         binding!!.rvCategory.adapter = categoryAdapter
     }
 
     private fun setRestaurentData() {
         binding?.rvRestaurents?.setHasFixedSize(true)
-        binding?.rvMostViewed?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
-        binding!!.rvMostViewed.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
 
-        var restaurentAdapter = MyAdapterHotspot(listDummy)
+        binding?.rvRestaurents?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+        binding?.rvMostViewed?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+
+        var restaurentAdapter = RestaurentAdapter(listDummy)
         binding!!.rvRestaurents.adapter = restaurentAdapter
-        binding!!.rvMostViewed.adapter = restaurentAdapter
+    }
+
+    private fun setMostViewed() {
+        binding?.rvMostViewed?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
+        var mostViewed = RestaurentAdapter(listDummy)
+        binding!!.rvMostViewed.adapter = mostViewed
+
     }
 
     private fun setVenue() {
@@ -84,7 +93,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.ivProfile -> {
-                (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(),true)
+                (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(), true)
             }
         }
     }

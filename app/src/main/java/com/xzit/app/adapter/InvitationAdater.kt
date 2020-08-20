@@ -7,14 +7,13 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
-import com.xzit.app.fragment.DashboardFragment
 
 class InvitationAdater(var context: Context, private val values: List<String>) : RecyclerView.Adapter<InvitationAdater.ViewHolder?>() {
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(
                 context)
-        val v = inflater.inflate(R.layout.category_item_view, parent, false)
+        val v = inflater.inflate(R.layout.row_category, parent, false)
         return ViewHolder(v)
     }
 

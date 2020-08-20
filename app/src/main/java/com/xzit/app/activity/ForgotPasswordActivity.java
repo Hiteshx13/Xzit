@@ -42,7 +42,7 @@ public class ForgotPasswordActivity extends AppCompatActivity implements View.On
             case R.id.imgbackscreen:
                 finish();
                 break;
-            case R.id.btnSignIn:
+            case R.id.btnSubmit:
                 finish();
                 break;
         }

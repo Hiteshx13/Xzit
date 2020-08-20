@@ -12,23 +12,22 @@ import com.xzit.app.R;
 
 import java.util.List;
 
-public class MyAdapterHotspot extends RecyclerView.Adapter<MyAdapterHotspot.ViewHolder> {
+public class RestaurentAdapter extends RecyclerView.Adapter<RestaurentAdapter.ViewHolder> {
     private List<String> values;
 
-    public MyAdapterHotspot(List<String> myDataset) {
+    public RestaurentAdapter(List<String> myDataset) {
         values = myDataset;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent,
                                          int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         View v =
                 inflater.inflate(R.layout.hotspot_item_view, parent, false);
 
-        MyAdapterHotspot.ViewHolder vh = new MyAdapterHotspot.ViewHolder(v);
+        RestaurentAdapter.ViewHolder vh = new RestaurentAdapter.ViewHolder(v);
         return vh;
     }
 
@@ -51,8 +50,6 @@ public class MyAdapterHotspot extends RecyclerView.Adapter<MyAdapterHotspot.View
             super(v);
             layout = v;
             imgViewStory = v.findViewById(R.id.imgAdd);
-
         }
     }
-
 }

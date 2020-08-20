@@ -7,9 +7,7 @@
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/svStories"
         android:layout_marginTop="@dimen/_15sdp"
-        android:layout_marginBottom="15dp"
         android:background="@android:color/white"
         app:cardCornerRadius="@dimen/_6sdp"
         app:cardElevation="@dimen/_1sdp">
@@ -133,6 +131,8 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_5sdp"
                         android:orientation="horizontal">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -156,13 +156,6 @@
                             app:fontFamily="@font/quicksand_medium" />
 
                     </LinearLayout>
-
-
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/ic_location" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -218,8 +211,9 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -243,15 +237,14 @@
                     </LinearLayout>
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="@dimen/_9sdp"
-                            android:layout_height="@dimen/_12sdp"
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
                             android:src="@drawable/icn_accept_green" />
 
                         <androidx.appcompat.widget.AppCompatTextView
@@ -267,13 +260,15 @@
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_10sdp"
-                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginStart="@dimen/_20sdp"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_marginEnd="@dimen/_20sdp"
+                        android:layout_marginRight="@dimen/_20sdp"
                         android:gravity="center"
                         android:orientation="vertical">
 
                         <androidx.appcompat.widget.AppCompatImageView
-                            android:layout_width="@dimen/_15sdp"
+                            android:layout_width="@dimen/_18sdp"
                             android:layout_height="@dimen/_18sdp"
                             android:src="@drawable/icn_reject" />
 
