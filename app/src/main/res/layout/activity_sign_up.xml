@@ -23,6 +23,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
                     android:src="@drawable/bg"
+                    android:visibility="gone"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -328,23 +329,22 @@
                     android:layout_marginTop="20dp"
                     android:layout_marginBottom="20dp">
 
-                    <ImageView
-                        android:id="@+id/imgFacebook"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnFacebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/btn_facebook"
-                        tools:ignore="ContentDescription" />
+                        android:background="@drawable/btn_facebook" />
 
-                    <ImageView
-                        android:id="@+id/imgGoogle"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnGoogle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="20dp"
-                        android:layout_marginLeft="20dp"
-                        android:layout_toEndOf="@+id/imgFacebook"
-                        android:layout_toRightOf="@+id/imgFacebook"
-                        android:src="@drawable/btn_google"
-                        tools:ignore="ContentDescription" />
+                        android:layout_marginStart="@dimen/_25sdp"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_toEndOf="@+id/btnFacebook"
+                        android:layout_toRightOf="@+id/btnFacebook"
+                        android:background="@drawable/btn_google" />
+
 
                 </RelativeLayout>
                 <!--            </ScrollView>-->

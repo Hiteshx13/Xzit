@@ -18,7 +18,7 @@ import com.xzit.app.fragment.DiscoverFragment;
 import com.xzit.app.fragment.InvitationFragment;
 import com.xzit.app.utils.AppUtilsKt;
 
-public class DashboardActivity extends AppCompatActivity implements View.OnClickListener {
+public class DashboardActivity extends BaseActivity implements View.OnClickListener {
 
     private ActivityDashboardBinding binding;
     private int TAB = 0;

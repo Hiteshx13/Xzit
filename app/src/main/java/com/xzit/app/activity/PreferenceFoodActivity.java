@@ -7,24 +7,23 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.VenueModel;
-import com.xzit.app.adapter.PreferenceAdapter;
+import com.xzit.app.adapter.PreferenceFoodAdapter;
 import com.xzit.app.databinding.ActivityPreferenceFoodBinding;
+import com.xzit.app.retrofit.model.response.login.masterdata.FOODTYPE;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PreferenceFoodActivity extends AppCompatActivity {
+public class PreferenceFoodActivity extends BaseActivity {
 
     RecyclerView.LayoutManager recyclerViewLayoutManager;
     private ActivityPreferenceFoodBinding binding;
     private RecyclerView.Adapter mAdapter;
+    private List<FOODTYPE> listFood;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,12 +39,12 @@ public class PreferenceFoodActivity extends AppCompatActivity {
         binding.rrFoodPreference.setHasFixedSize(true);
         //  activityVenuePreferenceBinding.rrVenuePreference.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-        List<VenueModel> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add(new VenueModel("Test" + i, false));
-        }
+
+
         binding.rrFoodPreference.setLayoutManager(recyclerViewLayoutManager);
-        mAdapter = new PreferenceAdapter(R.layout.row_foodpreference, input);
+
+        listFood = preference.getMasterData(mContext).getResponse().getFOOD_TYPE();
+        mAdapter = new PreferenceFoodAdapter(mContext, R.layout.row_foodpreference,listFood );
 
         binding.rrFoodPreference.setAdapter(mAdapter);
         binding.rrFoodPreference.setAdapter(mAdapter);

@@ -16,6 +16,7 @@ import com.xzit.app.adapter.DashboardCategoryAdater
 import com.xzit.app.adapter.DashboardRestaurentAdapter
 import com.xzit.app.adapter.RestaurentAdapter
 import com.xzit.app.databinding.FragmentDashboardBinding
+import com.xzit.app.retrofit.model.response.login.masterdata.CATAGORYLIST
 import java.util.*
 
 class DashboardFragment : BaseFragment(), View.OnClickListener {
@@ -23,6 +24,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
     var binding: FragmentDashboardBinding? = null
     var categoryAdapter: DashboardCategoryAdater? = null
     var restaurentAdapter: DashboardRestaurentAdapter? = null
+    var listCategory: List<CATAGORYLIST>? = null
     val listDummy: ArrayList<String> = ArrayList()
 
     companion object {
@@ -52,9 +54,10 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
 
 
     private fun setCategory() {
+        listCategory = getParentActivity().preference.getMasterData(mContext).Response?.CATAGORY_LIST
         binding!!.rvCategory.setHasFixedSize(true)
         binding!!.rvCategory.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
-        categoryAdapter = DashboardCategoryAdater(mContext, listDummy)
+        categoryAdapter = DashboardCategoryAdater(mContext, listCategory)
         binding!!.rvCategory.adapter = categoryAdapter
     }
 

@@ -20,10 +20,7 @@ public class AddStoryActivity extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
 
         initialization();
-
         listener();
-
-
     }
 
     private void initialization() {
@@ -31,7 +28,6 @@ public class AddStoryActivity extends AppCompatActivity implements View.OnClickL
     }
 
     private void listener() {
-
         binding.imgbackscreen.setOnClickListener(this);
         binding.ivCamera.setOnClickListener(this);
         binding.ivGallery.setOnClickListener(this);

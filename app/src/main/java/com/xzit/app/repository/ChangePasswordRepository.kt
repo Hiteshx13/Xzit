@@ -8,10 +8,10 @@ import retrofit2.Call
 import retrofit2.Response
 import java.util.*
 
-open class LoginRepository : BaseRepository() {
-    open var loginData = MutableLiveData<LoginResponse>()
+open class ChangePasswordRepository : BaseRepository() {
+    open var responseData = MutableLiveData<LoginResponse>()
 
-    fun callLogin(mContext: Context, req: HashMap<String, String>) {
+    fun callChangePassword(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
             apiInterface.callLogin(req).enqueue(object : retrofit2.Callback<LoginResponse> {
@@ -20,12 +20,12 @@ open class LoginRepository : BaseRepository() {
                     var model=LoginResponse()
                     model.setMessage(t.message)
                     model.setStatus(4001)
-                    loginData.value = model
+                    responseData.value = model
                 }
 
                 override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                     hideProgress()
-                    loginData.value = response.body()
+                    responseData.value = response.body()
                 }
             })
         }

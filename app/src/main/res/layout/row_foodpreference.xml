@@ -9,13 +9,13 @@
     android:paddingStart="@dimen/_5sdp"
     android:layout_height="@dimen/_104sdp">
 
-    <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPreference"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/steakhouse"
         android:scaleType="fitXY"
         android:layout_margin="@dimen/_3sdp"
-        app:siShape="@drawable/shape_preference"
         />
 
     <androidx.appcompat.widget.AppCompatImageView

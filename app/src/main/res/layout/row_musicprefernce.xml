@@ -9,7 +9,8 @@
     android:paddingStart="@dimen/_5sdp"
     android:layout_height="@dimen/_104sdp">
 
-    <com.github.siyamed.shapeimageview.mask.PorterShapeImageView
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivPreference"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/music"

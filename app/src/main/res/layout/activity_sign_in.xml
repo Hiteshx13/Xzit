@@ -100,6 +100,7 @@
                         android:hint="@string/emailaddress"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailAddress"
+                        android:text="k.bhutiya0@gmail.com"
                         android:textAlignment="textStart"
                         tools:ignore="Autofill,RtlSymmetry,TextFields" />
 
@@ -129,6 +130,7 @@
                         android:hint="@string/password"
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
+                        android:text="1234"
                         android:textAlignment="textStart"
                         tools:ignore="Autofill,RtlSymmetry,TextFields" />
 
@@ -217,21 +219,22 @@
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="20dp">
 
-                    <ImageView
-                        android:id="@+id/imgFacebook"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnFacebook"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:src="@drawable/btn_facebook" />
+                        android:background="@drawable/btn_facebook" />
 
-                    <ImageView
-                        android:id="@+id/imgGoogle"
+                    <androidx.appcompat.widget.AppCompatButton
+                        android:id="@+id/btnGoogle"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/_25sdp"
                         android:layout_marginLeft="@dimen/_25sdp"
-                        android:layout_toEndOf="@+id/imgFacebook"
-                        android:layout_toRightOf="@+id/imgFacebook"
-                        android:src="@drawable/btn_google" />
+                        android:layout_toEndOf="@+id/btnFacebook"
+                        android:layout_toRightOf="@+id/btnFacebook"
+                        android:background="@drawable/btn_google" />
+
 
                 </RelativeLayout>
             </RelativeLayout>

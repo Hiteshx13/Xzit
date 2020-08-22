@@ -1,4 +1,4 @@
-package com.xzit.app.`interface`
+package com.xzit.app.listener
 
 interface MusicPrefListener {
     fun onClick()

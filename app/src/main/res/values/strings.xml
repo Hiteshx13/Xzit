@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">Xzit</string>
+    <string name="client_id_google">740556817649-a98eevdhqtqtlrd1jtufhosinlqnpd78.apps.googleusercontent.com</string>
+    <string name="api_key_google">AIzaSyCcIfPzUGMexN_MhNOxdvzT90kako5cHtc</string>
+    <string name="facebook_app_id">1647348822081517</string>
+    <string name="fb_login_protocol_scheme">fb1647348822081517</string>
     <string name="signin">Sign in</string>
 
     <string name="emailaddress"> Email Address</string>
@@ -146,6 +150,13 @@
     <string name="write_caption">Write Caption</string>
     <string name="accept">Accept</string>
     <string name="mon">Mon</string>
+    <string name="please_enter_email">Please enter emai</string>
+    <string name="please_enter_valid_email">Please enter valid emai</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_current_password">Please enter current password</string>
+    <string name="please_enter_new_password">Please enter new password</string>
+    <string name="please_enter_conf_password">Please enter confirm password</string>
+    <string name="please_check_internet_connection">Please check your internet connection</string>
 
 
 </resources>

@@ -3,31 +3,28 @@ package com.xzit.app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.VenueModel;
-import com.xzit.app.adapter.PreferenceAdapter;
+import com.xzit.app.adapter.PreferenceMusicAdapter;
 import com.xzit.app.databinding.ActivityPreferenceMusicBinding;
+import com.xzit.app.retrofit.model.response.login.masterdata.MUSICTYPE;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PreferenceMusicActivity extends AppCompatActivity {
+public class PreferenceMusicActivity extends BaseActivity {
 
     private ActivityPreferenceMusicBinding binding;
     private RecyclerView.Adapter mAdapter;
     RecyclerView.LayoutManager recyclerViewLayoutManager;
+    private List<MUSICTYPE> listMusic;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initialization();
-
         listener();
     }
 
@@ -37,12 +34,9 @@ public class PreferenceMusicActivity extends AppCompatActivity {
         //  activityMusicPreferenceBinding.rrVenuePreference.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
 
-        List<VenueModel> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add(new VenueModel("Test" + i, false));
-        }
+        listMusic = preference.getMasterData(mContext).getResponse().getMUSIC_TYPE();
         binding.rrVenuePreference.setLayoutManager(recyclerViewLayoutManager);
-        mAdapter = new PreferenceAdapter(R.layout.row_musicprefernce, input);
+        mAdapter = new PreferenceMusicAdapter(mContext, R.layout.row_musicprefernce, listMusic);
 
         binding.rrVenuePreference.setAdapter(mAdapter);
 

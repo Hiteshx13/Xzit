@@ -3,25 +3,24 @@ package com.xzit.app.activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.VenueModel;
-import com.xzit.app.adapter.PreferenceAdapter;
+import com.xzit.app.adapter.PreferenceVenueAdapter;
 import com.xzit.app.databinding.ActivityPreferenceVenueBinding;
+import com.xzit.app.retrofit.model.response.login.masterdata.VENUETYPE;
 
-import java.util.ArrayList;
 import java.util.List;
 
-public class PreferenceVenueActivity extends AppCompatActivity {
+public class PreferenceVenueActivity extends BaseActivity {
 
     private ActivityPreferenceVenueBinding binding;
-    private PreferenceAdapter mAdapter;
+    private PreferenceVenueAdapter mAdapter;
     RecyclerView.LayoutManager recyclerViewLayoutManager;
     boolean isLongClicked = false;
+    private List<VENUETYPE> listVenue;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,12 +36,12 @@ public class PreferenceVenueActivity extends AppCompatActivity {
         binding.rrVenuePreference.setHasFixedSize(true);
         //  activityVenuePreferenceBinding.rrVenuePreference.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-        List<VenueModel> input = new ArrayList<>();
-        for (int i = 0; i < 100; i++) {
-            input.add(new VenueModel("Test" + i, false));
-        }
+
+
+        listVenue = preference.getMasterData(mContext).getResponse().getVENUE_TYPE();
+
         binding.rrVenuePreference.setLayoutManager(recyclerViewLayoutManager);
-        mAdapter = new PreferenceAdapter(R.layout.row_venuepreference, input);
+        mAdapter = new PreferenceVenueAdapter(mContext, R.layout.row_venuepreference, listVenue);
         binding.rrVenuePreference.setAdapter(mAdapter);
 
         binding.imgbackscreen.setOnClickListener(view -> finish());

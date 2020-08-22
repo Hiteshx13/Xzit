@@ -36,10 +36,10 @@ public class SelectSignUpActivity extends AppCompatActivity implements View.OnCl
 
         switch (v.getId()) {
             case R.id.btnMerchant:
-                startActivity(SignUpActivity.getIntent(this, AppUtilsKt.SIGNUP_TYPE_MERCHENT));
+                startActivity(RegistrationActivity.getIntent(this, AppUtilsKt.SIGNUP_TYPE_MERCHENT));
                 break;
             case R.id.btnUser:
-                startActivity(SignUpActivity.getIntent(this, AppUtilsKt.SIGNUP_TYPE_USER));
+                startActivity(RegistrationActivity.getIntent(this, AppUtilsKt.SIGNUP_TYPE_USER));
                 break;
         }
     }

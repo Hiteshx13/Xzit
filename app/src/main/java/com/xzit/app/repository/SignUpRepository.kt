@@ -8,16 +8,16 @@ import retrofit2.Call
 import retrofit2.Response
 import java.util.*
 
-open class LoginRepository : BaseRepository() {
+open class SignUpRepository : BaseRepository() {
     open var loginData = MutableLiveData<LoginResponse>()
 
-    fun callLogin(mContext: Context, req: HashMap<String, String>) {
+    fun callSignUp(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
             apiInterface.callLogin(req).enqueue(object : retrofit2.Callback<LoginResponse> {
                 override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
                     hideProgress()
-                    var model=LoginResponse()
+                    var model = LoginResponse()
                     model.setMessage(t.message)
                     model.setStatus(4001)
                     loginData.value = model
