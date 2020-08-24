@@ -150,13 +150,26 @@
     <string name="write_caption">Write Caption</string>
     <string name="accept">Accept</string>
     <string name="mon">Mon</string>
-    <string name="please_enter_email">Please enter emai</string>
+    <string name="please_enter_email">Please enter email</string>
+    <string name="please_select_dob">Please select date of birth</string>
     <string name="please_enter_valid_email">Please enter valid emai</string>
     <string name="please_enter_password">Please enter password</string>
+    <string name="please_enter_conf_password">Please enter confirm password</string>
     <string name="please_enter_current_password">Please enter current password</string>
     <string name="please_enter_new_password">Please enter new password</string>
-    <string name="please_enter_conf_password">Please enter confirm password</string>
+    <string name="password_does_not_match">Password and Confirm password does not match</string>
     <string name="please_check_internet_connection">Please check your internet connection</string>
+    <string name="please_user_name">Please enter user name</string>
+    <string name="please_business_name">Please enter business name</string>
+    <string name="please_enter_business_name">Please enter business name</string>
+    <string name="please_enter_user_name">Please enter user name</string>
+    <string name="please_enter_title">Please enter title</string>
+    <string name="please_enter_telephone">Please enter telephone</string>
+    <string name="please_enter_description">Please enter description</string>
+    <string name="please_enter_business_hours">Please enter business hours</string>
+    <string name="please_select_at_least_one_preference">Please select at least one preference</string>
+    <string name="please_select_category">Please select category</string>
+    <string name="last_name">Last Name</string>
 
 
 </resources>

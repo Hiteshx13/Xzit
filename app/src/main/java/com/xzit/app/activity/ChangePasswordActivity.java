@@ -1,6 +1,5 @@
 package com.xzit.app.activity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -11,6 +10,7 @@ import com.xzit.app.R;
 import com.xzit.app.databinding.ActivityChangePasswordBinding;
 import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.ChangePasswordRepository;
+import com.xzit.app.retrofit.model.response.changepassword.ChangePasswordResponse;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
 import com.xzit.app.utils.AppPreference;
 import com.xzit.app.utils.AppUtilsKt;
@@ -47,15 +47,16 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
     }
 
     private void initObserver() {
-        repository.getResponseData().observe(this, new Observer<LoginResponse>() {
+        repository.getResponseData().observe(this, new Observer<ChangePasswordResponse>() {
             @Override
-            public void onChanged(LoginResponse response) {
+            public void onChanged(ChangePasswordResponse response) {
                 if (response.getStatus() == RESP_API_SUCCESS) {
-                    AppPreference preference = new AppPreference();
-                    preference.saveLoginData(mContext, response);
-
-                    Intent intentDashboard = new Intent(mContext, DashboardActivity.class);
-                    startActivity(intentDashboard);
+                    DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), false, new OnDialogClickListener() {
+                        @Override
+                        public void onButtonClicked(Boolean value) {
+                            finish();
+                        }
+                    });
                 } else {
                     DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), false, new OnDialogClickListener() {
                         @Override
@@ -102,9 +103,9 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
             HashMap<String, String> map = new HashMap<>();
             map.put("postData[requestCase]", "changePassword");
             map.put("postData[userId]", userdata.getResponse().get(0).getUserId());
-            map.put("postData[currentpassword]", md5(strCurrentPass));
-            map.put("postData[newPassword]", md5(strNewPass));
-            map.put("postData[confirmPassword]", md5(strConfPass));
+            map.put("postData[currentpassword]", strCurrentPass);
+            map.put("postData[newPassword]", strNewPass);
+            map.put("postData[confirmPassword]", strConfPass);
             repository.callChangePassword(mContext, map);
         }
     }

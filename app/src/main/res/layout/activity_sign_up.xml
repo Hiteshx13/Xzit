@@ -147,6 +147,7 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                            android:gravity="start"
+                            android:focusable="false"
                             android:hint="@string/date_of_birth"
                             android:imeOptions="actionNext"
                             android:inputType="text"
@@ -258,7 +259,7 @@
                     </androidx.cardview.widget.CardView>
 
                     <Button
-                        android:id="@+id/btnnext"
+                        android:id="@+id/btnNext"
                         style="@style/StyleButtonYellow"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -277,7 +278,7 @@
                         android:id="@+id/rlnewtoxzitsignup"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/btnnext"
+                        android:layout_below="@+id/btnNext"
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="10dp">
 

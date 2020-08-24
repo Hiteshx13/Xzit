@@ -5,6 +5,8 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.xzit.app.retrofit.model.response.login.LoginResponse
+import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse
+import com.xzit.app.retrofit.model.response.preference.PreferenceResponse
 import com.xzit.app.utils.isNetworkConnected
 import com.xzit.app.utils.showToast
 import org.json.JSONObject
@@ -12,35 +14,35 @@ import retrofit2.Call
 import retrofit2.Response
 import java.util.*
 
-open class LoginRepository : BaseRepository() {
-    open var loginData = MutableLiveData<LoginResponse>()
+open class PreferenceRepository : BaseRepository() {
+    open var responseData = MutableLiveData<PreferenceResponse>()
 
-    fun callLogin(mContext: Context, req: HashMap<String, String>) {
+    fun callPreference(mContext: Context, req: HashMap<String, String>,authToken:String) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
-            apiInterface.callLogin(req).enqueue(object : retrofit2.Callback<LoginResponse> {
-                override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+
+            apiInterface.callPreference(req).enqueue(object : retrofit2.Callback<PreferenceResponse> {
+                override fun onFailure(call: Call<PreferenceResponse>, t: Throwable) {
                     hideProgress()
-                    var model = LoginResponse()
+                    var model = PreferenceResponse()
                     model.setMessage(t.message)
                     model.setStatus(4001)
-                    loginData.value = model
+                    responseData.value = model
                 }
 
-                override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                override fun onResponse(call: Call<PreferenceResponse>, response: Response<PreferenceResponse>) {
                     hideProgress()
                     if (response.body() == null) {
                         try {
                             val jObjError = JSONObject(response.errorBody()!!.string())
-//                            Toast.makeText(mContext, jObjError.getString("message"), Toast.LENGTH_LONG).show()
-                            var model=  Gson().fromJson(jObjError.toString(),LoginResponse::class.java)
-                            loginData.value = model
+                            var model = Gson().fromJson(jObjError.toString(), PreferenceResponse::class.java)
+                            responseData.value = model
                         } catch (e: Exception) {
                             Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
                         }
                         return
-                    }else{
-                        loginData.value = response.body()
+                    } else {
+                        responseData.value = response.body()
                     }
                 }
             })

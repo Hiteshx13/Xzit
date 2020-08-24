@@ -2,39 +2,48 @@ package com.xzit.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
 import androidx.databinding.DataBindingUtil;
+import androidx.lifecycle.Observer;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
 import com.xzit.app.adapter.PreferenceFoodAdapter;
 import com.xzit.app.databinding.ActivityPreferenceFoodBinding;
-import com.xzit.app.retrofit.model.response.login.masterdata.FOODTYPE;
+import com.xzit.app.listener.OnDialogClickListener;
+import com.xzit.app.repository.PreferenceRepository;
+import com.xzit.app.retrofit.model.response.login.LoginResponse;
+import com.xzit.app.retrofit.model.response.masterdata.FOODTYPE;
+import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
+import com.xzit.app.utils.AppUtilsKt;
+import com.xzit.app.utils.DialogUtilsKt;
 
+import java.util.HashMap;
 import java.util.List;
+
+import static com.xzit.app.activity.XzitApp.preference;
+import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
 
 public class PreferenceFoodActivity extends BaseActivity {
 
     RecyclerView.LayoutManager recyclerViewLayoutManager;
     private ActivityPreferenceFoodBinding binding;
-    private RecyclerView.Adapter mAdapter;
+    private PreferenceFoodAdapter mAdapter;
     private List<FOODTYPE> listFood;
+    private PreferenceRepository repository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         initialization();
-
         listener();
+        setObserver();
     }
 
     private void initialization() {
+        repository = new PreferenceRepository();
         binding = DataBindingUtil.setContentView(this, R.layout.activity_preference_food);
         binding.rrFoodPreference.setHasFixedSize(true);
         //  activityVenuePreferenceBinding.rrVenuePreference.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
@@ -44,7 +53,7 @@ public class PreferenceFoodActivity extends BaseActivity {
         binding.rrFoodPreference.setLayoutManager(recyclerViewLayoutManager);
 
         listFood = preference.getMasterData(mContext).getResponse().getFOOD_TYPE();
-        mAdapter = new PreferenceFoodAdapter(mContext, R.layout.row_foodpreference,listFood );
+        mAdapter = new PreferenceFoodAdapter(mContext, R.layout.row_foodpreference, listFood);
 
         binding.rrFoodPreference.setAdapter(mAdapter);
         binding.rrFoodPreference.setAdapter(mAdapter);
@@ -55,69 +64,46 @@ public class PreferenceFoodActivity extends BaseActivity {
     private void listener() {
         binding.imgbackscreen.setOnClickListener(view -> finish());
         binding.btnNext.setOnClickListener(view -> {
-            Intent intent = new Intent(this, AweSomeActivity.class);
-            startActivity(intent);
+            String selection = mAdapter.getSelection();
+            if (selection.isEmpty()) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_select_at_least_one_preference));
+            } else {
+                callPreference();
+            }
         });
     }
 
-    public class MyAdapterFoodPreference extends RecyclerView.Adapter<MyAdapterFoodPreference.ViewHolder> {
-        private List<String> values;
-        private FoodPrefListener listener;
+    private void setObserver() {
+        repository.getResponseData().observe(this, new Observer<PreferenceResponse>() {
+            @Override
+            public void onChanged(PreferenceResponse response) {
 
-        public MyAdapterFoodPreference(List<String> myDataset, FoodPrefListener listener) {
-            values = myDataset;
-            this.listener = listener;
-        }
+                if (response != null && response.getStatus() == RESP_API_SUCCESS) {
+                    Intent intent = new Intent(mContext, AweSomeActivity.class);
+                    startActivity(intent);
+                    finish();
+                } else {
+                    DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), true, new OnDialogClickListener() {
+                        @Override
+                        public void onButtonClicked(Boolean value) {
 
-        @Override
-        public MyAdapterFoodPreference.ViewHolder onCreateViewHolder(ViewGroup parent,
-                                                                     int viewType) {
-
-            LayoutInflater inflater = LayoutInflater.from(
-                    parent.getContext());
-            View v =
-                    inflater.inflate(R.layout.row_foodpreference, parent, false);
-
-            MyAdapterFoodPreference.ViewHolder vh = new MyAdapterFoodPreference.ViewHolder(v);
-            return vh;
-        }
-
-        @Override
-        public void onBindViewHolder(MyAdapterFoodPreference.ViewHolder holder, final int position) {
-
-            final String name = values.get(position);
-
-
-        }
-
-        @Override
-        public int getItemCount() {
-            return values.size();
-        }
-
-        public class ViewHolder extends RecyclerView.ViewHolder {
-
-            public View layout;
-            RelativeLayout rlRoot;
-
-            public ViewHolder(View v) {
-                super(v);
-                layout = v;
-
-                rlRoot = layout.findViewById(R.id.rlRoot);
-                rlRoot.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        listener.onClick();
-                    }
-                });
-
+                        }
+                    });
+                }
             }
-        }
-
+        });
     }
 
-    interface FoodPrefListener {
-        void onClick();
+    void callPreference() {
+        LoginResponse userdata = preference.getUserData(mContext);
+
+        HashMap<String, String> map = new HashMap<>();
+        map.put("postData[requestCase]", "addPreferenceToUser");
+        map.put("postData[userId]", userdata.getResponse().get(0).getUserId());
+        map.put("postData[clientId]", userdata.getResponse().get(0).getClientId());
+        map.put("postData[prefType]", "FOOD");
+        map.put("postData[prefArr]", mAdapter.getSelection());
+        repository.callPreference(mContext, map, userdata.getAuthToken());
+
     }
 }

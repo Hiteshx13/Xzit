@@ -100,7 +100,6 @@
                         android:hint="@string/emailaddress"
                         android:imeOptions="actionNext"
                         android:inputType="textEmailAddress"
-                        android:text="k.bhutiya0@gmail.com"
                         android:textAlignment="textStart"
                         tools:ignore="Autofill,RtlSymmetry,TextFields" />
 
@@ -130,7 +129,6 @@
                         android:hint="@string/password"
                         android:imeOptions="actionDone"
                         android:inputType="textPassword"
-                        android:text="1234"
                         android:textAlignment="textStart"
                         tools:ignore="Autofill,RtlSymmetry,TextFields" />
 

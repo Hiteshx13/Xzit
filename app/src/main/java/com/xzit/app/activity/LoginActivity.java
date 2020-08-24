@@ -17,12 +17,13 @@ import com.xzit.app.databinding.ActivitySignInBinding;
 import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.LoginRepository;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
-import com.xzit.app.utils.AppPreference;
+import com.xzit.app.retrofit.model.response.login.Pref;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
 
 import java.util.HashMap;
 
+import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
 
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
@@ -54,14 +55,18 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         repository.getLoginData().observe(this, new Observer<LoginResponse>() {
             @Override
             public void onChanged(LoginResponse response) {
-                if (response.getStatus() == RESP_API_SUCCESS) {
-
+                if (response != null && response.getStatus() == RESP_API_SUCCESS) {
                     preference.saveLoginData(mContext, response);
-
-                    Intent intentDashboard = new Intent(mContext, DashboardActivity.class);
+                    Pref pref = response.getResponse().get(0).getPref();
+                    Intent intentDashboard = new Intent(mContext, PreferenceMusicActivity.class);
+                    if (pref.getFood().size() > 0 || pref.getMusic().size() > 0 || pref.getVenue().size() > 0) {
+                        intentDashboard = new Intent(mContext, DashboardActivity.class);
+                    }
                     startActivity(intentDashboard);
+                    finish();
+
                 } else {
-                    DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), false, new OnDialogClickListener() {
+                    DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), true, new OnDialogClickListener() {
                         @Override
                         public void onButtonClicked(Boolean value) {
 

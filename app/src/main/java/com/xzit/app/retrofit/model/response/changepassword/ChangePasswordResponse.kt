@@ -1,11 +1,12 @@
-package com.xzit.app.retrofit.model.response.login
+package com.xzit.app.retrofit.model.response.changepassword
 
 import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
+import com.xzit.app.retrofit.model.response.login.LoginData
 
 
-class LoginResponse {
+class ChangePasswordResponse {
 
     @SerializedName("status")
     @Expose
@@ -37,14 +38,6 @@ class LoginResponse {
 
     fun setMessage(message: String?) {
         this.message = message
-    }
-
-    fun setAuthToken(authToken: String?) {
-        this.authToken = authToken
-    }
-
-    fun getAuthToken(): String? {
-        return authToken
     }
 
     fun getResponse(): List<LoginData?>? {

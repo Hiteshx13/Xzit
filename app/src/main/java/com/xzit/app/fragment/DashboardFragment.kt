@@ -12,11 +12,13 @@ import com.sandrlab.widgets.MetalRecyclerViewPager
 import com.xzit.app.R
 import com.xzit.app.activity.DashboardActivity
 import com.xzit.app.activity.FullMetalAdapter
+import com.xzit.app.activity.XzitApp.preference
 import com.xzit.app.adapter.DashboardCategoryAdater
 import com.xzit.app.adapter.DashboardRestaurentAdapter
 import com.xzit.app.adapter.RestaurentAdapter
 import com.xzit.app.databinding.FragmentDashboardBinding
-import com.xzit.app.retrofit.model.response.login.masterdata.CATAGORYLIST
+import com.xzit.app.retrofit.model.response.login.LoginResponse
+import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST
 import java.util.*
 
 class DashboardFragment : BaseFragment(), View.OnClickListener {
@@ -46,6 +48,8 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
         }
         binding?.ivProfile?.setOnClickListener(this)
 
+        val userdata: LoginResponse = preference.getUserData(mContext)
+        binding?.tvUserName?.text = userdata.getResponse()?.get(0)?.username
         setCategory()
         setVenue()
         setRestaurentData()
@@ -54,7 +58,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
 
 
     private fun setCategory() {
-        listCategory = getParentActivity().preference.getMasterData(mContext).Response?.CATAGORY_LIST
+        listCategory =preference.getMasterData(mContext).Response?.CATAGORY_LIST
         binding!!.rvCategory.setHasFixedSize(true)
         binding!!.rvCategory.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         categoryAdapter = DashboardCategoryAdater(mContext, listCategory)

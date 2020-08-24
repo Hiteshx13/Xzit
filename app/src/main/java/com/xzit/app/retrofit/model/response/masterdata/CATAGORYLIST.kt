@@ -1,4 +1,4 @@
-package com.xzit.app.retrofit.model.response.login.masterdata
+package com.xzit.app.retrofit.model.response.masterdata
 
 data class CATAGORYLIST(
         var ID: String = "",

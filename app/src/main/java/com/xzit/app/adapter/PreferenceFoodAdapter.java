@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.retrofit.model.response.login.masterdata.FOODTYPE;
+import com.xzit.app.retrofit.model.response.masterdata.FOODTYPE;
 import com.xzit.app.utils.ImageUtils;
 
 import java.util.List;
@@ -25,7 +26,18 @@ public class PreferenceFoodAdapter extends RecyclerView.Adapter<PreferenceFoodAd
         this.mLayout = mLayout;
         this.mContext = mContext;
     }
-
+    public String getSelection() {
+        String selection = "";
+        for (int i = 0; i < listFood.size(); i++) {
+            if (listFood.get(i).isSelected()) {
+                selection = selection + listFood.get(i).getVALUE() + ",";
+            }
+        }
+        if(!selection.isEmpty()){
+            selection = selection.substring(0, selection.length() - 1);
+        }
+        return selection;
+    }
     @Override
     public PreferenceFoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                                int viewType) {
@@ -43,6 +55,7 @@ public class PreferenceFoodAdapter extends RecyclerView.Adapter<PreferenceFoodAd
 
         int pos = position;
         final FOODTYPE model = listFood.get(position);
+        holder.tvPrefName.setText(model.getVALUE());
         if (!model.getURL().isEmpty()) {
             ImageUtils imageUtils = new ImageUtils();
             imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
@@ -76,11 +89,12 @@ public class PreferenceFoodAdapter extends RecyclerView.Adapter<PreferenceFoodAd
         public View layout;
         RelativeLayout rlRoot;
         AppCompatImageView ivPreference, ivOverlay, ivOverlayBorder;
-
+        AppCompatTextView tvPrefName;
         public ViewHolder(View v) {
             super(v);
             layout = v;
             rlRoot = layout.findViewById(R.id.rlRoot);
+            tvPrefName = layout.findViewById(R.id.tvPrefName);
             ivPreference = layout.findViewById(R.id.ivPreference);
             ivOverlay = layout.findViewById(R.id.ivOverlay);
             ivOverlayBorder = layout.findViewById(R.id.ivOverlayBorder);

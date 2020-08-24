@@ -4,37 +4,38 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 
 import com.xzit.app.R;
-import com.xzit.app.activity.ChangePasswordActivity;
 import com.xzit.app.databinding.ActivityEditProfileBinding;
+import com.xzit.app.retrofit.model.response.login.LoginResponse;
 
-public class EditProfileActivity extends AppCompatActivity implements View.OnClickListener {
+import static com.xzit.app.activity.XzitApp.preference;
+
+public class EditProfileActivity extends BaseActivity implements View.OnClickListener {
 
 
-    private ActivityEditProfileBinding activityEditProfileBinding;
+    private ActivityEditProfileBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         initialization();
-
         listener();
-
-
+        LoginResponse userdata = preference.getUserData(mContext);
+        binding.tvName.setText(userdata.getResponse().get(0).getUsername());
+        binding.etFirstName.setText(userdata.getResponse().get(0).getUsername());
     }
 
     private void initialization() {
-        activityEditProfileBinding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_edit_profile);
     }
 
     private void listener() {
 
-        activityEditProfileBinding.imgbackscreen.setOnClickListener(this);
-        activityEditProfileBinding.tvResetPassword.setOnClickListener(this);
+        binding.imgbackscreen.setOnClickListener(this);
+        binding.tvResetPassword.setOnClickListener(this);
     }
 
     @Override

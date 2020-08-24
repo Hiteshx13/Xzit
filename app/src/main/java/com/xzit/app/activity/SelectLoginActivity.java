@@ -17,7 +17,7 @@ import com.xzit.app.R;
 import com.xzit.app.databinding.ActivitySelectLoginBinding;
 import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.MasterDataRepository;
-import com.xzit.app.retrofit.model.response.login.masterdata.MasterDataResponse;
+import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse;
 import com.xzit.app.utils.AppPreference;
 import com.xzit.app.utils.DialogUtilsKt;
 
@@ -82,10 +82,11 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
     }
 
     private void setObserver() {
-        repository.getApiData().observe(this, new Observer<MasterDataResponse>() {
+        repository.getResponseData().observe(this, new Observer<MasterDataResponse>() {
             @Override
             public void onChanged(MasterDataResponse response) {
-                if (response.getStatus() == RESP_API_SUCCESS) { AppPreference preference = new AppPreference();
+                if (response.getStatus() == RESP_API_SUCCESS) {
+                    AppPreference preference = new AppPreference();
                     preference.saveMasterData(mContext, response);
 
                 } else {

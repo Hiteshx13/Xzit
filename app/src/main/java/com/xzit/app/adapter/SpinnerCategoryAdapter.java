@@ -9,7 +9,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.xzit.app.R;
-import com.xzit.app.retrofit.model.response.login.masterdata.CATAGORYLIST;
+import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST;
 
 import java.util.List;
 

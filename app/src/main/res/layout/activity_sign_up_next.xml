@@ -61,25 +61,29 @@
                 android:fontFamily="@font/quicksand_regular"
                 android:text="@string/app_name"
                 android:textColor="@color/colorGrayTextDark"
-                android:textSize="@dimen/_25ssp"
-                tools:ignore="UnusedAttribute" />
+                android:textSize="@dimen/_25ssp" />
 
-            <ImageView
-                android:id="@+id/imgAdd"
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
                 android:layout_width="@dimen/_57sdp"
                 android:layout_height="@dimen/_57sdp"
                 android:layout_below="@+id/txtTitle"
                 android:layout_centerHorizontal="true"
                 android:src="@drawable/icn_add_pic"
                 android:tint="@color/colorYellow"
-                android:visibility="visible"
-                tools:visibility="gone" />
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
             <RelativeLayout
                 android:id="@+id/layoutBottom"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/imgAdd"
+                android:layout_below="@id/ivProfile"
                 android:layout_alignParentBottom="true"
                 android:layout_marginTop="@dimen/_30sdp">
 
@@ -99,6 +103,7 @@
                         app:cardElevation="@dimen/_5sdp">
 
                         <EditText
+                            android:id="@+id/etUserName"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -106,7 +111,7 @@
                             android:gravity="start"
                             android:hint="@string/user_name"
                             android:imeOptions="actionNext"
-                            android:inputType="text"
+                            android:inputType="textPersonName"
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -126,6 +131,7 @@
                         card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            android:id="@+id/etTitle"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -133,7 +139,7 @@
                             android:gravity="start"
                             android:hint="@string/title"
                             android:imeOptions="actionNext"
-                            android:inputType="text"
+                            android:inputType="textCapWords"
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -150,21 +156,22 @@
                         android:layout_marginEnd="@dimen/_27sdp"
                         android:background="@android:color/white"
                         app:cardElevation="@dimen/_5sdp"
-                        card_view:cardCornerRadius="5dp"
-                        tools:visibility="gone">
+                        card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            android:id="@+id/etDescription"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@android:color/transparent"
                             android:gravity="start"
                             android:hint="@string/description"
-                            android:inputType="text"
-                            android:padding="10dp"
-                            android:textAlignment="textStart"
-                            tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute"
-                            tools:visibility="gone" />
+                            android:minLines="5"
+                            android:inputType="textMultiLine"
+                            android:imeOptions="actionDone"
+                            android:singleLine="false"
+                            android:padding="@dimen/_10sdp"
+                            android:textAlignment="textStart"/>
 
                     </androidx.cardview.widget.CardView>
 
@@ -202,6 +209,7 @@
                         card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            android:id="@+id/etTelephone"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -209,7 +217,7 @@
                             android:gravity="start"
                             android:hint="@string/telephone"
                             android:imeOptions="actionDone"
-                            android:inputType="textPassword"
+                            android:inputType="phone"
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -229,6 +237,7 @@
                         card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            android:id="@+id/etWebsite"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -236,7 +245,7 @@
                             android:gravity="start"
                             android:hint="@string/website"
                             android:imeOptions="actionDone"
-                            android:inputType="textPassword"
+                            android:inputType="textEmailAddress"
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
@@ -256,6 +265,7 @@
                         card_view:cardCornerRadius="5dp">
 
                         <EditText
+                            android:id="@+id/etBusinessHours"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -263,7 +273,7 @@
                             android:gravity="start"
                             android:hint="@string/business_hours"
                             android:imeOptions="actionDone"
-                            android:inputType="textPassword"
+                            android:inputType="text"
                             android:textAlignment="textStart"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 

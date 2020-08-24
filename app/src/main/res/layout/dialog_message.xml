@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/colorWhite"
     android:layout_height="@dimen/_200sdp"
     android:padding="@dimen/_20sdp">
 
@@ -12,6 +13,7 @@
         android:layout_centerHorizontal="true"
         android:background="@color/colorPrimary"
         android:gravity="center"
+        android:visibility="gone"
         android:text="@string/app_name"
         android:paddingTop="@dimen/_5sdp"
         android:paddingBottom="@dimen/_5sdp"

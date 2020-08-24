@@ -8,7 +8,7 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
-import com.xzit.app.retrofit.model.response.login.masterdata.CATAGORYLIST
+import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST
 
 class DashboardCategoryAdater(var context: Context, private val listCategory: List<CATAGORYLIST>?) : RecyclerView.Adapter<DashboardCategoryAdater.ViewHolder?>() {
     override fun onCreateViewHolder(parent: ViewGroup,

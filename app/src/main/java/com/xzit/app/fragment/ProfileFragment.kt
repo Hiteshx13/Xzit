@@ -11,8 +11,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
 import com.xzit.app.activity.EditProfileActivity
 import com.xzit.app.activity.SettingsActivity
+import com.xzit.app.activity.XzitApp.preference
 import com.xzit.app.adapter.ProfileAdapter
 import com.xzit.app.databinding.FragmentProfileBinding
+import com.xzit.app.retrofit.model.response.login.LoginResponse
 import java.util.*
 
 class ProfileFragment : BaseFragment(), View.OnClickListener {
@@ -35,6 +37,9 @@ class ProfileFragment : BaseFragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initListener()
+
+        val userdata: LoginResponse = preference.getUserData(mContext)
+        binding?.tvUserName?.text = userdata.getResponse()!![0]!!.username
     }
 
     fun initListener() {

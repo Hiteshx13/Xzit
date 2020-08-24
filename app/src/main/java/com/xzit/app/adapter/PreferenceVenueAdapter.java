@@ -7,10 +7,11 @@ import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
+import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.retrofit.model.response.login.masterdata.VENUETYPE;
+import com.xzit.app.retrofit.model.response.masterdata.VENUETYPE;
 import com.xzit.app.utils.ImageUtils;
 
 import java.util.List;
@@ -38,10 +39,25 @@ public class PreferenceVenueAdapter extends RecyclerView.Adapter<PreferenceVenue
         return vh;
     }
 
+    public String getSelection() {
+        String selection = "";
+        for (int i = 0; i < listVenue.size(); i++) {
+            if (listVenue.get(i).isSelected()) {
+                selection = selection + listVenue.get(i).getVALUE() + ",";
+            }
+        }
+        if(!selection.isEmpty()){
+            selection = selection.substring(0, selection.length() - 1);
+        }
+        return selection;
+    }
+
     @Override
     public void onBindViewHolder(PreferenceVenueAdapter.ViewHolder holder, final int position) {
 
         final VENUETYPE model = listVenue.get(position);
+        holder.tvPrefName.setText(model.getVALUE());
+
         int pos = position;
         if (!model.getURL().isEmpty()) {
             ImageUtils imageUtils = new ImageUtils();
@@ -73,12 +89,13 @@ public class PreferenceVenueAdapter extends RecyclerView.Adapter<PreferenceVenue
 
         public View layout;
         RelativeLayout rlRoot;
-        AppCompatImageView ivPreference, ivOverlay, ivOverlayBorder;
-
+        AppCompatImageView  ivPreference, ivOverlay, ivOverlayBorder;
+        AppCompatTextView tvPrefName;
         public ViewHolder(View v) {
             super(v);
             layout = v;
             rlRoot = layout.findViewById(R.id.rlRoot);
+            tvPrefName = layout.findViewById(R.id.tvPrefName);
             ivPreference = layout.findViewById(R.id.ivPreference);
             ivOverlay = layout.findViewById(R.id.ivOverlay);
             ivOverlayBorder = layout.findViewById(R.id.ivOverlayBorder);

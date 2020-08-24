@@ -12,7 +12,7 @@ import com.xzit.app.utils.AppPreference
 open class BaseActivity : AppCompatActivity() {
 
     lateinit var mContext: Context
-    lateinit var preference: AppPreference
+//    lateinit var preference: AppPreference
 
 
     open var gso: GoogleSignInOptions? = null
@@ -21,7 +21,7 @@ open class BaseActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
-        preference = AppPreference()
+//        preference = AppPreference()
         if (gso == null) {
             gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                     .requestEmail()

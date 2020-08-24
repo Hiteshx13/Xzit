@@ -1,18 +1,21 @@
 package com.xzit.app.retrofit;
 
+import com.xzit.app.activity.BaseActivity;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
-import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.xzit.app.activity.XzitApp.preference;
 
-public class ApiClient {
+
+public class ApiClient extends BaseActivity {
 
 
     public static final String BASE_URL = "http://35.182.23.72";
@@ -20,6 +23,7 @@ public class ApiClient {
 
 
     public static Retrofit getClient() {
+        //LoginResponse userdata = preference.getUserData(mContext);
 
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
@@ -30,10 +34,13 @@ public class ApiClient {
                 .addInterceptor(new Interceptor() {
                     @Override
                     public Response intercept(Chain chain) throws IOException {
-                        okhttp3.Request newRequest = chain.request().newBuilder()
-                                .addHeader("Content-Type", "application/x-www-form-urlencoded")
-                                .build();
-                        return chain.proceed(newRequest);
+                        okhttp3.Request.Builder newRequest = chain.request().newBuilder();
+
+                        newRequest.addHeader("Content-Type", "application/x-www-form-urlencoded");
+                        if(preference.getUserData()!=null) {
+                            newRequest.addHeader("Authorization", "Bearer " + preference.getUserData().getAuthToken());
+                        }
+                        return chain.proceed(newRequest.build());
                     }
                 })
 

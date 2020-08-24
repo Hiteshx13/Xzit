@@ -1,6 +1,6 @@
-package com.xzit.app.retrofit.model.response.login.masterdata
+package com.xzit.app.retrofit.model.response.masterdata
 
-data class MUSICTYPE(
+data class FOODTYPE(
         var isSelected: Boolean = false,
         var ID: String = "",
         var VALUE: String = "",
