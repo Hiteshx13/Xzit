@@ -220,7 +220,6 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                             finish();
                         }
                     });
-
                 } else {
                     DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), true, new OnDialogClickListener() {
                         @Override
