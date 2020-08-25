@@ -5,11 +5,9 @@ import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.squareup.okhttp.RequestBody
-import com.xzit.app.retrofit.model.response.login.LoginResponse
-import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse
 import com.xzit.app.utils.isNetworkConnected
-import com.xzit.app.utils.showToast
+import okhttp3.MultipartBody
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
@@ -49,10 +47,29 @@ open class RegistrationRepository : BaseRepository() {
         }
     }
 
-    fun callSignUp(mContext: Context, req: HashMap<String, String>, profileImage: RequestBody) {
+    fun callSignUp(mContext: Context,
+                   reqCase: RequestBody,
+                   accountType: RequestBody,
+                   businessName: RequestBody,
+                   email: RequestBody,
+                   password: RequestBody,
+                   confPassword: RequestBody,
+                   userName: RequestBody,
+                   title: RequestBody,
+                   category: RequestBody,
+                   phone: RequestBody,
+                   website: RequestBody,
+                   businessHours: RequestBody,
+                   image: MultipartBody.Part
+    ) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
-            apiInterface.callRegisterData(req, profileImage).enqueue(object : retrofit2.Callback<RegistrationResponse> {
+            apiInterface.callRegisterData(reqCase,
+                    accountType, businessName, email, password, confPassword, userName, title, category,
+                    phone,
+                    website,
+                    businessHours,
+                    image).enqueue(object : retrofit2.Callback<RegistrationResponse> {
                 override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
                     hideProgress()
                 }
@@ -75,5 +92,4 @@ open class RegistrationRepository : BaseRepository() {
             })
         }
     }
-
 }

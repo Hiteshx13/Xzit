@@ -1,14 +1,26 @@
 package com.xzit.app.activity;
 
+import android.Manifest;
 import android.content.ClipData;
+import android.content.ContentUris;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.Cursor;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.DocumentsContract;
+import android.provider.MediaStore;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.AdapterView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
+import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 
@@ -24,16 +36,25 @@ import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST;
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
+import com.xzit.app.utils.PermissionUtils;
+import com.xzit.app.utils.RealPathUtil;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
+import okhttp3.MultipartBody;
 
 import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.PARAM_SIGNUP_DATA;
 import static com.xzit.app.utils.AppUtilsKt.REQ_SELECT_PHOTO_GALLERY;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
+import static com.xzit.app.utils.RealPathUtil.getDataColumn;
+import static com.xzit.app.utils.RealPathUtil.isDownloadsDocument;
+import static com.xzit.app.utils.RealPathUtil.isExternalStorageDocument;
+import static com.xzit.app.utils.RealPathUtil.isMediaDocument;
 
 public class RegistrationNextActivity extends BaseActivity implements View.OnClickListener {
 
@@ -45,6 +66,8 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
 
     private ActivitySignUpNextBinding binding;
     private List<CATAGORYLIST> listCategory;
+
+    static final Integer REQ_WRITE_EXST = 501;
     ArrayList<String> arrayCategory;
     private String strCategory;
     Uri profileUri;
@@ -139,13 +162,14 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         startActivityForResult(Intent.createChooser(intent, "Select Picture"), REQ_SELECT_PHOTO_GALLERY);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignUp:
                 callSignUp();
-//                Intent intent = new Intent(this, PreferenceMusicActivity.class);
-//                startActivity(intent);
+
+
                 break;
             case R.id.imgFacebook:
                 Intent intentForgetpassword = new Intent(this, ForgotPasswordActivity.class);
@@ -160,11 +184,27 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 break;
 
             case R.id.ivProfile:
-                selectImageFromGallery();
+                if (PermissionUtils.askForPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, REQ_WRITE_EXST)
+                ) {
+                    selectImageFromGallery();
+                } else {
+                    DialogUtilsKt.showMessageDialog(this, this.getString(R.string.please_grant_all_required_permissions_from_application_setting), false, new OnDialogClickListener() {
+                        @Override
+                        public void onButtonClicked(Boolean value) {
+                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+                            intent.setData(uri);
+                            startActivity(intent);
+                        }
+                    });
+                    //Toast.makeText(this, getString(R.string.please_grant_all_required_permissions_from_application_setting), Toast.LENGTH_SHORT).show();
+                }
+
                 break;
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     void callSignUp() {
 
         String strUserName = binding.etUserName.getText().toString().trim();
@@ -212,7 +252,21 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 File file = new File(profileUri.getPath());
                 RequestBody fbody = RequestBody.create(MediaType.parse("image/*"),
                         file);
-//                repository.callSignUp(mContext, map, fbody);
+//                repository.callSignUp(mContext,
+//                        getRequestBody("signup"),
+//                        getRequestBody("BUSINESS"),
+//                        getRequestBody(signUpRequest.getBusinessName()),
+//                        getRequestBody(signUpRequest.getEmail()),
+//                        getRequestBody(signUpRequest.getPassword()),
+//                        getRequestBody(signUpRequest.getConfPassword()),
+//                        getRequestBody(strUserName),
+//                        getRequestBody(strTelephone),
+//                        getRequestBody(strCategory),
+//                        getRequestBody(strTelephone),
+//                        getRequestBody(strWebsite),
+//                        getRequestBody(strBusinessHours),
+//                        getMultiPartBody("/storage/emulated/0/image.jpg")
+//                );
                 repository.callSignUp(mContext, map);
             } else {
                 repository.callSignUp(mContext, map);
@@ -220,6 +274,164 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public String getRealPathFromURI(Uri contentUri) {
+        // Will return "image:x*"
+        String wholeID = DocumentsContract.getDocumentId(contentUri);
+
+// Split at colon, use second item in the array
+        String id = wholeID.split(":")[1];
+
+        String[] column = { MediaStore.Images.Media.DATA };
+
+// where id is equal to
+        String sel = MediaStore.Images.Media._ID + "=?";
+
+        Cursor cursor = getContentResolver().
+                query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                        column, sel, new String[]{ id }, null);
+
+        String filePath = "";
+
+        int columnIndex = cursor.getColumnIndex(column[0]);
+
+        if (cursor.moveToFirst()) {
+            filePath = cursor.getString(columnIndex);
+        }
+
+        cursor.close();
+        return filePath;
+    }
+
+    RequestBody getRequestBody(String str) {
+        RequestBody reqBody =
+                RequestBody.create(MediaType.parse("multipart/form-data"), str);
+        return reqBody;
+    }
+
+    MultipartBody.Part getMultiPartBody(String imagePath) {
+        //pass it like this
+        File file = new File(imagePath);
+        okhttp3.RequestBody requestFile =
+                okhttp3.RequestBody.create(okhttp3.MediaType.parse("multipart/form-data"), file);
+
+// MultipartBody.Part is used to send also the actual file name
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+
+        return body;
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
+    public static String getPath(final Context context, final Uri uri) {
+
+        final boolean isKitKat = Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT;
+
+        // DocumentProvider
+        if (isKitKat && DocumentsContract.isDocumentUri(context, uri)) {
+            // ExternalStorageProvider
+            if (isExternalStorageDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                if ("primary".equalsIgnoreCase(type)) {
+                    return Environment.getExternalStorageDirectory() + "/" + split[1];
+                }
+
+                // TODO handle non-primary volumes
+            }
+            // DownloadsProvider
+            else if (isDownloadsDocument(uri)) {
+
+                final String id = DocumentsContract.getDocumentId(uri);
+                final Uri contentUri = ContentUris.withAppendedId(
+                        Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
+
+                return getDataColumn(context, contentUri, null, null);
+            }
+            // MediaProvider
+            else if (isMediaDocument(uri)) {
+                final String docId = DocumentsContract.getDocumentId(uri);
+                final String[] split = docId.split(":");
+                final String type = split[0];
+
+                Uri contentUri = null;
+                if ("image".equals(type)) {
+                    contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
+                } else if ("video".equals(type)) {
+                    contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
+                } else if ("audio".equals(type)) {
+                    contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
+                }
+
+                final String selection = "_id=?";
+                final String[] selectionArgs = new String[] {
+                        split[1]
+                };
+
+                return getDataColumn(context, contentUri, selection, selectionArgs);
+            }
+        }
+        // MediaStore (and general)
+        else if ("content".equalsIgnoreCase(uri.getScheme())) {
+            return getDataColumn(context, uri, null, null);
+        }
+        // File
+        else if ("file".equalsIgnoreCase(uri.getScheme())) {
+            return uri.getPath();
+        }
+
+        return null;
+    }
+
+    public static String getDataColumn(Context context, Uri uri, String selection,
+                                       String[] selectionArgs) {
+
+        Cursor cursor = null;
+        final String column = "_data";
+        final String[] projection = {
+                column
+        };
+
+        try {
+            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
+                    null);
+            if (cursor != null && cursor.moveToFirst()) {
+                final int column_index = cursor.getColumnIndexOrThrow(column);
+                return cursor.getString(column_index);
+            }
+        } finally {
+            if (cursor != null)
+                cursor.close();
+        }
+        return null;
+    }
+
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is ExternalStorageProvider.
+     */
+    public static boolean isExternalStorageDocument(Uri uri) {
+        return "com.android.externalstorage.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is DownloadsProvider.
+     */
+    public static boolean isDownloadsDocument(Uri uri) {
+        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
+    }
+
+    /**
+     * @param uri The Uri to check.
+     * @return Whether the Uri authority is MediaProvider.
+     */
+    public static boolean isMediaDocument(Uri uri) {
+        return "com.android.providers.media.documents".equals(uri.getAuthority());
+    }
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -243,6 +455,27 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
 
                     }
                 }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (ActivityCompat.checkSelfPermission(this, permissions[0]) == PackageManager.PERMISSION_GRANTED) {
+            if (requestCode == REQ_WRITE_EXST) {
+                selectImageFromGallery();
+            }
+        } else {
+            DialogUtilsKt.showMessageDialog(this, this.getString(R.string.please_grant_all_required_permissions_from_application_setting), false, new OnDialogClickListener() {
+                @Override
+                public void onButtonClicked(Boolean value) {
+                    Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                    Uri uri = Uri.fromParts("package", getPackageName(), null);
+                    intent.setData(uri);
+                    startActivity(intent);
+                }
+            });
+            // Toast.makeText(this, "Grant all required permission from application settings", Toast.LENGTH_SHORT).show();
         }
     }
 }

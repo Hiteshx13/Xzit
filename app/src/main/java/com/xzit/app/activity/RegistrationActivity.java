@@ -9,14 +9,11 @@ import android.view.View;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 
-import com.applandeo.materialcalendarview.CalendarView;
-import com.applandeo.materialcalendarview.DatePicker;
-import com.applandeo.materialcalendarview.builders.DatePickerBuilder;
-import com.applandeo.materialcalendarview.listeners.OnSelectDateListener;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
+import com.wdullaer.materialdatetimepicker.date.DatePickerDialog;
 import com.xzit.app.R;
 import com.xzit.app.databinding.ActivitySignUpBinding;
 import com.xzit.app.listener.OnDialogClickListener;
@@ -28,9 +25,10 @@ import com.xzit.app.utils.DialogUtilsKt;
 
 import java.util.Calendar;
 import java.util.HashMap;
-import java.util.List;
 
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
+import static com.xzit.app.utils.AppUtilsKt.VALIDATION_password_length;
+import static com.xzit.app.utils.AppUtilsKt.isEmailValid;
 
 public class RegistrationActivity extends BaseActivity implements View.OnClickListener {
 
@@ -140,20 +138,23 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         }
     }
 
-    private OnSelectDateListener DOBListener = new OnSelectDateListener() {
-        @Override
-        public void onSelect(List<Calendar> calendars) {
-            DOB = AppUtilsKt.getStringDate(calendars.get(0).getTime());
-            binding.etBirthDate.setText(DOB);
-        }
-    };
-
     void openDatePicker() {
-        DatePickerBuilder builder = new DatePickerBuilder(this, DOBListener)
-                .pickerType(CalendarView.ONE_DAY_PICKER);
+        Calendar now = Calendar.getInstance();
+        DatePickerDialog dpd = DatePickerDialog.newInstance(
+                new DatePickerDialog.OnDateSetListener() {
+                    @Override
+                    public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
+                        DOB = year + "-" + (monthOfYear + 1) + "-" + dayOfMonth;//ppUtilsKt.getStringDate(calendars.get(0).getTime());
+                        binding.etBirthDate.setText(DOB);
+                    }
+                },
+                now.get(Calendar.YEAR), // Initial year selection
+                now.get(Calendar.MONTH), // Initial month selection
+                now.get(Calendar.DAY_OF_MONTH) // Inital day selection
 
-        DatePicker datePicker = builder.build();
-        datePicker.show();
+        );
+        //dpd.setAccentColor(mContext.getColor(R.color.colorAccent));
+        dpd.show(getSupportFragmentManager(), "Datepickerdialog");
     }
 
     boolean isValid() {
@@ -175,10 +176,14 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_business_name));
             } else if (strEmail.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
+            } else if (!isEmailValid(strEmail)) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
             } else if (strPassword.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_password));
             } else if (strConfPassword.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_conf_password));
+            } else if (strConfPassword.length() < VALIDATION_password_length) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_at_least_password));
             } else if (!strPassword.equals(strConfPassword)) {
                 AppUtilsKt.showToast(mContext, getString(R.string.password_does_not_match));
             } else {
@@ -190,7 +195,9 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 AppUtilsKt.showToast(mContext, getString(R.string.please_user_name));
             } else if (strEmail.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
-            } else if (DOB.isEmpty()) {
+            } else if (!isEmailValid(strEmail)) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
+            }else if (DOB.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_select_dob));
             } else if (!AppUtilsKt.isEmailValid(strEmail)) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
@@ -198,7 +205,9 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_password));
             } else if (strConfPassword.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_conf_password));
-            } else if (!strPassword.equals(strConfPassword)) {
+            } else if (strConfPassword.length() < VALIDATION_password_length) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_at_least_password));
+            }else if (!strPassword.equals(strConfPassword)) {
                 AppUtilsKt.showToast(mContext, getString(R.string.password_does_not_match));
             } else {
                 isValid = true;

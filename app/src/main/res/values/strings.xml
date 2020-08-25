@@ -155,6 +155,7 @@
     <string name="please_enter_valid_email">Please enter valid emai</string>
     <string name="please_enter_password">Please enter password</string>
     <string name="please_enter_conf_password">Please enter confirm password</string>
+    <string name="please_enter_at_least_password">Please enter at lease 6 characters password</string>
     <string name="please_enter_current_password">Please enter current password</string>
     <string name="please_enter_new_password">Please enter new password</string>
     <string name="password_does_not_match">Password and Confirm password does not match</string>
@@ -165,11 +166,16 @@
     <string name="please_enter_user_name">Please enter user name</string>
     <string name="please_enter_title">Please enter title</string>
     <string name="please_enter_telephone">Please enter telephone</string>
+    <string name="please_enter_phone">Please enter phone</string>
+    <string name="please_grant_all_required_permissions_from_application_setting">Please grant all required permissions from application setting</string>
+
     <string name="please_enter_description">Please enter description</string>
     <string name="please_enter_business_hours">Please enter business hours</string>
     <string name="please_select_at_least_one_preference">Please select at least one preference</string>
     <string name="please_select_category">Please select category</string>
     <string name="last_name">Last Name</string>
+    <string name="please_enter_gender">Please enter gender</string>
+    <string name="please_enter_website">Please enter website</string>
 
 
 </resources>

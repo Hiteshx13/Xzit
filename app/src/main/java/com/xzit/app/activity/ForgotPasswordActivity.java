@@ -17,6 +17,7 @@ import com.xzit.app.utils.DialogUtilsKt;
 import java.util.HashMap;
 
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
+import static com.xzit.app.utils.AppUtilsKt.isEmailValid;
 
 public class ForgotPasswordActivity extends BaseActivity implements View.OnClickListener {
 
@@ -88,7 +89,9 @@ public class ForgotPasswordActivity extends BaseActivity implements View.OnClick
         String strEmail = binding.etEmail.getText().toString().trim();
         if (strEmail.isEmpty()) {
             AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
-        }else{
+        }else if (!isEmailValid(strEmail)) {
+            AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
+        } else{
             HashMap<String, String> map = new HashMap<>();
             map.put("postData[requestCase]", "forgetPassword");
             map.put("postData[userName]", strEmail);

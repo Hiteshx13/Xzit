@@ -21,6 +21,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.HashMap;
 
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
+import static com.xzit.app.utils.AppUtilsKt.VALIDATION_password_length;
 
 public class ChangePasswordActivity extends BaseActivity implements View.OnClickListener {
 
@@ -96,9 +97,13 @@ public class ChangePasswordActivity extends BaseActivity implements View.OnClick
             AppUtilsKt.showToast(mContext, getString(R.string.please_enter_current_password));
         } else if (strNewPass.isEmpty()) {
             AppUtilsKt.showToast(mContext, getString(R.string.please_enter_new_password));
+        }else if (strNewPass.length() < VALIDATION_password_length) {
+            AppUtilsKt.showToast(mContext, getString(R.string.please_enter_at_least_password));
         } else if (strConfPass.isEmpty()) {
             AppUtilsKt.showToast(mContext, getString(R.string.please_enter_conf_password));
-        } else {
+        } else if (!strNewPass.equals(strNewPass)) {
+            AppUtilsKt.showToast(mContext, getString(R.string.password_does_not_match));
+        }else {
 
             HashMap<String, String> map = new HashMap<>();
             map.put("postData[requestCase]", "changePassword");

@@ -3,6 +3,7 @@ package com.xzit.app.utils
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import android.text.TextUtils
 import android.widget.Toast
 import com.xzit.app.R
 import java.text.SimpleDateFormat
@@ -16,6 +17,7 @@ const val SIGNUP_TYPE_USER = "signup_type_user"
 const val DASHBOARD_TAB = "dashboard_tab"
 const val REQ_LOGIN_WITH_GMAIL = 301
 const val REQ_SELECT_PHOTO_GALLERY = 111
+const val VALIDATION_password_length = 5
 
 const val RESP_API_SUCCESS = 200
 
@@ -24,7 +26,11 @@ fun showToast(context: Context, message: String) {
 }
 
 fun isEmailValid(email: String): Boolean {
-    return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
+    if (TextUtils.isEmpty(email)) {
+        return false;
+    } else {
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
 }
 
 fun isNetworkConnected(mContext: Context): Boolean {

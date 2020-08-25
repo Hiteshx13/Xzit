@@ -55,10 +55,10 @@
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginEnd="@dimen/_5sdp"
-            app:cardElevation="0dp"
             android:layout_marginBottom="15dp"
             android:background="@android:color/white"
-            app:cardCornerRadius="@dimen/_18sdp">
+            app:cardCornerRadius="@dimen/_18sdp"
+            app:cardElevation="0dp">
 
             <ScrollView
                 android:layout_width="match_parent"
@@ -160,7 +160,9 @@
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:alpha="0.5"
                             android:background="@android:color/transparent"
+                            android:focusable="false"
                             android:gravity="start"
                             android:imeOptions="actionNext"
                             android:inputType="text"
@@ -183,12 +185,13 @@
                         app:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            android:id="@+id/etTitle"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:gravity="start"
-                            android:hint="@string/last_name"
+                            android:hint="@string/title"
                             android:imeOptions="actionNext"
                             android:inputType="text"
                             android:textAlignment="textStart"
@@ -210,6 +213,7 @@
                         card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            android:id="@+id/etPhone"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -236,10 +240,12 @@
                         card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            android:id="@+id/etDOB"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
+                            android:focusable="false"
                             android:gravity="start"
                             android:hint="@string/dob"
                             android:imeOptions="actionNext"
@@ -262,6 +268,7 @@
                         card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            android:id="@+id/etGender"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -288,6 +295,7 @@
                         card_view:cardCornerRadius="@dimen/_5sdp">
 
                         <EditText
+                            android:id="@id/etWebsite"
                             style="@style/StyleEditText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -299,7 +307,6 @@
                             android:textAlignment="textStart"
                             android:textSize="@dimen/_12ssp"
                             tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
-
                     </androidx.cardview.widget.CardView>
 
                     <Button
@@ -314,10 +321,8 @@
                         android:background="@drawable/backgoundround"
                         android:text="@string/save"
                         android:textAllCaps="false" />
-
                 </LinearLayout>
             </ScrollView>
         </androidx.cardview.widget.CardView>
-
     </RelativeLayout>
 </layout>

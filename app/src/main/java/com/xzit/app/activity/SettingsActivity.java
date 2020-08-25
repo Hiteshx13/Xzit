@@ -9,7 +9,9 @@ import androidx.databinding.DataBindingUtil;
 import com.xzit.app.R;
 import com.xzit.app.databinding.ActivitySettingsBinding;
 
-public class SettingsActivity extends AppCompatActivity {
+import static com.xzit.app.activity.XzitApp.preference;
+
+public class SettingsActivity extends BaseActivity {
 
     private ActivitySettingsBinding binding;
 
@@ -25,6 +27,14 @@ public class SettingsActivity extends AppCompatActivity {
         binding.llFaq.setOnClickListener(view -> startActivity(new Intent(this, FAQActivity.class)));
         binding.llNotification.setOnClickListener(view -> startActivity(new Intent(this, NotificationsActivity.class)));
         binding.imgbackscreen.setOnClickListener(view -> finish());
+        binding.ivLogout.setOnClickListener(view ->
+        {
+            preference.logoutUser();
+            Intent intent = new Intent(this, LoginActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
+        });
 //        binding.btnawesome.setOnClickListener(view -> startActivity(new Intent(this, AweSomeActivity.class)));
 //        binding.btncountryphone.setOnClickListener(view -> startActivity(new Intent(this, CountryPhoneNumberActivity.class)));
 //        binding.btnfaq.setOnClickListener(view -> startActivity(new Intent(this, FAQActivity.class)));

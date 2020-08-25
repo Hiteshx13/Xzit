@@ -26,6 +26,10 @@ public class LoginData {
     @SerializedName("description")
     @Expose
     private String description;
+
+    @SerializedName("DOB")
+    @Expose
+    private String DOB;
     @SerializedName("phone")
     @Expose
     private String phone;
@@ -103,6 +107,14 @@ public class LoginData {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public String getDOB() {
+        return DOB;
+    }
+
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
     }
 
     public String getPhone() {

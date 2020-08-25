@@ -13,6 +13,7 @@ import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse
 open class AppPreference {
 
     var PREF_USER_DATA = "login_user_data"
+    var PREF_IS_LOGGED_ID = "pref_is_user_logged_in"
     var USER_MASTER_DATA = "user_master_data"
     var mPrefs: SharedPreferences? = null
 
@@ -20,6 +21,21 @@ open class AppPreference {
         mPrefs = mContext.getSharedPreferences(mContext.getString(R.string.app_name), MODE_PRIVATE)
     }
 
+    open fun isLoggedIn(): Boolean {
+        if (mPrefs == null) {
+            mPrefs = mContext.getSharedPreferences(mContext.getString(R.string.app_name), MODE_PRIVATE)
+        }
+        return mPrefs!!.getBoolean(PREF_IS_LOGGED_ID, false)
+    }
+
+    open fun logoutUser(){
+        if (mPrefs == null) {
+            mPrefs = mContext.getSharedPreferences(mContext.getString(R.string.app_name), MODE_PRIVATE)
+        }
+        val prefsEditor: SharedPreferences.Editor = mPrefs!!.edit()
+        prefsEditor.putBoolean(PREF_IS_LOGGED_ID, false)
+        prefsEditor.commit()
+    }
     /**save login data**/
     open fun saveLoginData(mContext: Context, response: LoginResponse) {
         if (mPrefs == null) {
@@ -29,6 +45,7 @@ open class AppPreference {
         val gson = Gson()
         val json = gson.toJson(response)
         prefsEditor.putString(PREF_USER_DATA, json)
+        prefsEditor.putBoolean(PREF_IS_LOGGED_ID, true)
         prefsEditor.commit()
     }
 
