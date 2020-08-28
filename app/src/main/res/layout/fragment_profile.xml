@@ -238,7 +238,7 @@
                             android:id="@+id/ivTabGallery"
                             android:layout_width="@dimen/_30sdp"
                             android:layout_height="@dimen/_30sdp"
-                            android:src="@drawable/nine"
+                            android:src="@drawable/icn_grid"
                             android:tint="@drawable/selector_color_gray_yellow" />
 
                         <View

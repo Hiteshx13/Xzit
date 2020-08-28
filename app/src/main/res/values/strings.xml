@@ -176,6 +176,8 @@
     <string name="last_name">Last Name</string>
     <string name="please_enter_gender">Please enter gender</string>
     <string name="please_enter_website">Please enter website</string>
+    <string name="you_are_now_officially_an_xzit_nmember_time_to_live_an_nexperience">You are now officially an XZIT \nmember. Time To Live An \nExperience !</string>
+    <string name="upcoming">Upcoming</string>
 
 
 </resources>

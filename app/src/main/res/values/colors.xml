@@ -5,6 +5,7 @@
     <color name="colorPrimaryDark">#eab000</color>
     <color name="colorAccent">#eab000</color>
     <color name="colorYellow">#eab000</color>
+    <color name="colorViolet">#B100FF</color>
     <color name="colorYellowLight">#33EAB000</color>
     <color name="colorAccentlight">#0AEAB000</color>
     <color name="textColor">#333333</color>
@@ -17,6 +18,7 @@
     <color name="lightWhite">#80FFFFFF</color>
     <color name="colorLightBlack">#373737</color>
     <color name="colorBlackStrip">#D1D1D1</color>
+    <color name="colorRed">#FF0031</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBlackLight">#1F1F1F</color>
     <color name="colorBlackNotification">#424343</color>
@@ -29,5 +31,8 @@
     <color name="colorGrayTextDark">#373737</color>
     <color name="colorGrayTextLight">#4B4B4B</color>
     <color name="colorGrayTextHint">#801D2226</color>
+    <color name="colorLightBlue">#878787</color>
+    <color name="colorLightBack">#2D2D2D</color>
+    <color name="colorLightWhite">#BFBFBF</color>
 
 </resources>

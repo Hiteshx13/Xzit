@@ -51,9 +51,10 @@
                     android:layout_marginTop="@dimen/_20sdp"
                     android:fontFamily="@font/quicksand_bold"
                     android:gravity="center_horizontal"
-                    android:text="You are now officially an XZIT \nmember. Time To Live An \nExperience !"
+                    android:text="@string/you_are_now_officially_an_xzit_nmember_time_to_live_an_nexperience"
                     android:textAlignment="center"
                     android:textSize="@dimen/_14ssp"
+                    android:textColor="@color/colorLightBlue"
                     tools:ignore="UnusedAttribute" />
 
                 <Button

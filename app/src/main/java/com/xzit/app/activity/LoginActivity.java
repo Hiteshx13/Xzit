@@ -82,7 +82,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignIn:
-                callLogin();
+                callLogin(false, "");
 
                 break;
             case R.id.txtsignup:
@@ -107,25 +107,30 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     }
 
 
-    void callLogin() {
+    void callLogin(boolean isSocial, String authType) {
 
         String strEmail = binding.etEmail.getText().toString().trim();
         String strPassword = binding.etPassword.getText().toString().trim();
 
-        if (strEmail.isEmpty()) {
-            AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
-        } else if (!AppUtilsKt.isEmailValid(strEmail)) {
-            AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
-        } else if (strPassword.isEmpty()) {
-            AppUtilsKt.showToast(mContext, getString(R.string.please_enter_password));
-        } else {
 
-            HashMap<String, String> map = new HashMap<>();
-            map.put("postData[requestCase]", "login");
-            map.put("postData[username]", strEmail);
-            map.put("postData[password]", strPassword);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("postData[requestCase]", "login");
+        if (isSocial) {
+            map.put("postData[authuid]", "1234");
+            map.put("postData[authType]", authType);
             repository.callLogin(mContext, map);
-
+        } else {
+            if (strEmail.isEmpty()) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
+            } else if (!AppUtilsKt.isEmailValid(strEmail)) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
+            } else if (strPassword.isEmpty()) {
+                AppUtilsKt.showToast(mContext, getString(R.string.please_enter_password));
+            } else {
+                map.put("postData[username]", strEmail);
+                map.put("postData[password]", strPassword);
+                repository.callLogin(mContext, map);
+            }
         }
     }
 
@@ -145,12 +150,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             updateUI(account);
         } catch (ApiException e) {
             Log.w("TAG", "signInResult:failed code=" + e.getStatusCode());
-            updateUI(null);
+           // updateUI(null);
         }
     }
 
     void updateUI(GoogleSignInAccount account) {
         Log.w("TAG", "signInResult:failed code=");
+        callLogin(true, "GMAIL");
     }
 
 }

@@ -16,7 +16,10 @@ import com.google.firebase.iid.FirebaseInstanceId;
 import com.xzit.app.R;
 import com.xzit.app.databinding.ActivitySelectLoginBinding;
 import com.xzit.app.listener.OnDialogClickListener;
+import com.xzit.app.repository.LoginRepository;
 import com.xzit.app.repository.MasterDataRepository;
+import com.xzit.app.retrofit.model.response.login.LoginResponse;
+import com.xzit.app.retrofit.model.response.login.Pref;
 import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse;
 import com.xzit.app.utils.AppPreference;
 import com.xzit.app.utils.DialogUtilsKt;
@@ -24,6 +27,7 @@ import com.xzit.app.utils.DialogUtilsKt;
 import java.util.Arrays;
 import java.util.HashMap;
 
+import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
 
 public class SelectLoginActivity extends BaseActivity implements View.OnClickListener {
@@ -34,6 +38,7 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
     ActivitySelectLoginBinding binding;
     CallbackManager callbackManager;
     MasterDataRepository repository;
+    private LoginRepository loginRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,7 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
         // remove title
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_login);
         repository = new MasterDataRepository();
+        loginRepository = new LoginRepository();
         callbackManager = CallbackManager.Factory.create();
 
         binding.btnFacebook.setPermissions(Arrays.asList("email"));
@@ -76,6 +82,13 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
 
             @Override
             public void onError(FacebookException exception) {
+
+                HashMap<String, String> map = new HashMap<>();
+                map.put("postData[requestCase]", "login");
+                map.put("postData[authuid]", "1234");
+                map.put("postData[authType]", "FACEBOOK");
+                loginRepository.callLogin(mContext, map);
+
                 Log.e("", "");
             }
         });
@@ -99,7 +112,34 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
                 }
             }
         });
+
+        loginRepository.getLoginData().observe(this, new Observer<LoginResponse>() {
+            @Override
+            public void onChanged(LoginResponse response) {
+                if (response != null && response.getStatus() == RESP_API_SUCCESS) {
+                    preference.saveLoginData(mContext, response);
+                    Pref pref = response.getResponse().get(0).getPref();
+                    Intent intentDashboard = new Intent(mContext, PreferenceMusicActivity.class);
+                    if (pref.getFood().size() > 0 || pref.getMusic().size() > 0 || pref.getVenue().size() > 0) {
+                        intentDashboard = new Intent(mContext, DashboardActivity.class);
+                    }
+                    startActivity(intentDashboard);
+                    finish();
+
+                } else {
+                    DialogUtilsKt.showMessageDialog(mContext, response.getMessage(), false, new OnDialogClickListener() {
+                        @Override
+                        public void onButtonClicked(Boolean value) {
+
+                        }
+                    });
+                }
+            }
+        });
     }
+
+
+
 
     @Override
     public void onClick(View v) {
