@@ -47,6 +47,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
             listDummy.add("Test$i")
         }
         binding?.ivProfile?.setOnClickListener(this)
+        binding?.llAddContact?.setOnClickListener(this)
 
         val userdata: LoginResponse = preference.getUserData(mContext)
         binding?.tvUserName?.text = userdata.getResponse()?.get(0)?.username
@@ -58,7 +59,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
 
 
     private fun setCategory() {
-        listCategory =preference.getMasterData(mContext).Response?.CATAGORY_LIST
+        listCategory = preference.getMasterData(mContext).Response?.CATAGORY_LIST
         binding!!.rvCategory.setHasFixedSize(true)
         binding!!.rvCategory.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         categoryAdapter = DashboardCategoryAdater(mContext, listCategory)
@@ -101,6 +102,9 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
         when (v?.id) {
             R.id.ivProfile -> {
                 (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(), true)
+            }
+            R.id.llAddContact -> {
+                (mActivity as DashboardActivity).addFragment(UserListingFragment.newInstance(), true)
             }
         }
     }

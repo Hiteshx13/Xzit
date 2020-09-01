@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
+import com.xzit.app.activity.DashboardActivity
 import com.xzit.app.activity.EditProfileActivity
 import com.xzit.app.activity.SettingsActivity
 import com.xzit.app.activity.XzitApp.preference
@@ -48,6 +49,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener {
         binding?.ivSettings?.setOnClickListener(this)
         binding?.llTabGallery?.setOnClickListener(this)
         binding?.llTabContacts?.setOnClickListener(this)
+        binding?.llAddContact?.setOnClickListener(this)
         binding?.llTabGallery?.callOnClick()
     }
 
@@ -57,6 +59,9 @@ class ProfileFragment : BaseFragment(), View.OnClickListener {
         when (v?.id) {
             R.id.imgbackscreen -> {
                 // (mActivity as ProfileActivity).
+            }
+            R.id.llAddContact -> {
+                (mActivity as DashboardActivity).addFragment(UserListingFragment.newInstance(), true)
             }
 
             R.id.tvEditProfile

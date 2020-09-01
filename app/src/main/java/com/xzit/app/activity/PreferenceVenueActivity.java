@@ -13,7 +13,7 @@ import com.xzit.app.adapter.PreferenceVenueAdapter;
 import com.xzit.app.databinding.ActivityPreferenceVenueBinding;
 import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.PreferenceRepository;
-import com.xzit.app.retrofit.model.response.login.LoginResponse;
+import com.xzit.app.retrofit.model.response.login.LoginData;
 import com.xzit.app.retrofit.model.response.masterdata.VENUETYPE;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
 import com.xzit.app.utils.AppPreference;
@@ -23,6 +23,8 @@ import com.xzit.app.utils.DialogUtilsKt;
 import java.util.HashMap;
 import java.util.List;
 
+import static com.xzit.app.activity.XzitApp.getAuthToken;
+import static com.xzit.app.activity.XzitApp.getLoginUserData;
 import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
 
@@ -95,15 +97,15 @@ public class PreferenceVenueActivity extends BaseActivity {
 
     void callPreference() {
         AppPreference preference = new AppPreference();
-        LoginResponse userdata = preference.getUserData(mContext);
+        LoginData userdata = getLoginUserData();
 
         HashMap<String, String> map = new HashMap<>();
         map.put("postData[requestCase]", "addPreferenceToUser");
-        map.put("postData[userId]", userdata.getResponse().get(0).getUserId());
-        map.put("postData[clientId]", userdata.getResponse().get(0).getClientId());
+        map.put("postData[userId]", userdata.getUserId());
+        map.put("postData[clientId]", userdata.getClientId());
         map.put("postData[prefType]", "VENUE");
         map.put("postData[prefArr]", mAdapter.getSelection());
-        repository.callPreference(mContext, map, userdata.getAuthToken());
+        repository.callPreference(mContext, map, getAuthToken());
 
     }
 }

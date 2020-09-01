@@ -12,13 +12,15 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
+import static com.xzit.app.activity.XzitApp.getAuthToken;
 import static com.xzit.app.activity.XzitApp.preference;
 
 
 public class ApiClient extends BaseActivity {
 
 
-    public static final String BASE_URL = "http://35.182.23.72";
+    public static final String BASE_URL = "http://3.96.139.216";
+    // http://3.96.139.216/xzitAdmin/xzitProjext/getData.php
     private static Retrofit retrofit = null;
 
 
@@ -37,8 +39,8 @@ public class ApiClient extends BaseActivity {
                         okhttp3.Request.Builder newRequest = chain.request().newBuilder();
 
                         newRequest.addHeader("Content-Type", "application/x-www-form-urlencoded");
-                        if(preference.getUserData()!=null) {
-                            newRequest.addHeader("Authorization", "Bearer " + preference.getUserData().getAuthToken());
+                        if (preference.isLoggedIn() && preference.getUserData() != null) {
+                            newRequest.addHeader("Authorization", "Bearer " + getAuthToken());
                         }
                         return chain.proceed(newRequest.build());
                     }

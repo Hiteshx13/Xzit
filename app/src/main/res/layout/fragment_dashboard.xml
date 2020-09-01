@@ -84,8 +84,7 @@
                         android:layout_marginLeft="@dimen/_20sdp"
                         android:layout_marginEnd="@dimen/_10sdp"
                         android:layout_marginRight="@dimen/_10sdp"
-                        android:layout_toStartOf="@+id/ivFilter"
-                        android:layout_toLeftOf="@+id/ivFilter"
+                        android:layout_toStartOf="@+id/llAddContact"
                         android:background="@drawable/drawable_white_rounded"
                         android:drawableStart="@drawable/ic_search_small"
                         android:drawableLeft="@drawable/ic_search_small"
@@ -99,15 +98,43 @@
                         android:paddingRight="@dimen/_10sdp"
                         android:textSize="@dimen/_12ssp" />
 
+                    <LinearLayout
+                        android:id="@+id/llAddContact"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="@dimen/_15sdp"
+                        android:layout_marginLeft="@dimen/_15sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_toStartOf="@+id/ivFilter"
+                        android:layout_toLeftOf="@+id/ivFilter"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="@dimen/_18sdp"
+                            android:layout_height="@dimen/_18sdp"
+                            android:src="@drawable/ic_add_user"
+                            app:tint="@color/colorWhite" />
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_3sdp"
+                            android:fontFamily="@font/quicksand_regular"
+                            android:text="@string/add_contact"
+                            android:textColor="@color/colorWhite"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/ivFilter"
                         android:layout_width="@dimen/_35sdp"
                         android:layout_height="@dimen/_35sdp"
                         android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
                         android:layout_centerVertical="true"
                         android:layout_marginEnd="@dimen/_9sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
                         android:background="@drawable/drawable_white_rounded"
                         android:padding="@dimen/_9sdp"
                         android:src="@drawable/ic_filter" />
@@ -132,10 +159,10 @@
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCategory"
-                android:layout_marginTop="@dimen/_10sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/txtCategory" />
+                android:layout_below="@+id/txtCategory"
+                android:layout_marginTop="@dimen/_10sdp" />
 
             <RelativeLayout
                 android:id="@+id/rlVenue"

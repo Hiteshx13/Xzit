@@ -14,6 +14,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -135,6 +136,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         binding.imgbackscreen.setOnClickListener(this);
         binding.imgGoogle.setOnClickListener(this);
         binding.ivProfile.setOnClickListener(this);
+        binding.textsignin.setOnClickListener(this);
 
         binding.spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -182,7 +184,9 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 Intent intentEditprofile = new Intent(this, EditProfileActivity.class);
                 startActivity(intentEditprofile);
                 break;
-
+            case R.id.textsignin:
+                Intent intentSignIn = new Intent(RegistrationNextActivity.this, LoginActivity.class);
+                startActivity(intentSignIn);
             case R.id.ivProfile:
                 if (PermissionUtils.askForPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, REQ_WRITE_EXST)
                 ) {
@@ -252,28 +256,46 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 File file = new File(profileUri.getPath());
                 RequestBody fbody = RequestBody.create(MediaType.parse("image/*"),
                         file);
-//                repository.callSignUp(mContext,
-//                        getRequestBody("signup"),
-//                        getRequestBody("BUSINESS"),
-//                        getRequestBody(signUpRequest.getBusinessName()),
-//                        getRequestBody(signUpRequest.getEmail()),
-//                        getRequestBody(signUpRequest.getPassword()),
-//                        getRequestBody(signUpRequest.getConfPassword()),
-//                        getRequestBody(strUserName),
-//                        getRequestBody(strTelephone),
-//                        getRequestBody(strCategory),
-//                        getRequestBody(strTelephone),
-//                        getRequestBody(strWebsite),
-//                        getRequestBody(strBusinessHours),
-//                        getMultiPartBody("/storage/emulated/0/image.jpg")
-//                );
-                repository.callSignUp(mContext, map);
+                repository.callSignUp(mContext,
+                        getRequestBody("signup"),
+                        getRequestBody("BUSINESS"),
+                        getRequestBody(signUpRequest.getBusinessName()),
+                        getRequestBody(signUpRequest.getEmail()),
+                        getRequestBody(signUpRequest.getPassword()),
+                        getRequestBody(signUpRequest.getConfPassword()),
+                        getRequestBody(strUserName),
+                        getRequestBody(strTelephone),
+                        getRequestBody(strCategory),
+                        getRequestBody(strTelephone),
+                        getRequestBody(strWebsite),
+                        getRequestBody(strBusinessHours),
+                        getMultiPartBody("/storage/emulated/0/image.jpg")
+                );
+//                repository.callSignUp(mContext, map);
             } else {
                 repository.callSignUp(mContext, map);
             }
         }
     }
 
+//    private HashMap<String, RequestBody> getParamsRequestBody(HashMap<String, String> param)  {
+//        HashMap<String, RequestBody> resultParams = new HashMap<String, RequestBody>();
+//
+////        for (int i=0;i<param.size();i++) {
+////            int body = param.get(i) { RequestBody.create("text/plain".toMediaTypeOrNull(), it) }
+////            body?.let { resultParams.put(key, it) }
+////        }
+//
+//        if (!TextUtils.isEmpty(userImages)) {
+//            File file = new File(profileUri.getPath());
+//            RequestBody fbody = RequestBody.create(MediaType.parse("image/*"),
+//                    file);
+//           // val reqFile = RequestBody.create("multipart/form-data".toMediaTypeOrNull(), file);
+//            val imageParams = ApiParam.IMAGES + "\";filename=\"${file.name}\""
+//            resultParams.put(imageParams,reqFile);
+//        }
+//        return resultParams
+//    }
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     public String getRealPathFromURI(Uri contentUri) {
         // Will return "image:x*"
@@ -314,10 +336,8 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         File file = new File(imagePath);
         okhttp3.RequestBody requestFile =
                 okhttp3.RequestBody.create(okhttp3.MediaType.parse("multipart/form-data"), file);
-
-// MultipartBody.Part is used to send also the actual file name
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("image", file.getName(), requestFile);
+                MultipartBody.Part.createFormData("attachmentName["+0+"]","", requestFile);
 
         return body;
     }

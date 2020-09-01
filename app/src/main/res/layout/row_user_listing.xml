@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rlRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical"
+    android:padding="@dimen/_10sdp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProfile"
+        android:layout_width="@dimen/_36sdp"
+        android:layout_height="@dimen/_36sdp"
+        android:src="@drawable/demo"
+        app:civ_border_color="@color/colorWhite"
+        app:civ_border_width="@dimen/_3sdp" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_9sdp"
+        android:layout_marginLeft="@dimen/_9sdp"
+        android:layout_toStartOf="@+id/tvTime"
+        android:layout_toLeftOf="@+id/tvTime"
+        android:layout_toEndOf="@+id/ivProfile"
+        android:layout_toRightOf="@+id/ivProfile"
+        android:fontFamily="@font/poppins_medium"
+        android:text="Jack Sparrow"
+        android:textColor="@color/textColor"
+        android:textSize="@dimen/_12ssp"
+        tools:ignore="UnknownIdInLayout" />
+
+    <TextView
+        android:id="@+id/tvAddFriendUnfriend"
+        android:layout_width="@dimen/_65sdp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:background="@drawable/selctor_yellow_white_bordered"
+        android:gravity="center"
+        android:paddingTop="@dimen/_3sdp"
+        android:paddingBottom="@dimen/_3sdp"
+        android:text="Add Friend"
+        android:fontFamily="@font/quicksand_regular"
+        android:textColor="@drawable/selector_color_white_yellow"
+        android:textSize="@dimen/_9ssp" />
+</RelativeLayout>

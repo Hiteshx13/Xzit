@@ -3,6 +3,8 @@ package com.xzit.app.activity;
 import android.app.Application;
 import android.content.Context;
 
+import com.xzit.app.retrofit.model.response.login.LoginData;
+import com.xzit.app.retrofit.model.response.login.LoginResponse;
 import com.xzit.app.utils.AppPreference;
 
 public class XzitApp extends Application {
@@ -15,5 +17,13 @@ public class XzitApp extends Application {
         super.onCreate();
         mContext = this;
         preference = new AppPreference();
+    }
+
+    public static LoginData getLoginUserData() {
+        return preference.getUserData();
+    }
+
+    public static String getAuthToken() {
+        return preference.getAuthToken();
     }
 }

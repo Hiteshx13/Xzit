@@ -8,7 +8,9 @@ import com.xzit.app.retrofit.model.response.login.LoginResponse;
 import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse;
+import com.xzit.app.retrofit.model.response.userlisting.UserListingResponse;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
@@ -19,6 +21,7 @@ import retrofit2.http.Header;
 import retrofit2.http.Multipart;
 import retrofit2.http.POST;
 import retrofit2.http.Part;
+import retrofit2.http.PartMap;
 
 
 public interface ApiInterface {
@@ -53,6 +56,11 @@ public interface ApiInterface {
     Call<PreferenceResponse> callPreference(
             @FieldMap Map<String, String> postData);
 
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<UserListingResponse> callUserListing(
+            @FieldMap Map<String, String> postData);
+
     @Multipart
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<RegistrationResponse> callRegisterData(
@@ -77,4 +85,8 @@ public interface ApiInterface {
                                                 @Part("file\"; filename=\"image.png\" ") RequestBody file,
                                                 @Part("FirstName") RequestBody fname,
                                                 @Part("Id") RequestBody id);
+
+    @Multipart
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<RegistrationResponse>  apiRegister(@PartMap HashMap<String, RequestBody> params);
 }

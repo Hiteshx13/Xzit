@@ -4,7 +4,12 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.biometric.BiometricManager;
+import androidx.biometric.BiometricPrompt;
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 
@@ -18,10 +23,12 @@ import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.LoginRepository;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
 import com.xzit.app.retrofit.model.response.login.Pref;
+import com.xzit.app.utils.AppPreference;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
 
 import java.util.HashMap;
+import java.util.concurrent.Executor;
 
 import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
@@ -29,6 +36,10 @@ import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
 public class LoginActivity extends BaseActivity implements View.OnClickListener {
     private ActivitySignInBinding binding;
     private LoginRepository repository;
+    private Executor executor;
+    private BiometricPrompt biometricPrompt;
+    private BiometricPrompt.PromptInfo promptInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,11 +47,74 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         initialization();
         listener();
         setObserver();
+
+        if (new AppPreference().isLoggedIn()) {
+
+            BiometricManager biometricManager = BiometricManager.from(this);
+            switch (biometricManager.canAuthenticate()) {
+                case BiometricManager.BIOMETRIC_SUCCESS:
+
+                    performBiometricAuthentication();
+                    Log.d("MY_APP_TAG", "App can authenticate using biometrics.");
+                    break;
+                case BiometricManager.BIOMETRIC_ERROR_NO_HARDWARE:
+                    Log.e("MY_APP_TAG", "No biometric features available on this device.");
+                    break;
+                case BiometricManager.BIOMETRIC_ERROR_HW_UNAVAILABLE:
+                    Log.e("MY_APP_TAG", "Biometric features are currently unavailable.");
+                    break;
+                case BiometricManager.BIOMETRIC_ERROR_NONE_ENROLLED:
+                    Log.e("MY_APP_TAG", "The user hasn't associated " +
+                            "any biometric credentials with their account.");
+                    break;
+            }
+        }
+    }
+
+    void performBiometricAuthentication() {
+        executor = ContextCompat.getMainExecutor(this);
+        biometricPrompt = new BiometricPrompt(LoginActivity.this,
+                executor, new BiometricPrompt.AuthenticationCallback() {
+            @Override
+            public void onAuthenticationError(int errorCode,
+                                              @NonNull CharSequence errString) {
+                super.onAuthenticationError(errorCode, errString);
+                Toast.makeText(getApplicationContext(),
+                        "Authentication error: " + errString, Toast.LENGTH_SHORT)
+                        .show();
+            }
+
+            @Override
+            public void onAuthenticationSucceeded(
+                    @NonNull BiometricPrompt.AuthenticationResult result) {
+                super.onAuthenticationSucceeded(result);
+                Toast.makeText(getApplicationContext(),
+                        "Authentication succeeded!", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onAuthenticationFailed() {
+                super.onAuthenticationFailed();
+                Toast.makeText(getApplicationContext(), "Authentication failed",
+                        Toast.LENGTH_SHORT)
+                        .show();
+            }
+        });
+
+        promptInfo = new BiometricPrompt.PromptInfo.Builder()
+                .setTitle("Biometric login for my app")
+                .setSubtitle("Log in using your biometric credential")
+                .setNegativeButtonText("Use account password")
+                .build();
+
+        biometricPrompt.authenticate(promptInfo);
     }
 
     private void initialization() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_sign_in);
         repository = new LoginRepository();
+
+
     }
 
     private void listener() {
@@ -150,7 +224,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             updateUI(account);
         } catch (ApiException e) {
             Log.w("TAG", "signInResult:failed code=" + e.getStatusCode());
-           // updateUI(null);
+            // updateUI(null);
         }
     }
 

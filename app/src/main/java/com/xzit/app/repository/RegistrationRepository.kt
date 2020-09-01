@@ -64,6 +64,7 @@ open class RegistrationRepository : BaseRepository() {
     ) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
+           // apiInterface.apiRegister();
             apiInterface.callRegisterData(reqCase,
                     accountType, businessName, email, password, confPassword, userName, title, category,
                     phone,

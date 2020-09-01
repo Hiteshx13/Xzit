@@ -3,7 +3,9 @@ package com.xzit.app.fragment
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProviders
 import com.xzit.app.activity.BaseActivity
+import com.xzit.app.viewmodel.BaseViewModel
 
 open class BaseFragment : Fragment() {
 
@@ -19,4 +21,10 @@ open class BaseFragment : Fragment() {
     fun getParentActivity():BaseActivity{
         return mActivity as BaseActivity
     }
+
+    fun replaceFragment(){
+        var baseActivity=mActivity as BaseActivity
+       // baseActivity.add
+    }
+
 }

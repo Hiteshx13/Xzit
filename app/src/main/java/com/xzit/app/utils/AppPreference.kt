@@ -6,6 +6,7 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.xzit.app.R
 import com.xzit.app.activity.XzitApp.mContext
+import com.xzit.app.retrofit.model.response.login.LoginData
 import com.xzit.app.retrofit.model.response.login.LoginResponse
 import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse
 
@@ -28,7 +29,7 @@ open class AppPreference {
         return mPrefs!!.getBoolean(PREF_IS_LOGGED_ID, false)
     }
 
-    open fun logoutUser(){
+    open fun logoutUser() {
         if (mPrefs == null) {
             mPrefs = mContext.getSharedPreferences(mContext.getString(R.string.app_name), MODE_PRIVATE)
         }
@@ -36,6 +37,7 @@ open class AppPreference {
         prefsEditor.putBoolean(PREF_IS_LOGGED_ID, false)
         prefsEditor.commit()
     }
+
     /**save login data**/
     open fun saveLoginData(mContext: Context, response: LoginResponse) {
         if (mPrefs == null) {
@@ -59,14 +61,25 @@ open class AppPreference {
         return obj
     }
 
-    open fun getUserData(): LoginResponse? {
+    open fun getUserData(): LoginData? {
         val gson = Gson()
         val json = mPrefs!!.getString(PREF_USER_DATA, null)
         if (json == null) {
             return null
         } else {
             val obj: LoginResponse = gson.fromJson(json, LoginResponse::class.java)
-            return obj
+            return obj.getResponse()?.get(0)
+        }
+    }
+
+    open fun getAuthToken(): String? {
+        val gson = Gson()
+        val json = mPrefs!!.getString(PREF_USER_DATA, null)
+        if (json == null) {
+            return null
+        } else {
+            val obj: LoginResponse = gson.fromJson(json, LoginResponse::class.java)
+            return obj.getAuthToken()
         }
     }
 
