@@ -2,7 +2,10 @@ package com.xzit.app.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Toast;
 
@@ -39,6 +42,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     private Executor executor;
     private BiometricPrompt biometricPrompt;
     private BiometricPrompt.PromptInfo promptInfo;
+    private boolean isShowPassword=false;
 
 
     @Override
@@ -102,7 +106,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         });
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Biometric login for my app")
+                .setTitle(getString(R.string.app_name))
                 .setSubtitle("Log in using your biometric credential")
                 .setNegativeButtonText("Use account password")
                 .build();
@@ -123,6 +127,23 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         binding.btnSignIn.setOnClickListener(this);
         binding.btnGoogle.setOnClickListener(this);
         binding.txtForgotPassword.setOnClickListener(this);
+        binding.etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (event.getRawX() >= (binding.etPassword.getRight())) {
+                        isShowPassword=!isShowPassword;
+                        if(isShowPassword){
+                            binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        }else{
+                            binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     private void setObserver() {
@@ -192,7 +213,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
         if (isSocial) {
             map.put("postData[authuid]", "1234");
             map.put("postData[authType]", authType);
-            repository.callLogin(mContext, map);
+            repository.callApi(mContext, map);
         } else {
             if (strEmail.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
@@ -203,7 +224,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
             } else {
                 map.put("postData[username]", strEmail);
                 map.put("postData[password]", strPassword);
-                repository.callLogin(mContext, map);
+                repository.callApi(mContext, map);
             }
         }
     }

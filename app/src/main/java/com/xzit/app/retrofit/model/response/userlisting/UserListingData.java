@@ -3,14 +3,22 @@ package com.xzit.app.retrofit.model.response.userlisting;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.List;
+
 public class UserListingData {
 
     @SerializedName("title")
     @Expose
     private String title;
-    @SerializedName("fullname")
+    @SerializedName("username")
     @Expose
-    private String fullname;
+    private String username;
+    @SerializedName("businessname")
+    @Expose
+    private String businessname;
+    @SerializedName("userType")
+    @Expose
+    private String userType;
     @SerializedName("phone")
     @Expose
     private String phone;
@@ -20,6 +28,9 @@ public class UserListingData {
     @SerializedName("userId")
     @Expose
     private String userId;
+    @SerializedName("status")
+    @Expose
+    private String status;
 
     public String getTitle() {
         return title;
@@ -29,12 +40,28 @@ public class UserListingData {
         this.title = title;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getUsername() {
+        return username;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getBusinessname() {
+        return businessname;
+    }
+
+    public void setBusinessname(String businessname) {
+        this.businessname = businessname;
+    }
+
+    public String getUserType() {
+        return userType;
+    }
+
+    public void setUserType(String userType) {
+        this.userType = userType;
     }
 
     public String getPhone() {
@@ -60,4 +87,13 @@ public class UserListingData {
     public void setUserId(String userId) {
         this.userId = userId;
     }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
 }

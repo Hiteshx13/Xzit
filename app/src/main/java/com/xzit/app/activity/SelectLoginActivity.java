@@ -87,7 +87,7 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
                 map.put("postData[requestCase]", "login");
                 map.put("postData[authuid]", "1234");
                 map.put("postData[authType]", "FACEBOOK");
-                loginRepository.callLogin(mContext, map);
+                loginRepository.callApi(mContext, map);
 
                 Log.e("", "");
             }

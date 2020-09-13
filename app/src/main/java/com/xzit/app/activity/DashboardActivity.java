@@ -4,23 +4,30 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.google.firebase.iid.FirebaseInstanceId;
 import com.xzit.app.R;
 import com.xzit.app.databinding.ActivityDashboardBinding;
 import com.xzit.app.fragment.ChatFragment;
 import com.xzit.app.fragment.DashboardFragment;
 import com.xzit.app.fragment.DiscoverFragment;
 import com.xzit.app.fragment.InvitationFragment;
+import com.xzit.app.repository.DashboardRepository;
+import com.xzit.app.retrofit.model.response.login.LoginData;
 import com.xzit.app.utils.AppUtilsKt;
+
+import java.util.HashMap;
+
+import static com.xzit.app.activity.XzitApp.getLoginUserData;
 
 public class DashboardActivity extends BaseActivity implements View.OnClickListener {
 
     private ActivityDashboardBinding binding;
+    private DashboardRepository repository;
     private int TAB = 0;
 
     @Override
@@ -53,8 +60,16 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
     }
 
     private void initialization() {
+        repository = new DashboardRepository();
 
-//        addFragment(DashboardFragment.Companion.newInstance(), false);
+        LoginData userdata = getLoginUserData();
+        HashMap<String, String> map = new HashMap<>();
+        map.put("postData[requestCase]", "fcmdeviceTokenUpdate");
+        map.put("postData[userId]", userdata.getUserId());
+        map.put("postData[fcmToken]", FirebaseInstanceId.getInstance().getToken());
+        map.put("postData[deviceType]", "ANDROID");
+
+        repository.callApi(mContext, map);
     }
 
     public void addFragment(Fragment fragment, boolean isBackStack) {
@@ -100,7 +115,7 @@ public class DashboardActivity extends BaseActivity implements View.OnClickListe
                 setSelection(view);
                 break;
             case R.id.cvCamera:
-                startActivity(new Intent(this,AddStoryActivity.class));
+                startActivity(new Intent(this, AddStoryActivity.class));
                 break;
         }
     }

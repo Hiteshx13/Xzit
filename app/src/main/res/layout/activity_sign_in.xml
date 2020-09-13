@@ -90,7 +90,7 @@
                     card_view:cardCornerRadius="@dimen/_5sdp"
                     card_view:cardElevation="@dimen/_7sdp">
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/etEmail"
                         style="@style/StyleEditText"
                         android:layout_width="match_parent"
@@ -117,7 +117,7 @@
                     card_view:cardCornerRadius="@dimen/_5sdp"
                     card_view:cardElevation="@dimen/_7sdp">
 
-                    <EditText
+                    <androidx.appcompat.widget.AppCompatEditText
                         android:id="@+id/etPassword"
                         style="@style/StyleEditText"
                         android:layout_width="match_parent"

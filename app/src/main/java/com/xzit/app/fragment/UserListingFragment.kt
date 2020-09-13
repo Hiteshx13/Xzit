@@ -56,6 +56,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
     }
 
     fun initListener() {
+        binding?.ivBack?.setOnClickListener(this)
     }
 
     private fun setObserver() {
@@ -71,7 +72,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
     private fun updateUI(data: List<UserListingData>) {
         binding?.rrFriend?.setHasFixedSize(true)
         binding?.rrFriend?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-        mAdapter = UserListAdapter(data, object : OnButtonClickListener {
+        mAdapter = UserListAdapter(mContext,data, object : OnButtonClickListener {
             override fun onClick(position: Int) {
                 callFriendUnfriend(data.get(position).userId)
             }
@@ -93,8 +94,8 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         when (v?.id) {
-            R.id.imgbackscreen -> {
-
+            R.id.ivBack -> {
+                mActivity.onBackPressed()
             }
         }
     }

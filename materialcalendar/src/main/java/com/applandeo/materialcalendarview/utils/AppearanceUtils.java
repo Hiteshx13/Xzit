@@ -7,6 +7,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.applandeo.materialcalendarview.R;
@@ -46,7 +47,7 @@ public final class AppearanceUtils {
             return;
         }
 
-        ConstraintLayout calendarHeader = (ConstraintLayout) view.findViewById(R.id.calendarHeader);
+        RelativeLayout calendarHeader = (RelativeLayout) view.findViewById(R.id.calendarHeader);
         calendarHeader.setBackgroundColor(color);
     }
 
@@ -94,7 +95,7 @@ public final class AppearanceUtils {
     }
 
     public static void setHeaderVisibility(View view, int visibility) {
-        ConstraintLayout calendarHeader = view.findViewById(R.id.calendarHeader);
+        RelativeLayout calendarHeader = view.findViewById(R.id.calendarHeader);
         calendarHeader.setVisibility(visibility);
     }
 

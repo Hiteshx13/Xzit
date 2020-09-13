@@ -3,11 +3,13 @@ package com.xzit.app.retrofit;
 import com.squareup.okhttp.RequestBody;
 import com.xzit.app.retrofit.model.response.changepassword.ChangePasswordResponse;
 import com.xzit.app.retrofit.model.response.changepassword.ForgotPasswordResponse;
+import com.xzit.app.retrofit.model.response.dashboard.FCMTokenResponse;
 import com.xzit.app.retrofit.model.response.editprofile.EditProfileResponse;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
 import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse;
+import com.xzit.app.retrofit.model.response.userlisting.SendFriendRequestResponse;
 import com.xzit.app.retrofit.model.response.userlisting.UserListingResponse;
 
 import java.util.HashMap;
@@ -29,6 +31,10 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<LoginResponse> callLogin(@FieldMap Map<String, String> postData);
+
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<FCMTokenResponse> callUpdateFCMToken(@FieldMap Map<String, String> postData);
 
 
     @FormUrlEncoded
@@ -61,6 +67,11 @@ public interface ApiInterface {
     Call<UserListingResponse> callUserListing(
             @FieldMap Map<String, String> postData);
 
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<SendFriendRequestResponse> callFriendUnfriend(
+            @FieldMap Map<String, String> postData);
+
     @Multipart
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<RegistrationResponse> callRegisterData(
@@ -88,5 +99,5 @@ public interface ApiInterface {
 
     @Multipart
     @POST("/xzitAdmin/xzitProject/getData.php")
-    Call<RegistrationResponse>  apiRegister(@PartMap HashMap<String, RequestBody> params);
+    Call<RegistrationResponse> apiRegister(@PartMap HashMap<String, RequestBody> params);
 }

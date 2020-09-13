@@ -3,7 +3,10 @@ package com.xzit.app.activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
 
 import androidx.databinding.DataBindingUtil;
@@ -44,6 +47,8 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
     private String DOB = "";
     private RegistrationRepository repository;
     private SignUpRequest signUpRequest;
+    private boolean isShowPassword = false;
+    private boolean isShowConfPassword = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +86,42 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         binding.btnMale.setOnClickListener(this);
         binding.btnFemale.setOnClickListener(this);
         binding.etBirthDate.setOnClickListener(this);
+
+        binding.etPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (event.getRawX() >= (binding.etPassword.getRight())) {
+                        isShowPassword = !isShowPassword;
+                        if (isShowPassword) {
+                            binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        } else {
+                            binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
+
+        binding.etConfPassword.setOnTouchListener(new View.OnTouchListener() {
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                    if (event.getRawX() >= (binding.etConfPassword.getRight())) {
+                        isShowConfPassword = !isShowConfPassword;
+                        if (isShowConfPassword) {
+                            binding.etConfPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                        } else {
+                            binding.etConfPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                        }
+                        return true;
+                    }
+                }
+                return false;
+            }
+        });
     }
 
     @Override
@@ -197,7 +238,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_email));
             } else if (!isEmailValid(strEmail)) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
-            }else if (DOB.isEmpty()) {
+            } else if (DOB.isEmpty()) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_select_dob));
             } else if (!AppUtilsKt.isEmailValid(strEmail)) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_valid_email));
@@ -207,7 +248,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_conf_password));
             } else if (strConfPassword.length() < VALIDATION_password_length) {
                 AppUtilsKt.showToast(mContext, getString(R.string.please_enter_at_least_password));
-            }else if (!strPassword.equals(strConfPassword)) {
+            } else if (!strPassword.equals(strConfPassword)) {
                 AppUtilsKt.showToast(mContext, getString(R.string.password_does_not_match));
             } else {
                 isValid = true;

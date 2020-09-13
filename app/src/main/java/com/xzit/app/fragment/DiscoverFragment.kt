@@ -6,19 +6,24 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
+import com.xzit.app.activity.ChatActivity
 import com.xzit.app.activity.CreatEventActivity
 import com.xzit.app.activity.EditProfileActivity
 import com.xzit.app.activity.SettingsActivity
+import com.xzit.app.adapter.ChatAdapter
+import com.xzit.app.adapter.EventListAdapter
 import com.xzit.app.adapter.ProfileAdapter
 import com.xzit.app.databinding.FragmentDiscoverBinding
+import java.util.ArrayList
 
 class DiscoverFragment : BaseFragment(), View.OnClickListener {
 
     var binding: FragmentDiscoverBinding? = null
-    private var mAdapter: ProfileAdapter? = null
-    private var MyAdapterVenue: RecyclerView.Adapter<*>? = null
+    private var mAdapter: EventListAdapter? = null
+
 
     companion object {
         fun newInstance(): DiscoverFragment {
@@ -43,6 +48,19 @@ class DiscoverFragment : BaseFragment(), View.OnClickListener {
 //        binding?.llTabGallery?.setOnClickListener(this)
 //        binding?.llTabContacts?.setOnClickListener(this)
 //        binding?.llTabGallery?.callOnClick()
+        binding?.rvEvents?.setHasFixedSize(true)
+        binding?.rvEvents?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+
+        val input: MutableList<String> = ArrayList()
+        for (i in 0..20) {
+            input.add("Test$i")
+        }
+        mAdapter = EventListAdapter(input, object : EventListAdapter.OnChatClickListener {
+            override fun onClickChat(pos: Int) {
+                startActivity(Intent(mContext, ChatActivity::class.java))
+            }
+        })
+        binding?.rvEvents?.adapter = mAdapter
     }
 
 

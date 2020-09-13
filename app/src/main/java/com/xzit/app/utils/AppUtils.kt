@@ -17,7 +17,7 @@ const val SIGNUP_TYPE_USER = "signup_type_user"
 const val DASHBOARD_TAB = "dashboard_tab"
 const val REQ_LOGIN_WITH_GMAIL = 301
 const val REQ_SELECT_PHOTO_GALLERY = 111
-const val VALIDATION_password_length = 5
+const val VALIDATION_password_length = 6
 
 const val RESP_API_SUCCESS = 200
 

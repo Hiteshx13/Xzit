@@ -1,17 +1,18 @@
 package com.xzit.app.adapter;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
-import androidx.appcompat.widget.AppCompatImageView;
 import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
 import com.xzit.app.listener.OnButtonClickListener;
 import com.xzit.app.retrofit.model.response.userlisting.UserListingData;
+import com.xzit.app.utils.ImageUtils;
 
 import java.util.List;
 
@@ -20,9 +21,11 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHolder> {
     private List<UserListingData> values;
     private OnButtonClickListener listener;
+    private Context context;
 
-    public UserListAdapter(List<UserListingData> myDataset, OnButtonClickListener listener) {
+    public UserListAdapter(Context context, List<UserListingData> myDataset, OnButtonClickListener listener) {
         values = myDataset;
+        this.context = context;
         this.listener = listener;
     }
 
@@ -44,8 +47,10 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
     public void onBindViewHolder(UserListAdapter.ViewHolder holder, final int position) {
 
         final UserListingData model = values.get(position);
-        holder.tvName.setText(model.getFullname());
-
+        holder.tvName.setText(model.getBusinessname());
+        if (!model.getProfilePic().isEmpty() ) {
+            new ImageUtils().loadImage(context, model.getProfilePic(), holder.ivProfile);
+        }
     }
 
     @Override
