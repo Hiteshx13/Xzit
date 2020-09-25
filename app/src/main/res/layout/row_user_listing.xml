@@ -34,7 +34,7 @@
         android:textSize="@dimen/_12ssp"
         tools:ignore="UnknownIdInLayout" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvAddFriendUnfriend"
         android:layout_width="@dimen/_65sdp"
         android:layout_height="wrap_content"

@@ -15,7 +15,7 @@ import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.PreferenceRepository;
 import com.xzit.app.retrofit.model.response.login.LoginData;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
-import com.xzit.app.retrofit.model.response.masterdata.FOODTYPE;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
@@ -33,7 +33,7 @@ public class PreferenceFoodActivity extends BaseActivity {
     RecyclerView.LayoutManager recyclerViewLayoutManager;
     private ActivityPreferenceFoodBinding binding;
     private PreferenceFoodAdapter mAdapter;
-    private List<FOODTYPE> listFood;
+    private List<Subtype> listFood;
     private PreferenceRepository repository;
 
     @Override
@@ -55,7 +55,7 @@ public class PreferenceFoodActivity extends BaseActivity {
 
         binding.rrFoodPreference.setLayoutManager(recyclerViewLayoutManager);
 
-        listFood = preference.getMasterData(mContext).getResponse().getFOOD_TYPE();
+        listFood = preference.getMasterData(mContext).getResponse().get(0).getSubtype();
         mAdapter = new PreferenceFoodAdapter(mContext, R.layout.row_foodpreference, listFood);
 
         binding.rrFoodPreference.setAdapter(mAdapter);

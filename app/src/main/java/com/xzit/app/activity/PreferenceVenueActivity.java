@@ -1,6 +1,7 @@
 package com.xzit.app.activity;
 
 import android.content.Intent;
+import android.net.wifi.aware.SubscribeConfig;
 import android.os.Bundle;
 
 import androidx.databinding.DataBindingUtil;
@@ -14,7 +15,7 @@ import com.xzit.app.databinding.ActivityPreferenceVenueBinding;
 import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.PreferenceRepository;
 import com.xzit.app.retrofit.model.response.login.LoginData;
-import com.xzit.app.retrofit.model.response.masterdata.VENUETYPE;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
 import com.xzit.app.utils.AppPreference;
 import com.xzit.app.utils.AppUtilsKt;
@@ -34,7 +35,7 @@ public class PreferenceVenueActivity extends BaseActivity {
     private PreferenceVenueAdapter mAdapter;
     RecyclerView.LayoutManager recyclerViewLayoutManager;
     boolean isLongClicked = false;
-    private List<VENUETYPE> listVenue;
+    private List<Subtype> listVenue;
     private PreferenceRepository repository;
 
     @Override
@@ -53,7 +54,7 @@ public class PreferenceVenueActivity extends BaseActivity {
         recyclerViewLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
 
 
-        listVenue = preference.getMasterData(mContext).getResponse().getVENUE_TYPE();
+        listVenue = preference.getMasterData(mContext).getResponse().get(0).getSubtype();
 
         binding.rrVenuePreference.setLayoutManager(recyclerViewLayoutManager);
         mAdapter = new PreferenceVenueAdapter(mContext, R.layout.row_venuepreference, listVenue);

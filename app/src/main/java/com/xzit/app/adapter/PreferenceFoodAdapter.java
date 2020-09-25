@@ -11,33 +11,34 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.retrofit.model.response.masterdata.FOODTYPE;
-import com.xzit.app.utils.ImageUtils;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 
 import java.util.List;
 
 public class PreferenceFoodAdapter extends RecyclerView.Adapter<PreferenceFoodAdapter.ViewHolder> {
-    private List<FOODTYPE> listFood;
+    private List<Subtype> listFood;
     int mLayout;
     private Context mContext;
 
-    public PreferenceFoodAdapter(Context mContext, int mLayout, List<FOODTYPE> listFood) {
+    public PreferenceFoodAdapter(Context mContext, int mLayout, List<Subtype> listFood) {
         this.listFood = listFood;
         this.mLayout = mLayout;
         this.mContext = mContext;
     }
+
     public String getSelection() {
         String selection = "";
         for (int i = 0; i < listFood.size(); i++) {
-            if (listFood.get(i).isSelected()) {
-                selection = selection + listFood.get(i).getVALUE() + ",";
+            if (listFood.get(i).isSelected) {
+                selection = selection + listFood.get(i).getDisplayValue() + ",";
             }
         }
-        if(!selection.isEmpty()){
+        if (!selection.isEmpty()) {
             selection = selection.substring(0, selection.length() - 1);
         }
         return selection;
     }
+
     @Override
     public PreferenceFoodAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                                int viewType) {
@@ -54,24 +55,24 @@ public class PreferenceFoodAdapter extends RecyclerView.Adapter<PreferenceFoodAd
     public void onBindViewHolder(PreferenceFoodAdapter.ViewHolder holder, final int position) {
 
         int pos = position;
-        final FOODTYPE model = listFood.get(position);
-        holder.tvPrefName.setText(model.getVALUE());
-        if (!model.getURL().isEmpty()) {
-            ImageUtils imageUtils = new ImageUtils();
-            imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
-        }
+        final Subtype model = listFood.get(position);
+        holder.tvPrefName.setText(model.getDisplayValue());
+//        if (!model.getURL().isEmpty()) {
+//            ImageUtils imageUtils = new ImageUtils();
+//            imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
+//        }
 
 
         holder.rlRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (listFood.get(pos).isSelected()) {
-                    listFood.get(pos).setSelected(false);
+                if (listFood.get(pos).isSelected) {
+                    listFood.get(pos).isSelected = false;
                     holder.ivOverlay.setVisibility(View.GONE);
                     holder.ivOverlayBorder.setVisibility(View.GONE);
                 } else {
-                    listFood.get(pos).setSelected(true);
+                    listFood.get(pos).isSelected = true;
                     holder.ivOverlay.setVisibility(View.VISIBLE);
                     holder.ivOverlayBorder.setVisibility(View.VISIBLE);
                 }
@@ -90,6 +91,7 @@ public class PreferenceFoodAdapter extends RecyclerView.Adapter<PreferenceFoodAd
         RelativeLayout rlRoot;
         AppCompatImageView ivPreference, ivOverlay, ivOverlayBorder;
         AppCompatTextView tvPrefName;
+
         public ViewHolder(View v) {
             super(v);
             layout = v;

@@ -11,6 +11,7 @@ import com.xzit.app.R
 import com.xzit.app.activity.XzitApp
 import com.xzit.app.adapter.UserListAdapter
 import com.xzit.app.databinding.FragmentChatBinding
+import com.xzit.app.databinding.FragmentUserListingBinding
 import com.xzit.app.listener.OnButtonClickListener
 import com.xzit.app.listener.OnDialogClickListener
 import com.xzit.app.repository.UserListRepository
@@ -23,7 +24,7 @@ import java.util.*
 
 class UserListingFragment : BaseFragment(), View.OnClickListener {
 
-    var binding: FragmentChatBinding? = null
+    var binding: FragmentUserListingBinding? = null
     private var mAdapter: UserListAdapter? = null
     private lateinit var repository: UserListRepository
     private lateinit var userdata: LoginData
@@ -35,7 +36,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_chat, container, false)
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_user_listing, container, false)
         repository = UserListRepository()
         return binding?.root
     }

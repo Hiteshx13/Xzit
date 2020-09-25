@@ -44,7 +44,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener {
     }
 
     fun initListener() {
-        binding?.imgbackscreen?.setOnClickListener(this)
+        binding?.ivBack?.setOnClickListener(this)
         binding?.tvEditProfile?.setOnClickListener(this)
         binding?.ivSettings?.setOnClickListener(this)
         binding?.llTabGallery?.setOnClickListener(this)
@@ -57,8 +57,8 @@ class ProfileFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
 
         when (v?.id) {
-            R.id.imgbackscreen -> {
-                // (mActivity as ProfileActivity).
+            R.id.ivBack -> {
+                mActivity.onBackPressed()
             }
             R.id.llAddContact -> {
                 (mActivity as DashboardActivity).addFragment(UserListingFragment.newInstance(), true)

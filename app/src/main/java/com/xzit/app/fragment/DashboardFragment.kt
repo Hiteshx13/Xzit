@@ -2,12 +2,15 @@ package com.xzit.app.fragment
 
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.Display
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.akexorcist.snaptimepicker.SnapTimePickerDialog
+import com.akexorcist.snaptimepicker.extension.SnapTimePickerUtil
 import com.sandrlab.widgets.MetalRecyclerViewPager
 import com.xzit.app.R
 import com.xzit.app.activity.DashboardActivity
@@ -18,7 +21,7 @@ import com.xzit.app.adapter.DashboardRestaurentAdapter
 import com.xzit.app.adapter.RestaurentAdapter
 import com.xzit.app.databinding.FragmentDashboardBinding
 import com.xzit.app.retrofit.model.response.login.LoginResponse
-import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST
+import com.xzit.app.retrofit.model.response.masterdata.Subtype
 import java.util.*
 
 class DashboardFragment : BaseFragment(), View.OnClickListener {
@@ -26,7 +29,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
     var binding: FragmentDashboardBinding? = null
     var categoryAdapter: DashboardCategoryAdater? = null
     var restaurentAdapter: DashboardRestaurentAdapter? = null
-    var listCategory: List<CATAGORYLIST>? = null
+    var listCategory: List<Subtype>? = null
     val listDummy: ArrayList<String> = ArrayList()
 
     companion object {
@@ -46,7 +49,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
         for (i in 0..99) {
             listDummy.add("Test$i")
         }
-        binding?.ivProfile?.setOnClickListener(this)
+        binding?.llProfile?.setOnClickListener(this)
         binding?.llAddContact?.setOnClickListener(this)
 
         val userdata: LoginResponse = preference.getUserData(mContext)
@@ -59,7 +62,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
 
 
     private fun setCategory() {
-        listCategory = preference.getMasterData(mContext).Response?.CATAGORY_LIST
+        listCategory = preference.getMasterData(mContext).Response?.get(0)?.subtype
         binding!!.rvCategory.setHasFixedSize(true)
         binding!!.rvCategory.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         categoryAdapter = DashboardCategoryAdater(mContext, listCategory)
@@ -100,7 +103,14 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.ivProfile -> {
+            R.id.llProfile -> {
+                SnapTimePickerDialog.Builder().apply {
+                useViewModel()
+            }.build().show(mActivity.supportFragmentManager, SnapTimePickerDialog.TAG)
+
+            SnapTimePickerUtil.observe(this) { selectedHour: Int, selectedMinute: Int ->
+                Log.d(""+selectedHour,""+selectedMinute);
+            }
                 (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(), true)
             }
             R.id.llAddContact -> {

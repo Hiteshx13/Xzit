@@ -8,9 +8,9 @@ import androidx.appcompat.widget.AppCompatImageView
 import androidx.appcompat.widget.AppCompatTextView
 import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
-import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST
+import com.xzit.app.retrofit.model.response.masterdata.Subtype
 
-class DashboardCategoryAdater(var context: Context, private val listCategory: List<CATAGORYLIST>?) : RecyclerView.Adapter<DashboardCategoryAdater.ViewHolder?>() {
+class DashboardCategoryAdater(var context: Context, private val listCategory: List<Subtype>?) : RecyclerView.Adapter<DashboardCategoryAdater.ViewHolder?>() {
     override fun onCreateViewHolder(parent: ViewGroup,
                                     viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(
@@ -20,8 +20,8 @@ class DashboardCategoryAdater(var context: Context, private val listCategory: Li
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val model: CATAGORYLIST? = listCategory?.get(position) ?: null
-        holder.tvCategoryName.text =model?.VALUE
+        val model: Subtype? = listCategory?.get(position) ?: null
+        holder.tvCategoryName.text =model?.displayValue
     }
 
     override fun getItemCount(): Int {

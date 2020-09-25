@@ -15,7 +15,7 @@ import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.PreferenceRepository;
 import com.xzit.app.retrofit.model.response.login.LoginData;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
-import com.xzit.app.retrofit.model.response.masterdata.MUSICTYPE;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
@@ -33,7 +33,7 @@ public class PreferenceMusicActivity extends BaseActivity {
     private ActivityPreferenceMusicBinding binding;
     private PreferenceMusicAdapter mAdapter;
     RecyclerView.LayoutManager recyclerViewLayoutManager;
-    private List<MUSICTYPE> listMusic;
+    private List<Subtype> listMusic;
     private PreferenceRepository repository;
 
     @Override
@@ -51,7 +51,7 @@ public class PreferenceMusicActivity extends BaseActivity {
         //  activityMusicPreferenceBinding.rrVenuePreference.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
 
-        listMusic = preference.getMasterData(mContext).getResponse().getMUSIC_TYPE();
+        listMusic = preference.getMasterData(mContext).getResponse().get(0).getSubtype();
         binding.rrVenuePreference.setLayoutManager(recyclerViewLayoutManager);
         mAdapter = new PreferenceMusicAdapter(mContext, R.layout.row_musicprefernce, listMusic);
 

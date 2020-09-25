@@ -11,17 +11,17 @@ import androidx.appcompat.widget.AppCompatTextView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
-import com.xzit.app.retrofit.model.response.masterdata.VENUETYPE;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 import com.xzit.app.utils.ImageUtils;
 
 import java.util.List;
 
 public class PreferenceVenueAdapter extends RecyclerView.Adapter<PreferenceVenueAdapter.ViewHolder> {
-    private List<VENUETYPE> listVenue;
+    private List<Subtype> listVenue;
     int mLayout;
     private Context mContext;
 
-    public PreferenceVenueAdapter(Context mContext, int mLayout, List<VENUETYPE> listVenue) {
+    public PreferenceVenueAdapter(Context mContext, int mLayout, List<Subtype> listVenue) {
         this.listVenue = listVenue;
         this.mLayout = mLayout;
         this.mContext = mContext;
@@ -42,11 +42,11 @@ public class PreferenceVenueAdapter extends RecyclerView.Adapter<PreferenceVenue
     public String getSelection() {
         String selection = "";
         for (int i = 0; i < listVenue.size(); i++) {
-            if (listVenue.get(i).isSelected()) {
-                selection = selection + listVenue.get(i).getVALUE() + ",";
+            if (listVenue.get(i).isSelected) {
+                selection = selection + listVenue.get(i).getDisplayValue() + ",";
             }
         }
-        if(!selection.isEmpty()){
+        if (!selection.isEmpty()) {
             selection = selection.substring(0, selection.length() - 1);
         }
         return selection;
@@ -55,24 +55,24 @@ public class PreferenceVenueAdapter extends RecyclerView.Adapter<PreferenceVenue
     @Override
     public void onBindViewHolder(PreferenceVenueAdapter.ViewHolder holder, final int position) {
 
-        final VENUETYPE model = listVenue.get(position);
-        holder.tvPrefName.setText(model.getVALUE());
+        final Subtype model = listVenue.get(position);
+        holder.tvPrefName.setText(model.getDisplayValue());
 
         int pos = position;
-        if (!model.getURL().isEmpty()) {
-            ImageUtils imageUtils = new ImageUtils();
-            imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
-        }
+//        if (!model.getURL().isEmpty()) {
+////            ImageUtils imageUtils = new ImageUtils();
+////            imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
+////        }
         holder.rlRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (listVenue.get(pos).isSelected()) {
-                    listVenue.get(pos).setSelected(false);
+                if (listVenue.get(pos).isSelected) {
+                    listVenue.get(pos).isSelected = false;
                     holder.ivOverlay.setVisibility(View.GONE);
                     holder.ivOverlayBorder.setVisibility(View.GONE);
                 } else {
-                    listVenue.get(pos).setSelected(true);
+                    listVenue.get(pos).isSelected=true;
                     holder.ivOverlay.setVisibility(View.VISIBLE);
                     holder.ivOverlayBorder.setVisibility(View.VISIBLE);
                 }
@@ -89,8 +89,9 @@ public class PreferenceVenueAdapter extends RecyclerView.Adapter<PreferenceVenue
 
         public View layout;
         RelativeLayout rlRoot;
-        AppCompatImageView  ivPreference, ivOverlay, ivOverlayBorder;
+        AppCompatImageView ivPreference, ivOverlay, ivOverlayBorder;
         AppCompatTextView tvPrefName;
+
         public ViewHolder(View v) {
             super(v);
             layout = v;

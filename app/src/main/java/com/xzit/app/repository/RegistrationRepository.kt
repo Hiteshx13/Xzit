@@ -4,7 +4,6 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
-import com.squareup.okhttp.RequestBody
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse
 import com.xzit.app.utils.isNetworkConnected
 import okhttp3.MultipartBody
@@ -47,30 +46,13 @@ open class RegistrationRepository : BaseRepository() {
         }
     }
 
-    fun callSignUp(mContext: Context,
-                   reqCase: RequestBody,
-                   accountType: RequestBody,
-                   businessName: RequestBody,
-                   email: RequestBody,
-                   password: RequestBody,
-                   confPassword: RequestBody,
-                   userName: RequestBody,
-                   title: RequestBody,
-                   category: RequestBody,
-                   phone: RequestBody,
-                   website: RequestBody,
-                   businessHours: RequestBody,
-                   image: MultipartBody.Part
+    fun callSignUpImage(mContext: Context,
+                        params: HashMap<String, okhttp3.RequestBody>, image: MultipartBody.Part
     ) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
-           // apiInterface.apiRegister();
-            apiInterface.callRegisterData(reqCase,
-                    accountType, businessName, email, password, confPassword, userName, title, category,
-                    phone,
-                    website,
-                    businessHours,
-                    image).enqueue(object : retrofit2.Callback<RegistrationResponse> {
+            apiInterface.callRegisterData(params, image
+            ).enqueue(object : retrofit2.Callback<RegistrationResponse> {
                 override fun onFailure(call: Call<RegistrationResponse>, t: Throwable) {
                     hideProgress()
                 }

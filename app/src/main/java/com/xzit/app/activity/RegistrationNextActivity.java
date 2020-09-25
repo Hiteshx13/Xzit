@@ -14,7 +14,7 @@ import android.os.Environment;
 import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.provider.Settings;
-import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 
@@ -25,23 +25,19 @@ import androidx.core.app.ActivityCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 
-import com.squareup.okhttp.MediaType;
-import com.squareup.okhttp.RequestBody;
 import com.xzit.app.R;
 import com.xzit.app.adapter.SpinnerCategoryAdapter;
 import com.xzit.app.databinding.ActivitySignUpNextBinding;
 import com.xzit.app.listener.OnDialogClickListener;
 import com.xzit.app.repository.RegistrationRepository;
 import com.xzit.app.retrofit.model.request.SignUpRequest;
-import com.xzit.app.retrofit.model.response.masterdata.CATAGORYLIST;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
 import com.xzit.app.utils.PermissionUtils;
-import com.xzit.app.utils.RealPathUtil;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,10 +48,6 @@ import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.PARAM_SIGNUP_DATA;
 import static com.xzit.app.utils.AppUtilsKt.REQ_SELECT_PHOTO_GALLERY;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
-import static com.xzit.app.utils.RealPathUtil.getDataColumn;
-import static com.xzit.app.utils.RealPathUtil.isDownloadsDocument;
-import static com.xzit.app.utils.RealPathUtil.isExternalStorageDocument;
-import static com.xzit.app.utils.RealPathUtil.isMediaDocument;
 
 public class RegistrationNextActivity extends BaseActivity implements View.OnClickListener {
 
@@ -66,7 +58,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
     }
 
     private ActivitySignUpNextBinding binding;
-    private List<CATAGORYLIST> listCategory;
+    private List<Subtype> listCategory;
 
     static final Integer REQ_WRITE_EXST = 501;
     ArrayList<String> arrayCategory;
@@ -84,12 +76,14 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         listener();
         setObserver();
 
-        listCategory = preference.getMasterData(mContext).getResponse().getCATAGORY_LIST();
-        listCategory.add(0, new CATAGORYLIST("", getString(R.string.select_a_category), ""));
+        listCategory = preference.getMasterData(mContext).getResponse().get(0).getSubtype();
+        Subtype title = new Subtype();
+        title.setDisplayValue(getString(R.string.select_a_category));
+        listCategory.add(0, title);
 
 
         for (int i = 0; i < listCategory.size(); i++) {
-            arrayCategory.add(listCategory.get(i).getVALUE());
+            arrayCategory.add(listCategory.get(i).getDisplayValue());
         }
 //        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
 //                R.layout.row_spinner_category, R.id.tvCategoryName, strCategory);
@@ -144,7 +138,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 if (position == 0) {
                     strCategory = "";
                 } else {
-                    strCategory = listCategory.get(position).getVALUE();
+                    strCategory = listCategory.get(position).getDisplayValue();
                 }
                 binding.spCategory.setSelection(position);
             }
@@ -253,32 +247,37 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
             map.put("postData[businessHours]", strBusinessHours);
 
             if (profileUri != null) {
-                File file = new File(profileUri.getPath());
-                RequestBody fbody = RequestBody.create(MediaType.parse("image/*"),
-                        file);
-                repository.callSignUp(mContext,
-                        getRequestBody("signup"),
-                        getRequestBody("BUSINESS"),
-                        getRequestBody(signUpRequest.getBusinessName()),
-                        getRequestBody(signUpRequest.getEmail()),
-                        getRequestBody(signUpRequest.getPassword()),
-                        getRequestBody(signUpRequest.getConfPassword()),
-                        getRequestBody(strUserName),
-                        getRequestBody(strTelephone),
-                        getRequestBody(strCategory),
-                        getRequestBody(strTelephone),
-                        getRequestBody(strWebsite),
-                        getRequestBody(strBusinessHours),
-                        getMultiPartBody("/storage/emulated/0/image.jpg")
+//                File file = new File(profileUri.getPath());
+//                RequestBody fbody = RequestBody.create(MediaType.parse("image/*"),
+//                        file);
+                HashMap<String, okhttp3.RequestBody> mapReq = new HashMap<>();
+                mapReq.put("postData[requestCase]", getRequestBody("signup"));
+                mapReq.put("postData[userType]", getRequestBody("BUSINESS"));
+                mapReq.put("postData[businessName]", getRequestBody(signUpRequest.getBusinessName()));
+                mapReq.put("postData[email]", getRequestBody(signUpRequest.getEmail()));
+                mapReq.put("postData[password]", getRequestBody(signUpRequest.getPassword()));
+                mapReq.put("postData[confirmPass]", getRequestBody(signUpRequest.getConfPassword()));
+                mapReq.put("postData[userName]", getRequestBody(strUserName));
+                mapReq.put("postData[title]", getRequestBody(strTelephone));
+                mapReq.put("postData[category]", getRequestBody(strCategory));
+                mapReq.put("postData[phone]", getRequestBody(strTelephone));
+                mapReq.put("postData[website]", getRequestBody(strWebsite));
+                mapReq.put("postData[businessHours]", getRequestBody(strBusinessHours));
+
+
+                Log.d("#REQUEST", "" + mapReq);
+//                getMultiPartBody("/storage/emulated/0/image.jpg")
+                repository.callSignUpImage(mContext, mapReq,
+                        getParamsRequestBody()
                 );
-//                repository.callSignUp(mContext, map);
+                // repository.callSignUp(mContext, map);
             } else {
                 repository.callSignUp(mContext, map);
             }
         }
     }
 
-//    private HashMap<String, RequestBody> getParamsRequestBody(HashMap<String, String> param)  {
+    //    private HashMap<String, RequestBody> getParamsRequestBody(HashMap<String, String> param)  {
 //        HashMap<String, RequestBody> resultParams = new HashMap<String, RequestBody>();
 //
 ////        for (int i=0;i<param.size();i++) {
@@ -304,14 +303,14 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
 // Split at colon, use second item in the array
         String id = wholeID.split(":")[1];
 
-        String[] column = { MediaStore.Images.Media.DATA };
+        String[] column = {MediaStore.Images.Media.DATA};
 
 // where id is equal to
         String sel = MediaStore.Images.Media._ID + "=?";
 
         Cursor cursor = getContentResolver().
                 query(MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
-                        column, sel, new String[]{ id }, null);
+                        column, sel, new String[]{id}, null);
 
         String filePath = "";
 
@@ -325,9 +324,9 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         return filePath;
     }
 
-    RequestBody getRequestBody(String str) {
-        RequestBody reqBody =
-                RequestBody.create(MediaType.parse("multipart/form-data"), str);
+    okhttp3.RequestBody getRequestBody(String str) {
+        okhttp3.RequestBody reqBody =
+                okhttp3.RequestBody.create(okhttp3.MediaType.parse("multipart/form-data"), str);
         return reqBody;
     }
 
@@ -337,7 +336,18 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         okhttp3.RequestBody requestFile =
                 okhttp3.RequestBody.create(okhttp3.MediaType.parse("multipart/form-data"), file);
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("attachmentName["+0+"]","", requestFile);
+                MultipartBody.Part.createFormData("attachmentName[" + 0 + "]", "", requestFile);
+
+        return body;
+    }
+
+    private MultipartBody.Part getParamsRequestBody() {
+
+        File file = new File("/storage/emulated/0/image.jpg");
+        okhttp3.RequestBody requestFile =
+                okhttp3.RequestBody.create(okhttp3.MediaType.parse("multipart/form-data"), file);
+        MultipartBody.Part body =
+                MultipartBody.Part.createFormData("attachmentName[" + 0 + "]", "image.jpg", requestFile);
 
         return body;
     }
@@ -386,7 +396,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 }
 
                 final String selection = "_id=?";
-                final String[] selectionArgs = new String[] {
+                final String[] selectionArgs = new String[]{
                         split[1]
                 };
 
@@ -452,6 +462,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
     public static boolean isMediaDocument(Uri uri) {
         return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);

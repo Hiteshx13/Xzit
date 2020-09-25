@@ -72,23 +72,33 @@ public interface ApiInterface {
     Call<SendFriendRequestResponse> callFriendUnfriend(
             @FieldMap Map<String, String> postData);
 
+//    @Multipart
+//    @POST("/xzitAdmin/xzitProject/getData.php")
+//    Call<RegistrationResponse> callRegisterData(
+//
+//
+////            @Part("postData[requestCase]") RequestBody signup,
+////            @Part("postData[userType]") RequestBody BUSINESS,
+////            @Part("postData[businessName]") RequestBody businessName,
+////            @Part("postData[email]") RequestBody email,
+////            @Part("postData[password]") RequestBody password,
+////            @Part("postData[confirmPass]") RequestBody confPassword,
+////            @Part("postData[userName]") RequestBody userName,
+////            @Part("postData[title]") RequestBody title,
+////            @Part("postData[category]") RequestBody category,
+////            @Part("postData[phone]") RequestBody phone,
+////            @Part("postData[website]") RequestBody website,
+////            @Part("postData[businessHours]") RequestBody businessHours,
+//            @Part MultipartBody.Part image);
+
+
     @Multipart
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<RegistrationResponse> callRegisterData(
+            @PartMap HashMap<String, okhttp3.RequestBody> params,
+            @Part MultipartBody.Part image
+    );
 
-            @Part("postData[requestCase]") RequestBody signup,
-            @Part("postData[userType]") RequestBody BUSINESS,
-            @Part("postData[businessName]") RequestBody businessName,
-            @Part("postData[email]") RequestBody email,
-            @Part("postData[password]") RequestBody password,
-            @Part("postData[confirmPass]") RequestBody confPassword,
-            @Part("postData[userName]") RequestBody userName,
-            @Part("postData[title]") RequestBody title,
-            @Part("postData[category]") RequestBody category,
-            @Part("postData[phone]") RequestBody phone,
-            @Part("postData[website]") RequestBody website,
-            @Part("postData[businessHours]") RequestBody businessHours,
-            @Part MultipartBody.Part image);
 
     @Multipart
     @POST("/xzitAdmin/xzitProject/getData.php")

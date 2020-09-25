@@ -18,6 +18,7 @@ const val DASHBOARD_TAB = "dashboard_tab"
 const val REQ_LOGIN_WITH_GMAIL = 301
 const val REQ_SELECT_PHOTO_GALLERY = 111
 const val VALIDATION_password_length = 6
+const val STATUS_PENDING="PENDING"
 
 const val RESP_API_SUCCESS = 200
 

@@ -12,18 +12,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
 import com.xzit.app.listener.MusicPrefListener;
-import com.xzit.app.retrofit.model.response.masterdata.MUSICTYPE;
-import com.xzit.app.utils.ImageUtils;
+import com.xzit.app.retrofit.model.response.masterdata.Subtype;
 
 import java.util.List;
 
 public class PreferenceMusicAdapter extends RecyclerView.Adapter<PreferenceMusicAdapter.ViewHolder> {
-    private List<MUSICTYPE> listMusic;
+    private List<Subtype> listMusic;
     int mLayout;
     private Context mContext;
     private MusicPrefListener listener;
 
-    public PreferenceMusicAdapter(Context mContext, int mLayout, List<MUSICTYPE> listMusic) {
+    public PreferenceMusicAdapter(Context mContext, int mLayout, List<Subtype> listMusic) {
         this.listMusic = listMusic;
         this.mLayout = mLayout;
         this.listener = listener;
@@ -34,11 +33,11 @@ public class PreferenceMusicAdapter extends RecyclerView.Adapter<PreferenceMusic
     public String getSelection() {
         String selection = "";
         for (int i = 0; i < listMusic.size(); i++) {
-            if (listMusic.get(i).isSelected()) {
-                selection = selection + listMusic.get(i).getVALUE() + ",";
+            if (listMusic.get(i).isSelected) {
+                selection = selection + listMusic.get(i).getDisplayValue() + ",";
             }
         }
-        if(!selection.isEmpty()){
+        if (!selection.isEmpty()) {
             selection = selection.substring(0, selection.length() - 1);
         }
 
@@ -59,24 +58,24 @@ public class PreferenceMusicAdapter extends RecyclerView.Adapter<PreferenceMusic
     @Override
     public void onBindViewHolder(PreferenceMusicAdapter.ViewHolder holder, final int position) {
 
-        final MUSICTYPE model = listMusic.get(position);
-        holder.tvPrefName.setText(model.getVALUE());
+        final Subtype model = listMusic.get(position);
+        holder.tvPrefName.setText(model.getDisplayValue());
         int pos = position;
 
-        if (!model.getURL().isEmpty()) {
-            ImageUtils imageUtils = new ImageUtils();
-            imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
-        }
+//        if (!model.getURL().isEmpty()) {
+//            ImageUtils imageUtils = new ImageUtils();
+//            imageUtils.loadImage(mContext, model.getURL(), holder.ivOverlay);
+//        }
         holder.rlRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                if (listMusic.get(pos).isSelected()) {
-                    listMusic.get(pos).setSelected(false);
+                if (listMusic.get(pos).isSelected) {
+                    listMusic.get(pos).isSelected = false;
                     holder.ivOverlay.setVisibility(View.GONE);
                     holder.ivOverlayBorder.setVisibility(View.GONE);
                 } else {
-                    listMusic.get(pos).setSelected(true);
+                    listMusic.get(pos).isSelected = true;
                     holder.ivOverlay.setVisibility(View.VISIBLE);
                     holder.ivOverlayBorder.setVisibility(View.VISIBLE);
                 }
@@ -93,8 +92,9 @@ public class PreferenceMusicAdapter extends RecyclerView.Adapter<PreferenceMusic
 
         public View layout;
         RelativeLayout rlRoot;
-        AppCompatImageView  ivPreference, ivOverlay, ivOverlayBorder;
+        AppCompatImageView ivPreference, ivOverlay, ivOverlayBorder;
         AppCompatTextView tvPrefName;
+
         public ViewHolder(View v) {
             super(v);
 

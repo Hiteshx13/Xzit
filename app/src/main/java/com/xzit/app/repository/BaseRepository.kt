@@ -33,6 +33,8 @@ open class BaseRepository {
     }
 
     fun hideProgress() {
-        mDialog?.dismiss()
+        if (mDialog?.isShowing == true) {
+            mDialog?.dismiss()
+        }
     }
 }
