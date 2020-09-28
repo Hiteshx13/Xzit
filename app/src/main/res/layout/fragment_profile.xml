@@ -433,7 +433,7 @@
                             android:layout_toEndOf="@+id/clProfile"
                             android:layout_toRightOf="@+id/clProfile"
                             android:fontFamily="@font/quicksand_bold"
-                            android:text="@string/name"
+                            tools:text="@string/name"
                             android:textColor="@color/textColor"
                             android:textSize="@dimen/_12sdp"
                             tools:ignore="UnknownIdInLayout,UnusedAttribute" />
@@ -451,8 +451,27 @@
                             android:background="@drawable/bg_border_yellow"
                             android:padding="5dp"
                             android:text="@string/edit_profile"
+                            android:visibility="gone"
+                            tools:visibility="visible"
                             android:textAllCaps="true"
 
+                            android:textSize="@dimen/_5ssp" />
+                        <TextView
+                            android:id="@+id/tvBlockUser"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/tvUserName"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_toEndOf="@+id/clProfile"
+                            android:layout_toRightOf="@+id/clProfile"
+                            android:background="@drawable/bg_border_yellow"
+                            android:padding="5dp"
+                            android:text="@string/block_user"
+                            android:visibility="gone"
+                            tools:visibility="visible"
+                            android:textAllCaps="true"
                             android:textSize="@dimen/_5ssp" />
 
                         <LinearLayout
@@ -463,6 +482,8 @@
                             android:layout_marginStart="@dimen/_15sdp"
                             android:layout_marginLeft="@dimen/_15sdp"
                             android:layout_marginTop="@dimen/_10sdp"
+                            android:visibility="gone"
+                            tools:visibility="visible"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginRight="@dimen/_10sdp"
                             android:gravity="center"

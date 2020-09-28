@@ -55,7 +55,7 @@ public class PreferenceFoodActivity extends BaseActivity {
 
         binding.rrFoodPreference.setLayoutManager(recyclerViewLayoutManager);
 
-        listFood = preference.getMasterData(mContext).getResponse().get(0).getSubtype();
+        listFood = preference.getMasterData(mContext).getResponse().get(2).getSubtype();
         mAdapter = new PreferenceFoodAdapter(mContext, R.layout.row_foodpreference, listFood);
 
         binding.rrFoodPreference.setAdapter(mAdapter);

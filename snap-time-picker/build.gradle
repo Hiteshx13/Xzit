@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 29
+    defaultConfig {
+        minSdkVersion 18
+        targetSdkVersion 29
+        versionCode 10000
+        versionName "1.0.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.1'
+    implementation "androidx.recyclerview:recyclerview:1.1.0"
+    implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
+    implementation 'androidx.cardview:cardview:1.0.0'
+    //sdp and ssp
+    implementation 'com.intuit.sdp:sdp-android:1.0.6'
+    implementation 'com.intuit.ssp:ssp-android:1.0.6'
+}
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'snap-time-picker'
+
+    publishedGroupId = 'com.akexorcist'
+    libraryName = 'SnapTimePicker'
+    artifact = 'snap-time-picker'
+
+    libraryDescription = 'Another Material Time Picker for developer who do not like default Material Time Picker that difficult to use for most users'
+
+    siteUrl = 'https://github.com/akexorcist/Android-SnapTimePicker'
+    gitUrl = 'https://github.com/akexorcist/Android-SnapTimePicker.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'akexorcist'
+    developerName = 'Somkiat Khitwongwattana'
+    developerEmail = 'akexorcist@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+//apply from: '../publish/installv1.gradle'
+//apply from: '../publish/bintrayv1.gradle'

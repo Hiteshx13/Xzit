@@ -9,8 +9,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.akexorcist.snaptimepicker.SnapTimePickerDialog
-import com.akexorcist.snaptimepicker.extension.SnapTimePickerUtil
 import com.sandrlab.widgets.MetalRecyclerViewPager
 import com.xzit.app.R
 import com.xzit.app.activity.DashboardActivity
@@ -62,7 +60,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
 
 
     private fun setCategory() {
-        listCategory = preference.getMasterData(mContext).Response?.get(0)?.subtype
+        listCategory = preference.getMasterData(mContext).Response?.get(3)?.subtype
         binding!!.rvCategory.setHasFixedSize(true)
         binding!!.rvCategory.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.HORIZONTAL, false)
         categoryAdapter = DashboardCategoryAdater(mContext, listCategory)
@@ -104,13 +102,13 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.llProfile -> {
-                SnapTimePickerDialog.Builder().apply {
-                useViewModel()
-            }.build().show(mActivity.supportFragmentManager, SnapTimePickerDialog.TAG)
-
-            SnapTimePickerUtil.observe(this) { selectedHour: Int, selectedMinute: Int ->
-                Log.d(""+selectedHour,""+selectedMinute);
-            }
+//                SnapTimePickerDialog.Builder().apply {
+//                useViewModel()
+//            }.build().show(mActivity.supportFragmentManager, SnapTimePickerDialog.TAG)
+//
+//            SnapTimePickerUtil.observe(this) { selectedHour: Int, selectedMinute: Int ->
+//                Log.d(""+selectedHour,""+selectedMinute);
+//            }
                 (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(), true)
             }
             R.id.llAddContact -> {

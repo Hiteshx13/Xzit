@@ -1,52 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rlRoot"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:background="@android:color/white"
-    android:orientation="vertical"
-    android:padding="@dimen/_10sdp">
+<layout>
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/ivProfile"
-        android:layout_width="@dimen/_36sdp"
-        android:layout_height="@dimen/_36sdp"
-        android:src="@drawable/demo"
-        app:civ_border_color="@color/colorWhite"
-        app:civ_border_width="@dimen/_3sdp" />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rlRoot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@android:color/white">
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_marginStart="@dimen/_9sdp"
-        android:layout_marginLeft="@dimen/_9sdp"
-        android:layout_toStartOf="@+id/tvTime"
-        android:layout_toLeftOf="@+id/tvTime"
-        android:layout_toEndOf="@+id/ivProfile"
-        android:layout_toRightOf="@+id/ivProfile"
-        android:fontFamily="@font/poppins_medium"
-        android:text="Jack Sparrow"
-        android:textColor="@color/textColor"
-        android:textSize="@dimen/_12ssp"
-        tools:ignore="UnknownIdInLayout" />
+        <View
+            android:id="@+id/viewStrip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorYellowLight" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvAddFriendUnfriend"
-        android:layout_width="@dimen/_65sdp"
-        android:layout_height="wrap_content"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"
-        android:background="@drawable/selctor_yellow_white_bordered"
-        android:gravity="center"
-        android:paddingTop="@dimen/_3sdp"
-        android:paddingBottom="@dimen/_3sdp"
-        android:text="Add Friend"
-        android:fontFamily="@font/quicksand_regular"
-        android:textColor="@drawable/selector_color_white_yellow"
-        android:textSize="@dimen/_9ssp" />
-</RelativeLayout>
+        <RelativeLayout
+            android:id="@+id/llData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/viewStrip"
+
+            >
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/demo"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="@dimen/_3sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_toStartOf="@+id/tvAddFriendUnfriend"
+                android:layout_toLeftOf="@+id/tvAddFriendUnfriend"
+                android:layout_toEndOf="@+id/ivProfile"
+                android:layout_toRightOf="@+id/ivProfile"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Jack Sparrow"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="UnknownIdInLayout" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAddFriendUnfriend"
+                android:layout_width="@dimen/_65sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:layout_toLeftOf="@+id/ivMenu"
+                android:background="@drawable/selctor_yellow_white_bordered"
+                android:fontFamily="@font/quicksand_regular"
+                android:gravity="center"
+                android:paddingTop="@dimen/_3sdp"
+                android:paddingBottom="@dimen/_3sdp"
+                android:text="@string/add_friend"
+                android:textColor="@drawable/selector_color_white_yellow"
+                android:textSize="@dimen/_9ssp" />
+
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:paddingStart="@dimen/_5sdp"
+                android:paddingEnd="@dimen/_5sdp"
+                android:src="@drawable/icnmore" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cvReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                android:background="@android:color/white"
+                android:visibility="gone"
+                app:cardCornerRadius="@dimen/_3sdp"
+                app:cardElevation="@dimen/_2sdp"
+                tools:visibility="visible">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvReport"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:gravity="center"
+                    android:paddingStart="@dimen/_20sdp"
+                    android:paddingTop="@dimen/_6sdp"
+                    android:paddingEnd="@dimen/_20sdp"
+                    android:paddingBottom="@dimen/_6sdp"
+                    android:text="Report"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_9ssp" />
+            </androidx.cardview.widget.CardView>
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

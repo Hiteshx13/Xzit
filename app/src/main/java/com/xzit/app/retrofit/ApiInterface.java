@@ -5,9 +5,14 @@ import com.xzit.app.retrofit.model.response.changepassword.ChangePasswordRespons
 import com.xzit.app.retrofit.model.response.changepassword.ForgotPasswordResponse;
 import com.xzit.app.retrofit.model.response.dashboard.FCMTokenResponse;
 import com.xzit.app.retrofit.model.response.editprofile.EditProfileResponse;
+import com.xzit.app.retrofit.model.response.friendrequest.AcceptRejectFriendRequestResponse;
+import com.xzit.app.retrofit.model.response.friendrequest.BlockUnblockUserResponse;
+import com.xzit.app.retrofit.model.response.friendrequest.FriendRequestResponse;
+import com.xzit.app.retrofit.model.response.friendrequest.ReportUsertResponse;
 import com.xzit.app.retrofit.model.response.login.LoginResponse;
 import com.xzit.app.retrofit.model.response.masterdata.MasterDataResponse;
 import com.xzit.app.retrofit.model.response.preference.PreferenceResponse;
+import com.xzit.app.retrofit.model.response.profile.UserProfileResponse;
 import com.xzit.app.retrofit.model.response.registration.RegistrationResponse;
 import com.xzit.app.retrofit.model.response.userlisting.SendFriendRequestResponse;
 import com.xzit.app.retrofit.model.response.userlisting.UserListingResponse;
@@ -69,7 +74,31 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
-    Call<SendFriendRequestResponse> callFriendUnfriend(
+    Call<UserProfileResponse> callUserProfile(
+            @FieldMap Map<String, String> postData);
+
+ @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<BlockUnblockUserResponse> callBlockUser(
+            @FieldMap Map<String, String> postData);
+
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<FriendRequestResponse> callFriendRequest(
+            @FieldMap Map<String, String> postData);
+ @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<ReportUsertResponse> callReportUser(
+            @FieldMap Map<String, String> postData);
+
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<AcceptRejectFriendRequestResponse> callAcceptRejectRequest(
+            @FieldMap Map<String, String> postData);
+
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<SendFriendRequestResponse> callSendFriendRequest(
             @FieldMap Map<String, String> postData);
 
 //    @Multipart

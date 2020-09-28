@@ -3,10 +3,9 @@ package com.xzit.app.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 
 import androidx.appcompat.widget.AppCompatImageView;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.xzit.app.R;
@@ -16,7 +15,7 @@ import java.util.List;
 public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.ViewHolder> {
     private List<String> values;
     OnChatClickListener listener;
-    boolean isVisible=false;
+    boolean isVisible = false;
 
     public EventListAdapter(List<String> myDataset, OnChatClickListener listener) {
         values = myDataset;
@@ -52,9 +51,9 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
     public class ViewHolder extends RecyclerView.ViewHolder {
 
         public View layout;
-//        RelativeLayout rlRoot;
+        //        RelativeLayout rlRoot;
         AppCompatImageView ivMenu;
-        CardView cvMenu;
+        LinearLayout llMenu;
 
 
         ViewHolder(View v) {
@@ -62,7 +61,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
             layout = v;
 //            rlRoot = layout.findViewById(R.id.rlRoot);
             ivMenu = layout.findViewById(R.id.ivMenu);
-            cvMenu = layout.findViewById(R.id.cvMenu);
+            llMenu = layout.findViewById(R.id.llMenu);
 //            rlRoot = layout.findViewById(R.id.rlRoot);
 //            rlRoot.setOnClickListener(new View.OnClickListener() {
 //                @Override
@@ -75,12 +74,12 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.View
                 @Override
                 public void onClick(View v) {
 
-                    if(isVisible){
-                        cvMenu.setVisibility(View.GONE);
-                    }else{
-                        cvMenu.setVisibility(View.VISIBLE);
+                    if (isVisible) {
+                        llMenu.setVisibility(View.GONE);
+                    } else {
+                        llMenu.setVisibility(View.VISIBLE);
                     }
-                    isVisible=!isVisible;
+                    isVisible = !isVisible;
                     //listener.onClickChat(getAdapterPosition());
                 }
             });

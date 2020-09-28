@@ -28,18 +28,6 @@
                 tools:ignore="UselessLeaf" />
         </LinearLayout>
 
-        <!--        <androidx.cardview.widget.CardView-->
-        <!--          -->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_gravity="center"-->
-        <!--            android:layout_marginStart="@dimen/_10sdp"-->
-        <!--            android:layout_marginLeft="@dimen/_10sdp"-->
-        <!--            android:layout_marginTop="@dimen/_15sdp"-->
-        <!--            android:layout_marginEnd="@dimen/_10sdp"-->
-        <!--            android:layout_marginRight="@dimen/_10sdp"-->
-        <!--            android:background="@android:color/white"-->
-        <!--            app:cardCornerRadius="@dimen/_19sdp">-->
 
         <ImageView
             android:id="@+id/ivBack"
@@ -48,50 +36,33 @@
             android:padding="@dimen/_15sdp"
             android:src="@drawable/icn_back"
             tools:ignore="ContentDescription" />
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cvSearch"
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/txtModifyProfile"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/ivBack"
-            android:layout_gravity="center"
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_20sdp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="User Listing"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_18ssp"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivRequest"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivBack"
+            android:layout_alignParentEnd="true"
+            android:tint="@color/colorWhite"
+            android:padding="@dimen/_10sdp"
             android:layout_marginEnd="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@android:color/white"
-            android:labelFor="@+id/cvSearch"
-            android:paddingBottom="@dimen/_minus20sdp"
-            app:cardCornerRadius="@dimen/_25sdp"
-            app:cardElevation="0dp">
-
-            <EditText
-                android:id="@+id/etfriend"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/colorTransparent"
-                android:drawableStart="@drawable/ic_search_small"
-                android:drawableLeft="@drawable/ic_search_small"
-                android:drawablePadding="@dimen/_10sdp"
-                android:drawableTint="@color/colorYellow"
-                android:fontFamily="@font/quicksand_regular"
-                android:gravity="start"
-                android:hint="@string/search"
-                android:imeOptions="actionDone"
-                android:inputType="text"
-                android:padding="@dimen/_10sdp"
-                android:textAlignment="textStart"
-                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
-
-
-        </androidx.cardview.widget.CardView>
-
-
+            android:src="@drawable/icn_notification"/>
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@+id/cvSearch"
+            android:layout_below="@+id/txtModifyProfile"
             android:layout_gravity="center"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginLeft="@dimen/_5sdp"
@@ -109,10 +80,29 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
+                <EditText
+                    android:id="@+id/etfriend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border_yellow_rounded"
+                    android:drawableStart="@drawable/ic_search_small"
+                    android:drawableLeft="@drawable/ic_search_small"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:gravity="start"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:hint="@string/search"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:textAlignment="textStart"
+                    tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rrFriend"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/etfriend"
                     android:layout_marginStart="10dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginTop="10dp"

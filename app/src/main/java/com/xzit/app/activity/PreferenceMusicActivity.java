@@ -51,7 +51,7 @@ public class PreferenceMusicActivity extends BaseActivity {
         //  activityMusicPreferenceBinding.rrVenuePreference.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         recyclerViewLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
 
-        listMusic = preference.getMasterData(mContext).getResponse().get(0).getSubtype();
+        listMusic = preference.getMasterData(mContext).getResponse().get(1).getSubtype();
         binding.rrVenuePreference.setLayoutManager(recyclerViewLayoutManager);
         mAdapter = new PreferenceMusicAdapter(mContext, R.layout.row_musicprefernce, listMusic);
 

@@ -3,6 +3,7 @@ package com.xzit.app.retrofit.model.response.userlisting;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class SendFriendRequestResponse {
@@ -15,7 +16,7 @@ public class SendFriendRequestResponse {
     private String message;
     @SerializedName("Response")
     @Expose
-    private String response;
+    private ArrayList<String> response;
     @SerializedName("authToken")
     @Expose
     private String authToken;
@@ -36,11 +37,11 @@ public class SendFriendRequestResponse {
         this.message = message;
     }
 
-    public String getResponse() {
+    public ArrayList<String> getResponse() {
         return response;
     }
 
-    public void setResponse(String response) {
+    public void setResponse(ArrayList<String> response) {
         this.response = response;
     }
 

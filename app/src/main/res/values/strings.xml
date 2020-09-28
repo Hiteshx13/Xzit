@@ -123,6 +123,7 @@
     <string name="invitation_n_received">Invitation \nreceived</string>
     <string name="add_guest">Add Guest</string>
     <string name="add_friends">Add Friends</string>
+    <string name="add_friend">Add Friend</string>
     <string name="received_date">Received Date</string>
     <string name="reviews">Reviews</string>
     <string name="go_to_direction">Go To Direction</string>
@@ -181,6 +182,19 @@
     <string name="copy_post_link">Copy Post Link</string>
     <string name="share_post">Share Post</string>
     <string name="report_post">Report Post</string>
+    <string name="friend_request">Friend Request</string>
+    <string name="report">Report</string>
+    <string name="submit_report">Submit Report</string>
+    <string name="your_comments">Your Comments</string>
+    <string name="are_you_sure_to_unfriend">Are you sure you want to Unfriend ?</string>
+    <string name="are_you_sure_to_block_this_user">Are you sure you want to block this user ?</string>
+    <string name="are_you_sure_to_un_block_this_user">Are you sure you want to unblock this user ?</string>
+    <string name="cancel">Cancel</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="block_user">Block User</string>
+    <string name="unblock_user">Unblock User</string>
+    <string name="upload_post_image">UPLOAD POST IMAGE</string>
 
 
 </resources>

@@ -294,6 +294,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
             map.put("postData[requestCase]", "signup");
             map.put("postData[userType]", "NORMAL");
             map.put("postData[userName]", strName);
+            map.put("postData[businessName]", strName);
             map.put("postData[email]", strEmail);
             map.put("postData[gender]", GENDER_SELECTED);
             map.put("postData[password]", strPassword);

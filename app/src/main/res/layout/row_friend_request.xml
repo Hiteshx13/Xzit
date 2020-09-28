@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/rlRoot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+        <View
+            android:id="@+id/viewStrip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorYellowLight" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/viewStrip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="@dimen/_10sdp">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_toStartOf="@+id/tvTime"
+                android:layout_toLeftOf="@+id/tvTime"
+                android:layout_toEndOf="@+id/ivProfile"
+                android:layout_toRightOf="@+id/ivProfile"
+                android:layout_weight="1"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Jack Sparrow"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/_12ssp"
+                tools:ignore="UnknownIdInLayout" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAccept"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/icn_accept_green" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivReject"
+                android:layout_width="@dimen/_28sdp"
+                android:layout_height="@dimen/_28sdp"
+                android:padding="@dimen/_5sdp"
+                android:src="@drawable/icn_reject" />
+
+        </LinearLayout>
+
+
+    </RelativeLayout>
+</layout>

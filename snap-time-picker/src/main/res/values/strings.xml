@@ -1,0 +1,6 @@
+<resources>
+    <string name="snap_time_picker_cancel">@android:string/cancel</string>
+    <string name="snap_time_picker_confirm">@android:string/ok</string>
+    <string name="snap_time_picker_separator">:</string>
+    <string name="next">Next</string>
+</resources>

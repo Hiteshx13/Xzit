@@ -1,3 +1,5 @@
+include ':datetimerangepickerandroid'
+include ':awesome-calendar'
 include ':snap-time-picker'
 include ':app', ':library', ':materialcalendar'
 rootProject.name='My Application'

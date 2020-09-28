@@ -10,6 +10,11 @@ import androidx.databinding.DataBindingUtil;
 import com.xzit.app.R;
 import com.xzit.app.databinding.ActivityCreatEventBinding;
 
+import java.util.Calendar;
+import java.util.Date;
+
+import static com.wisnu.datetimerangepickerandroid.CalendarPickerView.SelectionMode.RANGE;
+
 public class CreatEventActivity extends AppCompatActivity implements View.OnClickListener {
 
 
@@ -27,6 +32,15 @@ public class CreatEventActivity extends AppCompatActivity implements View.OnClic
 
     private void initialization() {
         binding = DataBindingUtil.setContentView(this, R.layout.activity_creat_event);
+        //CalendarPickerView calendar = (CalendarPickerView) findViewById(R.id.calendar_view);
+        Date today = new Date();
+        Calendar nextYear = Calendar.getInstance();
+        nextYear.add(Calendar.YEAR, 1);
+
+//        binding.calendarView.init(today, nextYear.getTime())
+//                .inMode(RANGE)
+//                .withSelectedDate(today);
+
     }
 
     private void listener() {

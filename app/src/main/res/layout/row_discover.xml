@@ -20,63 +20,66 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/_5sdp">
 
-<!--                <RelativeLayout-->
-<!--                    android:id="@+id/rlHeader"-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:layout_marginStart="@dimen/_10sdp"-->
-<!--                    android:layout_marginLeft="@dimen/_10sdp"-->
-<!--                    android:layout_marginEnd="@dimen/_10sdp"-->
-<!--                    android:layout_marginRight="@dimen/_10sdp"-->
-<!--                    android:orientation="horizontal">-->
+                <!--                <RelativeLayout-->
+                <!--                    android:id="@+id/rlHeader"-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginStart="@dimen/_10sdp"-->
+                <!--                    android:layout_marginLeft="@dimen/_10sdp"-->
+                <!--                    android:layout_marginEnd="@dimen/_10sdp"-->
+                <!--                    android:layout_marginRight="@dimen/_10sdp"-->
+                <!--                    android:orientation="horizontal">-->
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ivProfile"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/music" />
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivProfile"
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/music" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_toEndOf="@+id/ivProfile"
-                        android:layout_toRightOf="@+id/ivProfile"
-                        android:text="demoname"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_10ssp"
-                        app:fontFamily="@font/quicksand_bold" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_toEndOf="@+id/ivProfile"
+                    android:layout_toRightOf="@+id/ivProfile"
+                    android:text="demoname"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_10ssp"
+                    app:fontFamily="@font/quicksand_bold" />
 
-                    <androidx.appcompat.widget.AppCompatTextView
-                        android:id="@+id/tvSubTitle"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/tvName"
-                        android:layout_marginStart="@dimen/_10sdp"
-                        android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_5sdp"
-                        android:layout_toEndOf="@+id/ivProfile"
-                        android:layout_toRightOf="@+id/ivProfile"
-                        android:text="dummy text"
-                        android:textColor="@color/colorBlack"
-                        android:textSize="@dimen/_8ssp"
-                        app:fontFamily="@font/quicksand_regular" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvSubTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tvName"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_toEndOf="@+id/ivProfile"
+                    android:layout_toRightOf="@+id/ivProfile"
+                    android:text="dummy text"
+                    android:textColor="@color/colorBlack"
+                    android:textSize="@dimen/_8ssp"
+                    app:fontFamily="@font/quicksand_regular" />
 
-                    <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ivMenu"
-                        android:layout_width="@dimen/_20sdp"
-                        android:layout_height="@dimen/_20sdp"
-                        android:layout_alignParentEnd="true"
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMenu"
+                    android:layout_width="@dimen/_20sdp"
+                   android:layout_marginBottom="@dimen/_5sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_15sdp"
+                    android:src="@drawable/icn_more" />
 
-                        android:src="@drawable/icn_more" />
 
-<!--                </RelativeLayout>-->
+                <!--                </RelativeLayout>-->
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -93,19 +96,25 @@
                 </RelativeLayout>
 
                 <LinearLayout
+                    android:id="@+id/llMenu"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/rlHeader"
+                    android:layout_below="@+id/ivMenu"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
                     android:orientation="vertical"
-                    android:layout_alignParentEnd="true">
+                    android:visibility="gone"
+                    tools:visibility="visible">
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/_15sdp"
-                        android:gravity="end"
                         android:layout_gravity="end"
+                        android:layout_marginEnd="@dimen/_10sdp"
+                        android:gravity="end"
                         android:orientation="vertical">
+
                         <androidx.appcompat.widget.AppCompatImageView
                             android:layout_width="@dimen/_20sdp"
                             android:layout_height="@dimen/_15sdp"
@@ -113,27 +122,23 @@
 
                         </androidx.appcompat.widget.AppCompatImageView>
                     </LinearLayout>
+
                     <androidx.cardview.widget.CardView
                         android:id="@+id/cvMenu"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_minus10sdp"
-                        android:visibility="gone"
                         app:cardCornerRadius="@dimen/_11sdp"
-                        app:cardElevation="@dimen/_10sdp"
-                        tools:visibility="visible">
+                        app:cardElevation="@dimen/_10sdp">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
+                            android:layout_height="match_parent"
                             android:background="@drawable/drawable_white_rounded"
                             android:orientation="vertical">
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:paddingStart="@dimen/_15sdp"
                                 android:paddingTop="@dimen/_5sdp"
@@ -147,6 +152,7 @@
                             <androidx.appcompat.widget.AppCompatTextView
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
+                                android:background="@color/colorGrayText"
                                 android:paddingStart="@dimen/_15sdp"
                                 android:paddingTop="@dimen/_5sdp"
                                 android:paddingEnd="@dimen/_40sdp"
@@ -169,7 +175,7 @@
                                 app:fontFamily="@font/quicksand_regular" />
 
                             <androidx.appcompat.widget.AppCompatTextView
-                                android:layout_width="wrap_content"
+                                android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@color/colorGrayText"
                                 android:paddingStart="@dimen/_15sdp"

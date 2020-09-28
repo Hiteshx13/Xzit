@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rlHeaderCalendar"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="@dimen/dateTitlePaddingBottom"
+    android:paddingBottom="@dimen/dateTitlePaddingBottom">
+
+    <RelativeLayout
+        android:id="@+id/calendarHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvBackword"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:background="@android:color/white"
+            app:cardBackgroundColor="#FFE596"
+            app:cardCornerRadius="60dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgVNavLeft"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_left_selector" />
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvForward"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:background="@android:color/white"
+            app:cardBackgroundColor="#FFE596"
+            app:cardCornerRadius="60dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imgVNavRight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_right_selector" />
+        </androidx.cardview.widget.CardView>
+
+        <com.archit.calendardaterangepicker.customviews.CustomTextView
+            android:id="@+id/tvYearTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/cvForward"
+            android:layout_toLeftOf="@+id/cvForward"
+            android:layout_toEndOf="@+id/cvBackword"
+            android:layout_toRightOf="@+id/cvBackword"
+            android:gravity="center"
+            android:tag="dateTitle"
+            android:text="FEBRUARY 2014"
+            android:textColor="#000000"
+            android:textSize="@dimen/text_size_title" />
+    </RelativeLayout>
+</RelativeLayout>
