@@ -103,7 +103,7 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity
-            android:name=".activity.CreatEventActivity"
+            android:name=".activity.CreatEvents"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
         <activity

@@ -47,6 +47,7 @@ import okhttp3.MultipartBody;
 import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.PARAM_SIGNUP_DATA;
 import static com.xzit.app.utils.AppUtilsKt.REQ_SELECT_PHOTO_GALLERY;
+import static com.xzit.app.utils.AppUtilsKt.REQ_WRITE_EXST;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
 
 public class RegistrationNextActivity extends BaseActivity implements View.OnClickListener {
@@ -60,10 +61,10 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
     private ActivitySignUpNextBinding binding;
     private List<Subtype> listCategory;
 
-    static final Integer REQ_WRITE_EXST = 501;
+
     ArrayList<String> arrayCategory;
     private String strCategory;
-    Uri profileUri;
+    private Uri profileUri;
     private SignUpRequest signUpRequest;
     private RegistrationRepository repository;
 

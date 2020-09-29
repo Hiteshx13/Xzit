@@ -6,7 +6,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 
 object SnapTimePickerUtil {
-    fun observe(activity: FragmentActivity, onPickedEvent: (hour: Int, minute: Int) -> Unit): Unit =
+   open fun observe(activity: FragmentActivity, onPickedEvent: (hour: Int, minute: Int) -> Unit): Unit =
         ViewModelProviders.of(activity).get(SnapTimePickerViewModel::class.java).timePickedEvent.observe(
             activity,
             Observer { event: TimePickedEvent ->
@@ -15,7 +15,7 @@ object SnapTimePickerUtil {
                 )
             })
 
-    fun observe(fragment: Fragment, onPickedEvent: (hour: Int, minute: Int) -> Unit): Unit =
+   open fun observe(fragment: Fragment, onPickedEvent: (hour: Int, minute: Int) -> Unit): Unit =
         ViewModelProviders.of(fragment).get(SnapTimePickerViewModel::class.java).timePickedEvent.observe(
             fragment,
             Observer { event: TimePickedEvent ->

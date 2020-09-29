@@ -7,17 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
 import com.xzit.app.activity.ChatActivity
-import com.xzit.app.activity.CreatEventActivity
+import com.xzit.app.activity.CreatEvents
 import com.xzit.app.activity.EditProfileActivity
 import com.xzit.app.activity.SettingsActivity
-import com.xzit.app.adapter.ChatAdapter
 import com.xzit.app.adapter.EventListAdapter
-import com.xzit.app.adapter.ProfileAdapter
 import com.xzit.app.databinding.FragmentDiscoverBinding
-import java.util.ArrayList
+import java.util.*
 
 class DiscoverFragment : BaseFragment(), View.OnClickListener {
 
@@ -82,7 +79,7 @@ class DiscoverFragment : BaseFragment(), View.OnClickListener {
             }
 
             R.id.btnCreateEvent -> {
-                val intentSettings = Intent(mContext, CreatEventActivity::class.java)
+                val intentSettings = Intent(mContext, CreatEvents::class.java)
                 startActivity(intentSettings)
             }
 

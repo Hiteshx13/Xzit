@@ -5,5 +5,7 @@
         android:color="@color/colorPrimary"
       android:dashGap="@dimen/_2sdp"
       android:dashWidth="@dimen/_1sdp"/>
+  <gradient android:startColor="@color/colorWhite"
+    android:endColor="@color/colorWhite"/>
     <corners android:radius="@dimen/_80sdp" />
 </shape>

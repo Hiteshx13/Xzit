@@ -17,12 +17,15 @@ const val PARAM_CLIENT_ID = "param_client_id"
 const val SIGNUP_TYPE_MERCHENT = "signup_type_merchent"
 const val SIGNUP_TYPE_USER = "signup_type_user"
 const val DASHBOARD_TAB = "dashboard_tab"
-const val REQ_LOGIN_WITH_GMAIL = 301
-const val REQ_SELECT_PHOTO_GALLERY = 111
 const val VALIDATION_password_length = 6
 const val STATUS_PENDING="PENDING"
 const val STATUS_ACCEPT="ACCEPT"
 const val REQ_CASE_USER="USER"
+
+
+const val REQ_WRITE_EXST = 501
+const val REQ_LOGIN_WITH_GMAIL = 301
+const val REQ_SELECT_PHOTO_GALLERY = 111
 
 const val RESP_API_SUCCESS = 200
 const val RESP_API_SUCCESS2 = 400

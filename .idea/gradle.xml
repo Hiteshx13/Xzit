@@ -13,10 +13,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/awesome-calendar" />
-            <option value="$PROJECT_DIR$/datetimerangepickerandroid" />
             <option value="$PROJECT_DIR$/library" />
-            <option value="$PROJECT_DIR$/materialcalendar" />
-            <option value="$PROJECT_DIR$/snap-time-picker" />
+            <option value="$PROJECT_DIR$/library_" />
+            <option value="$PROJECT_DIR$/singledateandtimepicker" />
+            <option value="$PROJECT_DIR$/timepickercompact" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

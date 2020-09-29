@@ -195,6 +195,16 @@
     <string name="block_user">Block User</string>
     <string name="unblock_user">Unblock User</string>
     <string name="upload_post_image">UPLOAD POST IMAGE</string>
+    <string name="event_duration">Event Duration</string>
+    <string name="event_duration_choose_date">Event Duration (Choose your date)</string>
+    <string name="event_time">Event Time (Default business hours)</string>
+    <string name="event_price">Event Price</string>
+    <string name="deal_price">Deal Price</string>
+    <string name="discount">Discount%</string>
+    <string name="discount_doller">Discount$</string>
+    <string name="address_pick_from_google_map">Address(pick from google map)</string>
+    <string name="on_sale">On Sale</string>
+    <string name="everyday">Everyday</string>
 
 
 </resources>
