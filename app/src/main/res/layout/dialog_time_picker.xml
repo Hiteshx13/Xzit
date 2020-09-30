@@ -6,8 +6,8 @@
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cvReport"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:layout_marginStart="@dimen/_5sdp"
         android:layout_marginLeft="@dimen/_5sdp"
@@ -18,10 +18,12 @@
         app:cardCornerRadius="@dimen/_10sdp"
         app:cardElevation="@dimen/_2sdp">
 
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/colorWhite"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
             android:paddingBottom="@dimen/_10sdp">
 
             <LinearLayout
@@ -48,72 +50,702 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/llReportData"
+            <ScrollView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_above="@+id/tvOK"
-                android:layout_below="@+id/llTitle"
-                android:orientation="vertical"
-                android:padding="@dimen/_10sdp">
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
                 <LinearLayout
+                    android:id="@+id/llReportData"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/_10sdp">
 
-                    <androidx.appcompat.widget.AppCompatCheckBox
-                        android:layout_width="wrap_content"
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="@string/everyday" />
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbEveryday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/everyday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSEvery"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pEEvery"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:background="@android:color/white"
-                        app:cardCornerRadius="@dimen/_10sdp"
-                        app:cardElevation="@dimen/_2sdp">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
-                        <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_50sdp"
-                            app:picker_curved="true"
-                            app:picker_cyclic="true"
-                            app:picker_displayDays="false"
-                            app:picker_displayDaysOfMonth="false"
-                            app:picker_displayMonthNumbers="false"
-                            app:picker_displayYears="false"
-                            app:picker_visibleItemCount="3" />
-                    </androidx.cardview.widget.CardView><androidx.cardview.widget.CardView
-                        android:layout_width="wrap_content"
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbMonday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/monday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSMon"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pEMon"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        android:layout_marginRight="@dimen/_5sdp"
-                        android:background="@android:color/white"
-                        app:cardCornerRadius="@dimen/_10sdp"
-                        app:cardElevation="@dimen/_2sdp">
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
 
-                        <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
-                            android:layout_width="@dimen/_80sdp"
-                            android:layout_height="@dimen/_50sdp"
-                            app:picker_curved="true"
-                            app:picker_cyclic="true"
-                            app:picker_displayDays="false"
-                            app:picker_displayDaysOfMonth="false"
-                            app:picker_displayMonthNumbers="false"
-                            app:picker_displayYears="false"
-                            app:picker_visibleItemCount="3" />
-                    </androidx.cardview.widget.CardView>
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbTuesday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/tuesday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSTue"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pETue"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbWednesday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/wednesday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSWed"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pEWed"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbThursday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/thursday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSThu"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pEThu"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbFriday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/friday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSFri"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pEFri"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbSaturday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/saturday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSSat"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pESat"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:weightSum="10">
+
+                        <androidx.appcompat.widget.AppCompatCheckBox
+                            android:id="@+id/cbSunday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="4.5"
+                            android:text="@string/sunday" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pSSun"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:layout_weight="0.5"
+                            android:fontFamily="@font/quicksand_bold"
+                            android:gravity="center"
+                            android:text="-"
+                            android:textColor="@color/colorGrayTextDark"
+                            android:textSize="@dimen/_18ssp"
+                            android:visibility="visible" />
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginStart="@dimen/_5sdp"
+                            android:layout_marginLeft="@dimen/_5sdp"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:layout_marginEnd="@dimen/_5sdp"
+                            android:layout_marginRight="@dimen/_5sdp"
+                            android:layout_marginBottom="@dimen/_5sdp"
+                            android:layout_weight="2.5"
+                            android:background="@android:color/white"
+                            app:cardCornerRadius="@dimen/_10sdp"
+                            app:cardElevation="@dimen/_2sdp">
+
+                            <com.github.florent37.singledateandtimepicker.SingleDateAndTimePicker
+                                android:id="@+id/pESun"
+                                android:layout_width="match_parent"
+                                android:layout_height="@dimen/_50sdp"
+                                app:picker_curved="true"
+                                app:picker_cyclic="true"
+                                app:picker_displayDays="false"
+                                app:picker_displayDaysOfMonth="false"
+                                app:picker_displayMonthNumbers="false"
+                                app:picker_displayYears="false"
+                                app:picker_textSize="@dimen/_12ssp"
+                                app:picker_visibleItemCount="3" />
+                        </androidx.cardview.widget.CardView>
+                    </LinearLayout>
+
+
                 </LinearLayout>
-            </LinearLayout>
+            </ScrollView>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSave"
@@ -121,6 +753,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/llReportData"
+
                 android:layout_centerHorizontal="true"
                 android:background="@drawable/backgoundround"
                 android:fontFamily="@font/quicksand_bold"
@@ -129,7 +762,7 @@
                 android:text="@string/save"
                 android:textAllCaps="false"
                 android:textColor="@android:color/white" />
-        </RelativeLayout>
+        </LinearLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>
 

@@ -6,6 +6,8 @@ import android.net.NetworkInfo
 import android.text.TextUtils
 import android.widget.Toast
 import com.xzit.app.R
+import okhttp3.MediaType
+import okhttp3.RequestBody
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -18,9 +20,9 @@ const val SIGNUP_TYPE_MERCHENT = "signup_type_merchent"
 const val SIGNUP_TYPE_USER = "signup_type_user"
 const val DASHBOARD_TAB = "dashboard_tab"
 const val VALIDATION_password_length = 6
-const val STATUS_PENDING="PENDING"
-const val STATUS_ACCEPT="ACCEPT"
-const val REQ_CASE_USER="USER"
+const val STATUS_PENDING = "PENDING"
+const val STATUS_ACCEPT = "ACCEPT"
+const val REQ_CASE_USER = "USER"
 
 
 const val REQ_WRITE_EXST = 501
@@ -36,9 +38,9 @@ fun showToast(context: Context, message: String) {
 
 fun isEmailValid(email: String): Boolean {
     if (TextUtils.isEmpty(email)) {
-        return false;
+        return false
     } else {
-        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches();
+        return android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()
     }
 }
 
@@ -56,4 +58,13 @@ fun getStringDate(date: Date): String {
     var spf = SimpleDateFormat("yyyy-MM-dd")
     var strdate = spf.format(date)
     return strdate
+}
+
+fun getTimeHM(date: Date): String {
+    val sdf = SimpleDateFormat("HH:mm", Locale.getDefault())
+    return sdf.format(date)
+}
+
+fun getRequestBody(str: String?): RequestBody? {
+    return RequestBody.create(MediaType.parse("multipart/form-data"), str)
 }

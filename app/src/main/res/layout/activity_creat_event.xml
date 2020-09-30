@@ -19,27 +19,25 @@
                 android:background="@color/colorAccent" />
 
             <ImageView
-                android:id="@+id/imgbackscreen"
+                android:id="@+id/ivBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/icn_back"
+                android:padding="@dimen/_20sdp"
+                android:src="@drawable/icn_back"
                 tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/txtModifyProfile"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/imgbackscreen"
-                android:layout_marginStart="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
+                android:layout_below="@+id/ivBack"
+                android:layout_marginStart="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
                 android:fontFamily="@font/quicksand_regular"
                 android:text="@string/createvent"
                 android:textColor="@android:color/white"
-                android:textSize="20sp"
+                android:textSize="@dimen/_18ssp"
                 tools:ignore="UnusedAttribute" />
 
             <androidx.cardview.widget.CardView
@@ -47,21 +45,20 @@
                 android:layout_height="match_parent"
                 android:layout_below="@+id/txtModifyProfile"
                 android:layout_gravity="center"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="15dp"
+                android:layout_marginStart="@dimen/_5sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:paddingBottom="@dimen/_10sdp"
                 android:background="@android:color/white"
                 app:cardCornerRadius="@dimen/_10sdp">
 
-                <ScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
+<!--                <ScrollView-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent">-->
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-
                         android:orientation="vertical">
 
                         <androidx.cardview.widget.CardView
@@ -138,13 +135,14 @@
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
+                                android:id="@+id/etUserName"
                                 style="@style/StyleEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
+                                android:focusable="false"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:hint="@string/user_name"
-                                android:focusable="false"
                                 android:imeOptions="actionNext"
                                 android:inputType="textEmailAddress"
                                 tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
@@ -162,6 +160,7 @@
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
+                                android:id="@+id/etTitle"
                                 style="@style/StyleEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
@@ -174,7 +173,7 @@
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
+                            android:layout_height="@dimen/_100sdp"
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
@@ -184,19 +183,48 @@
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
+                                android:id="@+id/etDescription"
                                 style="@style/StyleEditText"
                                 android:layout_width="match_parent"
-                                android:layout_height="@dimen/_100sdp"
+                                android:layout_height="match_parent"
                                 android:background="@android:color/transparent"
                                 android:fontFamily="@font/quicksand_regular"
-                                android:gravity="start"
-                                android:hint="@string/user_name"
+                                android:gravity="top"
+                                android:hint="@string/description"
                                 android:imeOptions="actionNext"
-                                android:inputType="textMultiLine"
-                                android:minLines="5"
-                                android:visibility="visible"
-                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+                                android:inputType="textEmailAddress" />
                         </androidx.cardview.widget.CardView>
+
+                        <!--                        <androidx.cardview.widget.CardView-->
+                        <!--                            android:layout_width="match_parent"-->
+                        <!--                            android:layout_height="wrap_content"-->
+                        <!--                            android:layout_gravity="center"-->
+                        <!--                            android:layout_marginStart="@dimen/_10sdp"-->
+                        <!--                            android:layout_marginTop="@dimen/_10sdp"-->
+                        <!--                            android:paddingStart="@dimen/_15sdp"-->
+                        <!--                            android:paddingLeft="@dimen/_15sdp"-->
+                        <!--                            android:paddingRight="@dimen/_15sdp"-->
+                        <!--                            android:paddingBottom="@dimen/_15sdp"-->
+                        <!--                            android:layout_marginEnd="@dimen/_10sdp"-->
+                        <!--                            android:layout_margin="@dimen/_5sdp"-->
+                        <!--                            android:background="@android:color/white"-->
+                        <!--                            card_view:cardCornerRadius="@dimen/_5sdp">-->
+
+                        <!--                            <EditText-->
+                        <!--                                style="@style/StyleEditText"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="@dimen/_100sdp"-->
+                        <!--                                android:background="@android:color/transparent"-->
+                        <!--                                android:fontFamily="@font/quicksand_regular"-->
+                        <!--                                android:gravity="start"-->
+                        <!--                                android:hint="@string/user_name"-->
+                        <!--                                android:layout_margin="@dimen/_5sdp"-->
+                        <!--                                android:imeOptions="actionNext"-->
+                        <!--                                android:inputType="textMultiLine"-->
+                        <!--                                android:minLines="5"-->
+                        <!--                                android:visibility="visible"-->
+                        <!--                                tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />-->
+                        <!--                        </androidx.cardview.widget.CardView>-->
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
@@ -211,11 +239,10 @@
                             <Spinner
                                 android:id="@+id/spCategory"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_below="@+id/cvDesc"
-                                android:paddingTop="@dimen/_18sdp"
-                                android:paddingBottom="@dimen/_18sdp" />
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_below="@+id/cvDesc" />
                         </androidx.cardview.widget.CardView>
+
 
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
@@ -229,12 +256,10 @@
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <Spinner
-
+                                android:id="@+id/spPreference"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_below="@+id/cvDesc"
-                                android:paddingTop="@dimen/_18sdp"
-                                android:paddingBottom="@dimen/_18sdp" />
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_below="@+id/cvDesc" />
                         </androidx.cardview.widget.CardView>
 
                         <androidx.cardview.widget.CardView
@@ -244,17 +269,18 @@
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-                            android:visibility="visible"
                             android:background="@android:color/white"
+                            android:visibility="visible"
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
-                                android:id="@+id/etEventDuration"
+                                android:id="@+id/etEventDate"
                                 style="@style/StyleEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:focusable="false"
+                                android:gravity="center"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:hint="@string/event_duration_choose_date"
                                 android:imeOptions="actionNext"
@@ -266,10 +292,10 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:layout_marginStart="@dimen/_10sdp"
-                            android:visibility="visible"
                             android:layout_marginTop="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:background="@android:color/white"
+                            android:visibility="visible"
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
@@ -279,6 +305,7 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:focusable="false"
+                                android:gravity="center"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:hint="@string/event_time"
                                 android:imeOptions="actionNext"
@@ -288,30 +315,31 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:visibility="visible"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:visibility="visible">
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
                                 android:layout_weight="1"
                                 android:background="@android:color/white"
                                 card_view:cardCornerRadius="@dimen/_5sdp">
 
                                 <EditText
+                                    android:id="@+id/etPrice"
                                     style="@style/StyleEditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@android:color/transparent"
-                                    android:focusable="false"
                                     android:fontFamily="@font/quicksand_regular"
                                     android:hint="@string/event_price"
                                     android:imeOptions="actionNext"
-                                    android:inputType="textEmailAddress" />
+                                    android:inputType="numberDecimal" />
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
@@ -319,21 +347,23 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_10sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_5sdp"
                                 android:layout_weight="1"
                                 android:background="@android:color/white"
                                 card_view:cardCornerRadius="@dimen/_5sdp">
 
                                 <EditText
+                                    android:id="@+id/etDealPrice"
                                     style="@style/StyleEditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@android:color/transparent"
-                                    android:focusable="false"
                                     android:fontFamily="@font/quicksand_regular"
                                     android:hint="@string/deal_price"
                                     android:imeOptions="actionNext"
-                                    android:inputType="textEmailAddress" />
+                                    android:inputType="numberDecimal" />
                             </androidx.cardview.widget.CardView>
 
 
@@ -342,30 +372,31 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:visibility="visible"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:orientation="horizontal">
+                            android:orientation="horizontal"
+                            android:visibility="visible">
 
                             <androidx.cardview.widget.CardView
                                 android:layout_width="0dp"
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
                                 android:layout_weight="1"
                                 android:background="@android:color/white"
                                 card_view:cardCornerRadius="@dimen/_5sdp">
 
                                 <EditText
+                                    android:id="@+id/etDiscountPercent"
                                     style="@style/StyleEditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@android:color/transparent"
-                                    android:focusable="false"
                                     android:fontFamily="@font/quicksand_regular"
                                     android:hint="@string/discount"
                                     android:imeOptions="actionNext"
-                                    android:inputType="textEmailAddress" />
+                                    android:inputType="number" />
                             </androidx.cardview.widget.CardView>
 
                             <androidx.cardview.widget.CardView
@@ -373,25 +404,28 @@
                                 android:layout_height="wrap_content"
                                 android:layout_gravity="center"
                                 android:layout_marginStart="@dimen/_10sdp"
+                                android:layout_marginTop="@dimen/_5sdp"
                                 android:layout_marginEnd="@dimen/_10sdp"
+                                android:layout_marginBottom="@dimen/_10sdp"
                                 android:layout_weight="1"
                                 android:background="@android:color/white"
                                 card_view:cardCornerRadius="@dimen/_5sdp">
 
                                 <EditText
+                                    android:id="@+id/etDiscountPrice"
                                     style="@style/StyleEditText"
                                     android:layout_width="match_parent"
                                     android:layout_height="wrap_content"
                                     android:background="@android:color/transparent"
-                                    android:focusable="false"
                                     android:fontFamily="@font/quicksand_regular"
                                     android:hint="@string/discount_doller"
                                     android:imeOptions="actionNext"
-                                    android:inputType="textEmailAddress" />
+                                    android:inputType="numberDecimal" />
                             </androidx.cardview.widget.CardView>
 
 
                         </LinearLayout>
+
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -403,16 +437,17 @@
                             card_view:cardCornerRadius="@dimen/_5sdp">
 
                             <EditText
+                                android:id="@+id/etAddress"
                                 style="@style/StyleEditText"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
-                                android:focusable="false"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:hint="@string/address_pick_from_google_map"
                                 android:imeOptions="actionNext"
                                 android:inputType="textEmailAddress" />
                         </androidx.cardview.widget.CardView>
+
                         <androidx.cardview.widget.CardView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -426,10 +461,8 @@
                             <Spinner
                                 android:id="@+id/spOthers"
                                 android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_below="@+id/cvDesc"
-                                android:paddingTop="@dimen/_18sdp"
-                                android:paddingBottom="@dimen/_18sdp" />
+                                android:layout_height="@dimen/_45sdp"
+                                android:layout_below="@+id/cvDesc" />
                         </androidx.cardview.widget.CardView>
 
 
@@ -441,12 +474,13 @@
                             android:layout_marginEnd="@dimen/_10sdp"
 
                             android:orientation="horizontal">
+
                             <TextView
 
                                 android:layout_width="0dp"
-                                android:layout_weight="1"
                                 android:layout_height="wrap_content"
-                                 android:fontFamily="@font/quicksand_regular"
+                                android:layout_weight="1"
+                                android:fontFamily="@font/quicksand_regular"
                                 android:text="@string/on_sale"
                                 android:textColor="@color/textColor"
                                 android:textSize="@dimen/_12ssp" />
@@ -460,6 +494,7 @@
 
                         <Button
                             android:id="@+id/btnNext"
+                            style="@style/StyleButtonYellow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp"
@@ -468,10 +503,9 @@
                             android:layout_marginBottom="@dimen/_10sdp"
                             android:background="@drawable/backgoundround"
                             android:fontFamily="@font/quicksand_bold"
-                            android:text="@string/next"
-                            style="@style/StyleButtonYellow" />
+                            android:text="@string/next" />
                     </LinearLayout>
-                </ScrollView>
+<!--                </ScrollView>-->
             </androidx.cardview.widget.CardView>
         </RelativeLayout>
     </ScrollView>

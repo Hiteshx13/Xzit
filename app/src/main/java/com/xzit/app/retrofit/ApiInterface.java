@@ -1,6 +1,6 @@
 package com.xzit.app.retrofit;
 
-import com.squareup.okhttp.RequestBody;
+import com.xzit.app.retrofit.model.response.CreateEventResponse;
 import com.xzit.app.retrofit.model.response.changepassword.ChangePasswordResponse;
 import com.xzit.app.retrofit.model.response.changepassword.ForgotPasswordResponse;
 import com.xzit.app.retrofit.model.response.dashboard.FCMTokenResponse;
@@ -21,6 +21,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
@@ -77,7 +78,7 @@ public interface ApiInterface {
     Call<UserProfileResponse> callUserProfile(
             @FieldMap Map<String, String> postData);
 
- @FormUrlEncoded
+    @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<BlockUnblockUserResponse> callBlockUser(
             @FieldMap Map<String, String> postData);
@@ -86,7 +87,8 @@ public interface ApiInterface {
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<FriendRequestResponse> callFriendRequest(
             @FieldMap Map<String, String> postData);
- @FormUrlEncoded
+
+    @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<ReportUsertResponse> callReportUser(
             @FieldMap Map<String, String> postData);
@@ -100,6 +102,33 @@ public interface ApiInterface {
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<SendFriendRequestResponse> callSendFriendRequest(
             @FieldMap Map<String, String> postData);
+
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<CreateEventResponse> callCreateEvent(
+            @FieldMap Map<String, String> postData);
+
+
+    /* map["postData[requestCase]"] = getRequestBody("createEvent")
+                map["postData[eventType]"] = getRequestBody("Casual")
+                map["postData[clientId]"] = getRequestBody(userData.clientId)
+                map["postData[userId]"] = getRequestBody(userData.userId)*/
+
+    @Multipart
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<CreateEventResponse> callCreateEventImage(
+            @Part("postData[requestCase]") RequestBody requestCase ,
+            @Part("postData[clientId]") RequestBody clientId ,
+            @Part("postData[userId]") RequestBody userId ,
+            @Part("postData[eventTitleName]") RequestBody eventTitleName ,
+            @Part("postData[eventDescDetail]") RequestBody eventDescDetail ,
+
+            @Part  MultipartBody.Part   image
+    );
+
+    /*  type:RequestBody,title:RequestBody,desc:RequestBody, image: MultipartBody.Part*/
+
+
 
 //    @Multipart
 //    @POST("/xzitAdmin/xzitProject/getData.php")
