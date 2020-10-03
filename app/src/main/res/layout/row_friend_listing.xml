@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/rlRoot"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        android:background="@android:color/white">
+
+        <View
+            android:id="@+id/viewStrip"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorYellowLight" />
+
+        <RelativeLayout
+            android:id="@+id/llData"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/viewStrip"
+
+            >
+
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivProfile"
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:src="@drawable/demo"
+                app:civ_border_color="@color/colorWhite"
+                app:civ_border_width="@dimen/_3sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_9sdp"
+                android:layout_marginLeft="@dimen/_9sdp"
+                android:layout_toStartOf="@+id/ivAddRemove"
+                android:layout_toLeftOf="@+id/ivAddRemove"
+                android:layout_toEndOf="@+id/ivProfile"
+                android:layout_toRightOf="@+id/ivProfile"
+                android:fontFamily="@font/poppins_medium"
+                android:text="Jack Sparrow"
+                android:textColor="@color/textColor"
+                android:textSize="@dimen/_12ssp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivAddRemove"
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_20sdp"
+                android:src="@drawable/selctor_add_remove_rounded_yellow" />
+
+        </RelativeLayout>
+    </RelativeLayout>
+</layout>

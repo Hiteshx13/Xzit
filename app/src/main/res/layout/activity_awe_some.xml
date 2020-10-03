@@ -34,13 +34,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:layout_centerHorizontal="true"
                     android:layout_marginTop="@dimen/_70sdp"
                     android:fontFamily="@font/quicksand_bold"
-                    android:text="All Right"
+                    android:text="@string/all_right"
                     android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/_30ssp"
-                    tools:ignore="UnusedAttribute" />
+                    android:textSize="@dimen/_22ssp" />
 
                 <TextView
                     android:id="@+id/txtDetails"

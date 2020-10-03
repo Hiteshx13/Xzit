@@ -1,5 +1,7 @@
 package com.xzit.app.retrofit;
 
+import android.util.Log;
+
 import com.xzit.app.activity.BaseActivity;
 
 import java.io.IOException;
@@ -41,6 +43,7 @@ public class ApiClient extends BaseActivity {
                         newRequest.addHeader("Content-Type", "application/x-www-form-urlencoded");
                         if (preference.isLoggedIn() && preference.getUserData() != null) {
                             newRequest.addHeader("Authorization", "Bearer " + getAuthToken());
+                            Log.e("#AUTH_TOKEN",""+getAuthToken());
                         }
                         return chain.proceed(newRequest.build());
                     }

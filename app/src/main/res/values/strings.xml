@@ -217,6 +217,10 @@
     <string name="start">start</string>
     <string name="end">end</string>
     <string name="on">ON</string>
+    <string name="no_data_found">No data found</string>
+    <string name="invite_friends">Invite Friends</string>
+    <string name="sign_plus">+</string>
+    <string name="all_right">All Right</string>
 
 
 </resources>

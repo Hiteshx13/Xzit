@@ -1,10 +1,12 @@
 package com.xzit.app.utils
 
 import android.content.Context
+import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
 import android.text.TextUtils
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.xzit.app.R
 import okhttp3.MediaType
 import okhttp3.RequestBody
@@ -16,13 +18,17 @@ const val PARAM_SIGNUP_TYPE = "param_signup_type"
 const val PARAM_SIGNUP_DATA = "param_signup_data"
 const val PARAM_USER_ID = "param_user_id"
 const val PARAM_CLIENT_ID = "param_client_id"
+const val PARAM_EVENT_ID = "param_event_id"
 const val SIGNUP_TYPE_MERCHENT = "signup_type_merchent"
+const val EVENT_INVITATION_STATUS_ACCEPT = "ACCEPT"
 const val SIGNUP_TYPE_USER = "signup_type_user"
 const val DASHBOARD_TAB = "dashboard_tab"
 const val VALIDATION_password_length = 6
 const val STATUS_PENDING = "PENDING"
 const val STATUS_ACCEPT = "ACCEPT"
 const val REQ_CASE_USER = "USER"
+const val USER_TYPE_NORMAL = "NORMAL"
+const val USER_TYPE_BUSSINESS = "BUSSINESS"
 
 
 const val REQ_WRITE_EXST = 501
@@ -34,6 +40,10 @@ const val RESP_API_SUCCESS2 = 400
 
 fun showToast(context: Context, message: String) {
     Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+}
+
+fun LaunchActivity(mContext: Context, intent: Intent) {
+    mContext.startActivity(intent)
 }
 
 fun isEmailValid(email: String): Boolean {

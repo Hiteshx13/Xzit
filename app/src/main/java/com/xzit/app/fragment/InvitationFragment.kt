@@ -8,20 +8,26 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.recyclerview.widget.RecyclerView
 import com.xzit.app.R
 import com.xzit.app.activity.EditProfileActivity
 import com.xzit.app.activity.SettingsActivity
+import com.xzit.app.activity.XzitApp
 import com.xzit.app.adapter.InvitationAdater
-import com.xzit.app.adapter.ProfileAdapter
 import com.xzit.app.databinding.FragmentInvitationBinding
+import com.xzit.app.repository.EventRepository
+import com.xzit.app.retrofit.model.response.login.LoginData
+import com.xzit.app.utils.EVENT_INVITATION_STATUS_ACCEPT
+import java.util.*
+import kotlin.collections.ArrayList
+import kotlin.collections.set
 
 class InvitationFragment : BaseFragment(), View.OnClickListener {
 
     var binding: FragmentInvitationBinding? = null
-    private var mAdapter: ProfileAdapter? = null
-    private var MyAdapterVenue: RecyclerView.Adapter<*>? = null
     private lateinit var invitationAdapter: InvitationAdater
+    private lateinit var repository: EventRepository
+
+    private lateinit var userdata: LoginData
     var listDummy = ArrayList<String>()
 
     companion object {
@@ -37,8 +43,14 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        repository = EventRepository()
         initListener()
-        setData()
+
+        userdata = XzitApp.getLoginUserData()
+
+        callInvitationSent()
+        callInvitationReceived()
+        //setData()
     }
 
     fun initListener() {
@@ -51,6 +63,23 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
 //        binding?.llTabGallery?.setOnClickListener(this)
 //        binding?.llTabContacts?.setOnClickListener(this)
 //        binding?.llTabGallery?.callOnClick()
+    }
+
+    fun callInvitationSent() {
+        val map = HashMap<String, String>()
+        map["postData[requestCase]"] = "getAllSendInvitationByUser"
+        map["postData[clientId]"] = userdata.clientId
+        map["postData[userId]"] = userdata.userId
+        repository.callAllSendInvitationByUser(mContext, map)
+    }
+
+    fun callInvitationReceived() {
+        val map = HashMap<String, String>()
+        map["postData[requestCase]"] = "getAllReceivedInvitationToUser"
+        map["postData[clientId]"] = userdata.clientId
+        map["postData[userId]"] = userdata.userId
+        map["postData[status]"] = EVENT_INVITATION_STATUS_ACCEPT
+        repository.callAllReceivedInvitationByUser(mContext, map)
     }
 
     fun setData() {

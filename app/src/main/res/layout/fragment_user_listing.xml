@@ -78,10 +78,10 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/etfriend"
+                    android:id="@+id/etSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_border_yellow_rounded"
@@ -91,24 +91,29 @@
                     android:fontFamily="@font/quicksand_regular"
                     android:gravity="start"
                     android:layout_margin="@dimen/_10sdp"
+                    android:imeOptions="actionSearch"
                     android:hint="@string/search"
-                    android:imeOptions="actionDone"
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:textAlignment="textStart"
                     tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/rrFriend"
+                    android:id="@+id/rvUsers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/etfriend"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_below="@+id/etSearch"
+                    android:layout_margin="@dimen/_8sdp"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNoDataFound"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/no_data_found"/>
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

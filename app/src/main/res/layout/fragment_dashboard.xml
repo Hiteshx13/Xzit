@@ -68,7 +68,7 @@
                     android:layout_marginTop="@dimen/_25sdp"
                     android:layout_marginEnd="@dimen/_20sdp"
                     android:layout_marginRight="@dimen/_20sdp"
-                    android:src="@mipmap/ic_heart"
+                    android:src="@drawable/icnsave"
                     app:civ_border_color="@color/colorAccent"
                     app:civ_border_width="3dp"
                     app:layout_constraintEnd_toEndOf="parent"

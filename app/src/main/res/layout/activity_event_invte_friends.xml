@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite"
+        tools:context=".activity.editprofile.EditProfileActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="3.5"
+                android:background="@color/colorAccent" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6.5"
+                tools:ignore="UselessLeaf" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_15sdp"
+            android:src="@drawable/icn_back"
+            tools:ignore="ContentDescription" />
+        <TextView
+            android:id="@+id/txtModifyProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ivBack"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:fontFamily="@font/quicksand_regular"
+            android:text="@string/invite_friends"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_18ssp"
+            tools:ignore="UnusedAttribute" />
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/txtModifyProfile"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:background="@android:color/white"
+            android:labelFor="@+id/cvSearch"
+            android:paddingBottom="@dimen/_minus20sdp"
+            app:cardCornerRadius="@dimen/_14sdp"
+            app:cardElevation="0dp">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/etfriend"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_border_yellow_rounded"
+                    android:drawableStart="@drawable/ic_search_small"
+                    android:drawableLeft="@drawable/ic_search_small"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:gravity="start"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:hint="@string/search"
+                    android:imeOptions="actionDone"
+                    android:inputType="text"
+                    android:padding="@dimen/_10sdp"
+                    android:textAlignment="textStart"
+                    tools:ignore="Autofill,RtlSymmetry,TextFields,UnusedAttribute" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvFriends"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/etfriend"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginRight="10dp"
+                    android:nestedScrollingEnabled="false"
+                    android:overScrollMode="never" />
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <Button
+            android:id="@+id/btnSendInvitation"
+            style="@style/StyleButtonYellow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_27sdp"
+            android:layout_marginEnd="@dimen/_27sdp"
+            android:layout_below="@+id/carviewpasswordconfirmation"
+            android:layout_marginTop="@dimen/_21sdp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/backgoundround"
+            android:text="@string/next"
+            android:textAllCaps="false"
+            android:layout_alignParentBottom="true"
+            android:textColor="@android:color/white"
+            tools:ignore="UnusedAttribute" />
+
+    </RelativeLayout>
+</layout>

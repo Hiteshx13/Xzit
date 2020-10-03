@@ -292,7 +292,7 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
         if (isValid()) {
             HashMap<String, String> map = new HashMap<>();
             map.put("postData[requestCase]", "signup");
-            map.put("postData[userType]", "NORMAL");
+            map.put("postData[userType]", AppUtilsKt.USER_TYPE_NORMAL);
             map.put("postData[userName]", strName);
             map.put("postData[businessName]", strName);
             map.put("postData[email]", strEmail);

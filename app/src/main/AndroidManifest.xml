@@ -66,6 +66,22 @@
             android:name=".activity.RegistrationNextActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
+
+        <activity
+            android:name=".activity.CreateEventActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" />
+
+        <activity
+            android:name=".activity.EventInviteFriendsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppThemeNoTitle" >
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".activity.SelectSignUpActivity"
             android:screenOrientation="portrait"
@@ -102,10 +118,7 @@
             android:name=".activity.PaymentActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppThemeNoTitle" />
-        <activity
-            android:name=".activity.CreatEvents"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppThemeNoTitle" />
+
         <activity
             android:name=".activity.AddFriendsActivity"
             android:screenOrientation="portrait"

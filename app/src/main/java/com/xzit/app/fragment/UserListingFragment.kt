@@ -1,10 +1,16 @@
 package com.xzit.app.fragment
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.util.Log
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.EditorInfo
+import android.widget.TextView
+import android.widget.TextView.OnEditorActionListener
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -25,6 +31,7 @@ import com.xzit.app.retrofit.model.response.userlisting.UserListingData
 import com.xzit.app.retrofit.model.response.userlisting.UserListingResponse
 import com.xzit.app.utils.*
 import java.util.*
+
 
 class UserListingFragment : BaseFragment(), View.OnClickListener {
 
@@ -52,18 +59,36 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
         friendSearchList()
         setObserver()
 
-        val map = HashMap<String, String>()
         userdata = XzitApp.getLoginUserData()
 
-        map["postData[requestCase]"] = "getAllUserList"
-        map["postData[clientId]"] = userdata.clientId
-        map["postData[userId]"] = userdata.userId
-        repository.callUserList(mContext, map)
+        callUserListing("")
     }
 
     fun initListener() {
         binding?.ivBack?.setOnClickListener(this)
         binding?.ivRequest?.setOnClickListener(this)
+        binding?.etSearch?.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                callUserListing(binding?.etSearch?.getText().toString().trim())
+                return@OnEditorActionListener true
+            }
+            false
+        })
+        binding?.etSearch?.addTextChangedListener(object:TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+               if(s.toString().trim().length==0){
+                   callUserListing("")
+               }
+            }
+        })
     }
 
     private fun setObserver() {
@@ -72,6 +97,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
                 updateUI(response.response)
             } else {
                 showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+                updateUI(null)
             }
         })
 
@@ -92,45 +118,65 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
         })
     }
 
-    private fun updateUI(data: List<UserListingData>) {
-        binding?.rrFriend?.setHasFixedSize(true)
-        binding?.rrFriend?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-        mAdapter = UserListAdapter(mActivity, data, object : OnViewClickListener {
-            override fun onClick(position: Int) {
-                (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(data.get(position).userId), true)
-            }
+    fun callUserListing(keyword: String?) {
+        val map = HashMap<String, String>()
+        map["postData[requestCase]"] = "getAllUserList"
+        map["postData[clientId]"] = userdata.clientId
+        map["postData[userId]"] = userdata.userId
+        map["postData[keyword]"] = keyword?:""
 
-        }, object : OnButtonClickListener {
-            override fun onClick(position: Int) {
-                selectedPos = position
-                if (data.get(position).status.equals(STATUS_ACCEPT)) {
-                    showMessageDialog(mContext, mActivity.getString(R.string.are_you_sure_to_unfriend), true, getString(R.string.yes), getString(R.string.no), OnDialogClickListener { listener ->
-                        if (listener) {
-                            callFriendUnfriend(data.get(position))
-                        }
-                    })
-                } else {
-                    callFriendUnfriend(data.get(position))
+        Log.d("#Params",""+map.toString())
+        repository.callUserList(mContext, map)
+    }
+
+    private fun updateUI(data: List<UserListingData>?) {
+
+        if (data==null || data.size == 0) {
+            binding?.tvNoDataFound?.visibility = View.VISIBLE
+            binding?.rvUsers?.visibility = View.GONE
+        } else {
+            binding?.tvNoDataFound?.visibility = View.GONE
+            binding?.rvUsers?.visibility = View.VISIBLE
+
+            binding?.rvUsers?.setHasFixedSize(true)
+            binding?.rvUsers?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+            mAdapter = UserListAdapter(mActivity, data, object : OnViewClickListener {
+                override fun onClick(position: Int) {
+                    (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(data.get(position).userId), true)
                 }
 
+            }, object : OnButtonClickListener {
+                override fun onClick(position: Int) {
+                    selectedPos = position
+                    if (data.get(position).status.equals(STATUS_ACCEPT)) {
+                        showMessageDialog(mContext, mActivity.getString(R.string.are_you_sure_to_unfriend), true, getString(R.string.yes), getString(R.string.no), OnDialogClickListener { listener ->
+                            if (listener) {
+                                callFriendUnfriend(data.get(position))
+                            }
+                        })
+                    } else {
+                        callFriendUnfriend(data.get(position))
+                    }
 
-            }
-        }, object : OnReportDialogClickListener {
-            override fun onButtonClicked(model: UserListingData?, report: String?) {
-                showReportDialog(mActivity, true, model!!, OnReportDialogClickListener { model, report ->
 
-                    val map = HashMap<String, String>()
-                    map["postData[requestCase]"] = "reportmaster"
-                    map["postData[clientId]"] = userdata.clientId
-                    map["postData[userId]"] = userdata.userId
-                    map["postData[feedback]"] = report
-                    map["postData[reportId]"] = model.userId
-                    map["postData[reportType]"] = REQ_CASE_USER
-                    repository.callReportUser(mContext, map)
-                })
-            }
-        })
-        binding?.rrFriend?.adapter = mAdapter
+                }
+            }, object : OnReportDialogClickListener {
+                override fun onButtonClicked(model: UserListingData?, report: String?) {
+                    showReportDialog(mActivity, true, model!!, OnReportDialogClickListener { model, report ->
+
+                        val map = HashMap<String, String>()
+                        map["postData[requestCase]"] = "reportmaster"
+                        map["postData[clientId]"] = userdata.clientId
+                        map["postData[userId]"] = userdata.userId
+                        map["postData[feedback]"] = report
+                        map["postData[reportId]"] = model.userId
+                        map["postData[reportType]"] = REQ_CASE_USER
+                        repository.callReportUser(mContext, map)
+                    })
+                }
+            })
+            binding?.rvUsers?.adapter = mAdapter
+        }
     }
 
     private fun callFriendUnfriend(model: UserListingData) {

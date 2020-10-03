@@ -69,8 +69,8 @@ class FriendRequestFragment : BaseFragment(), View.OnClickListener {
             if (response != null && response.status == RESP_API_SUCCESS) {
                 if (isDataAvailable(response.Response)) {
 
-//                    binding?.tvNoDataFound?.visibility = View.GONE
-//                    binding?.rvFriendRequest?.visibility = View.VISIBLE
+//                    binding?.tvNoDataFound?.icn_hide = View.GONE
+//                    binding?.rvFriendRequest?.icn_hide = View.VISIBLE
 
 //                    var list = response.Response as ArrayList<FriendRequestData>
 //                    list.addAll(response.Response as ArrayList)
@@ -104,8 +104,8 @@ class FriendRequestFragment : BaseFragment(), View.OnClickListener {
                     binding?.rvFriendRequest?.adapter = mAdapter
                 }
 //                else {
-//                    binding?.tvNoDataFound?.visibility = View.VISIBLE
-//                    binding?.rvFriendRequest?.visibility = View.GONE
+//                    binding?.tvNoDataFound?.icn_hide = View.VISIBLE
+//                    binding?.rvFriendRequest?.icn_hide = View.GONE
 //                }
 
             } else {

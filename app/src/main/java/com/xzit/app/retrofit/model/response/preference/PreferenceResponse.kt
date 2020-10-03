@@ -20,7 +20,7 @@ class PreferenceResponse {
 
     @SerializedName("Response")
     @Expose
-    private var response: String? = null
+    private var response:  ArrayList<Object>? =null
 
     fun getStatus(): Int? {
         return status
@@ -38,11 +38,11 @@ class PreferenceResponse {
         this.message = message
     }
 
-    fun getResponse(): String? {
+    fun getResponse(): ArrayList<Object>? {
         return response
     }
 
-    fun setResponse(response: String) {
+    fun setResponse(response: ArrayList<Object>?) {
         this.response = response
     }
 

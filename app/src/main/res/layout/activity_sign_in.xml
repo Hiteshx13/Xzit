@@ -124,7 +124,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:drawableEnd="@drawable/icn_view"
-                        android:drawableRight="@drawable/icn_view"
+                        android:drawableRight="@drawable/icn_hide"
                         android:gravity="start"
                         android:hint="@string/password"
                         android:imeOptions="actionDone"
@@ -147,7 +147,7 @@
                     android:fontFamily="@font/quicksand_regular"
                     android:text="@string/forgotpassword_q"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/_13ssp"
+                    android:textSize="@dimen/_10ssp"
                     tools:ignore="UnusedAttribute" />
 
                 <Button

@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.xzit.app.R;
@@ -29,6 +30,7 @@ import java.util.HashMap;
 
 import static com.xzit.app.activity.XzitApp.preference;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
+import static com.xzit.app.utils.AppUtilsKt.showToast;
 
 public class SelectLoginActivity extends BaseActivity implements View.OnClickListener {
 
@@ -36,25 +38,44 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
     // Splash screen timer
     private static int SPLASH_TIME_OUT = 3000;
     ActivitySelectLoginBinding binding;
-    CallbackManager callbackManager;
+    private CallbackManager callbackManager;
     MasterDataRepository repository;
     private LoginRepository loginRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // remove title
         binding = DataBindingUtil.setContentView(this, R.layout.activity_select_login);
-        repository = new MasterDataRepository();
-        loginRepository = new LoginRepository();
-        callbackManager = CallbackManager.Factory.create();
-
-        binding.btnFacebook.setPermissions(Arrays.asList("email"));
-
+        initialization();
         listener();
         setObserver();
         callMasterData();
 
+    }
+
+    void initialization() {
+        repository = new MasterDataRepository();
+        loginRepository = new LoginRepository();
+        callbackManager = CallbackManager.Factory.create();
+
+        LoginManager.getInstance().registerCallback(callbackManager,
+                new FacebookCallback<LoginResult>() {
+                    @Override
+                    public void onSuccess(LoginResult loginResult) {
+                        Log.d("Success", "Login");
+
+                    }
+
+                    @Override
+                    public void onCancel() {
+                        showToast(SelectLoginActivity.this, "Login Cancel");
+                    }
+
+                    @Override
+                    public void onError(FacebookException exception) {
+                        showToast(SelectLoginActivity.this, "" + exception.getMessage());
+                    }
+                });
     }
 
     void callMasterData() {
@@ -66,32 +87,33 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
     private void listener() {
 
         binding.btnSignUpWithEmail.setOnClickListener(this);
+        binding.btnFacebook.setOnClickListener(this);
         binding.txtsignIn.setOnClickListener(this);
         Log.e("Firebase", "token " + FirebaseInstanceId.getInstance().getToken());
         // Callback registration
-        binding.btnFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
-            @Override
-            public void onSuccess(LoginResult loginResult) {
-                Log.e("", "");
-            }
-
-            @Override
-            public void onCancel() {
-                Log.e("", "");
-            }
-
-            @Override
-            public void onError(FacebookException exception) {
-
-                HashMap<String, String> map = new HashMap<>();
-                map.put("postData[requestCase]", "login");
-                map.put("postData[authuid]", "1234");
-                map.put("postData[authType]", "FACEBOOK");
-                loginRepository.callApi(mContext, map);
-
-                Log.e("", "");
-            }
-        });
+//        binding.btnFacebook.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
+//            @Override
+//            public void onSuccess(LoginResult loginResult) {
+//                Log.e("", "");
+//            }
+//
+//            @Override
+//            public void onCancel() {
+//                Log.e("", "");
+//            }
+//
+//            @Override
+//            public void onError(FacebookException exception) {
+//
+//                HashMap<String, String> map = new HashMap<>();
+//                map.put("postData[requestCase]", "login");
+//                map.put("postData[authuid]", "1234");
+//                map.put("postData[authType]", "FACEBOOK");
+//                loginRepository.callApi(mContext, map);
+//
+//                Log.e("", "");
+//            }
+//        });
     }
 
     private void setObserver() {
@@ -139,8 +161,6 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
     }
 
 
-
-
     @Override
     public void onClick(View v) {
 
@@ -150,6 +170,7 @@ public class SelectLoginActivity extends BaseActivity implements View.OnClickLis
                 startActivity(intent);
                 break;
             case R.id.btnFacebook:
+                LoginManager.getInstance().logInWithReadPermissions(this, Arrays.asList("email","public_profile", "user_friends"));
                 break;
             case R.id.txtsignIn:
                 Intent intentSignIn = new Intent(SelectLoginActivity.this, LoginActivity.class);

@@ -4,6 +4,8 @@ import android.content.Context
 import android.widget.Toast
 import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
+import com.xzit.app.retrofit.model.response.eventinvitation.EventInvitationResponse
+import com.xzit.app.retrofit.model.response.friendlist.FriendListResponse
 import com.xzit.app.retrofit.model.response.friendrequest.AcceptRejectFriendRequestResponse
 import com.xzit.app.retrofit.model.response.friendrequest.BlockUnblockUserResponse
 import com.xzit.app.retrofit.model.response.friendrequest.FriendRequestResponse
@@ -25,6 +27,8 @@ open class UserRepository : BaseRepository() {
     open var acceptRejectRequestResponse = MutableLiveData<AcceptRejectFriendRequestResponse>()
     open var userProfileResponse = MutableLiveData<UserProfileResponse>()
     open var blockUnblockResponse = MutableLiveData<BlockUnblockUserResponse>()
+    open var friendListResponse = MutableLiveData<FriendListResponse>()
+    open var eventInvitationResponse = MutableLiveData<EventInvitationResponse>()
 
     fun callUserProfile(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
@@ -230,6 +234,64 @@ open class UserRepository : BaseRepository() {
                         return
                     } else {
                         reportUserResponse.value = response.body()
+                    }
+                }
+            })
+        }
+    }
+
+    fun callFriendList(mContext: Context, req: HashMap<String, String>) {
+        if (isNetworkConnected(mContext)) {
+            showProgress(mContext)
+            apiInterface.callFriendList(req).enqueue(object : retrofit2.Callback<FriendListResponse> {
+                override fun onFailure(call: Call<FriendListResponse>, t: Throwable) {
+                    hideProgress()
+                    var model = FriendListResponse(4001, t.message ?: "", null)
+                    friendListResponse.value = model
+                }
+
+                override fun onResponse(call: Call<FriendListResponse?>, response: Response<FriendListResponse>) {
+                    hideProgress()
+                    if (response.body() == null) {
+                        try {
+                            val jObjError = JSONObject(response.errorBody()!!.string())
+                            var model = Gson().fromJson(jObjError.toString(), FriendListResponse::class.java)
+                            friendListResponse.value = model
+                        } catch (e: Exception) {
+                            Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
+                        }
+                        return
+                    } else {
+                        friendListResponse.value = response.body()
+                    }
+                }
+            })
+        }
+    }
+
+fun callEventInvitation(mContext: Context, req: HashMap<String, String>) {
+        if (isNetworkConnected(mContext)) {
+            showProgress(mContext)
+            apiInterface.callEventInvitation(req).enqueue(object : retrofit2.Callback<EventInvitationResponse> {
+                override fun onFailure(call: Call<EventInvitationResponse>, t: Throwable) {
+                    hideProgress()
+                    var model = FriendListResponse(4001, t.message ?: "", null)
+                    friendListResponse.value = model
+                }
+
+                override fun onResponse(call: Call<EventInvitationResponse?>, response: Response<EventInvitationResponse>) {
+                    hideProgress()
+                    if (response.body() == null) {
+                        try {
+                            val jObjError = JSONObject(response.errorBody()!!.string())
+                            var model = Gson().fromJson(jObjError.toString(), EventInvitationResponse::class.java)
+                            eventInvitationResponse.value = model
+                        } catch (e: Exception) {
+                            Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
+                        }
+                        return
+                    } else {
+                        eventInvitationResponse.value = response.body()
                     }
                 }
             })

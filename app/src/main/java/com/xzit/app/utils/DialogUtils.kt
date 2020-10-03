@@ -22,8 +22,8 @@ import com.xzit.app.listener.OnDialogClickListener
 import com.xzit.app.listener.OnMultiDateSelectedListener
 import com.xzit.app.listener.OnReportDialogClickListener
 import com.xzit.app.listener.OnTimeSelectedListener
-import com.xzit.app.retrofit.model.request.createevent.EventTime
-import com.xzit.app.retrofit.model.request.createevent.EventTimeRow
+import com.xzit.app.retrofit.model.request.createevent.CreateEventTime
+import com.xzit.app.retrofit.model.request.createevent.CreateEventTimeData
 import com.xzit.app.retrofit.model.response.userlisting.UserListingData
 import java.util.*
 import kotlin.collections.ArrayList
@@ -67,7 +67,7 @@ fun showDatePickerDialog(context: Context?, isCancelable: Boolean?, listener: On
         }
 
         override fun onDateRangeSelected(startDate: Calendar, endDate: Calendar) {
-            strEndDate =  getStringDate(endDate.time)
+            strEndDate = getStringDate(endDate.time)
         }
     })
     btnSave.setOnClickListener(object : View.OnClickListener {
@@ -79,7 +79,7 @@ fun showDatePickerDialog(context: Context?, isCancelable: Boolean?, listener: On
             } else if (strEndDate.isEmpty()) {
                 showToast(context!!, "Please select end date")
             } else {
-                listener.onDateSelected(strStartDate,strEndDate)
+                listener.onDateSelected(strStartDate, strEndDate)
                 mDialog.dismiss()
             }
 
@@ -88,10 +88,10 @@ fun showDatePickerDialog(context: Context?, isCancelable: Boolean?, listener: On
     mDialog.show()
 }
 
-fun showTimePickerDialog(context: Context?, isCancelable: Boolean?, clickListener: OnTimeSelectedListener) {
+fun showTimePickerDialog(mContext: Context?, isCancelable: Boolean?, clickListener: OnTimeSelectedListener) {
 
-    val builder: AlertDialog.Builder = AlertDialog.Builder(context)
-    var view: View = LayoutInflater.from(context).inflate(R.layout.dialog_time_picker, null, false)
+    val builder: AlertDialog.Builder = AlertDialog.Builder(mContext)
+    var view: View = LayoutInflater.from(mContext).inflate(R.layout.dialog_time_picker, null, false)
     builder.setView(view)
     val mDialog: AlertDialog = builder.create()
     mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
@@ -195,77 +195,87 @@ fun showTimePickerDialog(context: Context?, isCancelable: Boolean?, clickListene
 
     btnSave.setOnClickListener(object : View.OnClickListener {
         override fun onClick(v: View?) {
-            var arrayEventTime = HashMap<String, ArrayList<EventTimeRow>>()
+            var arrayEventTime = HashMap<String, ArrayList<CreateEventTimeData>>()
+//            var arrayString = ArrayList<String>()
+            var sb = StringBuilder()
 
             if (cbEveryday.isChecked) {
-                var arrayTime = ArrayList<EventTime>()
-                var arrayTimeDay = ArrayList<EventTimeRow>()
-                arrayTime.add(EventTime(getTimeHM(pSEvery.date), getTimeHM(pEEvery.date)))
-                arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                arrayEventTime.put(context.getString(R.string.everyday).toLowerCase(), arrayTimeDay)
+                var arrayTime = ArrayList<CreateEventTime>()
+                var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                arrayTime.add(CreateEventTime(getTimeHM(pSEvery.date), getTimeHM(pEEvery.date)))
+                arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                arrayEventTime.put(mContext.getString(R.string.everyday).toLowerCase(), arrayTimeDay)
+                sb.append(mContext.getString(R.string.everyday))
 
             } else {
                 if (cbMonday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSMon.date), getTimeHM(pEMon.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.monday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSMon.date), getTimeHM(pEMon.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.monday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.monday) + ",")
                 }
 
                 if (cbTuesday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSTue.date), getTimeHM(pETue.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.tuesday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSTue.date), getTimeHM(pETue.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.tuesday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.tuesday) + ",")
                 }
 
                 if (cbWednesday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSWed.date), getTimeHM(pEWed.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.wednesday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSWed.date), getTimeHM(pEWed.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.wednesday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.wednesday) + ",")
                 }
 
                 if (cbThursday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSThu.date), getTimeHM(pEThu.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.thursday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSThu.date), getTimeHM(pEThu.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.thursday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.thursday) + ",")
                 }
                 if (cbFriday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSFri.date), getTimeHM(pEFri.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.friday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSFri.date), getTimeHM(pEFri.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.friday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.friday) + ",")
                 }
                 if (cbSaturday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSSat.date), getTimeHM(pESat.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.saturday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSSat.date), getTimeHM(pESat.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.saturday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.saturday) + ",")
                 }
 
                 if (cbSunday.isChecked) {
-                    var arrayTime = ArrayList<EventTime>()
-                    var arrayTimeDay = ArrayList<EventTimeRow>()
-                    arrayTime.add(EventTime(getTimeHM(pSSun.date), getTimeHM(pESun.date)))
-                    arrayTimeDay.add(EventTimeRow(context!!.getString(R.string.on), arrayTime))
-                    arrayEventTime.put(context.getString(R.string.sunday).toLowerCase(), arrayTimeDay)
+                    var arrayTime = ArrayList<CreateEventTime>()
+                    var arrayTimeDay = ArrayList<CreateEventTimeData>()
+                    arrayTime.add(CreateEventTime(getTimeHM(pSSun.date), getTimeHM(pESun.date)))
+                    arrayTimeDay.add(CreateEventTimeData(mContext!!.getString(R.string.on), arrayTime))
+                    arrayEventTime.put(mContext.getString(R.string.sunday).toLowerCase(), arrayTimeDay)
+                    sb.append(mContext.getString(R.string.sunday) + ",")
                 }
             }
 
-            var strTime = arrayEventTime.toString().replace("EventTimeRow(", "")
-                    .replace("EventTime(", "")
+            var strTime = arrayEventTime.toString().replace("CreateEventTime(", "")
+                    .replace("CreateEventTimeData(", "")
                     .replace(")])", "]")
                     .replace("[", "{")
                     .replace("]", "}")
-            clickListener.onClick(strTime)
+            clickListener.onClick(strTime,sb.substring(0,sb.length-1))
             mDialog.dismiss()
         }
     })

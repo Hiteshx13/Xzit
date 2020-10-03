@@ -1,4 +1,4 @@
-package com.xzit.app.retrofit.model.response;
+package com.xzit.app.retrofit.model.response.createevent;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -15,7 +15,7 @@ public class CreateEventResponse {
     private String message;
     @SerializedName("Response")
     @Expose
-    private List<Object> response = null;
+    private List<CreateEventData> response = null;
     @SerializedName("authToken")
     @Expose
     private String authToken;
@@ -36,11 +36,11 @@ public class CreateEventResponse {
         this.message = message;
     }
 
-    public List<Object> getResponse() {
+    public List<CreateEventData> getResponse() {
         return response;
     }
 
-    public void setResponse(List<Object> response) {
+    public void setResponse(List<CreateEventData> response) {
         this.response = response;
     }
 

@@ -77,17 +77,17 @@
 
                 <Button
                     android:id="@+id/btnNext"
+                    style="@style/StyleButtonYellow"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_marginStart="@dimen/_15sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:layout_marginEnd="@dimen/_15sdp"
                     android:background="@drawable/backgoundround"
                     android:fontFamily="@font/quicksand_medium"
                     android:text="@string/next"
-                    android:textAllCaps="false"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/_14sdp" />
+                    android:textAllCaps="false"/>
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

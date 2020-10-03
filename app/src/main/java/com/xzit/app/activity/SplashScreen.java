@@ -34,6 +34,12 @@ public class SplashScreen extends AppCompatActivity {
         // remove title
         setContentView(R.layout.activity_splash_screen);
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
         initialization();
 
         listener();
@@ -44,7 +50,6 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     private void listener() {
-
         Log.e("Firebase", "token " + FirebaseInstanceId.getInstance().getToken());
     }
 
@@ -118,7 +123,7 @@ public class SplashScreen extends AppCompatActivity {
         });
 
         promptInfo = new BiometricPrompt.PromptInfo.Builder()
-                .setTitle("Biometric login for my app")
+                .setTitle(getString(R.string.app_name))
                 .setSubtitle("Log in using your biometric credential")
                 .setNegativeButtonText("Use account password")
                 .build();

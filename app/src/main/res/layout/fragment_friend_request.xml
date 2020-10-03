@@ -102,7 +102,7 @@
                     tools:visibility="visible"
                     android:layout_height="wrap_content"
                     android:layout_centerInParent="true"
-                    android:text="No data found"/>
+                    android:text="@string/no_data_found"/>
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

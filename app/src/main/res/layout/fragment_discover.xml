@@ -7,89 +7,53 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-<!--        <ScrollView-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:background="@color/colorBg">-->
+        <!--        <ScrollView-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:background="@color/colorBg">-->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:context=".activity.EditProfileActivity">
 
             <RelativeLayout
+                android:id="@+id/rlHeader"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                tools:context=".activity.EditProfileActivity">
+                android:background="@color/colorWhite">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_230sdp"
                     android:background="@color/colorYellow" />
 
-                <RelativeLayout
-                    android:id="@+id/rlHeader"
+                <HorizontalScrollView
+                    android:id="@+id/svStories"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingStart="@dimen/_15sdp"
+                    android:paddingLeft="@dimen/_15sdp"
+                    android:paddingEnd="@dimen/_15sdp"
+                    android:paddingRight="@dimen/_15sdp"
+                    android:scrollbars="none">
 
-                    <HorizontalScrollView
-                        android:id="@+id/svStories"
-                        android:layout_width="match_parent"
+                    <LinearLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:paddingStart="@dimen/_15sdp"
-                        android:paddingLeft="@dimen/_15sdp"
-                        android:paddingEnd="@dimen/_15sdp"
-                        android:paddingRight="@dimen/_15sdp"
-                        android:scrollbars="none">
+                        android:orientation="horizontal">
 
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:orientation="horizontal">
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:orientation="vertical">
 
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:orientation="vertical">
-
-                                <RelativeLayout
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_40sdp">
-
-                                    <de.hdodenhof.circleimageview.CircleImageView
-                                        android:layout_width="@dimen/_40sdp"
-                                        android:layout_height="@dimen/_40sdp"
-                                        android:src="@drawable/demo"
-                                        app:civ_border_color="@color/colorWhite"
-                                        app:civ_border_width="1dp"
-                                        app:layout_constraintEnd_toEndOf="parent"
-                                        app:layout_constraintStart_toStartOf="parent"
-                                        app:layout_constraintTop_toTopOf="parent" />
-
-                                    <androidx.appcompat.widget.AppCompatImageView
-                                        android:layout_width="wrap_content"
-                                        android:layout_height="wrap_content"
-                                        android:layout_centerInParent="true"
-                                        android:src="@drawable/ic_add" />
-                                </RelativeLayout>
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:fontFamily="@font/quicksand_regular"
-                                    android:text="Your Story"
-                                    android:textColor="@color/colorBlack"
-                                    android:textSize="@dimen/_10ssp"
-                                    tools:ignore="UnknownIdInLayout,UnusedAttribute" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:orientation="vertical">
+                            <RelativeLayout
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp">
 
                                 <de.hdodenhof.circleimageview.CircleImageView
                                     android:layout_width="@dimen/_40sdp"
@@ -101,132 +65,180 @@
                                     app:layout_constraintStart_toStartOf="parent"
                                     app:layout_constraintTop_toTopOf="parent" />
 
-                                <TextView
+                                <androidx.appcompat.widget.AppCompatImageView
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:fontFamily="@font/quicksand_regular"
-                                    android:text="Story"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="@dimen/_10ssp"
-                                    tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+                                    android:layout_centerInParent="true"
+                                    android:src="@drawable/ic_add" />
+                            </RelativeLayout>
 
-                            </LinearLayout>
-
-                            <LinearLayout
+                            <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:orientation="vertical">
-
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:src="@drawable/demo"
-                                    app:civ_border_color="@color/colorWhite"
-                                    app:civ_border_width="1dp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:fontFamily="@font/quicksand_regular"
-                                    android:text="Story"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="@dimen/_10ssp"
-                                    tools:ignore="UnknownIdInLayout,UnusedAttribute" />
-
-                            </LinearLayout>
-
-                            <LinearLayout
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginEnd="@dimen/_10sdp"
-                                android:layout_marginRight="@dimen/_10sdp"
-                                android:orientation="vertical">
-
-                                <de.hdodenhof.circleimageview.CircleImageView
-                                    android:layout_width="@dimen/_40sdp"
-                                    android:layout_height="@dimen/_40sdp"
-                                    android:src="@drawable/demo"
-                                    app:civ_border_color="@color/colorWhite"
-                                    app:civ_border_width="1dp"
-                                    app:layout_constraintEnd_toEndOf="parent"
-                                    app:layout_constraintStart_toStartOf="parent"
-                                    app:layout_constraintTop_toTopOf="parent" />
-
-                                <TextView
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_gravity="center"
-                                    android:layout_marginTop="@dimen/_5sdp"
-                                    android:fontFamily="@font/quicksand_regular"
-                                    android:text="Story"
-                                    android:textColor="@color/colorWhite"
-                                    android:textSize="@dimen/_10ssp"
-                                    tools:ignore="UnknownIdInLayout,UnusedAttribute" />
-
-                            </LinearLayout>
-
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="Your Story"
+                                android:textColor="@color/colorBlack"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="UnknownIdInLayout,UnusedAttribute" />
 
                         </LinearLayout>
-                    </HorizontalScrollView>
-
-                    <LinearLayout
-                        android:id="@+id/llTab"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/svStories"
-                        android:layout_marginTop="@dimen/_20sdp"
-                        android:orientation="horizontal">
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/news"
-                            android:textAllCaps="true"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/_12ssp"
-                            app:fontFamily="@font/quicksand_regular" />
-
-                        <androidx.appcompat.widget.AppCompatTextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:gravity="center"
-                            android:text="@string/upcoming_news"
-                            android:textColor="@color/colorWhite"
-                            android:textSize="@dimen/_12ssp"
-                            app:fontFamily="@font/quicksand_regular" />
-                    </LinearLayout>
-
-                    <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_below="@+id/llTab"
-                        android:layout_gravity="center"
-                        android:layout_marginStart="@dimen/_5sdp"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginEnd="@dimen/_5sdp"
-                        app:cardElevation="0dp"
-
-                        android:paddingBottom="@dimen/_15sdp"
-                        app:cardCornerRadius="@dimen/_20sdp">
 
                         <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:src="@drawable/demo"
+                                app:civ_border_color="@color/colorWhite"
+                                app:civ_border_width="1dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="Story"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:src="@drawable/demo"
+                                app:civ_border_color="@color/colorWhite"
+                                app:civ_border_width="1dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="Story"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="@dimen/_10sdp"
+                            android:layout_marginRight="@dimen/_10sdp"
+                            android:orientation="vertical">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_width="@dimen/_40sdp"
+                                android:layout_height="@dimen/_40sdp"
+                                android:src="@drawable/demo"
+                                app:civ_border_color="@color/colorWhite"
+                                app:civ_border_width="1dp"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="@dimen/_5sdp"
+                                android:fontFamily="@font/quicksand_regular"
+                                android:text="Story"
+                                android:textColor="@color/colorWhite"
+                                android:textSize="@dimen/_10ssp"
+                                tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <LinearLayout
+                    android:id="@+id/llTab"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/svStories"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:orientation="horizontal">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNews"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:text="@string/news"
+                        android:textAllCaps="true"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp"
+                        app:fontFamily="@font/quicksand_regular" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvUpcommingNews"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_10sdp"
+                        android:paddingBottom="@dimen/_10sdp"
+                        android:text="@string/upcoming_news"
+                        android:textColor="@color/colorWhite"
+                        android:textSize="@dimen/_12ssp"
+                        app:fontFamily="@font/quicksand_regular" />
+                </LinearLayout>
+
+                <androidx.cardview.widget.CardView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_below="@+id/llTab"
+                    android:layout_gravity="center"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:paddingBottom="@dimen/_15sdp"
+                    app:cardCornerRadius="@dimen/_20sdp"
+                    app:cardElevation="0dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:background="@color/colorBg"
+                        android:orientation="vertical"
+                        android:padding="@dimen/_10sdp"
+                       >
+
+                        <ScrollView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@color/colorBg"
-                            android:orientation="vertical"
-                            android:padding="@dimen/_10sdp">
+                            android:paddingBottom="@dimen/_50sdp">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rvEvents"
@@ -237,33 +249,51 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:overScrollMode="never" />
-<!--                            <include-->
-<!--                                layout="@layout/row_discover"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="@dimen/_5sdp" />-->
+                        </ScrollView>
+                        <!--                            <androidx.recyclerview.widget.RecyclerView-->
+                        <!--                                android:id="@+id/rvEventsUpcoming"-->
+                        <!--                                android:layout_width="match_parent"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginStart="10dp"-->
+                        <!--                                android:layout_marginLeft="10dp"-->
+                        <!--                                android:layout_marginTop="10dp"-->
+                        <!--                                android:layout_marginRight="10dp"-->
+                        <!--                                android:overScrollMode="never" />-->
+                        <androidx.appcompat.widget.AppCompatTextView
+                            android:id="@+id/tvNoDataFound"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:text="@string/no_data_found"
+                            android:visibility="gone"
+                            tools:visibility="visible" />
+                        <!--                            <include-->
+                        <!--                                layout="@layout/row_discover"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginTop="@dimen/_5sdp" />-->
 
-<!--                            <include-->
-<!--                                layout="@layout/row_discover"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="@dimen/_5sdp" />-->
+                        <!--                            <include-->
+                        <!--                                layout="@layout/row_discover"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginTop="@dimen/_5sdp" />-->
 
-<!--                            <include-->
-<!--                                layout="@layout/row_discover"-->
-<!--                                android:layout_width="wrap_content"-->
-<!--                                android:layout_height="wrap_content"-->
-<!--                                android:layout_marginTop="@dimen/_5sdp" />-->
+                        <!--                            <include-->
+                        <!--                                layout="@layout/row_discover"-->
+                        <!--                                android:layout_width="wrap_content"-->
+                        <!--                                android:layout_height="wrap_content"-->
+                        <!--                                android:layout_marginTop="@dimen/_5sdp" />-->
 
 
-                        </LinearLayout>
-                    </androidx.cardview.widget.CardView>
-
-                </RelativeLayout>
-
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
 
             </RelativeLayout>
-<!--        </ScrollView>-->
+
+
+        </RelativeLayout>
+        <!--        </ScrollView>-->
 
         <Button
             android:id="@+id/btnCreateEvent"

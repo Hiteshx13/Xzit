@@ -112,14 +112,9 @@
             android:layout_gravity="center"
             android:layout_marginBottom="@dimen/_minus23sdp"
             app:cardBackgroundColor="@color/colorWhite"
-            app:cardCornerRadius="@dimen/_35sdp"
+            app:cardCornerRadius="@dimen/_350sdp"
             app:cardElevation="@dimen/_5sdp">
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:src="@drawable/icn_capture" />
 
             <RelativeLayout
                 android:layout_width="match_parent"

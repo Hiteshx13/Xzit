@@ -235,7 +235,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         } else {
             HashMap<String, String> map = new HashMap<>();
             map.put("postData[requestCase]", "signup");
-            map.put("postData[userType]", "BUSINESS");
+            map.put("postData[userType]", AppUtilsKt.USER_TYPE_BUSSINESS);
             map.put("postData[businessName]", signUpRequest.getBusinessName());
             map.put("postData[email]", signUpRequest.getEmail());
             map.put("postData[password]", signUpRequest.getPassword());
@@ -246,20 +246,19 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
             map.put("postData[phone]", strTelephone);
             map.put("postData[website]", strWebsite);
             map.put("postData[businessHours]", strBusinessHours);
+            Log.d("#REQUEST", "" + map);
 
             if (profileUri != null) {
-//                File file = new File(profileUri.getPath());
-//                RequestBody fbody = RequestBody.create(MediaType.parse("image/*"),
-//                        file);
+
                 HashMap<String, okhttp3.RequestBody> mapReq = new HashMap<>();
                 mapReq.put("postData[requestCase]", getRequestBody("signup"));
-                mapReq.put("postData[userType]", getRequestBody("BUSINESS"));
+                mapReq.put("postData[userType]", getRequestBody(AppUtilsKt.USER_TYPE_BUSSINESS));
                 mapReq.put("postData[businessName]", getRequestBody(signUpRequest.getBusinessName()));
                 mapReq.put("postData[email]", getRequestBody(signUpRequest.getEmail()));
                 mapReq.put("postData[password]", getRequestBody(signUpRequest.getPassword()));
                 mapReq.put("postData[confirmPass]", getRequestBody(signUpRequest.getConfPassword()));
                 mapReq.put("postData[userName]", getRequestBody(strUserName));
-                mapReq.put("postData[title]", getRequestBody(strTelephone));
+                mapReq.put("postData[title]", getRequestBody(strTitle));
                 mapReq.put("postData[category]", getRequestBody(strCategory));
                 mapReq.put("postData[phone]", getRequestBody(strTelephone));
                 mapReq.put("postData[website]", getRequestBody(strWebsite));

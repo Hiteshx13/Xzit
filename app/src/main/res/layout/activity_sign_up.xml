@@ -23,7 +23,7 @@
                     android:layout_height="wrap_content"
                     android:scaleType="fitXY"
                     android:src="@drawable/bg"
-                    android:visibility="gone"
+                    android:visibility="visible"
                     tools:ignore="ContentDescription" />
 
                 <ImageView
@@ -269,8 +269,7 @@
                         android:background="@drawable/backgoundround"
                         android:text="@string/next"
                         android:textAllCaps="false"
-                        android:textColor="@android:color/white"
-                        tools:ignore="UnusedAttribute" />
+                        android:textColor="@android:color/white"/>
 
                     <RelativeLayout
                         android:id="@+id/rlnewtoxzitsignup"
@@ -278,7 +277,7 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/btnNext"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="@dimen/_23sdp">
 
                         <TextView
                             android:id="@+id/txtnewtozxit"
@@ -286,7 +285,7 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/quicksand_regular"
                             android:text="@string/already_on_xzit_member"
-                            android:textSize="15sp"
+                            android:textSize="@dimen/_13ssp"
                             android:textColor="@color/colorGrayText"
                             tools:ignore="UnusedAttribute" />
 
@@ -294,14 +293,14 @@
                             android:id="@+id/textsignin"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="3dp"
-                            android:layout_marginLeft="3dp"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginLeft="@dimen/_10sdp"
                             android:layout_toEndOf="@+id/txtnewtozxit"
                             android:layout_toRightOf="@+id/txtnewtozxit"
                             android:fontFamily="@font/quicksand_bold"
                             android:text="@string/signin"
                             android:textColor="@color/colorGrayTextDark"
-                            android:textSize="15sp"
+                            android:textSize="@dimen/_13ssp"
                             tools:ignore="UnusedAttribute" />
                     </RelativeLayout>
 
@@ -311,11 +310,11 @@
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/rlnewtoxzitsignup"
                         android:layout_centerHorizontal="true"
-                        android:layout_marginTop="20dp"
+                        android:layout_marginTop="@dimen/_13sdp"
                         android:textColor="@color/colorGrayText"
                         android:fontFamily="@font/quicksand_regular"
                         android:text="@string/orloginusingsocialmedia"
-                        android:textSize="15sp" />
+                        android:textSize="@dimen/_13ssp" />
 
 
                 </RelativeLayout>

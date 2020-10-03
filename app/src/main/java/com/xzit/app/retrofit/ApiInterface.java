@@ -1,10 +1,13 @@
 package com.xzit.app.retrofit;
 
-import com.xzit.app.retrofit.model.response.CreateEventResponse;
+import com.xzit.app.retrofit.model.response.createevent.CreateEventResponse;
 import com.xzit.app.retrofit.model.response.changepassword.ChangePasswordResponse;
 import com.xzit.app.retrofit.model.response.changepassword.ForgotPasswordResponse;
 import com.xzit.app.retrofit.model.response.dashboard.FCMTokenResponse;
 import com.xzit.app.retrofit.model.response.editprofile.EditProfileResponse;
+import com.xzit.app.retrofit.model.response.eventdata.EventListingResponse;
+import com.xzit.app.retrofit.model.response.eventinvitation.EventInvitationResponse;
+import com.xzit.app.retrofit.model.response.friendlist.FriendListResponse;
 import com.xzit.app.retrofit.model.response.friendrequest.AcceptRejectFriendRequestResponse;
 import com.xzit.app.retrofit.model.response.friendrequest.BlockUnblockUserResponse;
 import com.xzit.app.retrofit.model.response.friendrequest.FriendRequestResponse;
@@ -95,6 +98,16 @@ public interface ApiInterface {
 
     @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<FriendListResponse> callFriendList(
+            @FieldMap Map<String, String> postData);
+
+ @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<EventInvitationResponse> callEventInvitation(
+            @FieldMap Map<String, String> postData);
+
+    @FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
     Call<AcceptRejectFriendRequestResponse> callAcceptRejectRequest(
             @FieldMap Map<String, String> postData);
 
@@ -106,6 +119,15 @@ public interface ApiInterface {
     @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
     Call<CreateEventResponse> callCreateEvent(
+            @FieldMap Map<String, String> postData);
+
+@FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<EventListingResponse> callEventListing(
+            @FieldMap Map<String, String> postData);
+@FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<EventListingResponse> callAllSendInvitationByUser(
             @FieldMap Map<String, String> postData);
 
 
@@ -123,6 +145,13 @@ public interface ApiInterface {
             @Part("postData[eventTitleName]") RequestBody eventTitleName ,
             @Part("postData[eventDescDetail]") RequestBody eventDescDetail ,
 
+            @Part  MultipartBody.Part   image
+    );
+
+    @Multipart
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<CreateEventResponse> callCreateEventImage(
+            @PartMap HashMap<String, RequestBody> requestCase ,
             @Part  MultipartBody.Part   image
     );
 
