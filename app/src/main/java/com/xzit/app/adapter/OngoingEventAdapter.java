@@ -27,7 +27,7 @@ public class OngoingEventAdapter extends RecyclerView.Adapter<OngoingEventAdapte
 
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
-        RowDiscoverBinding binding= DataBindingUtil.inflate(inflater,R.layout.row_discover,parent,false);
+        RowDiscoverBinding binding = DataBindingUtil.inflate(inflater, R.layout.row_discover, parent, false);
         OngoingEventAdapter.ViewHolder vh = new OngoingEventAdapter.ViewHolder(binding);
         return vh;
     }
@@ -35,10 +35,17 @@ public class OngoingEventAdapter extends RecyclerView.Adapter<OngoingEventAdapte
     @Override
     public void onBindViewHolder(OngoingEventAdapter.ViewHolder holder, final int position) {
 
-        Ongoing model=listData.get(holder.getAdapterPosition());
+        Ongoing model = listData.get(holder.getAdapterPosition());
         holder.binding.tvName.setText(model.getEventTitle());
         holder.binding.tvSubTitle.setText(model.getEventTitle());
         holder.binding.tvDescription.setText(model.getEventDetail());
+
+        if (holder.getAdapterPosition() == listData.size() - 1) {
+            holder.binding.viewSpace.setVisibility(View.VISIBLE);
+        } else {
+
+            holder.binding.viewSpace.setVisibility(View.GONE);
+        }
 //        final String name = listData.get(position).;
 
 

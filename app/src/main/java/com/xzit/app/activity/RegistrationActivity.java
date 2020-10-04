@@ -9,6 +9,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
+import androidx.core.content.ContextCompat;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.Observer;
 
@@ -93,9 +94,11 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     if (event.getRawX() >= (binding.etPassword.getRight())) {
                         isShowPassword = !isShowPassword;
-                        if (isShowPassword) {
+                        if(isShowPassword){
                             binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                        } else {
+                            binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(mContext,R.drawable.icn_password_hide), null);
+                        }else{
+                            binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(mContext,R.drawable.icn_password_show), null);
                             binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                         }
                         return true;
@@ -111,9 +114,11 @@ public class RegistrationActivity extends BaseActivity implements View.OnClickLi
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
                     if (event.getRawX() >= (binding.etConfPassword.getRight())) {
                         isShowConfPassword = !isShowConfPassword;
-                        if (isShowConfPassword) {
+                        if(isShowConfPassword){
                             binding.etConfPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                        } else {
+                            binding.etConfPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(mContext,R.drawable.icn_password_hide), null);
+                        }else{
+                            binding.etConfPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(mContext,R.drawable.icn_password_show), null);
                             binding.etConfPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                         }
                         return true;

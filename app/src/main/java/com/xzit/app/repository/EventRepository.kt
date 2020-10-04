@@ -6,9 +6,13 @@ import androidx.lifecycle.MutableLiveData
 import com.google.gson.Gson
 import com.xzit.app.retrofit.model.response.createevent.CreateEventResponse
 import com.xzit.app.retrofit.model.response.eventdata.EventListingResponse
+import com.xzit.app.retrofit.model.response.eventdata.EventListingResponseError
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationReceived
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSent
 import com.xzit.app.utils.isNetworkConnected
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
@@ -16,7 +20,8 @@ import java.util.*
 
 open class EventRepository : BaseRepository() {
     open var responseData = MutableLiveData<CreateEventResponse>()
-    open var responseEventInvitationSent = MutableLiveData<EventListingResponse>()
+    open var responseEventInvitationSent = MutableLiveData<EventInvitationSent>()
+    open var responseEventInvitationReceived = MutableLiveData<EventInvitationReceived>()
     open var responsEventListing = MutableLiveData<EventListingResponse>()
 
     fun callCreateEvent(mContext: Context, req: HashMap<String, String>) {
@@ -64,11 +69,15 @@ open class EventRepository : BaseRepository() {
                     hideProgress()
                     if (response.body() == null) {
                         try {
+
                             val jObjError = JSONObject(response.errorBody()!!.string())
-                            var model = Gson().fromJson(jObjError.toString(), EventListingResponse::class.java)
-                            responsEventListing.value = model
+                            var model = Gson().fromJson(jObjError.toString(), EventListingResponseError::class.java)
+                            responsEventListing.value = EventListingResponse(4001, model.message, null, null)
+
                         } catch (e: Exception) {
-                            Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
+                            var model = EventListingResponse(4001, "No data found", null, null)
+                            responsEventListing.value = model
+                            //Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
                         }
                         return
                     } else {
@@ -152,21 +161,21 @@ open class EventRepository : BaseRepository() {
 
     fun callAllSendInvitationByUser(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
-            showProgress(mContext)
-            apiInterface.callAllSendInvitationByUser(req).enqueue(object : retrofit2.Callback<EventListingResponse> {
-                override fun onFailure(call: Call<EventListingResponse>, t: Throwable) {
-                    var model = EventListingResponse(4001, t.message,null,null)
+            //showProgress(mContext)
+            apiInterface.callAllSendInvitationByUser(req).enqueue(object : retrofit2.Callback<EventInvitationSent> {
+                override fun onFailure(call: Call<EventInvitationSent>, t: Throwable) {
+                    var model = EventInvitationSent(4001, t.message,null,null)
                     model.message = t.message
                     model.status = 4001
                     responseEventInvitationSent.value = model
                 }
 
-                override fun onResponse(call: Call<EventListingResponse>, response: Response<EventListingResponse>) {
+                override fun onResponse(call: Call<EventInvitationSent>, response: Response<EventInvitationSent>) {
                     if (response.body() == null) {
 
                         try {
                             val jObjError = JSONObject(response.errorBody()!!.string())
-                            var model = Gson().fromJson(jObjError.toString(), EventListingResponse::class.java)
+                            var model = Gson().fromJson(jObjError.toString(), EventInvitationSent::class.java)
                             responseEventInvitationSent.value = model
                         } catch (e: Exception) {
                             Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
@@ -181,29 +190,29 @@ open class EventRepository : BaseRepository() {
     }fun callAllReceivedInvitationByUser(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
 
-            apiInterface.callAllSendInvitationByUser(req).enqueue(object : retrofit2.Callback<EventListingResponse> {
-                override fun onFailure(call: Call<EventListingResponse>, t: Throwable) {
+            apiInterface.callReceivedEventInvitation(req).enqueue(object : retrofit2.Callback<EventInvitationReceived> {
+                override fun onFailure(call: Call<EventInvitationReceived>, t: Throwable) {
                     hideProgress()
-                    var model = EventListingResponse(4001, t.message,null,null)
+                    var model = EventInvitationReceived(4001, t.message,null,null)
                     model.message = t.message
                     model.status = 4001
-                    responseEventInvitationSent.value = model
+                    responseEventInvitationReceived.value = model
                 }
 
-                override fun onResponse(call: Call<EventListingResponse>, response: Response<EventListingResponse>) {
+                override fun onResponse(call: Call<EventInvitationReceived>, response: Response<EventInvitationReceived>) {
                     hideProgress()
                     if (response.body() == null) {
 
                         try {
                             val jObjError = JSONObject(response.errorBody()!!.string())
-                            var model = Gson().fromJson(jObjError.toString(), EventListingResponse::class.java)
-                            responseEventInvitationSent.value = model
+                            var model = Gson().fromJson(jObjError.toString(), EventInvitationReceived::class.java)
+                            responseEventInvitationReceived.value = model
                         } catch (e: Exception) {
                             Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
                         }
                         return
                     } else {
-                        responseEventInvitationSent.value = response.body()
+                        responseEventInvitationReceived.value = response.body()
                     }
                 }
             })

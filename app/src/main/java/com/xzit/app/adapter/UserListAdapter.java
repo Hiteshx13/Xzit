@@ -82,7 +82,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
 
         Log.d("Name:" + model.getBusinessname(), "__" + model.getProfilePic());
         if (model.getStatus().equals(AppUtilsKt.STATUS_PENDING)) {
-            holder.binding.tvAddFriendUnfriend.setClickable(false);
+//            holder.binding.tvAddFriendUnfriend.setClickable(false);
             holder.binding.tvAddFriendUnfriend.setSelected(true);
             holder.binding.tvAddFriendUnfriend.setText(model.getStatus());
         } else if (model.getStatus().equals(AppUtilsKt.STATUS_ACCEPT)) {
@@ -113,7 +113,10 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
             binding.tvAddFriendUnfriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    listener.onClick(getAdapterPosition());
+                    if(!values.get(getAdapterPosition()).getStatus().equals(AppUtilsKt.STATUS_PENDING)){
+                        listener.onClick(getAdapterPosition());
+                    }
+
                 }
             });
 

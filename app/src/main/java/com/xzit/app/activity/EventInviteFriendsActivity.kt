@@ -48,9 +48,9 @@ class EventInviteFriendsActivity : BaseActivity(), View.OnClickListener {
         friendSearchList()
         setObserver()
 
-        val map = HashMap<String, String>()
         userdata = XzitApp.getLoginUserData()
 
+        val map = HashMap<String, String>()
         map["postData[requestCase]"] = "getFriendsList"
         map["postData[clientId]"] = userdata.clientId
         map["postData[userId]"] = userdata.userId
@@ -61,53 +61,79 @@ class EventInviteFriendsActivity : BaseActivity(), View.OnClickListener {
     fun initListener() {
         binding?.ivBack?.setOnClickListener(this)
         binding?.btnSendInvitation?.setOnClickListener(this)
+//        binding?.etSearch?.addTextChangedListener(object: TextWatcher {
+//            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+//
+//            }
+//
+//            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+//
+//            }
+//
+//            override fun afterTextChanged(s: Editable?) {
+//                if(s.toString().trim().length==0){
+//                    callUserListing("",false)
+//                }
+//            }
+//        })
     }
 
     private fun setObserver() {
         repository.friendListResponse.observe(this, Observer<FriendListResponse?> { response ->
             if (response != null && response.status == RESP_API_SUCCESS) {
-                updateUI(response.Response)
+                if (isDataAvailable(response.Response)) {
+                    updateUI(response.Response)
+                }
             } else {
-                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+                binding?.tvNoDataFound?.visibility = View.VISIBLE
+                binding?.tvNoDataFound?.text = response?.message
+                binding?.rvFriends?.visibility = View.GONE
+                binding?.btnSendInvitation?.visibility = View.GONE
+                //showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
             }
         })
 
         repository.eventInvitationResponse.observe(this, Observer<EventInvitationResponse?> { response ->
             if (response != null && response.status == RESP_API_SUCCESS) {
-                showMessageDialog(mContext, response.message, true, OnDialogClickListener {
-                    finish()
-                })
+//                showMessageDialog(mContext, response.message, true, OnDialogClickListener {
+//
+//                })
+                finish()
             } else {
                 showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
             }
         })
     }
 
+    fun isDataAvailable(data: List<FriendListData>?): Boolean {
+        if (data?.size ?: 0 > 0) {
+            binding?.tvNoDataFound?.visibility = View.GONE
+            binding?.rvFriends?.visibility = View.VISIBLE
+            binding?.btnSendInvitation?.visibility = View.VISIBLE
+
+            return true
+        } else {
+            binding?.tvNoDataFound?.visibility = View.VISIBLE
+            binding?.rvFriends?.visibility = View.GONE
+            binding?.btnSendInvitation?.visibility = View.GONE
+            return false
+        }
+    }
+
     private fun updateUI(data: List<FriendListData>?) {
+
         binding?.rvFriends?.setHasFixedSize(true)
         binding?.rvFriends?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         mAdapter = FriendListAdapter(this, data, object : OnAddRemoveFriendListener {
             override fun onClick(position: Int, model: FriendListData) {
                 selectedPos = position
-
-//                if (data.status.equals(STATUS_ACCEPT)) {
-//                    showMessageDialog(mContext, getString(R.string.are_you_sure_to_unfriend), true, getString(R.string.yes), getString(R.string.no), OnDialogClickListener { listener ->
-//                        if (listener) {
-//                            callFriendUnfriend(data.get(position))
-//                        }
-//                    })
-//                } else {
-//                    callFriendUnfriend(data.get(position))
-//                }
-
-
             }
         })
         binding?.rvFriends?.adapter = mAdapter
     }
 
     private fun callEventInvitationToUser() {
-        if( mAdapter!!.selectedUsers!=null){
+        if (mAdapter!!.selectedUsers != null) {
             val map = HashMap<String, String>()
             map["postData[requestCase]"] = "sendEventInvitationToUsers"
             map["postData[clientId]"] = userdata.clientId

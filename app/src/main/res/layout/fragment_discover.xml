@@ -235,10 +235,6 @@
                         android:padding="@dimen/_10sdp"
                        >
 
-                        <ScrollView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:paddingBottom="@dimen/_50sdp">
 
                             <androidx.recyclerview.widget.RecyclerView
                                 android:id="@+id/rvEvents"
@@ -249,16 +245,7 @@
                                 android:layout_marginTop="10dp"
                                 android:layout_marginRight="10dp"
                                 android:overScrollMode="never" />
-                        </ScrollView>
-                        <!--                            <androidx.recyclerview.widget.RecyclerView-->
-                        <!--                                android:id="@+id/rvEventsUpcoming"-->
-                        <!--                                android:layout_width="match_parent"-->
-                        <!--                                android:layout_height="wrap_content"-->
-                        <!--                                android:layout_marginStart="10dp"-->
-                        <!--                                android:layout_marginLeft="10dp"-->
-                        <!--                                android:layout_marginTop="10dp"-->
-                        <!--                                android:layout_marginRight="10dp"-->
-                        <!--                                android:overScrollMode="never" />-->
+
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvNoDataFound"
                             android:layout_width="wrap_content"

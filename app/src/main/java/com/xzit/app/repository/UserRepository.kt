@@ -90,12 +90,18 @@ open class UserRepository : BaseRepository() {
         }
     }
 
-    fun callUserList(mContext: Context, req: HashMap<String, String>) {
+    fun callUserList(mContext: Context, req: HashMap<String, String>,showProgress:Boolean) {
         if (isNetworkConnected(mContext)) {
-            showProgress(mContext)
+            if(showProgress){
+                showProgress(mContext)
+            }
+
             apiInterface.callUserListing(req).enqueue(object : retrofit2.Callback<UserListingResponse> {
                 override fun onFailure(call: Call<UserListingResponse>, t: Throwable) {
-                    hideProgress()
+                    if(showProgress){
+                        hideProgress()
+                    }
+
                     var model = SendFriendRequestResponse()
                     model.message = t.message
                     model.status = 4001
@@ -103,7 +109,9 @@ open class UserRepository : BaseRepository() {
                 }
 
                 override fun onResponse(call: Call<UserListingResponse?>, response: Response<UserListingResponse>) {
-                    hideProgress()
+                    if(showProgress){
+                        hideProgress()
+                    }
                     if (response.body() == null) {
                         try {
                             val jObjError = JSONObject(response.errorBody()!!.string())
@@ -184,16 +192,16 @@ open class UserRepository : BaseRepository() {
 
     fun callAcceptRejectRequest(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
-            showProgress(mContext)
+            //showProgress(mContext)
             apiInterface.callAcceptRejectRequest(req).enqueue(object : retrofit2.Callback<AcceptRejectFriendRequestResponse> {
                 override fun onFailure(call: Call<AcceptRejectFriendRequestResponse>, t: Throwable) {
-                    hideProgress()
+                   // hideProgress()
                     var model = AcceptRejectFriendRequestResponse(4001, t.message ?: "", null, "")
                     acceptRejectRequestResponse.value = model
                 }
 
                 override fun onResponse(call: Call<AcceptRejectFriendRequestResponse?>, response: Response<AcceptRejectFriendRequestResponse>) {
-                    hideProgress()
+                   // hideProgress()
                     if (response.body() == null) {
                         try {
                             val jObjError = JSONObject(response.errorBody()!!.string())

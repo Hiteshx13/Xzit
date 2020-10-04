@@ -335,7 +335,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -436,97 +436,28 @@
 
                 </LinearLayout>
 
-
-                <ScrollView
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
 
-                    <LinearLayout
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvInvitations"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                        android:layout_margin="@dimen/_10sdp"
+                        android:overScrollMode="never" />
 
-                        <LinearLayout
-                            android:id="@+id/llInvitationSentData"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:visibility="gone">
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/tvNoDataFound"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/no_data_found"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
 
-                            <include
-                                layout="@layout/row_invitation_sent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_sent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_sent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_sent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_sent"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:id="@+id/llInvitationReceivedData"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical">
-
-                            <include
-                                layout="@layout/row_invitation_received"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginTop="@dimen/_5sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_received"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_received"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-
-                            <include
-                                layout="@layout/row_invitation_received"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="@dimen/_20sdp"
-                                android:layout_marginEnd="@dimen/_20sdp" />
-                        </LinearLayout>
-                    </LinearLayout>
-                </ScrollView>
+                </RelativeLayout>
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </RelativeLayout>

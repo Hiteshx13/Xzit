@@ -14,17 +14,36 @@ import com.xzit.app.activity.SettingsActivity
 import com.xzit.app.activity.XzitApp
 import com.xzit.app.adapter.InvitationAdater
 import com.xzit.app.databinding.FragmentInvitationBinding
+import com.xzit.app.listener.OnDialogClickListener
 import com.xzit.app.repository.EventRepository
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationReceived
+import com.xzit.app.retrofit.model.response.friendrequest.AcceptRejectFriendRequestResponse
 import com.xzit.app.retrofit.model.response.login.LoginData
 import com.xzit.app.utils.EVENT_INVITATION_STATUS_ACCEPT
+import com.xzit.app.utils.RESP_API_SUCCESS
+import com.xzit.app.utils.RESP_API_SUCCESS2
+import com.xzit.app.utils.showMessageDialog
 import java.util.*
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.xzit.app.adapter.EventInvitationReceivedAdapter
+import com.xzit.app.adapter.EventInvitationSentAdapter
+import com.xzit.app.adapter.FriendListAdapter
+import com.xzit.app.listener.OnAcceptRejectClicked
+import com.xzit.app.listener.OnAddRemoveFriendListener
+import com.xzit.app.listener.OnViewClickListener
+import com.xzit.app.retrofit.model.response.eventdata.Ongoing
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSent
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSentData
+import com.xzit.app.retrofit.model.response.friendlist.FriendListData
 import kotlin.collections.ArrayList
 import kotlin.collections.set
 
 class InvitationFragment : BaseFragment(), View.OnClickListener {
 
     var binding: FragmentInvitationBinding? = null
-    private lateinit var invitationAdapter: InvitationAdater
+    private lateinit var adapterInvitationSent: EventInvitationSentAdapter
+    private lateinit var adapterInvitationReceived: EventInvitationReceivedAdapter
     private lateinit var repository: EventRepository
 
     private lateinit var userdata: LoginData
@@ -43,26 +62,91 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        repository = EventRepository()
-        initListener()
-
         userdata = XzitApp.getLoginUserData()
+        repository = EventRepository()
 
+        initListener()
+        initObserver()
         callInvitationSent()
         callInvitationReceived()
-        //setData()
+
     }
 
     fun initListener() {
         binding?.llInvitationSent?.setOnClickListener(this)
         binding?.llInvitationReceived?.setOnClickListener(this)
         binding?.llInvitationSent?.callOnClick()
-//        binding?.imgbackscreen?.setOnClickListener(this)
-//        binding?.tvEditProfile?.setOnClickListener(this)
-//        binding?.ivSettings?.setOnClickListener(this)
-//        binding?.llTabGallery?.setOnClickListener(this)
-//        binding?.llTabContacts?.setOnClickListener(this)
-//        binding?.llTabGallery?.callOnClick()
+    }
+
+    fun initObserver(){
+        repository.responseEventInvitationSent.observe(this, Observer<EventInvitationSent> { response ->
+
+            if (response != null && response.status == RESP_API_SUCCESS ||response.status == RESP_API_SUCCESS2) {
+                if(isInvitationSentDataAvailable(response.Response)){
+                    updateUISent(response.Response!!)
+                }
+            } else {
+                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+            }
+
+        })
+        repository.responseEventInvitationReceived.observe(this, Observer<EventInvitationReceived> { response ->
+
+            if (response != null && response.status == RESP_API_SUCCESS ||response.status == RESP_API_SUCCESS2) {
+                if( isInvitationReceivedDataAvailable(response.Response)){
+                    updateUIReceived(response.Response!!)
+                }
+            } else {
+                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+            }
+
+        })
+
+    }
+
+    private fun updateUISent(data: List<EventInvitationSentData?>) {
+
+        binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+        adapterInvitationSent = EventInvitationSentAdapter(data)
+        binding?.rvInvitations?.adapter = null
+        binding?.rvInvitations?.adapter = adapterInvitationSent
+    }
+
+    private fun updateUIReceived(data: List<Object?>?) {
+
+        binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+        adapterInvitationReceived = EventInvitationReceivedAdapter(data!!,object:OnAcceptRejectClicked{
+            override fun onClick(position: Int,isEmpty:Boolean) {
+                isInvitationReceivedDataAvailable(null)
+            }
+        })
+        binding?.rvInvitations?.adapter = null
+        binding?.rvInvitations?.adapter = adapterInvitationSent
+    }
+
+
+    fun isInvitationSentDataAvailable(data: List<EventInvitationSentData?>?): Boolean {
+        if (data?.size ?: 0 > 0) {
+            binding?.tvNoDataFound?.visibility = View.GONE
+            binding?.rvInvitations?.visibility = View.VISIBLE
+            return true
+        } else {
+            binding?.tvNoDataFound?.visibility = View.VISIBLE
+            binding?.rvInvitations?.visibility = View.GONE
+            return false
+        }
+    }
+
+    fun isInvitationReceivedDataAvailable(data: List<Object?>?): Boolean {
+        if (data?.size ?: 0 > 0) {
+            binding?.tvNoDataFound?.visibility = View.GONE
+            binding?.rvInvitations?.visibility = View.VISIBLE
+            return true
+        } else {
+            binding?.tvNoDataFound?.visibility = View.VISIBLE
+            binding?.rvInvitations?.visibility = View.GONE
+            return false
+        }
     }
 
     fun callInvitationSent() {
@@ -82,17 +166,6 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
         repository.callAllReceivedInvitationByUser(mContext, map)
     }
 
-    fun setData() {
-        listDummy.add("")
-        listDummy.add("")
-        listDummy.add("")
-        listDummy.add("")
-        listDummy.add("")
-        listDummy.add("")
-        invitationAdapter = InvitationAdater(mContext, listDummy)
-        //binding!!.rvInvitation.adapter = invitationAdapter
-    }
-
     override fun onClick(v: View?) {
 
         when (v?.id) {
@@ -105,9 +178,7 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
                 binding?.llInvitationReceived?.isSelected = false
                 binding?.ivInvitationReceived?.isSelected = false
                 binding?.tvInvitationReceived?.isSelected = false
-
-                binding?.llInvitationReceivedData?.visibility = GONE
-                binding?.llInvitationSentData?.visibility = VISIBLE
+                callInvitationSent()
             }
             R.id.llInvitationReceived -> {
                 binding?.llInvitationSent?.isSelected = false
@@ -117,9 +188,7 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
                 binding?.llInvitationReceived?.isSelected = true
                 binding?.ivInvitationReceived?.isSelected = true
                 binding?.tvInvitationReceived?.isSelected = true
-
-                binding?.llInvitationReceivedData?.visibility = VISIBLE
-                binding?.llInvitationSentData?.visibility = GONE
+                callInvitationReceived()
             }
 
             R.id.tvEditProfile

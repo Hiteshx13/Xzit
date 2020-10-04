@@ -135,7 +135,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
                         isShowPassword=!isShowPassword;
                         if(isShowPassword){
                             binding.etPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                            binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(mContext,R.drawable.icn_password_hide), null);
                         }else{
+                            binding.etPassword.setCompoundDrawablesWithIntrinsicBounds(null, null, ContextCompat.getDrawable(mContext,R.drawable.icn_password_show), null);
                             binding.etPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
                         }
                         return true;

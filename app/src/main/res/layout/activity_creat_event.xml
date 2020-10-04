@@ -283,7 +283,6 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:focusable="false"
-                                android:gravity="center"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:hint="@string/event_duration_choose_date"
                                 android:imeOptions="actionNext"
@@ -308,7 +307,6 @@
                                 android:layout_height="wrap_content"
                                 android:background="@android:color/transparent"
                                 android:focusable="false"
-                                android:gravity="center"
                                 android:fontFamily="@font/quicksand_regular"
                                 android:hint="@string/event_time"
                                 android:imeOptions="actionNext"
@@ -474,8 +472,9 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="@dimen/_10sdp"
                             android:layout_marginTop="@dimen/_20sdp"
+                            android:paddingStart="@dimen/_15sdp"
+                            android:paddingEnd="@dimen/_10sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
-
                             android:orientation="horizontal">
 
                             <TextView
@@ -501,7 +500,7 @@
                             style="@style/StyleButtonYellow"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/_10sdp"
+                            android:layout_marginStart="@dimen/_1sdp"
                             android:layout_marginTop="@dimen/_30sdp"
                             android:layout_marginEnd="@dimen/_10sdp"
                             android:layout_marginBottom="@dimen/_10sdp"

@@ -7,6 +7,8 @@ import com.xzit.app.retrofit.model.response.dashboard.FCMTokenResponse;
 import com.xzit.app.retrofit.model.response.editprofile.EditProfileResponse;
 import com.xzit.app.retrofit.model.response.eventdata.EventListingResponse;
 import com.xzit.app.retrofit.model.response.eventinvitation.EventInvitationResponse;
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationReceived;
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSent;
 import com.xzit.app.retrofit.model.response.friendlist.FriendListResponse;
 import com.xzit.app.retrofit.model.response.friendrequest.AcceptRejectFriendRequestResponse;
 import com.xzit.app.retrofit.model.response.friendrequest.BlockUnblockUserResponse;
@@ -127,7 +129,12 @@ public interface ApiInterface {
             @FieldMap Map<String, String> postData);
 @FormUrlEncoded
     @POST("/xzitAdmin/xzitProject/getData.php")
-    Call<EventListingResponse> callAllSendInvitationByUser(
+    Call<EventInvitationSent> callAllSendInvitationByUser(
+            @FieldMap Map<String, String> postData);
+
+@FormUrlEncoded
+    @POST("/xzitAdmin/xzitProject/getData.php")
+    Call<EventInvitationReceived> callReceivedEventInvitation(
             @FieldMap Map<String, String> postData);
 
 

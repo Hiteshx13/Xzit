@@ -68,15 +68,6 @@ class FriendRequestFragment : BaseFragment(), View.OnClickListener {
         repository.friendRequestResponse.observe(this, Observer<FriendRequestResponse> { response ->
             if (response != null && response.status == RESP_API_SUCCESS) {
                 if (isDataAvailable(response.Response)) {
-
-//                    binding?.tvNoDataFound?.icn_hide = View.GONE
-//                    binding?.rvFriendRequest?.icn_hide = View.VISIBLE
-
-//                    var list = response.Response as ArrayList<FriendRequestData>
-//                    list.addAll(response.Response as ArrayList)
-//                    list.addAll(response.Response as ArrayList)
-//                    list.addAll(response.Response as ArrayList)
-
                     mAdapter = FriendRequestAdapter(response.Response, object : OnFriendRequestClickListener {
                         override fun onClick(position: Int, isAccept: Boolean) {
                             selectedPos = position
@@ -112,7 +103,7 @@ class FriendRequestFragment : BaseFragment(), View.OnClickListener {
                 binding?.tvNoDataFound?.visibility = View.VISIBLE
                 binding?.tvNoDataFound?.text = response?.message
                 binding?.rvFriendRequest?.visibility = View.GONE
-                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+                //showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
             }
         })
 

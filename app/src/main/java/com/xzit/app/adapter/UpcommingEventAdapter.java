@@ -24,7 +24,6 @@ public class UpcommingEventAdapter extends RecyclerView.Adapter<UpcommingEventAd
     @Override
     public UpcommingEventAdapter.ViewHolder onCreateViewHolder(ViewGroup parent,
                                                              int viewType) {
-
         LayoutInflater inflater = LayoutInflater.from(
                 parent.getContext());
         RowDiscoverBinding binding= DataBindingUtil.inflate(inflater,R.layout.row_discover,parent,false);
@@ -39,9 +38,11 @@ public class UpcommingEventAdapter extends RecyclerView.Adapter<UpcommingEventAd
         holder.binding.tvName.setText(model.getEventTitle());
         holder.binding.tvSubTitle.setText(model.getEventTitle());
         holder.binding.tvDescription.setText(model.getEventDetail());
-//        final String name = listData.get(position).;
-
-
+        if (holder.getAdapterPosition() == listData.size() - 1) {
+            holder.binding.viewSpace.setVisibility(View.VISIBLE);
+        } else {
+            holder.binding.viewSpace.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -56,15 +57,6 @@ public class UpcommingEventAdapter extends RecyclerView.Adapter<UpcommingEventAd
         ViewHolder(RowDiscoverBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
-//            ivMenu = layout.findViewById(R.id.ivMenu);
-//            llMenu = layout.findViewById(R.id.llMenu);
-//            rlRoot = layout.findViewById(R.id.rlRoot);
-//            rlRoot.setOnClickListener(new View.OnClickListener() {
-//                @Override
-//                public void onClick(View v) {
-//                    listener.onClickChat(getAdapterPosition());
-//                }
-//            });
 
             binding.ivMenu.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -76,11 +68,8 @@ public class UpcommingEventAdapter extends RecyclerView.Adapter<UpcommingEventAd
                         binding.llMenu.setVisibility(View.VISIBLE);
                     }
                     isVisible = !isVisible;
-                    //listener.onClickChat(getAdapterPosition());
                 }
             });
         }
     }
-
-
 }

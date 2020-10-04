@@ -270,6 +270,7 @@
                             android:layout_height="wrap_content"
                             android:background="@android:color/transparent"
                             android:gravity="start"
+                            android:focusable="false"
                             android:hint="@string/business_hours"
                             android:imeOptions="actionDone"
                             android:inputType="text"

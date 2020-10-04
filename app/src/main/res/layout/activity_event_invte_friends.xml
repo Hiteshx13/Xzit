@@ -44,7 +44,7 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
             android:fontFamily="@font/quicksand_regular"
-            android:text="@string/invite_friends"
+            android:text="@string/send_invitation"
             android:textColor="@android:color/white"
             android:textSize="@dimen/_18ssp"
             tools:ignore="UnusedAttribute" />
@@ -68,10 +68,10 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="match_parent">
 
                 <EditText
-                    android:id="@+id/etfriend"
+                    android:id="@+id/etSearch"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_border_yellow_rounded"
@@ -81,8 +81,8 @@
                     android:fontFamily="@font/quicksand_regular"
                     android:gravity="start"
                     android:layout_margin="@dimen/_10sdp"
+                    android:imeOptions="actionSearch"
                     android:hint="@string/search"
-                    android:imeOptions="actionDone"
                     android:inputType="text"
                     android:padding="@dimen/_10sdp"
                     android:textAlignment="textStart"
@@ -92,33 +92,37 @@
                     android:id="@+id/rvFriends"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_below="@+id/etfriend"
-                    android:layout_marginStart="10dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:layout_marginRight="10dp"
+                    android:layout_below="@+id/etSearch"
+                    android:layout_margin="@dimen/_8sdp"
                     android:nestedScrollingEnabled="false"
                     android:overScrollMode="never" />
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvNoDataFound"
+                    android:layout_width="wrap_content"
+                    android:visibility="gone"
+                    tools:visibility="visible"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:text="@string/no_data_found"/>
+                <Button
+                    android:id="@+id/btnSendInvitation"
+                    style="@style/StyleButtonYellow"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_27sdp"
+                    android:layout_marginEnd="@dimen/_27sdp"
+                    android:layout_below="@+id/carviewpasswordconfirmation"
+                    android:layout_marginTop="@dimen/_21sdp"
+                    android:layout_marginBottom="15dp"
+                    android:background="@drawable/backgoundround"
+                    android:text="@string/send_invitation"
+                    android:textAllCaps="false"
+                    android:layout_alignParentBottom="true"
+                    android:textColor="@android:color/white"
+                    tools:ignore="UnusedAttribute" />
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>
-
-        <Button
-            android:id="@+id/btnSendInvitation"
-            style="@style/StyleButtonYellow"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/_27sdp"
-            android:layout_marginEnd="@dimen/_27sdp"
-            android:layout_below="@+id/carviewpasswordconfirmation"
-            android:layout_marginTop="@dimen/_21sdp"
-            android:layout_marginBottom="15dp"
-            android:background="@drawable/backgoundround"
-            android:text="@string/next"
-            android:textAllCaps="false"
-            android:layout_alignParentBottom="true"
-            android:textColor="@android:color/white"
-            tools:ignore="UnusedAttribute" />
 
     </RelativeLayout>
 </layout>

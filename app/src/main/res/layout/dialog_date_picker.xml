@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -47,6 +46,18 @@
                     android:textSize="@dimen/_14ssp"
                     android:visibility="visible" />
 
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@color/colorAccent"
+                    android:fontFamily="@font/quicksand_regular"
+                    android:gravity="center"
+                    android:text="You Can Choose Multi Dates "
+                    android:textColor="@color/colorWhite"
+                    android:textSize="@dimen/_10ssp"
+                    android:visibility="visible" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -57,30 +68,31 @@
                 android:layout_below="@+id/llTitle"
                 android:orientation="vertical"
                 android:padding="@dimen/_10sdp">
-                    <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
-                        android:id="@+id/calendar"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        app:disable_date_color="#ABABAB"
-                        app:range_color="@color/colorPrimary"
-                        app:selected_date_circle_color="@color/colorPrimary"
-                        app:title_color="@color/colorPrimary" />
-    </LinearLayout>
+
+                <com.archit.calendardaterangepicker.customviews.DateRangeCalendarView
+                    android:id="@+id/calendar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:disable_date_color="#ABABAB"
+                    app:range_color="@color/colorPrimary"
+                    app:selected_date_circle_color="@color/colorPrimary"
+                    app:title_color="@color/colorPrimary" />
+            </LinearLayout>
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/btnSave"
                 style="@style/StyleButtonYellow"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/llReportData"
                 android:layout_centerHorizontal="true"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_marginEnd="@dimen/_30sdp"
                 android:background="@drawable/backgoundround"
                 android:fontFamily="@font/quicksand_bold"
-                android:paddingStart="@dimen/_30sdp"
-                android:paddingEnd="@dimen/_30sdp"
                 android:text="@string/save"
                 android:textAllCaps="false"
-                android:textColor="@android:color/white"/>
+                android:textColor="@android:color/white" />
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
 </RelativeLayout>

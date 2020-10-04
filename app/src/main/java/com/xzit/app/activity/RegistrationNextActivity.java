@@ -29,6 +29,7 @@ import com.xzit.app.R;
 import com.xzit.app.adapter.SpinnerCategoryAdapter;
 import com.xzit.app.databinding.ActivitySignUpNextBinding;
 import com.xzit.app.listener.OnDialogClickListener;
+import com.xzit.app.listener.OnTimeSelectedListener;
 import com.xzit.app.repository.RegistrationRepository;
 import com.xzit.app.retrofit.model.request.SignUpRequest;
 import com.xzit.app.retrofit.model.response.masterdata.Subtype;
@@ -36,6 +37,8 @@ import com.xzit.app.retrofit.model.response.registration.RegistrationResponse;
 import com.xzit.app.utils.AppUtilsKt;
 import com.xzit.app.utils.DialogUtilsKt;
 import com.xzit.app.utils.PermissionUtils;
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -132,6 +135,7 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         binding.imgGoogle.setOnClickListener(this);
         binding.ivProfile.setOnClickListener(this);
         binding.textsignin.setOnClickListener(this);
+        binding.etBusinessHours.setOnClickListener(this);
 
         binding.spCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -171,6 +175,16 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
             case R.id.imgFacebook:
                 Intent intentForgetpassword = new Intent(this, ForgotPasswordActivity.class);
                 startActivity(intentForgetpassword);
+                break;
+
+                case R.id.etBusinessHours:
+                    DialogUtilsKt.showTimePickerBusinessHoursDialog(this, true, new OnTimeSelectedListener() {
+                        @Override
+                        public void onClick(@NotNull String str, @NotNull String days) {
+                            binding.etBusinessHours.setText(days);
+
+                        }
+                    });
                 break;
             case R.id.imgbackscreen:
                 finish();

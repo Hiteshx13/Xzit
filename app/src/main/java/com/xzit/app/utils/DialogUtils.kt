@@ -275,7 +275,35 @@ fun showTimePickerDialog(mContext: Context?, isCancelable: Boolean?, clickListen
                     .replace(")])", "]")
                     .replace("[", "{")
                     .replace("]", "}")
-            clickListener.onClick(strTime,sb.substring(0,sb.length-1))
+            var strDays = ""
+            if (sb.toString().trim().isNotEmpty()) {
+                strDays = sb.substring(0, sb.length - 1)
+            }
+            clickListener.onClick(strTime, strDays)
+            mDialog.dismiss()
+        }
+    })
+
+
+
+    mDialog.show()
+}
+
+fun showTimePickerBusinessHoursDialog(mContext: Context?, isCancelable: Boolean?, clickListener: OnTimeSelectedListener) {
+
+    val builder: AlertDialog.Builder = AlertDialog.Builder(mContext)
+    var view: View = LayoutInflater.from(mContext).inflate(R.layout.dialog_time_business_hours, null, false)
+    builder.setView(view)
+    val mDialog: AlertDialog = builder.create()
+    mDialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+    var btnDone: AppCompatButton = view.findViewById(R.id.btnDone)
+
+    var pSStart: SingleDateAndTimePicker = view.findViewById(R.id.pStart)
+    var pEnd: SingleDateAndTimePicker = view.findViewById(R.id.pEnd)
+
+    btnDone.setOnClickListener(object : View.OnClickListener {
+        override fun onClick(v: View?) {
+            clickListener.onClick("", getTimeHM(pSStart.date) + " - " + getTimeHM(pEnd.date))
             mDialog.dismiss()
         }
     })

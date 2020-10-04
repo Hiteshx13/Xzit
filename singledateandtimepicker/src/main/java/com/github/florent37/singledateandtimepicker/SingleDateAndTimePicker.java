@@ -51,7 +51,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
     private DateHelper dateHelper = new DateHelper();
 
     private static final CharSequence FORMAT_24_HOUR = "EEE d MMM H:mm";
-    private static final CharSequence FORMAT_12_HOUR = "EEE d MMM h:mm a";
+    private static final CharSequence FORMAT_12_HOUR = "EEE d MMM h:mm";
 
     @NonNull
     private final WheelYearPicker yearsPicker;
@@ -379,7 +379,7 @@ public class SingleDateAndTimePicker extends LinearLayout {
     public void setIsAmPm(boolean isAmPm) {
         this.isAmPm = isAmPm;
 
-        amPmPicker.setVisibility((isAmPm && displayHours) ? VISIBLE : GONE);
+       // amPmPicker.setVisibility((isAmPm && displayHours) ? VISIBLE : GONE);
         hoursPicker.setIsAmPm(isAmPm);
     }
 

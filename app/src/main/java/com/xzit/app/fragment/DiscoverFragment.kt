@@ -60,11 +60,12 @@ class DiscoverFragment : BaseFragment(), View.OnClickListener {
         }
         initListener()
         initObserver()
-        callEventListing()
-
-
     }
 
+    override fun onResume() {
+        super.onResume()
+        callEventListing()
+    }
     fun initListener() {
         binding?.btnCreateEvent?.setOnClickListener(this)
         binding?.tvNews?.setOnClickListener(this)

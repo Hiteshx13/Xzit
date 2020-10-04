@@ -61,7 +61,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
 
         userdata = XzitApp.getLoginUserData()
 
-        callUserListing("")
+        callUserListing("",true)
     }
 
     fun initListener() {
@@ -69,7 +69,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
         binding?.ivRequest?.setOnClickListener(this)
         binding?.etSearch?.setOnEditorActionListener(OnEditorActionListener { v, actionId, event ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                callUserListing(binding?.etSearch?.getText().toString().trim())
+                callUserListing(binding?.etSearch?.getText().toString().trim(),true)
                 return@OnEditorActionListener true
             }
             false
@@ -85,7 +85,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
 
             override fun afterTextChanged(s: Editable?) {
                if(s.toString().trim().length==0){
-                   callUserListing("")
+                   callUserListing("",false)
                }
             }
         })
@@ -96,7 +96,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
             if (response != null && response.status == RESP_API_SUCCESS) {
                 updateUI(response.response)
             } else {
-                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+                //showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
                 updateUI(null)
             }
         })
@@ -118,7 +118,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
         })
     }
 
-    fun callUserListing(keyword: String?) {
+    fun callUserListing(keyword: String?,showProgress:Boolean) {
         val map = HashMap<String, String>()
         map["postData[requestCase]"] = "getAllUserList"
         map["postData[clientId]"] = userdata.clientId
@@ -126,7 +126,7 @@ class UserListingFragment : BaseFragment(), View.OnClickListener {
         map["postData[keyword]"] = keyword?:""
 
         Log.d("#Params",""+map.toString())
-        repository.callUserList(mContext, map)
+        repository.callUserList(mContext, map,showProgress)
     }
 
     private fun updateUI(data: List<UserListingData>?) {

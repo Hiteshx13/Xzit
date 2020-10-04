@@ -143,12 +143,13 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
         repository.responseData.observe(this, object : Observer<CreateEventResponse> {
             override fun onChanged(response: CreateEventResponse?) {
                 if (response != null && response.status == RESP_API_SUCCESS) {
-                    showMessageDialog(mContext, response.message, false, OnDialogClickListener {
-
-                        var eventID = response.response.get(0).eventId
-                        finish()
-                        LaunchActivity(mContext, EventInviteFriendsActivity.getIntent(mContext, eventID))
-                    })
+                    var eventID = response.response.get(0).eventId
+                    finish()
+                    LaunchActivity(mContext, EventInviteFriendsActivity.getIntent(mContext, eventID))
+//                    showMessageDialog(mContext, response.message, false, OnDialogClickListener {
+//
+//
+//                    })
                 } else {
                     showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
                 }
@@ -271,7 +272,11 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
                     override fun onClick(str: String,days:String) {
                         strEventTime = str
                         var strTempTime = str.replace("{", "").replace("}", "").replace("start=", "").replace("end=", "")
-                        binding?.etEventTime?.setText("Weekdays : "+days)
+                        if(days.isNotEmpty()){
+                            binding?.etEventTime?.setText("Weekdays : "+days)
+                        }else{
+                            binding?.etEventTime?.setText("")
+                        }
                     }
                 })
             }

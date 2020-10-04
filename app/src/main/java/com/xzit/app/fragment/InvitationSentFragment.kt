@@ -45,12 +45,6 @@ class InvitationSentFragment : BaseFragment(), View.OnClickListener {
         binding?.llInvitationSent?.setOnClickListener(this)
         binding?.llInvitationReceived?.setOnClickListener(this)
         binding?.llInvitationSent?.callOnClick()
-//        binding?.imgbackscreen?.setOnClickListener(this)
-//        binding?.tvEditProfile?.setOnClickListener(this)
-//        binding?.ivSettings?.setOnClickListener(this)
-//        binding?.llTabGallery?.setOnClickListener(this)
-//        binding?.llTabContacts?.setOnClickListener(this)
-//        binding?.llTabGallery?.callOnClick()
     }
 
     fun setData() {
@@ -77,8 +71,7 @@ class InvitationSentFragment : BaseFragment(), View.OnClickListener {
                 binding?.ivInvitationReceived?.isSelected = false
                 binding?.tvInvitationReceived?.isSelected = false
 
-                binding?.llInvitationReceivedData?.visibility = GONE
-                binding?.llInvitationSentData?.visibility = VISIBLE
+
             }
             R.id.llInvitationReceived -> {
                 binding?.llInvitationSent?.isSelected = false
@@ -89,8 +82,6 @@ class InvitationSentFragment : BaseFragment(), View.OnClickListener {
                 binding?.ivInvitationReceived?.isSelected = true
                 binding?.tvInvitationReceived?.isSelected = true
 
-                binding?.llInvitationReceivedData?.visibility = VISIBLE
-                binding?.llInvitationSentData?.visibility = GONE
             }
 
             R.id.tvEditProfile
