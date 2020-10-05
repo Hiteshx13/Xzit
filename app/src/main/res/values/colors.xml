@@ -19,6 +19,7 @@
     <color name="colorLightBlack">#373737</color>
     <color name="colorBlackStrip">#D1D1D1</color>
     <color name="colorRed">#FF0031</color>
+    <color name="colorGreen">#008000</color>
     <color name="colorBlack">#000000</color>
     <color name="colorBlackLight">#1F1F1F</color>
     <color name="colorBlackNotification">#424343</color>

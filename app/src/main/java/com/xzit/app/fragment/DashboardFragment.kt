@@ -13,14 +13,17 @@ import com.sandrlab.widgets.MetalRecyclerViewPager
 import com.xzit.app.R
 import com.xzit.app.activity.DashboardActivity
 import com.xzit.app.activity.FullMetalAdapter
+import com.xzit.app.activity.XzitApp.getLoginUserData
 import com.xzit.app.activity.XzitApp.preference
 import com.xzit.app.adapter.DashboardCategoryAdater
 import com.xzit.app.adapter.DashboardRestaurentAdapter
 import com.xzit.app.adapter.RestaurentAdapter
 import com.xzit.app.databinding.FragmentDashboardBinding
 import com.xzit.app.listener.OnDialogClickListener
+import com.xzit.app.retrofit.model.response.login.LoginData
 import com.xzit.app.retrofit.model.response.login.LoginResponse
 import com.xzit.app.retrofit.model.response.masterdata.Subtype
+import com.xzit.app.utils.ImageUtils
 import com.xzit.app.utils.showMessageDialog
 import java.util.*
 
@@ -30,6 +33,7 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
     var categoryAdapter: DashboardCategoryAdater? = null
     var restaurentAdapter: DashboardRestaurentAdapter? = null
     var listCategory: List<Subtype>? = null
+    val userdata: LoginData = getLoginUserData()
     val listDummy: ArrayList<String> = ArrayList()
 
     companion object {
@@ -52,12 +56,16 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
         binding?.llProfile?.setOnClickListener(this)
         binding?.llAddContact?.setOnClickListener(this)
 
-        val userdata: LoginResponse = preference.getUserData(mContext)
-        binding?.tvUserName?.text = userdata.getResponse()?.get(0)?.username
+
+        binding?.tvUserName?.text = userdata.username
         setCategory()
         setVenue()
         setRestaurentData()
         setMostViewed()
+        if(userdata.profilePic.size>0){
+            ImageUtils().loadImage(mActivity, userdata.profilePic.get(0), binding?.ivProfile!!);
+        }
+
     }
 
 

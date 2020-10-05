@@ -30,6 +30,7 @@ import com.xzit.app.retrofit.model.response.login.LoginData
 import com.xzit.app.retrofit.model.response.masterdata.Subtype
 import com.xzit.app.utils.*
 import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
@@ -180,9 +181,9 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
                 } else if (eventStartDate.isEmpty()) {
                     showToast(mContext, "Please select Event duration")
                 }
-//                else if(strEventTime.replace("{}","").trim().isEmpty()){
-//                    showToast(mContext,"Please select Event time")
-//                }
+                else if(strEventTime.replace("{}","").trim().isEmpty()){
+                    showToast(mContext,"Please select Event time")
+                }
                 else if (strEventPrice.isEmpty()) {
                     showToast(mContext, "Please enter Event price")
                 } else if (strDealPrice.isEmpty()) {
@@ -209,7 +210,7 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
                         map["postData[eventPreference]"] = strPreference.toString()
                         map["postData[eventDurationStart]"] = eventStartDate
                         map["postData[eventDurationEnd]"] = eventStartDate
-                        // map["postData[eventTime]"] = strEventTime
+                         map["postData[eventTime]"] = strEventTime
                         map["postData[eventPrice]"] = binding?.etPrice?.text.toString().trim()
                         map["postData[eventDealPrice]"] = binding?.etDealPrice?.text.toString().trim()
                         map["postData[eventDealDiscType]"] = binding?.etDiscountPercent?.text.toString().trim()
@@ -237,7 +238,7 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
                         map["postData[eventPreference]"] = getRequestBody(strPreference.toString())
                         map["postData[eventDurationStart]"] = getRequestBody(eventStartDate)
                         map["postData[eventDurationEnd]"] = getRequestBody(eventStartDate)
-                        // map["postData[eventTime]"] = getRequestBody(strEventTime)
+                         map["postData[eventTime]"] = getRequestBody(strEventTime)
                         map["postData[eventPrice]"] = getRequestBody(binding?.etPrice?.text.toString().trim())
                         map["postData[eventDealPrice]"] = getRequestBody(binding?.etDealPrice?.text.toString().trim())
                         map["postData[eventDealDiscType]"] = getRequestBody(binding?.etDiscountPercent?.text.toString().trim())
@@ -247,11 +248,13 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
                         map["postData[eventLong]"] = getRequestBody("144.361725")
                         map["postData[eventOnSaleFlag]"] = getRequestBody(eventOnSale)
 
+                        val attachmentName = ArrayList<MultipartBody.Part?>(1)
                         val file = File(getFilePath(profileUri!!))
-                        val requestFile = RequestBody.create(MediaType.parse("multipart/form-data"), file)
+                        val requestFile = RequestBody.create("image/png".toMediaTypeOrNull(), file)
                         val body = MultipartBody.Part.createFormData("attachmentName[]", "", requestFile)
+                        attachmentName.add(body)
                         Log.d("#params", "" + map.toString())
-                        repository.callCreateEventImage(this, map, body)
+                        repository.callCreateEventImage(this, map, attachmentName)
                     }
                 }
             }
@@ -270,7 +273,7 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
             R.id.etEventTime -> {
                 showTimePickerDialog(mContext, true, object : OnTimeSelectedListener {
                     override fun onClick(str: String,days:String) {
-                        strEventTime = str
+                        strEventTime = str.replace("=",":")
                         var strTempTime = str.replace("{", "").replace("}", "").replace("start=", "").replace("end=", "")
                         if(days.isNotEmpty()){
                             binding?.etEventTime?.setText("Weekdays : "+days)
@@ -304,7 +307,7 @@ class CreateEventActivity : BaseActivity(), View.OnClickListener {
     }
 
     private fun getRequestBody(string: String): RequestBody {
-        return RequestBody.create(MediaType.parse("multipart/form-data"), string)
+        return RequestBody.create("multipart/form-data".toMediaTypeOrNull(), string)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

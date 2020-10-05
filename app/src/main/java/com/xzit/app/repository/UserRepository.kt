@@ -283,8 +283,8 @@ fun callEventInvitation(mContext: Context, req: HashMap<String, String>) {
             apiInterface.callEventInvitation(req).enqueue(object : retrofit2.Callback<EventInvitationResponse> {
                 override fun onFailure(call: Call<EventInvitationResponse>, t: Throwable) {
                     hideProgress()
-                    var model = FriendListResponse(4001, t.message ?: "", null)
-                    friendListResponse.value = model
+                    var model = EventInvitationResponse(4001, t.message ?: "", null)
+                    eventInvitationResponse.value = model
                 }
 
                 override fun onResponse(call: Call<EventInvitationResponse?>, response: Response<EventInvitationResponse>) {

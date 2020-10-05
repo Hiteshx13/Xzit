@@ -21,10 +21,7 @@ import com.xzit.app.retrofit.model.response.friendrequest.BlockUnblockUserRespon
 import com.xzit.app.retrofit.model.response.login.LoginData
 import com.xzit.app.retrofit.model.response.profile.UserProfileData
 import com.xzit.app.retrofit.model.response.profile.UserProfileResponse
-import com.xzit.app.utils.PARAM_CLIENT_ID
-import com.xzit.app.utils.PARAM_USER_ID
-import com.xzit.app.utils.RESP_API_SUCCESS
-import com.xzit.app.utils.showMessageDialog
+import com.xzit.app.utils.*
 import java.util.*
 
 class ProfileFragment : BaseFragment(), View.OnClickListener {
@@ -60,7 +57,9 @@ class ProfileFragment : BaseFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         initListener()
         initObserver()
-
+        if(userdata.profilePic.size>0){
+            ImageUtils().loadImage(mActivity, userdata.profilePic.get(0), binding?.ivProfile!!);
+        }
         if (userID?.isEmpty() == false) {
             val map = HashMap<String, String>()
             map["postData[requestCase]"] = "userProfileListing"

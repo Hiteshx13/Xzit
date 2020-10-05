@@ -37,7 +37,7 @@ public class FriendListAdapter extends RecyclerView.Adapter<FriendListAdapter.Vi
             AppUtilsKt.showToast(mActivity, "Please select any user");
             return null;
         }else{
-            return listSelection.toString();
+            return listSelection.toString().replace("[","").replace("]","");
         }
     }
 

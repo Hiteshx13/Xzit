@@ -39,6 +39,8 @@ public class EventInvitationSentAdapter extends RecyclerView.Adapter<EventInvita
         holder.binding.tvEventName.setText(model.getEventName());
         holder.binding.tvAddress.setText(model.getEventLocation());
         holder.binding.tvDate.setText(model.getInviReceivedOn());
+        holder.binding.tvGuestList.setSelected(true);
+
 //        holder.binding.tvName.setText(model.getEventTitle());
 //        holder.binding.tvSubTitle.setText(model.getEventTitle());
 //        holder.binding.tvDescription.setText(model.getEventDetail());

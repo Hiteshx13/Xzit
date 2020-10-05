@@ -222,6 +222,7 @@
     <string name="sign_plus">+</string>
     <string name="all_right">All Right</string>
     <string name="send_invitation">Send Invitation</string>
+    <string name="decline">Decline</string>
 
 
 </resources>

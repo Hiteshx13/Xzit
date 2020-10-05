@@ -25,6 +25,7 @@ import com.xzit.app.listener.OnTimeSelectedListener
 import com.xzit.app.retrofit.model.request.createevent.CreateEventTime
 import com.xzit.app.retrofit.model.request.createevent.CreateEventTimeData
 import com.xzit.app.retrofit.model.response.userlisting.UserListingData
+import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -352,7 +353,12 @@ fun showReportDialog(context: Context?, isCancelable: Boolean?, model: UserListi
     mDialog.setCancelable(isCancelable!!)
     mDialog.window!!.setBackgroundDrawableResource(R.color.colorTransparent)
     val etDescription: AppCompatEditText = mDialog.findViewById(R.id.etDescription)
+    val ivProfile: CircleImageView = mDialog.findViewById(R.id.ivProfile)
     val btnSubmitReport: AppCompatButton = mDialog.findViewById(R.id.btnSubmitReport)
+    if(model.profilePic.isNotEmpty()){
+        ImageUtils().loadImage(context, model.profilePic, ivProfile!!);
+    }
+
     btnSubmitReport.setOnClickListener {
         clickListener.onButtonClicked(model, etDescription.text.toString())
         mDialog.dismiss()

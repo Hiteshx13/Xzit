@@ -3,6 +3,7 @@ package com.xzit.app.activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
@@ -139,6 +140,8 @@ class EventInviteFriendsActivity : BaseActivity(), View.OnClickListener {
             map["postData[clientId]"] = userdata.clientId
             map["postData[userId]"] = userdata.userId
             map["postData[userList]"] = mAdapter!!.selectedUsers
+            map["postData[eventId]"] = eventID?:""
+            Log.d("#params", "" + map.toString())
             repository.callEventInvitation(mContext, map)
         }
 

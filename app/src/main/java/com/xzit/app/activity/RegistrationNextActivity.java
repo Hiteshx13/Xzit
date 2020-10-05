@@ -41,6 +41,7 @@ import com.xzit.app.utils.PermissionUtils;
 import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +53,7 @@ import static com.xzit.app.utils.AppUtilsKt.PARAM_SIGNUP_DATA;
 import static com.xzit.app.utils.AppUtilsKt.REQ_SELECT_PHOTO_GALLERY;
 import static com.xzit.app.utils.AppUtilsKt.REQ_WRITE_EXST;
 import static com.xzit.app.utils.AppUtilsKt.RESP_API_SUCCESS;
+import static com.xzit.app.utils.AppUtilsKt.getFilePathFromContentUri;
 
 public class RegistrationNextActivity extends BaseActivity implements View.OnClickListener {
 
@@ -168,7 +170,11 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.btnSignUp:
-                callSignUp();
+                try {
+                    callSignUp();
+                } catch (URISyntaxException e) {
+                    e.printStackTrace();
+                }
 
 
                 break;
@@ -200,25 +206,26 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
                 if (PermissionUtils.askForPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE, REQ_WRITE_EXST)
                 ) {
                     selectImageFromGallery();
-                } else {
-                    DialogUtilsKt.showMessageDialog(this, this.getString(R.string.please_grant_all_required_permissions_from_application_setting), false, new OnDialogClickListener() {
-                        @Override
-                        public void onButtonClicked(Boolean value) {
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                        }
-                    });
-                    //Toast.makeText(this, getString(R.string.please_grant_all_required_permissions_from_application_setting), Toast.LENGTH_SHORT).show();
                 }
+                //else {
+//                    DialogUtilsKt.showMessageDialog(this, this.getString(R.string.please_grant_all_required_permissions_from_application_setting), false, new OnDialogClickListener() {
+//                        @Override
+//                        public void onButtonClicked(Boolean value) {
+//                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+//                            Uri uri = Uri.fromParts("package", getPackageName(), null);
+//                            intent.setData(uri);
+//                            startActivity(intent);
+//                        }
+//                    });
+                    //Toast.makeText(this, getString(R.string.please_grant_all_required_permissions_from_application_setting), Toast.LENGTH_SHORT).show();
+               // }
 
                 break;
         }
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    void callSignUp() {
+    void callSignUp() throws URISyntaxException {
 
         String strUserName = binding.etUserName.getText().toString().trim();
         String strTitle = binding.etTitle.getText().toString().trim();
@@ -355,15 +362,19 @@ public class RegistrationNextActivity extends BaseActivity implements View.OnCli
         return body;
     }
 
-    private MultipartBody.Part getParamsRequestBody() {
+    private ArrayList<MultipartBody.Part> getParamsRequestBody() throws URISyntaxException {
 
-        File file = new File("/storage/emulated/0/image.jpg");
+        ArrayList<MultipartBody.Part> attachmentName = new ArrayList<MultipartBody.Part>();
+        File file =new File(getFilePathFromContentUri(this,profileUri));
         okhttp3.RequestBody requestFile =
-                okhttp3.RequestBody.create(okhttp3.MediaType.parse("multipart/form-data"), file);
+                okhttp3.RequestBody.create(okhttp3.MediaType.parse("image/png"), file);
+        /* val surveyBody = RequestBody.create(
+                "image/png".toMediaTypeOrNull(),
+                file)*/
         MultipartBody.Part body =
-                MultipartBody.Part.createFormData("attachmentName[" + 0 + "]", "image.jpg", requestFile);
-
-        return body;
+                MultipartBody.Part.createFormData("attachmentName[" + 0 + "]", file.getName(), requestFile);
+        attachmentName.add(body);
+        return attachmentName;
     }
 
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)

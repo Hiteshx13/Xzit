@@ -7,6 +7,7 @@ import com.google.gson.Gson
 import com.xzit.app.retrofit.model.response.createevent.CreateEventResponse
 import com.xzit.app.retrofit.model.response.eventdata.EventListingResponse
 import com.xzit.app.retrofit.model.response.eventdata.EventListingResponseError
+import com.xzit.app.retrofit.model.response.eventinvitation.EventInvitationAcceptReject
 import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationReceived
 import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSent
 import com.xzit.app.utils.isNetworkConnected
@@ -23,6 +24,7 @@ open class EventRepository : BaseRepository() {
     open var responseEventInvitationSent = MutableLiveData<EventInvitationSent>()
     open var responseEventInvitationReceived = MutableLiveData<EventInvitationReceived>()
     open var responsEventListing = MutableLiveData<EventListingResponse>()
+    open var responsEventAcceptReject = MutableLiveData<EventInvitationAcceptReject>()
 
     fun callCreateEvent(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
@@ -88,8 +90,41 @@ open class EventRepository : BaseRepository() {
         }
     }
 
+    fun callAcceptRejectEventInvitation(mContext: Context, req: HashMap<String, String>) {
+        if (isNetworkConnected(mContext)) {
+            showProgress(mContext)
+            apiInterface.callAcceptRejectEventInvitation(req).enqueue(object : retrofit2.Callback<EventInvitationAcceptReject> {
+                override fun onFailure(call: Call<EventInvitationAcceptReject>, t: Throwable) {
+                    hideProgress()
+                    var model = EventInvitationAcceptReject(4001, t.message?:"", null, null)
+                    responsEventAcceptReject.value = model
+                }
+
+                override fun onResponse(call: Call<EventInvitationAcceptReject>, response: Response<EventInvitationAcceptReject>) {
+                    hideProgress()
+                    if (response.body() == null) {
+                        try {
+
+                            val jObjError = JSONObject(response.errorBody()!!.string())
+                            var model = Gson().fromJson(jObjError.toString(), EventListingResponseError::class.java)
+                            responsEventAcceptReject.value = EventInvitationAcceptReject(4001, model.message?:"", null, null)
+
+                        } catch (e: Exception) {
+                            var model = EventInvitationAcceptReject(4001, "No data found", null, null)
+                            responsEventAcceptReject.value = model
+                            //Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
+                        }
+                        return
+                    } else {
+                        responsEventAcceptReject.value = response.body()
+                    }
+                }
+            })
+        }
+    }
+
     // params: HashMap<String, RequestBody?>
-    fun callCreateEventImage(mContext: Context, map: HashMap<String, RequestBody?>, image: MultipartBody.Part
+    fun callCreateEventImage(mContext: Context, map: HashMap<String, RequestBody?>, image: ArrayList<MultipartBody.Part?>
     ) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)
@@ -161,9 +196,10 @@ open class EventRepository : BaseRepository() {
 
     fun callAllSendInvitationByUser(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
-            //showProgress(mContext)
+            showProgress(mContext)
             apiInterface.callAllSendInvitationByUser(req).enqueue(object : retrofit2.Callback<EventInvitationSent> {
                 override fun onFailure(call: Call<EventInvitationSent>, t: Throwable) {
+                    hideProgress()
                     var model = EventInvitationSent(4001, t.message,null,null)
                     model.message = t.message
                     model.status = 4001
@@ -171,6 +207,7 @@ open class EventRepository : BaseRepository() {
                 }
 
                 override fun onResponse(call: Call<EventInvitationSent>, response: Response<EventInvitationSent>) {
+                    hideProgress()
                     if (response.body() == null) {
 
                         try {
@@ -189,7 +226,7 @@ open class EventRepository : BaseRepository() {
         }
     }fun callAllReceivedInvitationByUser(mContext: Context, req: HashMap<String, String>) {
         if (isNetworkConnected(mContext)) {
-
+            showProgress(mContext)
             apiInterface.callReceivedEventInvitation(req).enqueue(object : retrofit2.Callback<EventInvitationReceived> {
                 override fun onFailure(call: Call<EventInvitationReceived>, t: Throwable) {
                     hideProgress()

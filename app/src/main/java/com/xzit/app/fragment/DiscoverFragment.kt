@@ -71,7 +71,6 @@ class DiscoverFragment : BaseFragment(), View.OnClickListener {
         binding?.tvNews?.setOnClickListener(this)
         binding?.tvUpcommingNews?.setOnClickListener(this)
         binding?.rvEvents?.setHasFixedSize(true)
-        binding?.rvEvents?.setHasFixedSize(true)
         binding?.rvEvents?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
     }
 
@@ -86,7 +85,10 @@ class DiscoverFragment : BaseFragment(), View.OnClickListener {
                     showOnGoing(response.Response?.ongoing)
                 }
             } else {
-                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+                binding?.tvNoDataFound?.visibility = View.VISIBLE
+                binding?.tvNoDataFound?.setText(response?.message)
+                binding?.rvEvents?.visibility = View.GONE
+//                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
             }
         })
     }

@@ -11,6 +11,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Response
 import java.util.*
+import kotlin.collections.ArrayList
 
 open class RegistrationRepository : BaseRepository() {
     open var responseData = MutableLiveData<RegistrationResponse>()
@@ -47,7 +48,7 @@ open class RegistrationRepository : BaseRepository() {
     }
 
     fun callSignUpImage(mContext: Context,
-                        params: HashMap<String, okhttp3.RequestBody>, image: MultipartBody.Part
+                        params: HashMap<String, okhttp3.RequestBody>, image: ArrayList<MultipartBody.Part?>
     ) {
         if (isNetworkConnected(mContext)) {
             showProgress(mContext)

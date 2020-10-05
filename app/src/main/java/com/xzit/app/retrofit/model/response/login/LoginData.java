@@ -59,7 +59,7 @@ public class LoginData {
     private Pref pref;
     @SerializedName("profilePic")
     @Expose
-    private List<Object> profilePic = null;
+    private List<String> profilePic = null;
 
     public String getUserId() {
         return userId;
@@ -189,11 +189,11 @@ public class LoginData {
         this.pref = pref;
     }
 
-    public List<Object> getProfilePic() {
+    public List<String> getProfilePic() {
         return profilePic;
     }
 
-    public void setProfilePic(List<Object> profilePic) {
+    public void setProfilePic(List<String> profilePic) {
         this.profilePic = profilePic;
     }
 }

@@ -4,38 +4,32 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Observer
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.xzit.app.R
 import com.xzit.app.activity.EditProfileActivity
 import com.xzit.app.activity.SettingsActivity
 import com.xzit.app.activity.XzitApp
-import com.xzit.app.adapter.InvitationAdater
+import com.xzit.app.adapter.EventInvitationReceivedAdapter
+import com.xzit.app.adapter.EventInvitationSentAdapter
 import com.xzit.app.databinding.FragmentInvitationBinding
+import com.xzit.app.listener.OnAcceptRejectClicked
 import com.xzit.app.listener.OnDialogClickListener
 import com.xzit.app.repository.EventRepository
+import com.xzit.app.retrofit.model.response.eventdata.EventListingResponse
+import com.xzit.app.retrofit.model.response.eventinvitation.EventInvitationAcceptReject
+import com.xzit.app.retrofit.model.response.eventinvitationreceived.EventInvitationReceivedData
 import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationReceived
-import com.xzit.app.retrofit.model.response.friendrequest.AcceptRejectFriendRequestResponse
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSent
+import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSentData
 import com.xzit.app.retrofit.model.response.login.LoginData
 import com.xzit.app.utils.EVENT_INVITATION_STATUS_ACCEPT
 import com.xzit.app.utils.RESP_API_SUCCESS
 import com.xzit.app.utils.RESP_API_SUCCESS2
 import com.xzit.app.utils.showMessageDialog
 import java.util.*
-import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import com.xzit.app.adapter.EventInvitationReceivedAdapter
-import com.xzit.app.adapter.EventInvitationSentAdapter
-import com.xzit.app.adapter.FriendListAdapter
-import com.xzit.app.listener.OnAcceptRejectClicked
-import com.xzit.app.listener.OnAddRemoveFriendListener
-import com.xzit.app.listener.OnViewClickListener
-import com.xzit.app.retrofit.model.response.eventdata.Ongoing
-import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSent
-import com.xzit.app.retrofit.model.response.eventinvitationsent.EventInvitationSentData
-import com.xzit.app.retrofit.model.response.friendlist.FriendListData
 import kotlin.collections.ArrayList
 import kotlin.collections.set
 
@@ -45,6 +39,7 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
     private lateinit var adapterInvitationSent: EventInvitationSentAdapter
     private lateinit var adapterInvitationReceived: EventInvitationReceivedAdapter
     private lateinit var repository: EventRepository
+    private var position = 0
 
     private lateinit var userdata: LoginData
     var listDummy = ArrayList<String>()
@@ -64,11 +59,11 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         userdata = XzitApp.getLoginUserData()
         repository = EventRepository()
-
+        binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         initListener()
         initObserver()
-        callInvitationSent()
-        callInvitationReceived()
+//        callInvitationSent()
+        //callInvitationReceived()
 
     }
 
@@ -78,11 +73,11 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
         binding?.llInvitationSent?.callOnClick()
     }
 
-    fun initObserver(){
+    fun initObserver() {
         repository.responseEventInvitationSent.observe(this, Observer<EventInvitationSent> { response ->
 
-            if (response != null && response.status == RESP_API_SUCCESS ||response.status == RESP_API_SUCCESS2) {
-                if(isInvitationSentDataAvailable(response.Response)){
+            if (response != null && response.status == RESP_API_SUCCESS || response.status == RESP_API_SUCCESS2) {
+                if (isInvitationSentDataAvailable(response.Response)) {
                     updateUISent(response.Response!!)
                 }
             } else {
@@ -92,10 +87,24 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
         })
         repository.responseEventInvitationReceived.observe(this, Observer<EventInvitationReceived> { response ->
 
-            if (response != null && response.status == RESP_API_SUCCESS ||response.status == RESP_API_SUCCESS2) {
-                if( isInvitationReceivedDataAvailable(response.Response)){
+            if (response != null && response.status == RESP_API_SUCCESS || response.status == RESP_API_SUCCESS2) {
+                if (isInvitationReceivedDataAvailable(response?.Response!!)) {
                     updateUIReceived(response.Response!!)
                 }
+            } else {
+                showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
+            }
+
+        })
+
+        repository.responsEventAcceptReject.observe(this, Observer<EventInvitationAcceptReject> { response ->
+
+            if (response != null && response.status == RESP_API_SUCCESS || response.status == RESP_API_SUCCESS2) {
+                adapterInvitationReceived.removeItem(position)
+                isInvitationReceivedDataAvailable(adapterInvitationReceived.listData)
+//                if (isInvitationReceivedDataAvailable(response.Response)) {
+//                    updateUIReceived(response.Response!!)
+//                }
             } else {
                 showMessageDialog(mContext, response?.message, true, OnDialogClickListener { })
             }
@@ -106,22 +115,38 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
 
     private fun updateUISent(data: List<EventInvitationSentData?>) {
 
-        binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+        //binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
         adapterInvitationSent = EventInvitationSentAdapter(data)
         binding?.rvInvitations?.adapter = null
         binding?.rvInvitations?.adapter = adapterInvitationSent
     }
 
-    private fun updateUIReceived(data: List<Object?>?) {
+    private fun updateUIReceived(data: List<EventInvitationReceivedData?>?) {
 
-        binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
-        adapterInvitationReceived = EventInvitationReceivedAdapter(data!!,object:OnAcceptRejectClicked{
-            override fun onClick(position: Int,isEmpty:Boolean) {
-                isInvitationReceivedDataAvailable(null)
+
+        //binding?.rvInvitations?.layoutManager = LinearLayoutManager(mContext, LinearLayoutManager.VERTICAL, false)
+        adapterInvitationReceived = EventInvitationReceivedAdapter(mContext,data!!, object : OnAcceptRejectClicked {
+            override fun onClick(pos: Int, isAccept: Boolean,model: EventInvitationReceivedData) {
+                // isInvitationReceivedDataAvailable(null)
+               // var model:EventInvitationReceivedData=data.get(position)
+                position=pos
+                var status = "REJECT"
+                if (isAccept) {
+                    status = "ACCPET"
+                }
+                val map = HashMap<String, String>()
+                map["postData[requestCase]"] = "acceptRejectEventInvitation"
+                map["postData[clientId]"] = userdata.clientId
+                map["postData[userId]"] = userdata.userId
+                map["postData[eventInvitationId]"] = model.eventInviId!!
+                map["postData[eventId]"] = model.eventId!!
+                map["postData[status]"] = status
+                repository.callAcceptRejectEventInvitation(mContext, map)
             }
         })
         binding?.rvInvitations?.adapter = null
-        binding?.rvInvitations?.adapter = adapterInvitationSent
+        binding?.rvInvitations?.adapter = adapterInvitationReceived
+//        binding?.notifyChange()
     }
 
 
@@ -137,7 +162,7 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
         }
     }
 
-    fun isInvitationReceivedDataAvailable(data: List<Object?>?): Boolean {
+    fun isInvitationReceivedDataAvailable(data: List<EventInvitationReceivedData?>?): Boolean {
         if (data?.size ?: 0 > 0) {
             binding?.tvNoDataFound?.visibility = View.GONE
             binding?.rvInvitations?.visibility = View.VISIBLE
@@ -162,7 +187,7 @@ class InvitationFragment : BaseFragment(), View.OnClickListener {
         map["postData[requestCase]"] = "getAllReceivedInvitationToUser"
         map["postData[clientId]"] = userdata.clientId
         map["postData[userId]"] = userdata.userId
-        map["postData[status]"] = EVENT_INVITATION_STATUS_ACCEPT
+       map["postData[status]"] = "ACCEPT,REJECT,PENDING"
         repository.callAllReceivedInvitationByUser(mContext, map)
     }
 
