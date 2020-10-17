@@ -112,13 +112,6 @@ class DashboardFragment : BaseFragment(), View.OnClickListener {
     override fun onClick(v: View?) {
         when (v?.id) {
             R.id.llProfile -> {
-//                SnapTimePickerDialog.Builder().apply {
-//                useViewModel()
-//            }.build().show(mActivity.supportFragmentManager, SnapTimePickerDialog.TAG)
-//
-//            SnapTimePickerUtil.observe(this) { selectedHour: Int, selectedMinute: Int ->
-//                Log.d(""+selectedHour,""+selectedMinute);
-//            }
                 (mActivity as DashboardActivity).addFragment(ProfileFragment.newInstance(), true)
             }
             R.id.llAddContact -> {

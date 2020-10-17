@@ -7,11 +7,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!--        <ScrollView-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:background="@color/colorBg">-->
-
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -110,8 +105,7 @@
                                 android:fontFamily="@font/quicksand_regular"
                                 android:text="Story"
                                 android:textColor="@color/colorWhite"
-                                android:textSize="@dimen/_10ssp"
-                                tools:ignore="UnknownIdInLayout,UnusedAttribute" />
+                                android:textSize="@dimen/_10ssp" />
 
                         </LinearLayout>
 
@@ -174,8 +168,6 @@
                                 tools:ignore="UnknownIdInLayout,UnusedAttribute" />
 
                         </LinearLayout>
-
-
                     </LinearLayout>
                 </HorizontalScrollView>
 
@@ -232,19 +224,17 @@
                         android:layout_height="match_parent"
                         android:background="@color/colorBg"
                         android:orientation="vertical"
-                        android:padding="@dimen/_10sdp"
-                       >
+                        android:padding="@dimen/_10sdp">
 
-
-                            <androidx.recyclerview.widget.RecyclerView
-                                android:id="@+id/rvEvents"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="10dp"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="10dp"
-                                android:layout_marginRight="10dp"
-                                android:overScrollMode="never" />
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvEvents"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginRight="10dp"
+                            android:overScrollMode="never" />
 
                         <androidx.appcompat.widget.AppCompatTextView
                             android:id="@+id/tvNoDataFound"
@@ -254,33 +244,11 @@
                             android:text="@string/no_data_found"
                             android:visibility="gone"
                             tools:visibility="visible" />
-                        <!--                            <include-->
-                        <!--                                layout="@layout/row_discover"-->
-                        <!--                                android:layout_width="wrap_content"-->
-                        <!--                                android:layout_height="wrap_content"-->
-                        <!--                                android:layout_marginTop="@dimen/_5sdp" />-->
-
-                        <!--                            <include-->
-                        <!--                                layout="@layout/row_discover"-->
-                        <!--                                android:layout_width="wrap_content"-->
-                        <!--                                android:layout_height="wrap_content"-->
-                        <!--                                android:layout_marginTop="@dimen/_5sdp" />-->
-
-                        <!--                            <include-->
-                        <!--                                layout="@layout/row_discover"-->
-                        <!--                                android:layout_width="wrap_content"-->
-                        <!--                                android:layout_height="wrap_content"-->
-                        <!--                                android:layout_marginTop="@dimen/_5sdp" />-->
-
 
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
-
             </RelativeLayout>
-
-
         </RelativeLayout>
-        <!--        </ScrollView>-->
 
         <Button
             android:id="@+id/btnCreateEvent"

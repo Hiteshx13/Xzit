@@ -12,7 +12,7 @@ import retrofit2.Response
 import java.util.*
 
 open class DashboardRepository : BaseRepository() {
-    open var loginData = MutableLiveData<FCMTokenResponse>()
+    open var fcmTokenResponse = MutableLiveData<FCMTokenResponse>()
 
 
     fun callApi(mContext: Context, req: HashMap<String, String>) {
@@ -24,7 +24,7 @@ open class DashboardRepository : BaseRepository() {
                     var model = FCMTokenResponse()
                     model.setMessage(t.message)
                     model.setStatus(4001)
-                    loginData.value = model
+                    fcmTokenResponse.value = model
                 }
 
                 override fun onResponse(call: Call<FCMTokenResponse>, response: Response<FCMTokenResponse>) {
@@ -33,17 +33,16 @@ open class DashboardRepository : BaseRepository() {
                         try {
                             val jObjError = JSONObject(response.errorBody()!!.string())
                             var model = Gson().fromJson(jObjError.toString(), FCMTokenResponse::class.java)
-                            loginData.value = model
+                            fcmTokenResponse.value = model
                         } catch (e: Exception) {
                             Toast.makeText(mContext, e.message, Toast.LENGTH_LONG).show()
                         }
                         return
                     } else {
-                        loginData.value = response.body()
+                        fcmTokenResponse.value = response.body()
                     }
                 }
             })
         }
     }
-
 }

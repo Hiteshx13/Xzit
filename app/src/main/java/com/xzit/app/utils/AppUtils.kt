@@ -14,12 +14,12 @@ import android.provider.DocumentsContract
 import android.provider.MediaStore
 import android.text.TextUtils
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.AppCompatImageView
 import com.bumptech.glide.Glide
 import com.xzit.app.R
 import com.xzit.app.utils.RealPathUtil.*
-import okhttp3.MediaType
+import okhttp3.CacheControl.Companion.parse
+import okhttp3.MultipartBody.Part.Companion.create
 import okhttp3.RequestBody
 import java.net.URISyntaxException
 import java.text.SimpleDateFormat
@@ -41,9 +41,11 @@ const val STATUS_ACCEPT = "ACCEPT"
 const val REQ_CASE_USER = "USER"
 const val USER_TYPE_NORMAL = "NORMAL"
 const val USER_TYPE_BUSSINESS = "BUSSINESS"
+const val PARAM_URL = "file_url"
 
 
 const val REQ_WRITE_EXST = 501
+const val REQ_CAMEEA = 502
 const val REQ_LOGIN_WITH_GMAIL = 301
 const val REQ_SELECT_PHOTO_GALLERY = 111
 
@@ -68,6 +70,9 @@ fun isEmailValid(email: String): Boolean {
 fun loadImage(mContext: Context, url: String, imageView: AppCompatImageView) {
     Glide.with(mContext).load(url).into(imageView).onLoadFailed(mContext.getDrawable(R.drawable.demo))
 }
+
+
+
 fun isNetworkConnected(mContext: Context): Boolean {
     val cm = mContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     val activeNetwork: NetworkInfo? = cm.activeNetworkInfo
@@ -90,7 +95,7 @@ fun getTimeHM(date: Date): String {
 }
 @SuppressLint("NewApi")
 @Throws(URISyntaxException::class)
-fun getFilePathFromContentUri(context:Context,uri: Uri): String? {
+fun getFilePathFromContentUri(context: Context, uri: Uri): String? {
     var uri = uri
     var selection: String? = null
     var selectionArgs: Array<String>? = null

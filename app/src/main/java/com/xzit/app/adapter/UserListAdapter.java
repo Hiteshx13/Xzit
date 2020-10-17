@@ -1,6 +1,7 @@
 package com.xzit.app.adapter;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -47,6 +48,18 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         RowUserListingBinding binding = DataBindingUtil.inflate(inflater, R.layout.row_user_listing, parent, false);
         UserListAdapter.ViewHolder holder = new UserListAdapter.ViewHolder(binding);
         return holder;
+        /* UserListAdapter.ViewHolder holder;
+        if (parent.getTag() == null) {
+            LayoutInflater inflater = LayoutInflater.from(
+                    parent.getContext());
+            RowUserListingBinding binding =
+                    DataBindingUtil.inflate(inflater, R.layout.row_user_listing, parent, false);
+
+            holder = new UserListAdapter.ViewHolder(binding);
+            parent.setTag(holder);
+        } else {
+            holder = (UserListAdapter.ViewHolder) parent.getTag();
+        }*/
     }
 
     public void setRequestStatus(int pos) {
@@ -63,13 +76,22 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
         ///model.getStatus().equals(AppUtilsKt.STATUS_PENDING)
     }
 
+//    @Override
+//    public long getItemId(int position) {
+//        return values.get(position);
+//    }
     @Override
     public void onBindViewHolder(UserListAdapter.ViewHolder holder, final int position) {
 
         final UserListingData model = values.get(holder.getAdapterPosition());
 
+
+        Log.d("#ImageUrl",""+model.getProfilePic());
         if (!model.getProfilePic().isEmpty()) {
-            new ImageUtils().loadImage(mActivity, model.getProfilePic(), holder.binding.ivProfile);
+//            holder.binding.ivProfile.setImageURI(Uri.parse( model.getProfilePic()));
+            new ImageUtils().loadImage(holder.binding.ivProfile.getContext(), model.getProfilePic(), holder.binding.ivProfile);
+        }else{
+            holder.binding.ivProfile.setImageResource(R.drawable.app_icon);
         }
 
         if (!model.getUsername().isEmpty()) {
@@ -113,7 +135,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.ViewHo
             binding.tvAddFriendUnfriend.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if(!values.get(getAdapterPosition()).getStatus().equals(AppUtilsKt.STATUS_PENDING)){
+                    if (!values.get(getAdapterPosition()).getStatus().equals(AppUtilsKt.STATUS_PENDING)) {
                         listener.onClick(getAdapterPosition());
                     }
 

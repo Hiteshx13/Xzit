@@ -91,4 +91,9 @@ dependencies {
     //Fingerprint
     implementation 'androidx.biometric:biometric:1.0.1'
 
+    //VideoPlayer and filters
+     implementation 'com.github.MasayukiSuda:GPUVideo-android:v0.1.1'
+    // if apply video filter on ExoPlayer video
+    implementation 'com.google.android.exoplayer:exoplayer-core:2.9.3'
+
 }

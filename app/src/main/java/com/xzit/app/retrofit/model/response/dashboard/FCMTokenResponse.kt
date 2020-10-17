@@ -20,7 +20,7 @@ class FCMTokenResponse {
 
     @SerializedName("Response")
     @Expose
-    private var response: String? = null
+    private var response: ArrayList<String?>? = null
 
     @SerializedName("authToken")
     @Expose
@@ -42,11 +42,11 @@ class FCMTokenResponse {
         this.message = message
     }
 
-    fun getResponse(): String? {
+    fun getResponse(): ArrayList<String?>? {
         return response
     }
 
-    fun setResponse(response: String?) {
+    fun setResponse(response: ArrayList<String?>?) {
         this.response = response
     }
 

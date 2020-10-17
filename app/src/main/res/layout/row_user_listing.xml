@@ -20,20 +20,16 @@
             android:id="@+id/llData"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_above="@+id/viewStrip"
-
-            >
+            android:layout_above="@+id/viewStrip">
 
 
-            <de.hdodenhof.circleimageview.CircleImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/ivProfile"
                 android:layout_width="@dimen/_36sdp"
                 android:layout_height="@dimen/_36sdp"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:src="@drawable/demo"
-                app:civ_border_color="@color/colorWhite"
-                app:civ_border_width="@dimen/_3sdp" />
+                tools:src="@drawable/demo" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/tvName"
@@ -41,14 +37,16 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginStart="@dimen/_9sdp"
+                android:singleLine="true"
                 android:layout_marginLeft="@dimen/_9sdp"
                 android:layout_toStartOf="@+id/tvAddFriendUnfriend"
                 android:layout_toLeftOf="@+id/tvAddFriendUnfriend"
                 android:layout_toEndOf="@+id/ivProfile"
                 android:layout_toRightOf="@+id/ivProfile"
                 android:layout_weight="1"
+                android:layout_marginEnd="@dimen/_5sdp"
                 android:fontFamily="@font/poppins_medium"
-                android:text="Jack Sparrow"
+                tools:text="Jack Sparrsasasassa  ow"
                 android:textColor="@color/textColor"
                 android:textSize="@dimen/_12ssp"
                 tools:ignore="UnknownIdInLayout" />

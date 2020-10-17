@@ -65,11 +65,14 @@
                 android:gravity="center_horizontal"
                 android:orientation="vertical">
 
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/img_story" />
+                <FrameLayout
+                    android:id="@+id/camera_preview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    />
+
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -97,8 +100,9 @@
                         android:scaleType="centerCrop"
                         android:src="@drawable/icn_capture" />
 
+
                     <androidx.appcompat.widget.AppCompatImageView
-                        android:id="@+id/ivRotate"
+                        android:id="@+id/ivSwitchCamera"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:scaleType="centerCrop"
